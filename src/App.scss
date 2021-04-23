@@ -1,0 +1,13 @@
+%transition {
+   transition: all 0.3s ease;
+}
+
+
+%arial-font {
+  font: 15px Verdana;
+}
+
+.app {
+  @extend %arial-font;
+}
+
