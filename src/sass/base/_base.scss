@@ -3,7 +3,8 @@ html {
 }
 
 body {
-  // color: #fff;
+  color: rgb(238, 236, 236);
+  background: rgb(15, 15, 15);
   margin: 0;
   padding: 0;
   font-size: 1.6rem;
@@ -21,6 +22,7 @@ p {
 
 a {
   text-decoration: none;
+  color: rgba(255, 255, 255, 0.89);
 }
 
 ul {
@@ -44,4 +46,5 @@ h6 {
 .container {
   max-width: 1400px;
   margin: 0 auto;
+  padding: 0 20px;
 }

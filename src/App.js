@@ -1,10 +1,11 @@
 import './index.scss';
 import "./App.scss";
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
   return (
     <div className="app">
-      <h1>FTL-app</h1>
+      <Navbar/>
     </div>
   );
 }
