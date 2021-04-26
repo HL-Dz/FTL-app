@@ -4,7 +4,7 @@ import "./ChampionsLeague.scss";
 const ChampionsLeague = () => {
   return (
     <div className="champions-league">
-      <div className="league-container">
+      <div className="container">
         <h1 className="champions-league-title">Champions League</h1>
       </div>
     </div>

@@ -4,7 +4,7 @@ import "./Primera.scss";
 const Primera = () => {
   return (
     <div className="primera">
-      <div className="league-container">
+      <div className="container">
         <h1 className="primera-title">Primera Division</h1>
       </div>
     </div>

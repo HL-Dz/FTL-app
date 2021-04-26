@@ -4,7 +4,7 @@ import "./Brasil.scss";
 const Brasil = () => {
   return (
     <div className="brasil-division">
-      <div className="league-container">
+      <div className="container">
         <h1 className="brasil-title">Brasilian Division One</h1>
       </div>
     </div>

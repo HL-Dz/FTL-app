@@ -4,7 +4,7 @@ import "./EuropeanC.scss";
 const EuropeanC = () => {
   return (
     <div className="eurepean-c">
-      <div className="league-container">
+      <div className="container">
         <h1 className="eurepean-c-title">European Championships</h1>
       </div>
     </div>
