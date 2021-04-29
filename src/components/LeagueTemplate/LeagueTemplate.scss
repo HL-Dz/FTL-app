@@ -1,0 +1,63 @@
+@import "../../index.scss";
+
+.league-table {
+  font-family: 'Poppins', sans-serif;
+  margin: 0 auto;
+  color: rgb(197, 193, 193);
+  border-radius: 2px;
+  overflow: hidden;
+  @extend %transition;
+}
+
+.table-head {
+  background: #2e312f;
+}
+
+.table-tr {
+  box-shadow: 0 0 15px rgba(117, 182, 117, 0.1) inset;
+  @extend %transition;
+
+  &:nth-child(2n) {
+    background: #151716;
+  }
+
+  &:hover {
+    background: #0f0f0f;
+    box-shadow: none;
+
+    &:first-child {
+      background: none;
+    }
+  }
+}
+
+.table-tr-inactive {
+  box-shadow: none;
+}
+
+.table-th {
+  font-size: 1.7rem;
+  padding: 5px 20px;
+}
+
+.table-td {
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 1.6rem;
+}
+
+.table-td-logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.has-logo {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.td-logo {
+  max-width: 100%;
+  height: auto;
+}
