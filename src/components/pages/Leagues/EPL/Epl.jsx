@@ -1,5 +1,6 @@
 import React  from 'react';
-import LeagueTemplate from '../../../LeagueTemplate/LeagueTemplate';
+import LeagueTemplate from '../../../common/LeagueTemplate/LeagueTemplate';
+import Preloader from '../../../common/Preloader/Preloader';
 import "./Epl.scss";
 
 
@@ -7,7 +8,7 @@ const Epl = ({league, isFetching}) => {
   return (
     <div className="epl">
       <div className="container">
-        {isFetching ? <p>Loading data...</p> : <LeagueTemplate league={league}/>}
+        {isFetching ? <Preloader/> : <LeagueTemplate league={league}/>}
       </div>
     </div>
   )

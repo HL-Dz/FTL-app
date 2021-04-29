@@ -1,4 +1,4 @@
-@import "../../index.scss";
+@import "../../../index.scss";
 
 .league-table {
   font-family: 'Poppins', sans-serif;
@@ -44,6 +44,13 @@
   text-align: center;
   padding: 10px 20px;
   font-size: 1.6rem;
+
+  &:first-child{
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: rgb(15, 14, 14);
+    border-bottom: 1px solid rgb(44, 43, 43);
+  }
 }
 
 .table-td-logo {
