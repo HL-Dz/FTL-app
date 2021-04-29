@@ -18,7 +18,6 @@ export const standingsAPI = {
   getBundesligaStandings(){
     return instance.get(`/competitions/BL1/standings`)
       .then(response => {
-        console.log(response.data);
         return response.data;
       })
   },
