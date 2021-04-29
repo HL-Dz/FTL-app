@@ -10,10 +10,7 @@ const instance = axios.create({
 
 export const standingsAPI = {
   getPLStandings(){
-    return instance.get(`/competitions/PL/standings`)
-      .then(response => {
-        return response.data;
-      })
+    return instance.get(`/competitions/PL/standings`);
   },
   getBundesligaStandings(){
     return instance.get(`/competitions/BL1/standings`)

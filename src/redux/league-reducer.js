@@ -35,8 +35,8 @@ const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching}
 export const getLeague = () => {
   return async (dispatch) => {
     standingsAPI.getPLStandings()
-      .then(data => {
-        dispatch(setLeagueProfile(data));
+      .then(response => {
+        dispatch(setLeagueProfile(response.data));
         dispatch(toggleIsFetching(false));
       })
   }
