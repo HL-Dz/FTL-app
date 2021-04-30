@@ -6,17 +6,17 @@ import "./Epl.scss";
 import emirates from "./Emirates.jpg";
 
 
-let eplStyles = {
+let eplBackground = {
   backgroundImage: `url(${emirates})`,
   backgroundPosition: "top center",
   backgroundRepeat: "no-repeat",
-  backgroundSize: "contain"
+  backgroundSize: "contain",
 }
 
-
 const Epl = ({league, isFetching}) => {
+  console.log(league);
   return (
-    <div className="epl" style={eplStyles}>
+    <div className="epl" style={eplBackground}>
         <div className="players">
           <div className="player">
             <img src="./images/Epl/Leno.png" alt="Leno"/>

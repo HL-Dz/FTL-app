@@ -10,10 +10,17 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+
+  & >* {
+    flex-basis: 50%;
+
+    @include big-desktop {
+      flex-basis: 22%;
+    }
+  }
 }
 
 .player {
-
   &:nth-child(1) {
     text-align: left;
   }
@@ -24,6 +31,6 @@
 }
 
 .player img {
-  max-width: 60%;
+  max-width: 100%;
   height: auto;
 }

@@ -1,5 +1,7 @@
 import { standingsAPI } from "../api/api";
 
+import {delay} from '../helpers/helpers';  
+
 const SET_LEAGUE = 'SET_LEAGUE';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
@@ -34,6 +36,7 @@ const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching}
 
 export const getLeague = () => {
   return async (dispatch) => {
+    await delay(3000);
     standingsAPI.getPLStandings()
       .then(response => {
         dispatch(setLeagueProfile(response.data));
