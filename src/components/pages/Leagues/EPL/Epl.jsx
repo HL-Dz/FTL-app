@@ -14,7 +14,6 @@ let eplBackground = {
 }
 
 const Epl = ({league, isFetching}) => {
-  console.log(league);
   return (
     <div className="epl" style={eplBackground}>
         <div className="players">

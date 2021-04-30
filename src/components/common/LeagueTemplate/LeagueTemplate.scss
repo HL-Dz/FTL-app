@@ -1,5 +1,22 @@
 @import "../../../index.scss";
 
+
+.table-container {
+  position: relative;
+}
+
+.table-title {
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #cecdcd;
+  z-index: 1;
+}
+
 .league-table {
   font-family: 'Poppins', sans-serif;
   margin: 0 auto;
@@ -67,4 +84,77 @@
 .td-logo {
   max-width: 100%;
   height: auto;
+}
+
+// OverviewLeagueCard
+.overview-card {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.384);
+  width: 100%;
+  color: rgb(230, 223, 223);
+  max-width: 600px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.overview-league {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: rgb(15,15,15);
+  background: linear-gradient(47deg, rgba(15,15,15,0.2) 30%, rgba(49, 134, 66, 0.5) 100%);
+}
+
+.overview-pic {
+  width: 170px;
+  height: 170px;
+  margin-bottom: 20px;
+}
+
+.overview-img {
+  max-width: 100%;
+  opacity: 0.7;
+}
+
+// .overview-code,
+.overview-country {
+  text-align: center;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.overview-info {
+  padding: 20px;
+}
+
+.overview-card__text {
+  padding: 0px 5px;
+  font-size: 3rem;
+  margin-bottom: 5px;
+}
+
+.overview-card__name,
+.overview-card__stage,
+.start-date,
+.finish-date,
+.current-matchday,
+.winner {
+  font-weight: bold;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  background: rgba(42, 49, 47, 0.7);
+  margin-bottom: 7px;
+  padding: 5px;
+
+   & span:first-child  {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    display: inline-block;
+    width: 100px;
+    background: rgba(0, 0, 0, 0.26);
+    padding: 3px;
+    margin-right: 10px;
+   }
 }
