@@ -1,6 +1,5 @@
 import React  from 'react';
 import LeagueTemplate from '../../../common/LeagueTemplate/LeagueTemplate';
-import Preloader from '../../../common/Preloader/Preloader';
 import "./Epl.scss";
 
 import emirates from "./Emirates.jpg";
@@ -16,7 +15,7 @@ let eplBackground = {
 const Epl = ({league, isFetching}) => {
   return (
     <div className="epl" style={eplBackground}>
-        <div className="players">
+        <div className={isFetching ? "players" : "players players_visible"}>
           <div className="player">
             <img src="./images/Epl/Leno.png" alt="Leno"/>
           </div>
@@ -25,7 +24,7 @@ const Epl = ({league, isFetching}) => {
           </div>
         </div>
       <div className="container">
-        {isFetching ? <Preloader/> : <LeagueTemplate league={league}/>}
+        <LeagueTemplate league={league} isFetching={isFetching}/>
       </div>
     </div>
   )

@@ -37,9 +37,15 @@
   width: var(--size);
   -webkit-transform: translateX(-50%) translateY(-50%);
           transform: translateX(-50%) translateY(-50%);
+
+	&_purple .circle {
+		background: #845ad891;
+	}
+
+	
 }
 
-.loader > .circle {
+.circle {
   --duration: 1.5s;
   position: absolute;
   height: inherit;
@@ -50,17 +56,19 @@
           animation: animate-circle var(--duration) cubic-bezier(.9,.24,.62,.79) infinite;
 }
 
-.loader > .circle:nth-of-type(1) {
+
+
+.circle:nth-of-type(1) {
   -webkit-animation-delay: 0;
           animation-delay: 0;
 }
 
-.loader > .circle:nth-of-type(2) {
+.circle:nth-of-type(2) {
   -webkit-animation-delay: calc(var(--duration) / -3);
           animation-delay: calc(var(--duration) / -3);
 }
 
-.loader > .circle:nth-of-type(3) {
+.circle:nth-of-type(3) {
   -webkit-animation-delay: calc(var(--duration) / -6);
           animation-delay: calc(var(--duration) / -6);
 }

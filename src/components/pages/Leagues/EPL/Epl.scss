@@ -10,6 +10,8 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  opacity: 0;
+  transition: all 0.7s ease-in-out;
 
   & >* {
     flex-basis: 50%;
@@ -17,6 +19,10 @@
     @include big-desktop {
       flex-basis: 22%;
     }
+  }
+
+  &_visible {
+    opacity: 1;
   }
 }
 
