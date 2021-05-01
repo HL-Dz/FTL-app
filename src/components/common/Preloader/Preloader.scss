@@ -38,11 +38,57 @@
   -webkit-transform: translateX(-50%) translateY(-50%);
           transform: translateX(-50%) translateY(-50%);
 
-	&_purple .circle {
+  &_purple .circle {
 		background: #845ad891;
 	}
 
-	
+	&_red .circle {
+		background: #911e226c;
+	}
+
+	&_blue .circle {
+		background: #006a9462;
+	}
+
+	&_multi .circle {
+		&:nth-child(1) {
+			background: #17dfdf4d;
+		}
+
+		&:nth-child(2) {
+			background: #cfeba262;
+		}
+
+		&:nth-child(3) {
+			background: #67df1770;
+		}
+	}
+
+	&_grey .circle {
+		background: rgba(105, 98, 98, 0.4);
+	}
+
+	&_bchb .circle {
+		&:nth-child(1) {
+			background: rgba(255, 255, 255, 0.466);
+		}
+
+		&:nth-child(2) {
+			background: rgba(148, 38, 38, 0.397);
+		}
+
+		&:nth-child(3) {
+			background: rgba(255, 255, 255, 0.466);
+		}
+	}
+
+	&_d-blue .circle {
+		background: #002044bb;
+	}
+
+	&_yellow .circle{
+		background: rgba(255, 255, 0, 0.308);
+	}
 }
 
 .circle {
