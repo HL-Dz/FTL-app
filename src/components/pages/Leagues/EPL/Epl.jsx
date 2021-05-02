@@ -17,9 +17,9 @@ let eplBackground = {
 const Epl = ({league, isFetching}) => {
   return (
     <div className="epl" style={eplBackground}>
-      <Players isFetching={isFetching} players={players}/>
+      <Players isFetching={isFetching} players={players.english}/>
       <div className="container">
-        <LeagueTemplate league={league} isFetching={isFetching}/>
+        <LeagueTemplate league={league} isFetching={isFetching} color="purple"/>
       </div>
     </div>
   )

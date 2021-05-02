@@ -2,9 +2,9 @@ import React from 'react';
 import "./Players.scss";
 
 const Players = ({isFetching, players}) => {
-  let {first, second } = players.english
+  let {first, second} = players;
   return (
-    <div className={isFetching ? "players" : "players players_visible"}>
+    <div className={isFetching ? " players players_inactive" : "players"}>
       <div className="player">
         <img src={first.path} alt={first.name} title={first.name}/>
       </div>

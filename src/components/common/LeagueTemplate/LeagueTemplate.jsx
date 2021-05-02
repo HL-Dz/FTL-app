@@ -4,10 +4,10 @@ import LeagueTable from './LeagueTable/LeagueTable';
 import './LeagueTemplate.scss';
 import OverviewLeagueCard from './OverviewLeagueCard/OverviewLeagueCard';
 
-const LeagueTemplate = ({league, isFetching}) => {
+const LeagueTemplate = ({league, isFetching, color}) => {
   return (
     <>
-      {isFetching ? <Preloader color="purple"/> : 
+      {isFetching ? <Preloader color={color}/> : 
       <div className="league-template">
         <OverviewLeagueCard league={league}/>
         <LeagueTable league={league}/>
