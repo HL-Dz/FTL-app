@@ -3,24 +3,24 @@ let players = {
     first: {
       name: 'Bernd Leno',
       club: 'Arsenal London',
-      path: './images/Epl/Leno.png'
+      path: './images/PL/Leno.png'
     },
     second: {
       name: 'Paul Pogba',
       club: 'Manchester United',
-      path: './images/Epl/Pogba.png'
+      path: './images/PL/Pogba.png'
     }
   },
   bundesliga: {
     first: {
       name: 'Robert Lewandowski',
       club: 'Bayern Munich',
-      path: './images/Bundesliga/Lewandowski.png'
+      path: './images/BL1/Lewandowski.png'
     },
     second: {
       name: 'Marko Reus',
       club: 'Borussia Dortmund',
-      path: './images/Bundesliga/Reus.png',
+      path: './images/BL1/Reus.png',
     },
   }
 };

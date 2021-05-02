@@ -1,7 +1,7 @@
 import React from 'react';
 
 const OverviewLeagueCard = ({league}) => {
-  let imgSrc = `./images/${league.competition.code}.png`;
+  let imgSrc = `./images/${league.competition.code}/${league.competition.code}.png`;
   return (
     <div className="overview-card">
       <div className="overview-league">
