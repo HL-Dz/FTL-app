@@ -9,7 +9,7 @@
   justify-content: space-between;
   transition: background 0.7s ease-in-out;
   background: none;
-  height: 100%;
+  height: calc(100vh - 80px);
 
   & >* {
     flex-basis: 50%;
@@ -28,6 +28,7 @@
 
     & .player img {
       opacity: 0;
+      height: 0;
     }
   }
 }

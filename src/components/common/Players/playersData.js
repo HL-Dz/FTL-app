@@ -15,13 +15,13 @@ let players = {
     first: {
       name: 'Robert Lewandowski',
       club: 'Bayern Munich',
-      path: './images/Bundesliga/Lewa.png'
+      path: './images/Bundesliga/Lewandowski.png'
     },
     second: {
-      name: 'Axel Witsel',
+      name: 'Marko Reus',
       club: 'Borussia Dortmund',
-      path: './images/Bundesliga/Witsel.png'
-    }
+      path: './images/Bundesliga/Reus.png',
+    },
   }
 };
 
