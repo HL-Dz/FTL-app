@@ -1,11 +1,12 @@
 import React from 'react';
 
 const OverviewLeagueCard = ({league}) => {
+  let imgSrc = `./images/${league.competition.code}.png`;
   return (
     <div className="overview-card">
       <div className="overview-league">
         <div className="overview-pic">
-          <img className="overview-img" src="./images/pl.png" alt="PL"/>
+          <img className="overview-img" src={imgSrc} alt={league.competition.code}/>
         </div>
         <div className="overview-country">{league.competition.area.name || '------'}</div>
       </div>
