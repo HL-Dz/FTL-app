@@ -1,7 +1,7 @@
 import React from 'react';
 
 const LeagueTable = ({league}) => {
-  let standings = league.standings[0].table;
+  // let standings = league.standings[0].table;
 
   return (
     <>
@@ -24,7 +24,7 @@ const LeagueTable = ({league}) => {
           </thead>
           <tbody>
             {
-              standings.map(elem => {
+              league.standings[0].table.map(elem => {
                 return (
                   <tr className="table-tr" key={elem.team.id}>
                     <td className="table-td">{elem.position}</td>

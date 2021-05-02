@@ -1,4 +1,5 @@
 import React from 'react';
+import LeagueTemplate from '../../../common/LeagueTemplate/LeagueTemplate';
 import Players from '../../../common/Players/Players';
 import players from '../../../common/Players/playersData';
 import allianz from './Bayern.jpg';
@@ -12,12 +13,12 @@ let bundesligaBackground = {
   backgroundSize: "contain",
 }
 
-const Bundesliga = () => {
+const Bundesliga = ({league, isFetching}) => {
   return (
     <div className="bundesliga" style={bundesligaBackground}>
-      <Players isFetching={false} players={players.bundesliga}/>
+      <Players isFetching={isFetching} players={players.bundesliga}/>
       <div className="container">
-
+        <LeagueTemplate league={league} isFetching={isFetching} color="red"/>
       </div>
     </div>
   )

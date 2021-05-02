@@ -1,10 +1,11 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunkMiddleware from 'redux-thunk';
-import leagueReducer from "./league-reducer";
-
+import bundesligaReducer from "./bundesliga-reducer.js";
+import eplReducer from "./epl-reducer.js";
 
 let rootReducer = combineReducers({
-  leaguePage: leagueReducer
+  eplPage: eplReducer,
+  bundesligaPage: bundesligaReducer
 });
 
 let store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
