@@ -73,16 +73,16 @@
 
 .nav-item {
   position: relative;
-  overflow: hidden;
+  border-radius: 3px;
+  @extend %transition;
 
   &:last-child {
     margin-right: 0;
   }
 
   &:hover {
-    .bg-block {
-      top: 0;
-    }
+    box-shadow: 0 0 25px #ffffff59 inset;
+    background: rgba(0, 0, 0, 0.7);
   }
 
   @include media-tablet {
@@ -90,15 +90,19 @@
   }
 }
 
-.bg-block {
+.nav-dropdown {
   position: absolute;
-  top: -100%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(228, 226, 226, 0.1);
-  z-index: -1;
-  @extend %transition;
+  top: 100%;
+  right: 50%;
+  opacity: 1;
+  display: block;
+  transform: translateX(50%);
+}
+
+.nav-dropdown_hidden {
+  display: none;
+  opacity: 0;
+  transition: opacity 2s ease;
 }
 
 .nav__link {
