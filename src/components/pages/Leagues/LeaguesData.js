@@ -1,31 +1,31 @@
 export const LeaguesData = [
   {
     id: 1,
-    title: 'Premier League',
-    path: '/english-premiere-league',
-    imgSrc: './images/PL/PL.png',
-    imgSrcMini: './images/PL/PL_mini.png'
-  },
-  {
-    id: 2,
     title: 'Bundesliga',
     path: '/bundesliga',
     imgSrc: './images/BL1/BL1.png',
     imgSrcMini: './images/BL1/BL1_mini.png'
   },
   {
-    id: 3,
-    title: 'Serie A',
-    path: '/serie-a',
-    imgSrc: './images/SA/SA.png',
-    imgSrcMini: './images/SA/SA_mini.png'
+    id: 2,
+    title: 'Premier League',
+    path: '/english-premiere-league',
+    imgSrc: './images/PL/PL.png',
+    imgSrcMini: './images/PL/PL_mini.png'
   },
   {
-    id: 4,
+    id: 3,
     title: 'La Liga',
     path: '/la-liga',
     imgSrc: './images/PD/PD.png',
     imgSrcMini: './images/PD/PD_mini.png'
+  },
+  {
+    id: 4,
+    title: 'Serie A',
+    path: '/serie-a',
+    imgSrc: './images/SA/SA.png',
+    imgSrcMini: './images/SA/SA_mini.png'
   },
   {
     id: 5,

@@ -13,10 +13,11 @@ import FranceLeague from './components/pages/Leagues/FranceLeague/FranceLeague';
 import SerieA from './components/pages/Leagues/SerieA/SerieA';
 import Eredivise from './components/pages/Leagues/Eredivise/Eredivise';
 import Portugal from './components/pages/Leagues/Portugal/Portugal';
-import Primera from './components/pages/Leagues/Primera/Primera';
 import WorldCup from './components/pages/Leagues/WorldCup/WorldCup';
 import EplContainer from './components/pages/Leagues/EPL/EplContainer';
 import BundesligaContainer from './components/pages/Leagues/Bundesliga/BundesligaContainer';
+import PrimeraContainer from './components/pages/Leagues/Primera/PrimeraContainer';
+
 
 function App() {
   return (
@@ -36,7 +37,7 @@ function App() {
         <Route path="/serie-a" component={SerieA}/>
         <Route path="/eredivise" component={Eredivise}/>
         <Route path="/portuguese-primera-division" component={Portugal}/>
-        <Route path="/la-liga" component={Primera}/>
+        <Route path="/la-liga" component={PrimeraContainer}/>
         <Route path="/world-cup" component={WorldCup}/>
       </Switch>
     </div>

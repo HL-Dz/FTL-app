@@ -1,11 +1,20 @@
 import React from 'react';
 import "./SerieA.scss";
+import allianz from './Roma.jpg';
+
+
+let SerieABackground = {
+  backgroundImage: `url(${allianz})`,
+  backgroundPosition: "top center",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "contain",
+}
 
 const SerieA = () => {
   return (
-    <div className="serieA">
+    <div className="serieA" style={SerieABackground}>
       <div className="container">
-        <h1 className="serieA-title">Italy Serie A</h1>
+        
       </div>
     </div>
   )

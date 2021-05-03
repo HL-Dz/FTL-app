@@ -1,11 +1,25 @@
 import React from 'react';
 import "./Primera.scss";
+import bernabeu from './Bernabeu.jpg'
+import players from '../../../common/Players/playersData';
+import Players from '../../../common/Players/Players';
+import LeagueTemplate from '../../../common/LeagueTemplate/LeagueTemplate';
 
-const Primera = () => {
+
+
+let PrimeraBackground = {
+  backgroundImage: `url(${bernabeu})`,
+  backgroundPosition: "top center",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "contain",
+}
+
+const Primera = ({league, isFetching}) => {
   return (
-    <div className="primera">
+    <div className="primera" style={PrimeraBackground}>
+      <Players isFetching={isFetching} players={players.primera}/>
       <div className="container">
-        <h1 className="primera-title">Primera Division</h1>
+      <LeagueTemplate league={league} isFetching={isFetching} color="multi"/>
       </div>
     </div>
   )

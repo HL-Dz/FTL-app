@@ -22,6 +22,18 @@ let players = {
       club: 'Borussia Dortmund',
       path: './images/BL1/Reus.png',
     },
+  },
+  primera: {
+    first: {
+      name: 'Sergio Ramos',
+      club: 'Real Madrid',
+      path: './images/PD/Ramos.png'
+    },
+    second: {
+      name: 'Lionel Messi',
+      club: 'Barselona',
+      path: './images/PD/Messi.png'
+    }
   }
 };
 
