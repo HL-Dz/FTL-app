@@ -34,6 +34,18 @@ let players = {
       club: 'Barselona',
       path: './images/PD/Messi.png'
     }
+  },
+  italy: {
+    first: {
+      name: 'Romelu Lukaku',
+      club: 'Inter',
+      path: './images/SA/Lukaku.png'
+    },
+    second: {
+      name: 'Zlatan Ibrahimovic',
+      club: 'Milan',
+      path: './images/SA/Ibrahimovic.png'
+    },
   }
 };
 
