@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { getBL1League } from '../../../../redux/bundesliga-reducer.js';
+import { getLeague } from '../../../../redux/league-reducer.js';
 import Bundesliga from './Bundesliga.jsx';
+
+
 
 class BundesligaContainer extends Component {
   componentDidMount(){
-    this.props.getBL1League('BL1');
+    this.props.getLeague('BL1');
   }
 
   render(){
@@ -18,9 +20,9 @@ class BundesligaContainer extends Component {
 
 
 let mapStateToProps = (state) => ({
-    league: state.bundesligaPage.league,
-    isFetching: state.bundesligaPage.isFetching
+    league: state.leaguePage.league,
+    isFetching: state.leaguePage.isFetching
 });
 
 
-export default connect(mapStateToProps, {getBL1League})(BundesligaContainer);
+export default connect(mapStateToProps, {getLeague})(BundesligaContainer);

@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { getPrimeraLeague } from '../../../../redux/primera-reducer.js';
+import { getLeague } from '../../../../redux/league-reducer.js';
 import Primera from './Primera.jsx';
 
 
 class EplContainer extends Component {
   componentDidMount(){
-    this.props.getPrimeraLeague('PD');
+    this.props.getLeague('PD');
   }
 
   render(){
@@ -16,12 +16,10 @@ class EplContainer extends Component {
   }
 }
 
-
-
 let mapStateToProps = (state) => ({
-    league: state.primeraPage.league,
-    isFetching: state.primeraPage.isFetching
+    league: state.leaguePage.league,
+    isFetching: state.leaguePage.isFetching
 });
 
 
-export default connect(mapStateToProps, {getPrimeraLeague})(EplContainer);
+export default connect(mapStateToProps, {getLeague})(EplContainer);

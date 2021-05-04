@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { getEplLeague } from '../../../../redux/epl-reducer.js';
+import { getLeague } from '../../../../redux/league-reducer.js';
 import Epl from './Epl.jsx';
 
 class EplContainer extends Component {
   componentDidMount(){
-    this.props.getEplLeague('PL');
+    this.props.getLeague('PL');
   }
 
   render(){
@@ -18,9 +18,9 @@ class EplContainer extends Component {
 
 
 let mapStateToProps = (state) => ({
-    league: state.eplPage.league,
-    isFetching: state.eplPage.isFetching
+    league: state.leaguePage.league,
+    isFetching: state.leaguePage.isFetching
 });
 
 
-export default connect(mapStateToProps, {getEplLeague})(EplContainer);
+export default connect(mapStateToProps, {getLeague})(EplContainer);
