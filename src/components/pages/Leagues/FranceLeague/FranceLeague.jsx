@@ -1,11 +1,24 @@
 import React from 'react';
+import LeagueTemplate from '../../../common/LeagueTemplate/LeagueTemplate';
+import Players from '../../../common/Players/Players';
+import players from '../../../common/Players/playersData';
 import "./FranceLeague.scss";
+import velodrom from './Velodrom.jpg'
 
-const FranceLeague = () => {
+let fl1Background = {
+  backgroundImage: `url(${velodrom})`,
+  backgroundPosition: "top center",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "contain",
+}
+
+
+const FranceLeague = ({league, isFetching}) => {
   return (
-    <div className="france-league">
+    <div className="france-league" style={fl1Background}>
+      <Players isFetching={isFetching} players={players.france}/>
       <div className="container">
-        <h1 className="france-league-title">France League 1</h1>
+      <LeagueTemplate league={league} isFetching={isFetching} color="grey"/>
       </div>
     </div>
   )

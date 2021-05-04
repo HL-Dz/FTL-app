@@ -18,6 +18,7 @@
     rgba(48, 47, 47, 0.5) 100%);
   @extend %transition;
   animation: rotate-item 0.67s ease;
+  box-shadow:  0 0 5px rgba(255, 255, 255, 0.171);
   will-change: transform;
 
   &:nth-child(1) {

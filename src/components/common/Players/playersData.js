@@ -46,6 +46,18 @@ let players = {
       club: 'Milan',
       path: './images/SA/Ibrahimovic.png'
     },
+  },
+  france: {
+    first: {
+      name: 'Francesс Fabregas',
+      club: 'PSG',
+      path: './images/FL1/Fabregas.png'
+    },
+    second: {
+      name: 'Neymar',
+      club: 'PSG',
+      path: './images/FL1/Neymar.png'
+    }
   }
 };
 
