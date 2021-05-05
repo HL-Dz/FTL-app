@@ -58,6 +58,18 @@ let players = {
       club: 'PSG',
       path: './images/FL1/Neymar.png'
     }
+  },
+  portugal: {
+    first: {
+      name: 'Jovane Cabral',
+      club: 'Sporting',
+      path: './images/PPL/Cabral.png'
+    },
+    second: {
+      name: 'Ivan Marcano',
+      club: 'Porto',
+      path: './images/PPL/Marcano.png'
+    }
   }
 };
 

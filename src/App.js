@@ -10,13 +10,13 @@ import Championship from './components/pages/Leagues/Championship/Championship';
 import ChampionsLeague from './components/pages/Leagues/ChampionsLeague/ChampionsLeague';
 import EuropeanC from './components/pages/Leagues/EuropeanC/EuropeanC';
 import Eredivise from './components/pages/Leagues/Eredivise/Eredivise';
-import Portugal from './components/pages/Leagues/Portugal/Portugal';
 import WorldCup from './components/pages/Leagues/WorldCup/WorldCup';
 import EplContainer from './components/pages/Leagues/EPL/EplContainer';
 import BundesligaContainer from './components/pages/Leagues/Bundesliga/BundesligaContainer';
 import PrimeraContainer from './components/pages/Leagues/Primera/PrimeraContainer';
 import SerieAContainer from './components/pages/Leagues/SerieA/SerieAContainer';
 import FranceLeagueContainer from './components/pages/Leagues/FranceLeague/FranceLeagueContainer';
+import PortugalContainer from './components/pages/Leagues/Portugal/PortugalContainer';
 
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
         <Route path="/bundesliga" component={BundesligaContainer}/>
         <Route path="/serie-a" component={SerieAContainer}/>
         <Route path="/eredivise" component={Eredivise}/>
-        <Route path="/portuguese-primera-division" component={Portugal}/>
+        <Route path="/portuguese-primera-division" component={PortugalContainer}/>
         <Route path="/la-liga" component={PrimeraContainer}/>
         <Route path="/world-cup" component={WorldCup}/>
       </Switch>

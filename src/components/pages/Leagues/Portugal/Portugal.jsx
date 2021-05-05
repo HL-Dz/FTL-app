@@ -1,14 +1,27 @@
 import React from 'react';
 import "./Portugal.scss";
+import alvalade from './Alvalade1.jpg'
+import Players from '../../../common/Players/Players';
+import players from '../../../common/Players/playersData';
+import LeagueTemplate from '../../../common/LeagueTemplate/LeagueTemplate';
 
-const Portugal = () => {
+let portugalBackground = {
+  backgroundImage: `url(${alvalade})`,
+  backgroundPosition: "top center",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "contain",
+}
+
+
+const PortugalLeague = ({league, isFetching}) => {
   return (
-    <div className="portugal">
+    <div className="portugal" style={portugalBackground}>
+      <Players isFetching={isFetching} players={players.portugal}/>
       <div className="container">
-        <h1 className="portugal-title">Portuguese Primera Division</h1>
+        <LeagueTemplate league={league} isFetching={isFetching} color="multi"/>
       </div>
     </div>
   )
 }
 
-export default Portugal;
+export default PortugalLeague;
