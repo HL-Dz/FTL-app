@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Portugal.scss";
-import alvalade from './Alvalade1.jpg'
+import alvalade from './Alvalade.jpg'
 import Players from '../../../common/Players/Players';
 import players from '../../../common/Players/playersData';
 import LeagueTemplate from '../../../common/LeagueTemplate/LeagueTemplate';
