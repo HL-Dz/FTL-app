@@ -1,7 +1,9 @@
 import React from 'react';
 
-const LeagueTable = ({league}) => {
-  // let standings = league.standings[0].table;
+const LeagueTable = ({league, isFetchError}) => {
+  if(isFetchError) {
+    return null;
+  }
 
   return (
     <>

@@ -10,7 +10,7 @@ class PortugalContainer extends Component {
 
   render(){
     return (
-      <PortugalLeague league={this.props.league} isFetching={this.props.isFetching}/>
+      <PortugalLeague {...this.props}/>
     )
   }
 }
@@ -18,7 +18,8 @@ class PortugalContainer extends Component {
 
 let mapStateToProps = (state) => ({
     league: state.leaguePage.league,
-    isFetching: state.leaguePage.isFetching
+    isFetching: state.leaguePage.isFetching,
+    isFetchError: state.leaguePage.isFetchError,
 });
 
 

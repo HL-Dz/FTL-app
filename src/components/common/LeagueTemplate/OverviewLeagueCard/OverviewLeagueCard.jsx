@@ -1,6 +1,10 @@
 import React from 'react';
 
-const OverviewLeagueCard = ({league}) => {
+const OverviewLeagueCard = ({league, isFetchError}) => {
+  if(isFetchError) {
+    return null;
+  }
+
   let imgSrc = `./images/${league.competition.code}/${league.competition.code}.png`;
   return (
     <div className="overview-card">

@@ -12,7 +12,7 @@ class BundesligaContainer extends Component {
 
   render(){
     return (
-      <Bundesliga league={this.props.league} isFetching={this.props.isFetching}/>
+      <Bundesliga {...this.props}/>
     )
   }
 }
@@ -21,7 +21,8 @@ class BundesligaContainer extends Component {
 
 let mapStateToProps = (state) => ({
     league: state.leaguePage.league,
-    isFetching: state.leaguePage.isFetching
+    isFetching: state.leaguePage.isFetching,
+    isFetchError: state.leaguePage.isFetchError,
 });
 
 

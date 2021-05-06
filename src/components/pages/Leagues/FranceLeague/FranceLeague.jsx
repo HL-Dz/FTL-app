@@ -13,12 +13,12 @@ let fl1Background = {
 }
 
 
-const FranceLeague = ({league, isFetching}) => {
+const FranceLeague = ({league, isFetching, isFetchError}) => {
   return (
     <div className="france-league" style={fl1Background}>
-      <Players isFetching={isFetching} players={players.france}/>
+      <Players isFetching={isFetching} players={players.france} isFetchError={isFetchError}/>
       <div className="container">
-      <LeagueTemplate league={league} isFetching={isFetching} color="grey"/>
+        <LeagueTemplate league={league} isFetching={isFetching} color="grey" isFetchError={isFetchError}/>
       </div>
     </div>
   )

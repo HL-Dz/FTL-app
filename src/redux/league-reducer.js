@@ -4,11 +4,13 @@ import {delay} from '../helpers/helpers';
 const SET_LEAGUE = 'SET_LEAGUE';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const RESET_LEAGUE = 'RESET_LEAGUE';
+const SET_FETCH_LEAGUE_ERROR  ='SET_FETCH_LEAGUE_ERROR';
 
 
 let initialState = {
   league: null,
-  isFetching: true
+  isFetching: true,
+  isFetchError: false
 };
 
 
@@ -30,16 +32,20 @@ const leagueReducer = (state = initialState, action) => {
         league: null,
         isFetching: action.isFetching
       }
+    case SET_FETCH_LEAGUE_ERROR:
+      return {
+        ...state,
+        isFetchError: action.payload
+      }
     default:
       return state
   }
 };
 
 const resetProfile = (isFetching) => ({type: RESET_LEAGUE, isFetching});
-
-
 const setLeagueProfile = (league) => ({type: SET_LEAGUE, league});
-const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
+const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
+const setFetchError = (isError) => ({type: SET_FETCH_LEAGUE_ERROR, payload: isError});
 
 
 export const getLeague = (league) => {
@@ -49,6 +55,10 @@ export const getLeague = (league) => {
     standingsAPI.getLeagueStandings(league)
       .then(response => {
         dispatch(setLeagueProfile(response.data));
+        dispatch(toggleIsFetching(false));
+      })
+      .catch(err => {
+        dispatch(setFetchError(true));
         dispatch(toggleIsFetching(false));
       })
   }

@@ -1,7 +1,11 @@
 import React from 'react';
 import "./Players.scss";
 
-const Players = ({isFetching, players}) => {
+const Players = ({isFetching, players, isFetchError}) => {
+  if(isFetchError) {
+    return null;
+  }
+  
   let {first, second} = players;
   return (
     <div className={isFetching ? " players players_inactive" : "players"}>

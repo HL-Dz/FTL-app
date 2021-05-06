@@ -13,12 +13,12 @@ let SerieABackground = {
   backgroundSize: "contain",
 }
 
-const SerieA = ({isFetching, league}) => {
+const SerieA = ({isFetching, league, isFetchError}) => {
   return (
     <div className="serieA" style={SerieABackground}>
-      <Players isFetching={isFetching} players={players.italy}/>
+      <Players isFetching={isFetching} players={players.italy} isFetchError={isFetchError}/>
       <div className="container">
-      <LeagueTemplate league={league} isFetching={isFetching} color="blue"/>
+        <LeagueTemplate league={league} isFetching={isFetching} color="blue" isFetchError={isFetchError}/>
       </div>
     </div>
   )

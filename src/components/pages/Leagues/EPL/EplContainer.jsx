@@ -10,16 +10,15 @@ class EplContainer extends Component {
 
   render(){
     return (
-      <Epl league={this.props.league} isFetching={this.props.isFetching}/>
+      <Epl {...this.props}/>
     )
   }
 }
 
-
-
 let mapStateToProps = (state) => ({
     league: state.leaguePage.league,
-    isFetching: state.leaguePage.isFetching
+    isFetching: state.leaguePage.isFetching,
+    isFetchError: state.leaguePage.isFetchError,
 });
 
 
