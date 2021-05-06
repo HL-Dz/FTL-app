@@ -48,20 +48,17 @@ const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching}
 const setFetchError = (isError) => ({type: SET_FETCH_LEAGUE_ERROR, payload: isError});
 
 
-export const getLeague = (league) => {
-  return async (dispatch) => {
+export const getLeague = (league) => async dispatch =>  {
     dispatch(resetProfile(true));
-    await delay(1500);
-    standingsAPI.getLeagueStandings(league)
-      .then(response => {
-        dispatch(setLeagueProfile(response.data));
-        dispatch(toggleIsFetching(false));
-      })
-      .catch(err => {
+    try {
+      await delay(1500);
+      const response = await standingsAPI.getLeagueStandings(league);
+      dispatch(setLeagueProfile(response.data));
+      dispatch(toggleIsFetching(false));
+    } catch (err) {
         dispatch(setFetchError(true));
         dispatch(toggleIsFetching(false));
-      })
-  }
+    }
 }
 
 export default leagueReducer;
