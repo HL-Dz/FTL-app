@@ -1,10 +1,9 @@
-@import "../../../index.scss";
+@use "../../../sass/abstracts" as *;
 
 
 .league-template {
   animation: opacity-display 0.7s ease;
 }
-
 
 // LeagueTable
 .table-container {
