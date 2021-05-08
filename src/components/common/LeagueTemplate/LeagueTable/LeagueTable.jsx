@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const LeagueTable = ({league, isFetchError}) => {
   if(isFetchError) {
@@ -31,10 +32,12 @@ const LeagueTable = ({league, isFetchError}) => {
                   <tr className="table-tr" key={elem.team.id}>
                     <td className="table-td">{elem.position}</td>
                     <td className="table-td table-td-logo">
-                      <span className="has-logo">
-                        <img className="td-logo" src={elem.team.crestUrl} alt={elem.team.name}/>
-                      </span>
-                      {elem.team.name}
+                      <NavLink to={`/teams/${elem.team.id}`}>
+                        <span className="has-logo">
+                          <img className="td-logo" src={elem.team.crestUrl} alt={elem.team.name}/>
+                        </span>
+                        {elem.team.name}
+                      </NavLink>
                     </td>
                     <td className="table-td">{elem.playedGames}</td>
                     <td className="table-td">{elem.won}</td>

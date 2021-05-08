@@ -16,6 +16,7 @@ import SerieAContainer from './components/pages/Leagues/SerieA/SerieAContainer';
 import FranceLeagueContainer from './components/pages/Leagues/FranceLeague/FranceLeagueContainer';
 import PortugalContainer from './components/pages/Leagues/Portugal/PortugalContainer';
 import ChampionshipContainer from "./components/pages/Leagues/Championship/ChampionshipContainer";
+import Team from "./components/pages/Team/Team";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/" exact component={Leagues}/>
         <Route path="/clubs" component={Clubs}/>
         <Route path="/info" component={Info}/>
+        <Route path="/teams/:id" component={Team}/>
         <Route path="/brasilial-division-1" component={Brasil}/>
         <Route path="/english-premiere-league" component={EplContainer}/>
         <Route path="/championship" component={ChampionshipContainer}/>

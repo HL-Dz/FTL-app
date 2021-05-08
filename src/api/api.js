@@ -13,3 +13,9 @@ export const standingsAPI = {
     return instance.get(`/competitions/${league}/standings`);
   }
 }
+
+export const teamAPI = {
+  getTeam(team){
+    return instance.get(`teams/${team}`);
+  }
+}

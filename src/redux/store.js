@@ -2,9 +2,11 @@ import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunkMiddleware from 'redux-thunk';
 import leagueReducer from "./league-reducer.js";
 import { composeWithDevTools } from 'redux-devtools-extension';
+import teamReducer from "./team-reducer.js";
 
 let rootReducer = combineReducers({
-  leaguePage: leagueReducer
+  leaguePage: leagueReducer,
+  teamPage: teamReducer
 });
 
 let store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunkMiddleware)));
