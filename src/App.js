@@ -5,7 +5,6 @@ import Leagues from './components/pages/Leagues/Leagues';
 import Clubs from './components/pages/Clubs/Clubs';
 import Info from './components/pages/Info/Info';
 import Brasil from './components/pages/Leagues/Brasil/Brasil';
-import Championship from './components/pages/Leagues/Championship/Championship';
 import ChampionsLeague from './components/pages/Leagues/ChampionsLeague/ChampionsLeague';
 import EuropeanC from './components/pages/Leagues/EuropeanC/EuropeanC';
 import Eredivise from './components/pages/Leagues/Eredivise/Eredivise';
@@ -16,6 +15,7 @@ import PrimeraContainer from './components/pages/Leagues/Primera/PrimeraContaine
 import SerieAContainer from './components/pages/Leagues/SerieA/SerieAContainer';
 import FranceLeagueContainer from './components/pages/Leagues/FranceLeague/FranceLeagueContainer';
 import PortugalContainer from './components/pages/Leagues/Portugal/PortugalContainer';
+import ChampionshipContainer from "./components/pages/Leagues/Championship/ChampionshipContainer";
 
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
         <Route path="/info" component={Info}/>
         <Route path="/brasilial-division-1" component={Brasil}/>
         <Route path="/english-premiere-league" component={EplContainer}/>
-        <Route path="/championship" component={Championship}/>
+        <Route path="/championship" component={ChampionshipContainer}/>
         <Route path="/champions-league" component={ChampionsLeague}/>
         <Route path="/european-championships" component={EuropeanC}/>
         <Route path="/france-league-1" component={FranceLeagueContainer}/>

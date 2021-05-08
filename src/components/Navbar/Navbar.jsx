@@ -17,7 +17,7 @@ const Navbar = (props) => {
     <nav className="navbar">
       <div className="navbar__container">
         <Link to="/" className="navbar__logo">
-          ftl <span className="logo-description">- football top leagues</span>
+          tfl <span className="logo-description">- top football leagues</span>
         </Link>
         <div className="menu-icon" onClick={handleClick}>
           <i className={click ? "fa fa-times" : "fa fa-bars"}></i>

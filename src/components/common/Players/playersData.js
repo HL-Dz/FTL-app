@@ -70,6 +70,18 @@ let players = {
       club: 'Porto',
       path: './images/PPL/Marcano.png'
     }
+  },
+  chapmionship: {
+    first: {
+      name: 'Kieffer Moore',
+      club: 'Cardiff City',
+      path: './images/ELC/Moore.png'
+    },
+    second: {
+      name: 'Ismaila Sarr',
+      club: 'Watford',
+      path: './images/ELC/Sarr.png'
+    }
   }
 };
 
