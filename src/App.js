@@ -7,7 +7,6 @@ import Info from './components/pages/Info/Info';
 import Brasil from './components/pages/Leagues/Brasil/Brasil';
 import ChampionsLeague from './components/pages/Leagues/ChampionsLeague/ChampionsLeague';
 import EuropeanC from './components/pages/Leagues/EuropeanC/EuropeanC';
-import Eredivise from './components/pages/Leagues/Eredivise/Eredivise';
 import WorldCup from './components/pages/Leagues/WorldCup/WorldCup';
 import EplContainer from './components/pages/Leagues/EPL/EplContainer';
 import BundesligaContainer from './components/pages/Leagues/Bundesliga/BundesligaContainer';
@@ -17,6 +16,7 @@ import FranceLeagueContainer from './components/pages/Leagues/FranceLeague/Franc
 import PortugalContainer from './components/pages/Leagues/Portugal/PortugalContainer';
 import ChampionshipContainer from "./components/pages/Leagues/Championship/ChampionshipContainer";
 import Team from "./components/pages/Team/Team";
+import ErediviseContainer from "./components/pages/Leagues/Eredivise/ErediviseContainer";
 
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
         <Route path="/france-league-1" component={FranceLeagueContainer}/>
         <Route path="/bundesliga" component={BundesligaContainer}/>
         <Route path="/serie-a" component={SerieAContainer}/>
-        <Route path="/eredivise" component={Eredivise}/>
+        <Route path="/eredivise" component={ErediviseContainer}/>
         <Route path="/portuguese-primera-division" component={PortugalContainer}/>
         <Route path="/la-liga" component={PrimeraContainer}/>
         <Route path="/world-cup" component={WorldCup}/>

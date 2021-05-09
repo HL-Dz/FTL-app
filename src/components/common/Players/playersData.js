@@ -82,6 +82,18 @@ let players = {
       club: 'Watford',
       path: './images/ELC/Sarr.png'
     }
+  },
+  netherlands: {
+    first: {
+      name: 'Dusan Tadic',
+      club: 'Ajax',
+      path: './images/DED/Tadic.png'
+    },
+    second: {
+      name: 'Mario Götze',
+      club: 'PSV',
+      path: './images/DED/Götze.png'
+    }
   }
 };
 
