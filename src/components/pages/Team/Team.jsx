@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import { getTeamProfile } from '../../../redux/team-reducer';
 import "./Team.scss";
 
@@ -14,23 +15,60 @@ const Team = () => {
   }, [dispatch, id])
   
   if(!team) return null;
-
+  console.log(team);
   return (
     <div className="team">
-      <div className="container">
-        <div>
-          <img src={team.crestUrl} alt={team.shortName} title={team.shortName}/>
+
+      <section className="section-primary">
+        <div className="team-container">
+          <h1 className="team__name">{team.name}</h1>
+          <div className="breadcrumbs">
+            <span>Home / </span>
+            <span>{team.activeCompetitions[0].name} / </span>
+            <span>{team.name}</span>
+          </div>
         </div>
-        <div>Name: {team.name || "---"}</div>
-        <div>Address: {team.address || "---"}</div>
-        <div>Founded: {team.founded || "---"}</div>
-        <div>Venue: {team.venue || "---"}</div>
-        <div>Club colors: {team.clubColors || "---"}</div>
-        <div>Phone: {team.phone || "---"}</div>
-        <div>Email: {team.email || "---"}</div>
-        <div>ShortName: {team.shortName || "---"}</div>
-        <div>Website: {team.website || "---"}</div>
-      </div>
+      </section>
+
+      <section className="section-description">
+        <div className="team-container team-container-flex">
+          <div className="team__pic">
+            <img className="team__img" src={`${team.crestUrl}`} alt={team.name} />
+          </div>
+          <div className="team__info">
+            <div className="team__details">
+              <dl className="detail-list">
+                <dt>Address</dt>
+                <dd>{team.address}</dd>
+                <dt>Club colors</dt>
+                <dd>{team.clubColors}</dd>
+                <dt>Founded</dt>
+                <dd>{team.founded}</dd>
+              </dl>
+            </div>
+            <div className="team__contacts">
+              <dl className="detail-list">
+                <dt>Email</dt>
+                <dd>
+                  <a href={`mailto:${team.email}`}>{team.email}</a>
+                </dd>
+                <dt>Phone</dt>
+                <dd>{team.phone}</dd>
+                <dt>Website</dt>
+                <dd>
+                  <a href={`${team.website}`} target="_blank">
+                    {team.website}
+                  </a>
+                </dd>
+                <dt>Stadium</dt>
+                <dd>{team.venue}</dd>
+                <dt>TLA (Text Link Ads)</dt>
+                <dd>{team.tla}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
