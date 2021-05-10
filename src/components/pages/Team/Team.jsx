@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
 import { getTeamProfile } from '../../../redux/team-reducer';
 import "./Team.scss";
 
@@ -15,7 +14,6 @@ const Team = () => {
   }, [dispatch, id])
   
   if(!team) return null;
-  console.log(team);
   return (
     <div className="team">
 
@@ -24,7 +22,7 @@ const Team = () => {
           <h1 className="team__name">{team.name}</h1>
           <div className="breadcrumbs">
             <span>Home / </span>
-            <span>{team.activeCompetitions[0].name} / </span>
+            <span>{team.area.name} / </span>
             <span>{team.name}</span>
           </div>
         </div>
@@ -56,7 +54,7 @@ const Team = () => {
                 <dd>{team.phone}</dd>
                 <dt>Website</dt>
                 <dd>
-                  <a href={`${team.website}`} target="_blank">
+                  <a href={`${team.website}`} target="_blank" rel="noreferrer">
                     {team.website}
                   </a>
                 </dd>

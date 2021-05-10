@@ -18,7 +18,7 @@ const FranceLeague = ({league, isFetching, isFetchError}) => {
     <div className="france-league" style={fl1Background}>
       <Players isFetching={isFetching} players={players.france} isFetchError={isFetchError}/>
       <div className="container">
-        <LeagueTemplate league={league} isFetching={isFetching} color="grey" isFetchError={isFetchError}/>
+        <LeagueTemplate league={league} isFetching={isFetching} isFetchError={isFetchError}/>
       </div>
     </div>
   )

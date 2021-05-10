@@ -18,7 +18,7 @@ const Bundesliga = ({league, isFetching,isFetchError}) => {
     <div className="bundesliga" style={bundesligaBackground}>
       <Players isFetching={isFetching} players={players.bundesliga} isFetchError={isFetchError}/>
       <div className="container">
-        <LeagueTemplate league={league} isFetching={isFetching} color="red" isFetchError={isFetchError}/>
+        <LeagueTemplate league={league} isFetching={isFetching} isFetchError={isFetchError}/>
       </div>
     </div>
   )

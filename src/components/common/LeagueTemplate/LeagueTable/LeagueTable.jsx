@@ -5,7 +5,6 @@ const LeagueTable = ({league, isFetchError}) => {
   if(isFetchError) {
     return null;
   }
-
   return (
     <>
       <h1 className="table-title">league table</h1>
@@ -28,11 +27,12 @@ const LeagueTable = ({league, isFetchError}) => {
           <tbody>
             {
               league.standings[0].table.map(elem => {
+                const name = elem.team.name.trim().toLowerCase().replace(/\s/g, "-");
                 return (
                   <tr className="table-tr" key={elem.team.id}>
                     <td className="table-td">{elem.position}</td>
                     <td className="table-td table-td-logo">
-                      <NavLink to={`/teams/${elem.team.id}`}>
+                      <NavLink to={`/teams/${elem.team.id}/${name}`}>
                         <span className="has-logo">
                           <img className="td-logo" src={elem.team.crestUrl} alt={elem.team.name}/>
                         </span>
