@@ -44,3 +44,19 @@ h6 {
   margin: 0 auto;
   padding: 90px 20px 0;
 }
+
+.loading-bg {
+  color: transparent;
+  background: linear-gradient(100deg, rgba(41, 136, 77, 0.514) 20%, #bec6ce 50%, rgba(41, 136, 77, 0.514) 70%);
+  background-size: 400%;
+  animation: loading-bg 0.5s ease-in-out infinite;
+}
+
+@keyframes loading-bg {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}

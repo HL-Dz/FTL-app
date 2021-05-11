@@ -2,7 +2,7 @@ export const LeaguesData = [
   {
     id: 1,
     title: 'Bundesliga',
-    path: 'bundesliga',
+    path: '/bundesliga',
     imgSrc: '../../images/BL1/BL1.png',
     imgSrcMini: '../../images/BL1/BL1_mini.png'
   },
