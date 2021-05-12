@@ -4,11 +4,13 @@ import {delay} from '../helpers/helpers';
 const SET_TEAM = 'SET_TEAM';
 const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
 const RESET_TEAM_PROFILE = 'RESET_TEAM_PROFILE';
+const SET_FETCH_TEAM_ERROR = 'SET_FETCH_TEAM_ERROR';
 
 
 let initialState = {
   team: null,
-  isLoading: false
+  isLoading: false,
+  isFetchError: false
 };
 
 
@@ -30,6 +32,11 @@ const teamReducer = (state = initialState, action) => {
         team: null,
         isLoading: action.isLoading
       }
+    case SET_FETCH_TEAM_ERROR: 
+      return {
+        ...state,
+        isFetchError: action.isFetchError
+      }
     default:
       return state
   }
@@ -39,6 +46,7 @@ const teamReducer = (state = initialState, action) => {
 const setTeamProfile = (team) => ({type: SET_TEAM, team});
 const toggleIsLoading = (bool) => ({type: TOGGLE_IS_LOADING, bool});
 const resetTeam = (bool) => ({type: RESET_TEAM_PROFILE, bool});
+const setFetchTeamError = (isFetchError) => ({type: SET_FETCH_TEAM_ERROR, isFetchError});
 
 
 
@@ -50,6 +58,7 @@ export const getTeamProfile = (team) => async dispatch =>  {
       dispatch(setTeamProfile(response.data));
       dispatch(toggleIsLoading(false));
     } catch (err) {
+      dispatch(setFetchTeamError(true));
       dispatch(toggleIsLoading(false));
     }
 }

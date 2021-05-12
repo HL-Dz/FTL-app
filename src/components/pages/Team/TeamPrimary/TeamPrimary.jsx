@@ -1,6 +1,8 @@
 import React from 'react'
 
-const TeamPrimary = ({team}) => {
+const TeamPrimary = ({team, isFetchError}) => {
+  if(isFetchError) return null;
+  
   return (
     <section className="section-primary">
       <div className="team-container">

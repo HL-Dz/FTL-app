@@ -1,6 +1,8 @@
 import React from 'react';
 
-const TeamDescription = ({team}) => {
+const TeamDescription = ({team, isFetchError}) => {
+  if(isFetchError) return null;
+  
   const detailListWithoutContent = 
     <div className="team__details">
       <dl className="detail-list loading-bg">

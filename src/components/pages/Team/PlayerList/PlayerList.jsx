@@ -1,7 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const PlayerList = ({team}) => {
+const PlayerList = ({team, isFetchError}) => {
+  if(isFetchError) return null;
+
   return (
     <div className="player-list">
       <div className="team-container">
