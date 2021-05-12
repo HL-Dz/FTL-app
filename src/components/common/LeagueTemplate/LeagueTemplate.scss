@@ -33,10 +33,17 @@
 
 .table-head {
   background: #2e312f;
+  color: rgb(153, 155, 153);
 }
+
+.table-body {
+  color: rgb(153, 155, 153);
+}
+
 
 .table-tr {
   box-shadow: 0 0 15px rgba(117, 182, 117, 0.1) inset;
+  color: rgb(173, 173, 173);
   @extend %transition;
 
   &:nth-child(2n) {
@@ -75,7 +82,7 @@
   }
 }
 
-.table-td-logo {
+.table-td-active {
   padding: 0;
   display: inline-flex;
   position: relative;
@@ -89,6 +96,11 @@
     display: inline-flex;
     width: 100%;
     padding: 10px 20px;
+    color: rgb(173, 173, 173);
+
+    &.table-player {
+      justify-content: center;
+    }
   }
 
   &:before {

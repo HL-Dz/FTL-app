@@ -5,6 +5,7 @@ import { getTeamProfile } from '../../../redux/team-reducer';
 import TeamDescription from './TeamDescription/TeamDescription';
 import TeamPrimary from './TeamPrimary/TeamPrimary';
 import "./Team.scss";
+import PlayerList from './PlayerList/PlayerList';
 
 const Team = () => {
   const dispatch = useDispatch();
@@ -15,10 +16,12 @@ const Team = () => {
     dispatch(getTeamProfile(id));
   }, [dispatch, id])
 
+  
   return (
     <div className="team">
       <TeamPrimary team={team}/>
       <TeamDescription team={team}/>
+      <PlayerList team={team}/>
     </div>
   )
 }
