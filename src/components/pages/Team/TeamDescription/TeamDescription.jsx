@@ -1,4 +1,5 @@
 import React from 'react';
+import noPhoto from '../../../../images/no-image.png';
 
 const TeamDescription = ({team, isFetchError}) => {
   if(isFetchError) return null;
@@ -10,6 +11,8 @@ const TeamDescription = ({team, isFetchError}) => {
       </dl>
     </div>;
 
+    console.log(team);
+
   return (
     <section className="section-description">
       <div className="team-container team-container-flex">
@@ -18,7 +21,7 @@ const TeamDescription = ({team, isFetchError}) => {
           Loading data...
         </div> :
         <div className="team__pic">
-          <img className="team__img" src={`${team.crestUrl}`} alt={team.name} />
+          <img className="team__img" src={team.crestUrl || noPhoto} alt={team.name} />
         </div>
         }
         <div className="team__info">
@@ -41,7 +44,10 @@ const TeamDescription = ({team, isFetchError}) => {
               <dl className="detail-list">
                 <dt>Email</dt>
                 <dd>
-                  <a href={`mailto:${team.email}`}>{team.email || '-------'}</a>
+                  {
+                    team.email ? <a href={`mailto:${team.email}`}>{team.email}</a> :
+                    <span>No email...</span>
+                  }
                 </dd>
                 <dt>Phone</dt>
                 <dd>{team.phone}</dd>

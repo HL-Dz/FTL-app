@@ -51,7 +51,7 @@ const setFetchError = (isError) => ({type: SET_FETCH_LEAGUE_ERROR, payload: isEr
 export const getLeague = (league) => async dispatch =>  {
     dispatch(resetProfile(true));
     try {
-      await delay(1500);
+      await delay(700);
       const response = await standingsAPI.getLeagueStandings(league);
       dispatch(setLeagueProfile(response.data));
       dispatch(toggleIsFetching(false));

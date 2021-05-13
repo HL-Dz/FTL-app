@@ -4,7 +4,6 @@ import {Route, Switch} from 'react-router-dom';
 import Leagues from './components/pages/Leagues/Leagues';
 import Clubs from './components/pages/Clubs/Clubs';
 import Info from './components/pages/Info/Info';
-import Brasil from './components/pages/Leagues/Brasil/Brasil';
 import ChampionsLeague from './components/pages/Leagues/ChampionsLeague/ChampionsLeague';
 import EuropeanC from './components/pages/Leagues/EuropeanC/EuropeanC';
 import WorldCup from './components/pages/Leagues/WorldCup/WorldCup';
@@ -17,6 +16,7 @@ import PortugalContainer from './components/pages/Leagues/Portugal/PortugalConta
 import ChampionshipContainer from "./components/pages/Leagues/Championship/ChampionshipContainer";
 import Team from "./components/pages/Team/Team";
 import ErediviseContainer from "./components/pages/Leagues/Eredivise/ErediviseContainer";
+import BrasilContainer from "./components/pages/Leagues/Brasil/BrasilContainer";
 
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
         <Route path="/clubs" component={Clubs}/>
         <Route path="/info" component={Info}/>
         <Route path="/teams/:id/:name" component={Team}/>
-        <Route path="/brasilial-division-1" component={Brasil}/>
+        <Route path="/brasilial-division-1" component={BrasilContainer}/>
         <Route path="/english-premiere-league" component={EplContainer}/>
         <Route path="/championship" component={ChampionshipContainer}/>
         <Route path="/champions-league" component={ChampionsLeague}/>

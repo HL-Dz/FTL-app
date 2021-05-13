@@ -94,6 +94,18 @@ let players = {
       club: 'PSV',
       path: './images/DED/Götze.png'
     }
+  },
+  brasil: {
+    first: {
+      name: 'Diego Souza',
+      club: 'Gremio',
+      path: './images/BSA/Souza.png' 
+    },
+    second: {
+      name: 'Gabriel Barbosa',
+      club: 'Flamengo',
+      path: './images/BSA/Barbosa.png' 
+    }
   }
 };
 

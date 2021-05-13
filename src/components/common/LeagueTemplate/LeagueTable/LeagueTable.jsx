@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import noPhoto from '../../../../images/no-image.png';
 
 const LeagueTable = ({league, isFetchError}) => {
   if(isFetchError) {
@@ -34,7 +35,7 @@ const LeagueTable = ({league, isFetchError}) => {
                     <td className="table-td table-td-active">
                       <NavLink to={`/teams/${elem.team.id}/${name}`}>
                         <span className="has-logo">
-                          <img className="td-logo" src={elem.team.crestUrl} alt={elem.team.name}/>
+                          <img className="td-logo" src={elem.team.crestUrl || noPhoto} alt={elem.team.name}/>
                         </span>
                         {elem.team.name}
                       </NavLink>
