@@ -40,6 +40,7 @@
 
 .section-description {
   background: #17181b;
+  padding-bottom: 20px;
 }
 
 .team-container-flex {
@@ -48,7 +49,7 @@
 
 .team__pic {
   position: relative;
-  padding: 50px;
+  padding: 0 50px 50px;
   width: 40%;  
   max-width: 350px;
   height: auto;
@@ -90,12 +91,22 @@
   width: 100%;
 }
 
+.team__details {
+  margin-bottom: 20px;
+  & .loading-bg {
+    border: none;
+  }
+}
+
 .detail-list {
   padding: 10px;
   margin-top: 0;
+  margin-bottom: 0;
+  border: 1px solid rgba(128, 128, 128, 0.2);
 
   &.loading-bg {
     height: 170px;
+    border: none;
   }
   
   dt {
@@ -106,11 +117,15 @@
     margin-left: 0px;
     margin-bottom: 15px;
     font-size: 1.7rem;
-    font-weight: bold;
+    // font-weight: bold;
     color: rgb(164, 170, 164);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+    padding-bottom: 7px;
     
     &:last-child {
       margin-bottom: 0;
+      border-bottom: none;
+      padding-bottom: 0px;
     }
   }
 
@@ -122,6 +137,20 @@
       color: rgb(167, 228, 167);
     }
   }
+}
+
+.detail-text {
+  color: #a5aca5;
+  font-weight: bold;
+  display: inline-block;
+  border-radius: 2px;
+  // min-width: 80px;
+}
+
+.icon-setting {
+  font-size: 1.8rem;
+  margin-left: 10px;
+  color: #6eac6e;
 }
 
 .player-list {

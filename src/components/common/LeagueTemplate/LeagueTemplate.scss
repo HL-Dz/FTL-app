@@ -32,8 +32,11 @@
 }
 
 .table-head {
-  background: #2e312f;
   color: rgb(153, 155, 153);
+
+  &:first-child {
+    background: none;
+  }
 }
 
 .table-body {
@@ -42,21 +45,15 @@
 
 
 .table-tr {
-  box-shadow: 0 0 15px rgba(117, 182, 117, 0.1) inset;
   color: rgb(173, 173, 173);
   @extend %transition;
 
-  &:nth-child(2n) {
-    background: #151716;
+  &:nth-child(1n) {
+    background:#222323af;
   }
 
-  &:hover {
-    background: #0f0f0f;
-    box-shadow: none;
-
-    &:first-child {
-      background: none;
-    }
+  &:nth-child(2n) {
+    background: #151716;
   }
 }
 
@@ -66,7 +63,8 @@
 
 .table-th {
   font-size: 1.7rem;
-  padding: 5px 20px;
+  padding: 10px 20px;
+  background: linear-gradient(180deg, rgba(56, 55, 55, 0.5) 50%, rgba(15, 15, 15, 0.5) 50%, rgba(48, 47, 47, 0.5) 100%);
 }
 
 .table-td {

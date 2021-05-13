@@ -11,8 +11,6 @@ const TeamDescription = ({team, isFetchError}) => {
       </dl>
     </div>;
 
-    console.log(team);
-
   return (
     <section className="section-description">
       <div className="team-container team-container-flex">
@@ -29,11 +27,20 @@ const TeamDescription = ({team, isFetchError}) => {
             !team ? detailListWithoutContent : 
             <div className="team__details">
               <dl className="detail-list">
-                <dt>Address</dt>
+                <dt>
+                  <span className="detail-text">Address</span>
+                  <i className="fas fa-map-marker-alt icon-setting"></i>
+                </dt>
                 <dd>{team.address || '-------'}</dd>
-                <dt>Club colors</dt>
+                <dt>
+                  <span className="detail-text">Club colors</span>
+                  <i className="fas fa-palette icon-setting"></i>
+                </dt>
                 <dd>{team.clubColors || '-------'}</dd>
-                <dt>Founded</dt>
+                <dt>
+                  <span className="detail-text">Founded</span>
+                  <i className="far fa-clock icon-setting"></i>
+                </dt>
                 <dd>{team.founded || '-------'}</dd>
               </dl>
             </div>
@@ -42,24 +49,39 @@ const TeamDescription = ({team, isFetchError}) => {
             !team ? detailListWithoutContent : 
             <div className="team__contacts">
               <dl className="detail-list">
-                <dt>Email</dt>
+                <dt>
+                  <span className="detail-text">Email</span>
+                  <i className="fas fa-envelope icon-setting"></i>
+                </dt>
                 <dd>
                   {
                     team.email ? <a href={`mailto:${team.email}`}>{team.email}</a> :
                     <span>No email...</span>
                   }
                 </dd>
-                <dt>Phone</dt>
+                <dt>
+                  <span className="detail-text">Phone</span>
+                  <i className="fas fa-phone icon-setting"></i>
+                </dt>
                 <dd>{team.phone}</dd>
-                <dt>Website</dt>
+                <dt>
+                  <span className="detail-text">Website</span>
+                  <i className="fas fa-globe icon-setting"></i>
+                </dt>
                 <dd>
                   <a href={`${team.website}`} target="_blank" rel="noreferrer">
                     {team.website || '-------'}
                   </a>
                 </dd>
-                <dt>Stadium</dt>
+                <dt>
+                  <span className="detail-text">Stadium</span>
+                  <i className="fas fa-house-user icon-setting"></i>
+                </dt>
                 <dd>{team.venue}</dd>
-                <dt>TLA (Text Link Ads)</dt>
+                <dt>
+                  <span className="detail-text">TLA (Text Link Ads)</span>
+                  <i className="fas fa-file-word icon-setting"></i>
+                </dt>
                 <dd>{team.tla}</dd>
               </dl>
             </div>
