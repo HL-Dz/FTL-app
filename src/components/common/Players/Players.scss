@@ -2,13 +2,14 @@
 
 .players  {
   position: absolute;
-  top: 80px;
+  top: 60px;
+  padding-top: 20px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   transition: background 0.7s ease-in-out;
   background: none;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 60px);
 
   & >* {
     flex-basis: 50%;

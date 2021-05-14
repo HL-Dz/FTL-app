@@ -4,10 +4,10 @@ import LeagueTemplate from '../../../common/LeagueTemplate/LeagueTemplate';
 import Players from '../../../common/Players/Players';
 import players from '../../../common/Players/playersData';
 import "./Championship.scss";
-import Vicarage from './Watford.jpg';
+import Liberty from './Swansea.jpg';
 
 let championshipBackground = {
-  backgroundImage: `url(${Vicarage})`,
+  backgroundImage: `url(${Liberty})`,
   backgroundPosition: "top center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "contain",
