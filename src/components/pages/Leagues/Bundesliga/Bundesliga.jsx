@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../../../common/Footer/Footer';
 import LeagueTemplate from '../../../common/LeagueTemplate/LeagueTemplate';
 import Players from '../../../common/Players/Players';
 import players from '../../../common/Players/playersData';
@@ -13,13 +14,14 @@ let bundesligaBackground = {
   backgroundSize: "contain",
 }
 
-const Bundesliga = ({league, isFetching,isFetchError}) => {
+const Bundesliga = ({league, isFetching, isFetchError}) => {
   return (
-    <div className="bundesliga" style={bundesligaBackground}>
+    <div className="bundesliga flex-container-column" style={bundesligaBackground}>
       <Players isFetching={isFetching} players={players.bundesliga} isFetchError={isFetchError}/>
       <div className="container">
         <LeagueTemplate league={league} isFetching={isFetching} isFetchError={isFetchError}/>
       </div>
+      <Footer isFetchError={isFetchError} isFetching={isFetching}/>
     </div>
   )
 }

@@ -43,8 +43,19 @@ h6 {
   max-width: 1400px;
   margin: 0 auto;
   padding: 90px 20px 0;
+  width: 100%;
 }
 
+.container-width {
+  max-width: 1400px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.flex-container-column {
+  display: flex;
+  flex-direction: column;
+}
 
 
 .loading-bg {

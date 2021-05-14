@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../../../common/Footer/Footer';
 import LeagueTemplate from '../../../common/LeagueTemplate/LeagueTemplate';
 import Players from '../../../common/Players/Players';
 import players from '../../../common/Players/playersData';
@@ -14,11 +15,12 @@ let ErediviseBackground = {
 
 const Eredivise = ({league, isFetching, isFetchError}) => {
   return (
-    <div className="eredivise" style={ErediviseBackground}>
+    <div className="eredivise flex-container-column" style={ErediviseBackground}>
       <Players isFetching={isFetching} players={players.netherlands} isFetchError={isFetchError}/>
       <div className="container">
-      <LeagueTemplate league={league} isFetching={isFetching} isFetchError={isFetchError}/>
+        <LeagueTemplate league={league} isFetching={isFetching} isFetchError={isFetchError}/>
       </div>
+      <Footer isFetchError={isFetchError} isFetching={isFetching}/>
     </div>
   )
 }

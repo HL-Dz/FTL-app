@@ -11,11 +11,12 @@
 
 .dropdown__item {
   width: 100%;
-  margin-bottom: 1px;
   border-radius: 3px;
   background: rgb(189,182,182);
-  background: linear-gradient(180deg, rgba(56, 55, 55, 0.5) 50%, rgba(15, 15, 15, 0.5) 50%,
-    rgba(48, 47, 47, 0.5) 100%);
+  background: linear-gradient(180deg, rgba(56, 55, 55, 0.9) 50%, rgba(15, 15, 15, 0.9) 50%,
+    rgba(48, 47, 47, 0.9) 100%);
+  background: linear-gradient(180deg, rgba(41, 40, 40, 0.9) 50%, rgba(15, 15, 15, 0.9) 50%,
+    rgba(41, 40, 40, 0.9) 100%);
   @extend %transition;
   animation: rotate-item 0.67s ease;
   box-shadow:  0 0 5px rgba(255, 255, 255, 0.171);

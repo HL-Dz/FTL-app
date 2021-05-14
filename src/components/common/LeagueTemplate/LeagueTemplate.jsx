@@ -6,7 +6,6 @@ import './LeagueTemplate.scss';
 import OverviewLeagueCard from './OverviewLeagueCard/OverviewLeagueCard';
 
 const LeagueTemplate = ({league, isFetching, color, isFetchError}) => {
-
   return (
     <>
       {isFetching ? <Preloader color={color}/> : 
@@ -16,7 +15,6 @@ const LeagueTemplate = ({league, isFetching, color, isFetchError}) => {
           <LeagueTable league={league} isFetchError={isFetchError}/>
         </div>
       }
-      
     </>
   )
 }

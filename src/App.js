@@ -5,7 +5,7 @@ import Leagues from './components/pages/Leagues/Leagues';
 import Clubs from './components/pages/Clubs/Clubs';
 import Info from './components/pages/Info/Info';
 import ChampionsLeague from './components/pages/Leagues/ChampionsLeague/ChampionsLeague';
-import EuropeanC from './components/pages/Leagues/EuropeanC/EuropeanC';
+import EuropeanLeague from './components/pages/Leagues/EuropeanC/EuropeanC';
 import WorldCup from './components/pages/Leagues/WorldCup/WorldCup';
 import EplContainer from './components/pages/Leagues/EPL/EplContainer';
 import BundesligaContainer from './components/pages/Leagues/Bundesliga/BundesligaContainer';
@@ -32,7 +32,7 @@ function App() {
         <Route path="/english-premiere-league" component={EplContainer}/>
         <Route path="/championship" component={ChampionshipContainer}/>
         <Route path="/champions-league" component={ChampionsLeague}/>
-        <Route path="/european-championships" component={EuropeanC}/>
+        <Route path="/european-championships" component={EuropeanLeague}/>
         <Route path="/france-league-1" component={FranceLeagueContainer}/>
         <Route path="/bundesliga" component={BundesligaContainer}/>
         <Route path="/serie-a" component={SerieAContainer}/>

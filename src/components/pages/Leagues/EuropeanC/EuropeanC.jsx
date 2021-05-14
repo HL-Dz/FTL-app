@@ -1,14 +1,16 @@
 import React from 'react';
+import Footer from '../../../common/Footer/Footer';
 import "./EuropeanC.scss";
 
-const EuropeanC = () => {
+const EuropeanLeague = () => {
   return (
-    <div className="eurepean-c">
+    <div className="european-league flex-container-column">
       <div className="container">
         <h1 className="eurepean-c-title">European Championships</h1>
       </div>
+      <Footer/>
     </div>
   )
 }
 
-export default EuropeanC;
+export default EuropeanLeague;

@@ -4,6 +4,7 @@ import "./Epl.scss";
 import stadium from "./Emirates.jpg";
 import players from '../../../common/Players/playersData';
 import Players from '../../../common/Players/Players';
+import Footer from '../../../common/Footer/Footer';
 
 
 
@@ -16,11 +17,12 @@ let eplBackground = {
 
 const Epl = ({league, isFetching, isFetchError}) => {
   return (
-    <div className="epl" style={eplBackground}>
+    <div className="epl flex-container-column" style={eplBackground}>
       <Players isFetching={isFetching} players={players.english} isFetchError={isFetchError}/>
       <div className="container">
         <LeagueTemplate league={league} isFetching={isFetching} isFetchError={isFetchError}/>
       </div>
+      <Footer isFetchError={isFetchError} isFetching={isFetching}/>
     </div>
   )
 }

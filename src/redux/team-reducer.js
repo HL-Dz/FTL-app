@@ -44,8 +44,8 @@ const teamReducer = (state = initialState, action) => {
 
 
 const setTeamProfile = (team) => ({type: SET_TEAM, team});
-const toggleIsLoading = (bool) => ({type: TOGGLE_IS_LOADING, bool});
-const resetTeam = (bool) => ({type: RESET_TEAM_PROFILE, bool});
+const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading});
+const resetTeam = (isLoading) => ({type: RESET_TEAM_PROFILE, isLoading});
 const setFetchTeamError = (isFetchError) => ({type: SET_FETCH_TEAM_ERROR, isFetchError});
 
 

@@ -4,6 +4,7 @@ import bernabeu from './Bernabeu.jpg'
 import players from '../../../common/Players/playersData';
 import Players from '../../../common/Players/Players';
 import LeagueTemplate from '../../../common/LeagueTemplate/LeagueTemplate';
+import Footer from '../../../common/Footer/Footer';
 
 
 
@@ -16,11 +17,12 @@ let PrimeraBackground = {
 
 const Primera = ({league, isFetching, isFetchError}) => {
   return (
-    <div className="primera" style={PrimeraBackground}>
+    <div className="primera flex-container-column" style={PrimeraBackground}>
       <Players isFetching={isFetching} players={players.primera} isFetchError={isFetchError}/>
       <div className="container">
-      <LeagueTemplate league={league} isFetching={isFetching} isFetchError={isFetchError}/>
+        <LeagueTemplate league={league} isFetching={isFetching} isFetchError={isFetchError}/>
       </div>
+      <Footer isFetchError={isFetchError} isFetching={isFetching}/>
     </div>
   )
 }
