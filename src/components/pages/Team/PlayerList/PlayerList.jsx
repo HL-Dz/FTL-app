@@ -32,11 +32,12 @@ const PlayerList = ({team, isFetchError}) => {
             <tbody>
               {
                 team.squad.map((elem, index) => {
+                  const name = elem.name.trim().toLowerCase().replace(/\s/g, "-");
                   return (
                     <tr className="table-tr" key={elem.id}>
                       <td className="table-td">{index + 1}</td>
                       <td className="table-td table-td-active">
-                        <NavLink to="#" className="table-player">
+                        <NavLink to={`/players/${elem.id}/${name}`} className="table-player">
                           {elem.name}
                         </NavLink>
                       </td>

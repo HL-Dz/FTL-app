@@ -28,7 +28,7 @@ function App() {
         <Route path="/" exact component={Leagues}/>
         <Route path="/clubs" component={Clubs}/>
         <Route path="/info" component={Info}/>
-        <Route path="/players" component={Player}/>
+        <Route path="/players/:id/:name" component={Player}/>
         <Route path="/teams/:id/:name" component={Team}/>
         <Route path="/brasilial-division-1" component={BrasilContainer}/>
         <Route path="/english-premiere-league" component={EplContainer}/>
