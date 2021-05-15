@@ -19,3 +19,9 @@ export const teamAPI = {
     return instance.get(`teams/${team}`);
   }
 }
+
+export const playerAPI = {
+  getPlayer(player){
+    return instance.get(`players/${player}`)
+  }
+}

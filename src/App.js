@@ -17,6 +17,7 @@ import ChampionshipContainer from "./components/pages/Leagues/Championship/Champ
 import Team from "./components/pages/Team/Team";
 import ErediviseContainer from "./components/pages/Leagues/Eredivise/ErediviseContainer";
 import BrasilContainer from "./components/pages/Leagues/Brasil/BrasilContainer";
+import Player from "./components/pages/Player/Player";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/" exact component={Leagues}/>
         <Route path="/clubs" component={Clubs}/>
         <Route path="/info" component={Info}/>
+        <Route path="/players" component={Player}/>
         <Route path="/teams/:id/:name" component={Team}/>
         <Route path="/brasilial-division-1" component={BrasilContainer}/>
         <Route path="/english-premiere-league" component={EplContainer}/>
