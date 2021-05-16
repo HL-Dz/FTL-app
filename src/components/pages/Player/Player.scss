@@ -2,4 +2,72 @@
 
 .football-player {
   height: 100vh;
+  background: #17181b;
+}
+
+.player-card {
+  display: flex;
+  width: 100%;
+  background: #2a2a2b;
+  color: #cfcccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.player-card__pic {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  background: #343435;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 20px;
+  border: 1px dashed grey;
+}
+
+.player-card__description {
+  background: #343435;
+  background: rgb(31,77,58);
+  background: linear-gradient(-45deg, rgba(31,77,58,1) 10%, rgba(30,30,33,1) 52%);
+  border-radius: 5px;
+  flex-basis: 100%;
+  padding: 10px;
+}
+
+
+.player-card__img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.player-card__first-name {
+  font-weight: bold;
+  font-size: 3rem;
+  color: #91df91;
+}
+
+.player-card_name {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.player-card__birth,
+.player-card__country,
+.player-card-position {
+  font-weight: bold;
+}
+
+.player-card__birth span,
+.player-card__country span,
+.player-card-position span {
+  display: inline-flex;
+  font-weight: bold;
+  border-bottom: 1px solid rgb(88, 88, 88);
+  font-size: 1.5rem;
+  padding: 4px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  width: 150px;
 }

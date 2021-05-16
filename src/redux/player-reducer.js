@@ -53,7 +53,6 @@ const setFetchPlayerError = (isFetchError) => ({type: SET_FETCH_PLAYER_ERROR, is
 export const getPlayerProfile = (player) => async dispatch =>  {
     dispatch(resetPlayer(true));
     try {
-      await delay(1000);
       const response = await playerAPI.getPlayer(player);
       dispatch(setPlayerProfile(response.data));
       dispatch(playerIsLoading(false));
