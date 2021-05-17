@@ -1,0 +1,20 @@
+.league-designations {
+  background: #222323af;
+  color: #adadad;
+  padding: 10px;
+  width: 50%;
+  border-radius: 5px;
+}
+
+.designations-text {
+  margin-bottom: 2px;
+  background: linear-gradient(47deg, rgba(15, 15, 15, 0.2) 30%, rgba(49, 134, 66, 0.5) 100%);
+  & span {
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    background: rgb(19, 18, 18);
+    width: 40px;
+  }
+}

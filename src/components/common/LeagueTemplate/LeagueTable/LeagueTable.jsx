@@ -1,15 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import noPhoto from '../../../../images/no-image.png';
+import LeagueDesignations from '../LeagueDesignations/LeagueDesignations';
 
 const LeagueTable = ({league, isFetchError}) => {
   if(isFetchError) {
     return null;
   }
+
   return (
     <>
       <h1 className="table-title">league table</h1>
-      <div className="table-container">
+      <div className="table-league-container">
         <table className="league-table">
           <thead className="table-head">
             <tr className="table-tr table-tr-inactive">
@@ -54,6 +56,7 @@ const LeagueTable = ({league, isFetchError}) => {
             }
           </tbody>
         </table>
+        <LeagueDesignations/>
       </div>
     </>
   )
