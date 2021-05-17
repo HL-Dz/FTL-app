@@ -33,6 +33,8 @@ const PlayerList = ({team, isFetchError}) => {
               {
                 team.squad.map((elem, index) => {
                   const name = elem.name.trim().toLowerCase().replace(/\s/g, "-");
+                  const countryOfBirth = `../../images/Countries/${elem.countryOfBirth}.png`;
+                  const nationality = `../../images/Countries/${elem.nationality}.png`;
                   return (
                     <tr className="table-tr" key={elem.id}>
                       <td className="table-td">{index + 1}</td>
@@ -42,8 +44,12 @@ const PlayerList = ({team, isFetchError}) => {
                         </NavLink>
                       </td>
                       <td className="table-td">{elem.position}</td>
-                      <td className="table-td">{elem.nationality}</td>
-                      <td className="table-td">{elem.countryOfBirth}</td>
+                      <td className="table-td">
+                        <img className="flag" src={nationality} alt={elem.nationality} title={elem.nationality}/>
+                      </td>
+                      <td className="table-td">
+                        <img className="flag" src={countryOfBirth} alt={elem.countryOfBirth} title={elem.countryOfBirth}/>
+                      </td>
                       <td className="table-td">{elem.role}</td>
                     </tr>
                   )

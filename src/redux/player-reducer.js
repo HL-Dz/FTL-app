@@ -1,5 +1,4 @@
 import { playerAPI } from '../api/api';
-import {delay} from '../helpers/helpers';
 
 const SET_PLAYER = 'SET_PLAYER';
 const PLAYER_IS_LOADING = 'PLAYER_IS_LOADING';

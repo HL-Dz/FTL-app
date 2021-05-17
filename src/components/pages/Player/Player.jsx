@@ -15,11 +15,17 @@ const Player = () => {
     dispatch(getPlayerProfile(id));
   }, [dispatch, id]);
 
+  let countryOfBirth = '';
+
+  if(player) {
+    countryOfBirth = `../../images/Countries/${player.countryOfBirth}.png`;
+  }
+
 
   return (
     <div className="football-player flex-container-column">
       {
-        !player ? null :
+        (!player) ? null :
         <div className="container">
           <div className="player-card">
             <div className="player-card__pic">
@@ -33,11 +39,11 @@ const Player = () => {
               </div>
               <div className="player-card__country">
                 <span>Country of birth: </span>
-                {player.countryOfBirth}
+                <img className="flag" src={countryOfBirth} alt={player.countryOfBirth} title={player.countryOfBirth}/>
               </div>
               <div className="player-card-position">
                 <span>Position: </span>
-                {player.position}
+                {player.position || '-------'}
               </div>
             </div>
           </div>
