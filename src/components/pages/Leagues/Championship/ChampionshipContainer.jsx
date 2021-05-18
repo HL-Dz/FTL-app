@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { getLeague } from '../../../../redux/league-reducer.js';
+import { getLeague, getBestLeaguePlayers } from '../../../../redux/league-reducer.js';
 import Championship from './Championship.jsx';
 
 
@@ -9,6 +9,7 @@ import Championship from './Championship.jsx';
 class ChampionshipContainer extends Component {
   componentDidMount(){
     this.props.getLeague('ELC');
+    this.props.getBestLeaguePlayers('ELC');
   }
 
   render(){
@@ -24,7 +25,8 @@ let mapStateToProps = (state) => ({
     league: state.leaguePage.league,
     isFetching: state.leaguePage.isFetching,
     isFetchError: state.leaguePage.isFetchError,
+    scorers: state.leaguePage.scorers,
 });
 
 
-export default connect(mapStateToProps, {getLeague})(ChampionshipContainer);
+export default connect(mapStateToProps, {getLeague, getBestLeaguePlayers})(ChampionshipContainer);

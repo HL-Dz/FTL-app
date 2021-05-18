@@ -8,7 +8,7 @@ const BestScorers = ({scorers}) => {
       <h3 className="scorers-title">The best 10 scorers of league</h3>
       <ul className="scorers-list">
         {
-          !scorers ? <div className="no-scorers">No scorer list...</div> : 
+          scorers.length === 0 ? <div className="no-scorers">No scorer list...</div> : 
           scorers.map(elem => {
             let name = elem.player.name.trim().toLowerCase().replace(/\s/g, "-");
             let countryOfBirth = `../../images/Countries/${elem.player.countryOfBirth}.png`;

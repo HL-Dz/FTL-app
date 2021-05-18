@@ -14,12 +14,17 @@ let SerieABackground = {
   backgroundSize: "contain",
 }
 
-const SerieA = ({isFetching, league, isFetchError}) => {
+const SerieA = ({isFetching, league, isFetchError, scorers}) => {
   return (
     <div className="serieA flex-container-column" style={SerieABackground}>
       <Players isFetching={isFetching} players={players.italy} isFetchError={isFetchError}/>
       <div className="container">
-        <LeagueTemplate league={league} isFetching={isFetching} isFetchError={isFetchError}/>
+        <LeagueTemplate 
+          league={league} 
+          isFetching={isFetching} 
+          isFetchError={isFetchError}
+          scorers={scorers}
+        />
       </div>
       <Footer isFetchError={isFetchError} isFetching={isFetching}/>
     </div>

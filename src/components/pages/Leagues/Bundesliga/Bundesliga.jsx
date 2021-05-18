@@ -14,7 +14,7 @@ let bundesligaBackground = {
   backgroundSize: "contain",
 }
 
-const Bundesliga = ({league, isFetching, isFetchError, scorers}) => {
+const Bundesliga = ({league, isFetching, isFetchError, scorers = []}) => {
   return (
     <div className="bundesliga flex-container-column" style={bundesligaBackground}>
       <Players isFetching={isFetching} players={players.bundesliga} isFetchError={isFetchError}/>

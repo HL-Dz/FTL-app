@@ -13,12 +13,17 @@ let ErediviseBackground = {
   backgroundSize: "contain",
 }
 
-const Eredivise = ({league, isFetching, isFetchError}) => {
+const Eredivise = ({league, isFetching, isFetchError, scorers}) => {
   return (
     <div className="eredivise flex-container-column" style={ErediviseBackground}>
       <Players isFetching={isFetching} players={players.netherlands} isFetchError={isFetchError}/>
       <div className="container">
-        <LeagueTemplate league={league} isFetching={isFetching} isFetchError={isFetchError}/>
+        <LeagueTemplate 
+          league={league} 
+          isFetching={isFetching} 
+          isFetchError={isFetchError}
+          scorers={scorers}
+        />
       </div>
       <Footer isFetchError={isFetchError} isFetching={isFetching}/>
     </div>

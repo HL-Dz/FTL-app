@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { getLeague } from '../../../../redux/league-reducer.js';
+import { getLeague, getBestLeaguePlayers } from '../../../../redux/league-reducer.js';
 import Eredivise from './Eredivise.jsx';
 
 
 class ErediviseContainer extends Component {
   componentDidMount(){
     this.props.getLeague('DED');
+    this.props.getBestLeaguePlayers('DED');
   }
 
   render(){
@@ -20,7 +21,8 @@ let mapStateToProps = (state) => ({
     league: state.leaguePage.league,
     isFetching: state.leaguePage.isFetching,
     isFetchError: state.leaguePage.isFetchError,
+    scorers: state.leaguePage.scorers,
 });
 
 
-export default connect(mapStateToProps, {getLeague})(ErediviseContainer);
+export default connect(mapStateToProps, {getLeague, getBestLeaguePlayers})(ErediviseContainer);

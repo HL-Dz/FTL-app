@@ -18,8 +18,6 @@ class BundesligaContainer extends Component {
   }
 }
 
-
-
 let mapStateToProps = (state) => ({
     league: state.leaguePage.league,
     isFetching: state.leaguePage.isFetching,
