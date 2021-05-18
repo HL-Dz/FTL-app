@@ -25,6 +25,7 @@
 }
 
 .league-table {
+  flex-basis: 60%;
   font-family: 'Poppins', sans-serif;
   color: rgb(197, 193, 193);
   border-radius: 5px;
@@ -32,6 +33,12 @@
   overflow: hidden;
   flex-basis: 60%;
   @extend %transition;
+}
+
+.table-description {
+  flex-basis: 45%;
+  display: flex;
+  flex-direction: column;
 }
 
 .table-head {

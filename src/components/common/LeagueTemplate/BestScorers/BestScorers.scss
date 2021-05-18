@@ -1,0 +1,82 @@
+@use "../../../../sass/abstracts";
+
+.scorers {
+  background: #222323af;
+  color: #adadad;
+  padding: 10px;
+  border-radius: 5px;
+  @extend %transition;
+}
+
+.scorers-title {
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.no-scorers {
+  text-align: center;
+}
+
+.scorers-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.scorer {
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  margin-bottom: 3px;
+  justify-content: space-between;
+  background: linear-gradient(-45deg, rgba(28, 66, 50, 0.5) 18%, #121313 52%);
+  border-radius: 5px;
+}
+
+.scorer__primary {
+  width: 100%;
+}
+
+.scorer__name {
+  width: 100%;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+
+  & img {
+    margin-right: 10px;
+    max-width: 25px;
+    height: auto;
+    overflow: hidden;
+  }
+  & a {
+    color: #adadad;
+    margin-right: 10px;
+    @extend %transition;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.scorer__club {
+ color: rgb(132, 158, 132);
+ font-weight: bold;
+}
+
+.scorer__total {
+  border-left: 1px solid grey;
+  padding-left: 10px;
+}
+
+.goals {
+  border-radius: 50%;
+  padding: 7px;
+  font-weight: bold;
+  background: rgba(31,77,58,0.5);
+  color: rgb(228, 222, 222);
+  box-shadow: 0 0 5px rgb(211, 210, 210) inset;
+}

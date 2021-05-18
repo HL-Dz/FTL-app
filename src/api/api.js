@@ -11,6 +11,9 @@ const instance = axios.create({
 export const standingsAPI = {
   getLeagueStandings(league){
     return instance.get(`/competitions/${league}/standings`);
+  },
+  getScorers(league){
+    return instance.get(`/competitions/${league}/scorers`)
   }
 }
 

@@ -2,18 +2,17 @@
   background: #222323af;
   color: #adadad;
   padding: 10px;
-  width: 50%;
   border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .designations-text {
   margin-bottom: 2px;
-  background: linear-gradient(47deg, rgba(15, 15, 15, 0.2) 30%, rgba(49, 134, 66, 0.5) 100%);
+  background: linear-gradient(-45deg, rgba(31,77,58,0.5) 18%, rgb(18, 19, 19) 52%);
   & span {
     display: inline-block;
     text-align: center;
     font-weight: bold;
-    color: #fff;
     background: rgb(19, 18, 18);
     width: 40px;
   }
