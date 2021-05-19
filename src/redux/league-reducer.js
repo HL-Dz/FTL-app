@@ -60,7 +60,7 @@ const setScorers = (scorers) => ({type: SET_SCORERS, scorers});
 export const getLeague = (league) => async dispatch =>  {
     dispatch(resetLeagueProfile(true));
     try {
-      await delay(700);
+      await delay(300);
       const response = await standingsAPI.getLeagueStandings(league);
       dispatch(setLeagueProfile(response.data));
       dispatch(toggleIsFetching(false));

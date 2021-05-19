@@ -1,14 +1,14 @@
 import React from 'react';
 import ErrorPopup from '../ErrorPopup/ErrorPopup';
-import Preloader from '../Preloader/Preloader';
+import Loading from '../Loading/Loading';
 import LeagueTable from './LeagueTable/LeagueTable';
 import './LeagueTemplate.scss';
 import OverviewLeagueCard from './OverviewLeagueCard/OverviewLeagueCard';
 
-const LeagueTemplate = ({league, isFetching, color, isFetchError, scorers}) => {
+const LeagueTemplate = ({league, isFetching, isFetchError, scorers}) => {
   return (
     <>
-      {isFetching ? <Preloader color={color}/> : 
+      {isFetching ? <Loading/> : 
         <div className="league-template">
           {isFetchError && <ErrorPopup/>}
           <OverviewLeagueCard league={league} isFetchError={isFetchError}/>

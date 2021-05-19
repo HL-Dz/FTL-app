@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import ToggleButton from '../../ToggleButton/ToggleButton';
 import './BestScorers.scss';
 
 const BestScorers = ({scorers}) => {
+  const [isVisible, setVisible] = useState(false);
+
+  const toggleButton = () => {
+    setVisible(!isVisible);
+  }
+  
   return (
-    <div className="scorers">
+    <div className={isVisible ? "scorers scorers_active" : "scorers"}>
+      <ToggleButton isVisible={isVisible} toggleElem={toggleButton}/>
       <h3 className="scorers-title">The best 10 scorers of league</h3>
       <ul className="scorers-list">
         {

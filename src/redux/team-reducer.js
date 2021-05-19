@@ -53,7 +53,7 @@ const setFetchTeamError = (isFetchError) => ({type: SET_FETCH_TEAM_ERROR, isFetc
 export const getTeamProfile = (team) => async dispatch =>  {
     dispatch(resetTeam(true))
     try {
-      await delay(1000);
+      await delay(500);
       const response = await teamAPI.getTeam(team);
       dispatch(setTeamProfile(response.data));
       dispatch(toggleIsLoading(false));

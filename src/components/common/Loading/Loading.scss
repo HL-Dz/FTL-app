@@ -1,0 +1,9 @@
+.loading-block {
+  position: fixed;
+  left: 50%;
+  top: 70px;
+  transform: translateX(-50%);
+  display: inline-block;
+  font-size: 2rem;
+  z-index: 4;
+}

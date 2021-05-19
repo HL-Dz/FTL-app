@@ -1,11 +1,19 @@
 @use "../../../../sass/abstracts";
 
 .scorers {
+  position: relative;
   background: #222323af;
   color: #adadad;
+  height: 32px;
+  overflow: hidden;
   padding: 10px;
+  padding-top: 5px;
   border-radius: 5px;
   @extend %transition;
+
+  &_active {
+    height: 567px;
+  }
 }
 
 .scorers-title {
@@ -22,6 +30,7 @@
 .scorers-list {
   display: flex;
   flex-direction: column;
+  @extend %transition;
 }
 
 .scorer {
