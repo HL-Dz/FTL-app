@@ -5,10 +5,12 @@ import { getPlayerProfile } from '../../../redux/player-reducer';
 import Footer from '../../common/Footer/Footer';
 import "./Player.scss";
 import photo from '../../../images/noname.jpg'
+import ErrorPopup from '../../common/ErrorPopup/ErrorPopup';
 
 const Player = () => {
   const dispatch = useDispatch();
   const player = useSelector(state => state.playerPage.player);
+  const isFetchError = useSelector(state => state.playerPage.isFetchError);
   const {id} = useParams();
 
   useEffect(() => {
@@ -24,6 +26,7 @@ const Player = () => {
 
   return (
     <div className="football-player flex-container-column">
+      {isFetchError && <ErrorPopup/>}
       {
         (!player) ? null :
         <div className="container">
