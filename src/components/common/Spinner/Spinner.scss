@@ -1,0 +1,27 @@
+@use '../../../sass/abstracts';
+
+.spinner-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  right: 10px;
+  top: 5px;
+}
+
+.spinner {
+  position: absolute;
+  animation: spiner_loading 0.4s linear infinite;
+  @extend %transition;
+}
+
+@keyframes spiner_loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

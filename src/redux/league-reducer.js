@@ -13,7 +13,7 @@ let initialState = {
   league: null,
   isFetching: true,
   isFetchError: false,
-  scorers: []
+  scorers: [],
 };
 
 
@@ -48,7 +48,7 @@ const leagueReducer = (state = initialState, action) => {
     case RESET_SCORERS:
       return {
         ...state,
-        scorers: []
+        scorers: [],
       }
     default:
       return state

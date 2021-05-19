@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBestLeaguePlayers } from '../../../../redux/league-reducer';
+import Spinner from '../../Spinner/Spinner';
 import ToggleButton from '../../ToggleButton/ToggleButton';
 import './BestScorers.scss';
 import ScorerList from './ScorerList/ScorerList';
@@ -8,19 +9,28 @@ import ScorerList from './ScorerList/ScorerList';
 const BestScorers = ({code}) => {
   const dispatch = useDispatch()
   const [isVisible, setVisible] = useState(false);
+  const [isScorersLoading, setScorersLoading] = useState(false);
   const scorers = useSelector(state => state.leaguePage.scorers);
 
-  const toggleButton = () => {
-    setVisible(!isVisible);
-    
-    if(!isVisible) {
-      dispatch(getBestLeaguePlayers(code));
-    }
+  const toggleButton = async ()  => {
+      if(!isVisible) {
+        setScorersLoading(true);
+        await dispatch(getBestLeaguePlayers(code));
+        setScorersLoading(false);
+      }
+      setVisible(!isVisible);
   }
+
+  useEffect(() => {
+    return () => {
+      document.removeEventListener('click', toggleButton);
+    }
+  })
   
   return (
     <div className={isVisible ? "scorers scorers_active" : "scorers"}>
       <ToggleButton isVisible={isVisible} toggleElem={toggleButton}/>
+      {isScorersLoading ? <Spinner/> : null}
       <h3 className="scorers-title">The best 10 scorers of league</h3>
       {scorers.length === 0 && <div className="no-scorers">No scorer list...</div>}
       <ul className="scorers-list">
