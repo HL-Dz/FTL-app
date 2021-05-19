@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { getBestLeaguePlayers } from '../../../../redux/league-reducer';
 import ToggleButton from '../../ToggleButton/ToggleButton';
 import './BestScorers.scss';
+import ScorerList from './ScorerList/ScorerList';
 
 const BestScorers = ({code}) => {
   const dispatch = useDispatch()
@@ -25,26 +25,7 @@ const BestScorers = ({code}) => {
       {scorers.length === 0 && <div className="no-scorers">No scorer list...</div>}
       <ul className="scorers-list">
         {
-          scorers && scorers.map(elem => {
-            let name = elem.player.name.trim().toLowerCase().replace(/\s/g, "-");
-            let countryOfBirth = `../../images/Countries/${elem.player.countryOfBirth}.png`;
-            return (
-              <li className="scorer" key={elem.player.id}>
-              <div className="scorer__primary">
-                <div className="scorer__name">
-                  <img className="flag" src={countryOfBirth} alt={elem.player.countryOfBirth} title={elem.player.countryOfBirth}/>
-                  <NavLink to={`/players/${elem.player.id}/${name}`}>
-                    <span>{elem.player.name}</span>
-                  </NavLink>
-                </div>
-                <div className="scorer__club">{elem.team.name}</div>
-              </div>
-              <div className="scorer__total">
-                <div className="goals">{elem.numberOfGoals}</div>
-              </div>
-            </li>
-            )
-          })
+          scorers && scorers.map(elem => <ScorerList key={elem.player.id} elem={elem}/>)
         }
       </ul>
     </div>
