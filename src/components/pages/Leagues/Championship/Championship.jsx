@@ -14,7 +14,7 @@ let championshipBackground = {
 }
 
 
-const Championship = ({league, isFetching, isFetchError, scorers}) => {
+const Championship = ({league, isFetching, isFetchError}) => {
   return (
     <div className="championship flex-container-column" style={championshipBackground}>
       <Players isFetching={isFetching} players={players.chapmionship} isFetchError={isFetchError}/>
@@ -23,7 +23,6 @@ const Championship = ({league, isFetching, isFetchError, scorers}) => {
           league={league} 
           isFetching={isFetching} 
           isFetchError={isFetchError}
-          scorers={scorers}
         />
       </div>
       <Footer isFetchError={isFetchError} isFetching={isFetching}/>

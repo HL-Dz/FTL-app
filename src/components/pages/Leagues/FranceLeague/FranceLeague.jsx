@@ -14,7 +14,7 @@ let fl1Background = {
 }
 
 
-const FranceLeague = ({league, isFetching, isFetchError, scorers}) => {
+const FranceLeague = ({league, isFetching, isFetchError }) => {
   return (
     <div className="france-league flex-container-column" style={fl1Background}>
       <Players isFetching={isFetching} players={players.france} isFetchError={isFetchError}/>
@@ -23,7 +23,6 @@ const FranceLeague = ({league, isFetching, isFetchError, scorers}) => {
           league={league} 
           isFetching={isFetching} 
           isFetchError={isFetchError}
-          scorers={scorers}
         />
       </div>
       <Footer isFetchError={isFetchError} isFetching={isFetching}/>

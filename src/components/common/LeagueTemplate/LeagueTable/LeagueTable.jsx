@@ -9,6 +9,8 @@ const LeagueTable = ({league, isFetchError, scorers}) => {
     return null;
   }
 
+  const code = league.competition.code;
+
   return (
     <>
       <h1 className="table-title">league table</h1>
@@ -59,7 +61,7 @@ const LeagueTable = ({league, isFetchError, scorers}) => {
         </table>
         <div className="table-description">
           <LeagueDesignations/>
-          <BestScorers scorers={scorers}/>
+          <BestScorers scorers={scorers} code={code}/>
         </div>
       </div>
     </>
