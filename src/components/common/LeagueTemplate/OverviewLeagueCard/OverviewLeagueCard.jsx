@@ -38,7 +38,7 @@ const OverviewLeagueCard = ({league, isFetchError}) => {
         </div>
         <div className="winner">
           <span>winner:</span>
-          <span>{league.season.winner || '------'}</span>
+          <span>{!league.season.winner ? '-------' : league.season.winner.name}</span>
         </div>
       </div>
     </div>
