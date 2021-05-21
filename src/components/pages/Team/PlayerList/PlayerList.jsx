@@ -12,7 +12,7 @@ const PlayerList = ({team, isFetchError}) => {
           !team ? <h2 className="loading-bg">Loading data</h2> :
           <h2 className="table-title">
             {
-              team.squad.length ? "PLAYER LIST" : "NO PLAYER LIST..."
+              team.squad.length ? "PLAYER LIST" : "No player list, because the season has not started yet..."
             }
           </h2>
         }

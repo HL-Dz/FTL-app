@@ -32,7 +32,7 @@ const BestScorers = ({code}) => {
       <ToggleButton isVisible={isVisible} toggleElem={toggleButton}/>
       {isScorersLoading ? <Spinner/> : null}
       <h3 className="scorers-title">The best 10 scorers of league</h3>
-      {scorers.length === 0 && <div className="no-scorers">No scorer list...</div>}
+      {scorers.length === 0 && <div className="no-scorers">No scorer list, because the season has not started yet...</div>}
       <ul className="scorers-list">
         {
           scorers && scorers.map(elem => <ScorerList key={elem.player.id} elem={elem}/>)

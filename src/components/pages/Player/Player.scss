@@ -6,6 +6,7 @@
 }
 
 .player-card {
+  position: relative;
   display: flex;
   width: 100%;
   background: #2a2a2b;
@@ -29,7 +30,7 @@
 .player-card__description {
   background: #343435;
   background: rgb(31,77,58);
-  background: linear-gradient(-45deg, rgba(31,77,58,1) 10%, rgba(30,30,33,1) 52%);
+  background: linear-gradient(-45deg, rgb(28, 65, 49) 10%, rgba(30,30,33,1) 52%);
   border-radius: 5px;
   flex-basis: 100%;
   padding: 10px;

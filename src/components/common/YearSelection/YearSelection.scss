@@ -1,0 +1,84 @@
+@use "../../../sass/abstracts";
+
+.year-selection {
+  position: absolute;
+  min-width: 200px;
+  top: 20px;
+  right: 20px;
+  z-index: 5;
+  
+
+  & span {
+    display: inline-block;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+.year-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.5rem;
+  background: #247938;
+  background: linear-gradient(180deg, rgba(109, 165, 122, 0.2) 20%, #1e1e21 60%);
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.sort-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+}
+
+.years {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #1e1e21;
+  @extend %transition;
+  animation: translate-years 0.5s ease-in-out;
+}
+
+.year {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  padding: 7px;
+  border-bottom: 1px solid rgb(24, 85, 55);
+  @extend %transition;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: #0f0f0f;
+  }
+}
+
+@keyframes translate-years {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

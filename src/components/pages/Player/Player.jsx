@@ -6,6 +6,8 @@ import Footer from '../../common/Footer/Footer';
 import "./Player.scss";
 import photo from '../../../images/noname.jpg'
 import ErrorPopup from '../../common/ErrorPopup/ErrorPopup';
+import YearSelection from '../../common/YearSelection/YearSelection';
+import dataYears from '../../common/YearSelection/dataYears';
 
 const Player = () => {
   const dispatch = useDispatch();
@@ -23,7 +25,6 @@ const Player = () => {
     countryOfBirth = `../../images/Countries/${player.countryOfBirth}.png`;
   }
 
-
   return (
     <div className="football-player flex-container-column">
       {isFetchError && <ErrorPopup/>}
@@ -31,6 +32,7 @@ const Player = () => {
         (!player) ? null :
         <div className="container">
           <div className="player-card">
+            <YearSelection  selection={dataYears} player={player}/>
             <div className="player-card__pic">
               <img src={photo} alt="No user" className="player-card__img"/>
             </div>

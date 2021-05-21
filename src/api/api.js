@@ -25,5 +25,8 @@ export const teamAPI = {
 export const playerAPI = {
   getPlayer(player){
     return instance.get(`players/${player}`)
+  },
+  getMatches(player, dateFrom, dateTo){
+    return instance.get(`players/${player}/matches?dateFrom=${dateFrom}&dateTo=${dateTo}`);
   }
 }
