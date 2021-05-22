@@ -33,6 +33,10 @@ const YearSelection = ({selection, player}) => {
   
   return (
     <div className="year-selection">
+      <div 
+      className={display ? "selection-bg selection-bg_active" : "selection-bg"}
+      onClick={toggleDisplay}
+    ></div>
       <div className="year-content" onClick={toggleDisplay}>
         {currentYear ? `YEAR: ${currentYear}` : selection.text}
         <div className="sort-icon">
