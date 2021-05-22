@@ -9,11 +9,7 @@
   display: flex;
   align-items: center;
   background: rgba(51, 51, 51, 0.7);
-  z-index: 6;
-  
-  @include media-tablet {
-    z-index: 8;
-  }
+  z-index: 10;
 }
 
 .navbar__container {

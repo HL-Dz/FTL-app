@@ -1,6 +1,7 @@
 @use "../../../sass/abstracts";
 
 .football-player {
+  padding-top: 80px;
   height: 100vh;
   background: #17181b;
 }
@@ -13,6 +14,7 @@
   color: #cfcccc;
   border-radius: 5px;
   padding: 10px;
+  margin-bottom: 15px;
 }
 
 .player-card__pic {

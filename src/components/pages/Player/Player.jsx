@@ -8,11 +8,14 @@ import photo from '../../../images/noname.jpg'
 import ErrorPopup from '../../common/ErrorPopup/ErrorPopup';
 import YearSelection from '../../common/YearSelection/YearSelection';
 import dataYears from '../../common/YearSelection/dataYears';
+import Matches from './Matches/Matches';
+import Loading from '../../common/Loading/Loading';
 
 const Player = () => {
   const dispatch = useDispatch();
   const player = useSelector(state => state.playerPage.player);
   const isFetchError = useSelector(state => state.playerPage.isFetchError);
+  const isLoading = useSelector(state => state.playerPage.isLoading);
   const {id} = useParams();
 
   useEffect(() => {
@@ -25,12 +28,14 @@ const Player = () => {
     countryOfBirth = `../../images/Countries/${player.countryOfBirth}.png`;
   }
 
+  if(!player) return <Loading/>;
+
   return (
     <div className="football-player flex-container-column">
-      {isFetchError && <ErrorPopup/>}
-      {
-        (!player) ? null :
-        <div className="container">
+      {isLoading ? <Loading/> : 
+        <>
+          <div className="container-width">
+          {isFetchError && <ErrorPopup/>}
           <div className="player-card">
             <YearSelection  selection={dataYears} player={player}/>
             <div className="player-card__pic">
@@ -53,6 +58,8 @@ const Player = () => {
             </div>
           </div>
         </div>
+        <Matches/>
+        </>
       }
       <Footer/>
     </div>

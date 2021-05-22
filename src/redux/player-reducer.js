@@ -1,4 +1,5 @@
 import { playerAPI } from '../api/api';
+import { delay } from '../helpers/helpers';
 
 const SET_PLAYER = 'SET_PLAYER';
 const PLAYER_IS_LOADING = 'PLAYER_IS_LOADING';
@@ -11,7 +12,7 @@ let initialState = {
   player: null,
   isLoading: false,
   isFetchError: false,
-  matches: null
+  matches: null,
 };
 
 
@@ -61,6 +62,7 @@ const setMatches = (matches) => ({type: SET_MATCHES, matches});
 
 export const getPlayerProfile = (player) => async dispatch =>  {
     dispatch(resetPlayer(true));
+    await delay(700);
     try {
       const response = await playerAPI.getPlayer(player);
       dispatch(setPlayerProfile(response.data));

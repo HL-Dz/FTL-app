@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getMatсhes } from '../../../redux/player-reducer';
 import './YearSelection.scss';
 
 const YearSelection = ({selection, player}) => {
   const [display, setDisplay] = useState(false);
   const [currentYear, setCurrentYear] = useState('');
-  const matches = useSelector(state => state.playerPage.matches);
   const dispatch = useDispatch();
 
   const toggleDisplay = () => {
@@ -27,8 +26,6 @@ const YearSelection = ({selection, player}) => {
       document.removeEventListener('click', showMatches)
     }
   })
-
-  console.log(matches);
 
   
   return (

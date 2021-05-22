@@ -1,5 +1,6 @@
 .error {
   position: absolute;
+  display: flex;
   background: rgb(80, 42, 42);
   border-radius: 2px;
   top: 90px;
@@ -12,5 +13,11 @@
   max-width: 400px;
   padding: 7px;
   z-index: 5;
-  box-shadow: 0 0 20px rgba(197, 195, 195, 0.5);
+  border-top: 1px dashed rgb(99, 98, 98);
+  border-bottom: 1px dashed rgb(99, 98, 98);
+}
+
+.error-icon {
+  font-size: 3rem;
+  margin-right: 10px;
 }

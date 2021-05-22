@@ -1,0 +1,101 @@
+@use "../../../../sass/abstracts";
+
+.matches {
+  width: 100%;
+  border-radius: 2px;
+  color: #cfcccc;
+  @extend %transition;
+  background: #17181b;
+  padding-bottom: 30px;
+}
+
+.matches-list {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  min-height: 100px;
+  background: transparent;
+  @extend %transition;
+
+  & >* {
+    flex-basis: 100%;
+  }
+}
+
+.match {
+  cursor: pointer;
+  padding: 5px 0;
+  border-bottom: 1px solid rgb(39, 39, 39);
+  @extend %transition;
+
+  &:hover {
+    background: #192722;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.short-match-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.match__date {
+  width: 100%;
+  font-weight: bold;
+  text-align: center;
+}
+
+.home-team,
+.away-team {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.match__rivals {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &>* {
+    flex-basis: 100%;
+  }
+}
+
+.match__score {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  border-radius: 3px;
+  margin: 3px;
+
+  & span {
+    display: inline-flex;
+    border: 2px solid rgb(82, 95, 82);
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: linear-gradient(90deg, #1c413196 10%, #1e1e21 50%, #1c413196 90%,);
+
+    &:first-child {
+      margin-right: 5px;
+    }
+    &:last-child {
+      margin-left: 5px;
+    }
+  }
+}
+
+.match__competition {
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+}
