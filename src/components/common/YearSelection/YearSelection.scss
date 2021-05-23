@@ -15,7 +15,13 @@
     width: 100%;
     text-align: center;
   }
+
+  & .spinner-container {
+    top: 10px;
+    right: 10px;
+  }
 }
+
 
 .selection-bg {
   position: fixed;

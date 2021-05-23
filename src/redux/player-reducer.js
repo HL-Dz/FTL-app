@@ -6,6 +6,7 @@ const PLAYER_IS_LOADING = 'PLAYER_IS_LOADING';
 const RESET_PLAYER_PROFILE = 'RESET_PLAYER_PROFILE';
 const SET_FETCH_PLAYER_ERROR = 'SET_FETCH_PLAYER_ERROR';
 const SET_MATCHES = 'SET_MATCHES';
+const IS_LOADING_INFO = "IS_LOADING_INFO";
 
 
 let initialState = {
@@ -13,6 +14,7 @@ let initialState = {
   isLoading: false,
   isFetchError: false,
   matches: null,
+  isLoadingMatches: false
 };
 
 
@@ -32,8 +34,8 @@ const playerReducer = (state = initialState, action) => {
       return {
         ...state,
         player: null,
+        matches: null,
         isLoading: action.isLoading,
-        matches: null
       }
     case SET_FETCH_PLAYER_ERROR: 
       return {
@@ -45,6 +47,11 @@ const playerReducer = (state = initialState, action) => {
         ...state,
         matches: action.matches
       }
+    case IS_LOADING_INFO: 
+    return {
+      ...state,
+      isLoadingMatches: action.isLoadingMatches
+    }
     default:
       return state
   }
@@ -57,10 +64,11 @@ const resetPlayer = (isLoading) => ({type: RESET_PLAYER_PROFILE, isLoading});
 const setFetchPlayerError = (isFetchError) => ({type: SET_FETCH_PLAYER_ERROR, isFetchError});
 
 const setMatches = (matches) => ({type: SET_MATCHES, matches});
-
+const isLoadingMatches = (isLoadingMatches) => ({type: IS_LOADING_INFO, isLoadingMatches}); 
 
 
 export const getPlayerProfile = (player) => async dispatch =>  {
+    dispatch(setFetchPlayerError(false))
     dispatch(resetPlayer(true));
     await delay(700);
     try {
@@ -74,12 +82,15 @@ export const getPlayerProfile = (player) => async dispatch =>  {
 }
 
 export const getMatсhes = (player, dateFrom, dateTo) => async dispatch => {
+  dispatch(isLoadingMatches(true));
+  await delay(500);
   try {
     const response = await playerAPI.getMatches(player, dateFrom, dateTo);
     dispatch(setMatches(response.data));
+    dispatch(isLoadingMatches(false));
   } catch (err) {
     dispatch(setFetchPlayerError(true));
-    dispatch(resetPlayer(true));
+    dispatch(resetPlayer(false));
   }
 }
 

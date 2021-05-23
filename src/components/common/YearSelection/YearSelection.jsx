@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getMatсhes } from '../../../redux/player-reducer';
+import Spinner from '../Spinner/Spinner';
 import './YearSelection.scss';
 
 const YearSelection = ({selection, player}) => {
   const [display, setDisplay] = useState(false);
   const [currentYear, setCurrentYear] = useState('');
   const dispatch = useDispatch();
+  const isLoadingMatches = useSelector(state => state.playerPage.isLoadingMatches);
 
   const toggleDisplay = () => {
     setDisplay(!display);
@@ -30,6 +32,7 @@ const YearSelection = ({selection, player}) => {
   
   return (
     <div className="year-selection">
+      {isLoadingMatches ? <Spinner/> : null}
       <div 
       className={display ? "selection-bg selection-bg_active" : "selection-bg"}
       onClick={toggleDisplay}

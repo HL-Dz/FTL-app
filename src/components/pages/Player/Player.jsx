@@ -28,37 +28,37 @@ const Player = () => {
     countryOfBirth = `../../images/Countries/${player.countryOfBirth}.png`;
   }
 
-  if(!player) return <Loading/>;
-
   return (
     <div className="football-player flex-container-column">
-      {isLoading ? <Loading/> : 
+      {isLoading && <Loading/>}
+      {isFetchError && <ErrorPopup/>}
+      {
+        player && 
         <>
           <div className="container-width">
-          {isFetchError && <ErrorPopup/>}
-          <div className="player-card">
-            <YearSelection  selection={dataYears} player={player}/>
-            <div className="player-card__pic">
-              <img src={photo} alt="No user" className="player-card__img"/>
-            </div>
-            <div className="player-card__description">
-              <div className="player-card__first-name">{player.firstName}</div>
-              <div className="player-card_name">{player.name}</div>
-              <div className="player-card__birth">
-                <span>Date of birth: </span>{player.dateOfBirth}
+            <div className="player-card">
+              <YearSelection  selection={dataYears} player={player}/>
+              <div className="player-card__pic">
+                <img src={photo} alt="No user" className="player-card__img"/>
               </div>
-              <div className="player-card__country">
-                <span>Country of birth: </span>
-                <img className="flag" src={countryOfBirth} alt={player.countryOfBirth} title={player.countryOfBirth}/>
-              </div>
-              <div className="player-card-position">
-                <span>Position: </span>
-                {player.position || '-------'}
+              <div className="player-card__description">
+                <div className="player-card__first-name">{player.firstName}</div>
+                <div className="player-card_name">{player.name}</div>
+                <div className="player-card__birth">
+                  <span>Date of birth: </span>{player.dateOfBirth}
+                </div>
+                <div className="player-card__country">
+                  <span>Country of birth: </span>
+                  <img className="flag" src={countryOfBirth} alt={player.countryOfBirth} title={player.countryOfBirth}/>
+                </div>
+                <div className="player-card-position">
+                  <span>Position: </span>
+                  {player.position || '-------'}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <Matches/>
+          <Matches/>
         </>
       }
       <Footer/>

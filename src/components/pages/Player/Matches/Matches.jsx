@@ -4,10 +4,11 @@ import "./Matches.scss";
 
 const Matches = () => {
   const matches = useSelector(state => state.playerPage.matches);
+  const isLoadingMatches = useSelector(state => state.playerPage.isLoadingMatches);
   return (
     <div className="matches">
       <div className="container-width">
-        <div className="matches-list">
+        <div className={isLoadingMatches ? "matches-list matches-list_inactive" : "matches-list"}>
           {!matches ? null : 
             matches.matches.map(match => {
               return (
