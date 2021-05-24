@@ -3,9 +3,7 @@ import './Loading.scss';
 
 const Loading = () => {
   return (
-    <div className="loading-block">
-      Loading data...
-    </div>
+      <div id="loader"></div>
   )
 }
 
