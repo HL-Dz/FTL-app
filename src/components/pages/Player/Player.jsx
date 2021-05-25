@@ -10,6 +10,7 @@ import YearSelection from '../../common/YearSelection/YearSelection';
 import dataYears from '../../common/YearSelection/dataYears';
 import Matches from './Matches/Matches';
 import Loading from '../../common/Loading/Loading';
+import { getCurrentAge } from '../../../helpers/helpers';
 
 const Player = () => {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ const Player = () => {
                 <div className="player-card__first-name">{player.firstName}</div>
                 <div className="player-card_name">{player.name}</div>
                 <div className="player-card__birth">
-                  <span>Date of birth: </span>{player.dateOfBirth}
+                <span>Date of birth: </span>{`${player.dateOfBirth} ( ${getCurrentAge(player.dateOfBirth)} )`}
                 </div>
                 <div className="player-card__country">
                   <span>Country of birth: </span>

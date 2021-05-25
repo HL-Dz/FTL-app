@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { getCurrnetDate } from '../../../../helpers/helpers';
 import "./Matches.scss";
 
 const Matches = () => {
@@ -16,7 +17,7 @@ const Matches = () => {
               return (
                 <div className="match" key={match.id}>
                   <div className="short-match-info">
-                    <div className="match__date">{match.utcDate.slice(0, 10)}</div>
+                    <div className="match__date">{getCurrnetDate(match.utcDate.slice(0, 10))}</div>
                     <div className="match__rivals">
                       <div className="home-team">{match.homeTeam.name}</div>
                       <div className="match__score">
