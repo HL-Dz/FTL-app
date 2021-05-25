@@ -12,6 +12,12 @@ const Matches = () => {
       <div className="container-width">
         <div className={isLoadingMatches ? "matches-list matches-list_inactive" : "matches-list"}>
           {!matches ? <div className="notification">Please, select a year to display player matches.</div> : null}
+          {matches && 
+            <div className={!isLoadingMatches ? "matches-desc matches-desc_active" : "matches-desc"}>
+              <div>Count of matches with <span>{matches.player.name}</span> in </div> 
+              <div> {matches.filters.dateFrom.slice(0, 4)}: </div>
+              <div><span className="matches-count">{matches.count}</span></div>
+            </div>}
           {!matches ? null : 
             matches.matches.map(match => {
               return (
