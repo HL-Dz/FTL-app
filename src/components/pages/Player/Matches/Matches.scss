@@ -80,6 +80,8 @@
 .match {
   position: relative;
   cursor: pointer;
+  height: 91px;
+  overflow: hidden;
   padding: 5px 0;
   border-top: 1px solid rgb(39, 39, 39);
   border-bottom: 1px solid rgb(39, 39, 39);
@@ -87,7 +89,38 @@
   background: linear-gradient(90deg, #0e111096 10%, #1b2b27 50%, #0e111096 90%);
   margin-bottom: 20px;
   z-index: 2;
-  @extend %transition;
+
+  &_active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    padding-top: 50px;
+    background: linear-gradient(90deg, #0e1110f3 10%, #101f1b 50%, #0e1110f3 90%);
+    cursor: auto;
+    animation: match-active 0.5s ease;
+    overflow: auto;
+
+    .match__date {
+      font-size: 3rem;
+    }
+
+    .match__rivals {
+      padding: 10px;
+      margin-bottom: 20px;
+      background: #0e1110f3;
+    }
+
+    .away-team, .home-team {
+      font-size: 2.5rem;
+    }
+
+    .match__competition {
+      font-size: 1.9rem;
+    }
+  }
 
   &:last-child {
     margin-bottom: 0;
@@ -105,12 +138,38 @@
     background: rgb(56, 56, 56);
     height: 25px;
     z-index: 1;
-
   }
 
   &:last-child {
     border-top: none;
     border-bottom: none;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: none;
+  z-index: 5;
+  @extend %transition;
+
+  &_visible {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 2rem;
+    padding: 5px;
+    background: rgb(43, 58, 54);
+    border-radius: 3px;
   }
 }
 
@@ -179,11 +238,105 @@
   font-weight: bold;
 }
 
+.match__details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2.3rem;
+  font-weight: bold;
+
+  > * {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+.matchday, .half-time, .extra-time, .penalties {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  background: #113025;
+  padding: 10px 0;
+  width: 250px;
+  border-radius: 5px;
+
+  span {
+    margin: 0 10px;
+    display: inline-flex;
+    border: 2px solid #525f57;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: linear-gradient(90deg, #1c413196 10%, #1e1e21 50%, #1c413196 90%);
+  }
+}
+
+.matchday {
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.referees-title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.referees {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: #0e1110f3;
+  padding: 20px 10px;
+  z-index: 2;
+}
+
+
+.referee {
+  display: flex;
+  font-size: 1.7rem;
+  margin-bottom: 10px;
+}
+
+.referee__name, .referee__role, .referee__nationality {
+  padding: 5px;
+}
+
+.referee__name {
+  text-align: left;
+  font-size: 1.8rem;
+}
+
+.referee__role {
+  text-transform: lowercase;
+}
+
 @keyframes count-show {
   0% {
     transform: translateY(-110%);
   }
   100% {
     transform: translateY(0%);
+  }
+}
+
+
+@keyframes match-active {
+  0% {
+    opacity: 0;
+    position: fixed;
+    top: 20%;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+  }
+  100% {
+    height: 100vh;
+    opacity: 1;
   }
 }
