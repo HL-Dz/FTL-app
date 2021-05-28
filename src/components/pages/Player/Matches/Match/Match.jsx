@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {getCurrnetDate} from '../../../../../helpers/helpers';
 
 const Match = ({match}) => {
@@ -6,14 +6,29 @@ const Match = ({match}) => {
 
   const displayMatch = () => {
     setIsActive(true);
-    document.body.style.overflow = "hidden";
+    if(document.body.style.overflow !== "hidden" && !isActive) {
+      document.body.style.overflow = "hidden"
+    }
   }
 
   const hideMatch = (e) => {
     e.stopPropagation();
     setIsActive(false);
-    document.body.style.overflow = "auto";
+    document.body.style.overflow = "auto"
   }
+
+  const closeModal  =  e => {
+    if(e.key === 'Escape') {
+      setIsActive(false);
+      document.body.style.overflow = "auto";
+    } 
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', closeModal);
+
+    return () => document.removeEventListener('keydown', closeModal);
+  });
 
   return (
     <div className={isActive ? "match match_active" : "match"} onClick={displayMatch}>
@@ -30,7 +45,6 @@ const Match = ({match}) => {
         </div>
         <div className="match__competition">{match.competition.name}</div>
       </div>
-
       <div className="match__details">
         <div className="matchday">Matchday: {match.matchday ? match.matchday : ' - '}</div>
         <div className="full-time">
@@ -62,7 +76,6 @@ const Match = ({match}) => {
           }
         </div>
       </div>
-
     </div>
   )
 }

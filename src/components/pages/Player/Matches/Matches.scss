@@ -238,7 +238,6 @@
   }
 }
 
-
 .matchday, .half-time, .full-time, .extra-time, .penalties {
   display: flex;
   align-items: center;
@@ -278,8 +277,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
-  max-width: 600px;
+  // max-width: 600px;
   background: #0e1110f3;
   padding: 20px 10px;
   z-index: 2;
@@ -291,6 +291,7 @@
   display: flex;
   font-size: 1.7rem;
   margin-bottom: 10px;
+  padding: 0 15px;
 }
 
 .referee__name, .referee__role, .referee__nationality {
