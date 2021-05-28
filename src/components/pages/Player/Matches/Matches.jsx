@@ -19,7 +19,7 @@ const Matches = () => {
               <div><span className="matches-count">{matches.count}</span></div>
             </div>}
           {!matches ? null : 
-            matches.matches.map(match => <Match key={match.id} match={match}/>)
+            matches.matches.map((match, ind) => <Match key={match.id} match={match}/>)
           }
         </div>
       </div>

@@ -6,15 +6,17 @@ const Match = ({match}) => {
 
   const displayMatch = () => {
     setIsActive(true);
+    document.body.style.overflow = "hidden";
   }
 
   const hideMatch = (e) => {
     e.stopPropagation();
     setIsActive(false);
+    document.body.style.overflow = "auto";
   }
 
   return (
-    <div className={isActive ? "match match_active" : "match"} key={match.id} onClick={displayMatch}>
+    <div className={isActive ? "match match_active" : "match"} onClick={displayMatch}>
       <span className={isActive ? "close-btn close-btn_visible" : "close-btn"} onClick={hideMatch}>X</span>
       <div className="short-match-info">
         <div className="match__date">{getCurrnetDate(match.utcDate.slice(0, 10))}</div>
@@ -31,6 +33,9 @@ const Match = ({match}) => {
 
       <div className="match__details">
         <div className="matchday">Matchday: {match.matchday ? match.matchday : ' - '}</div>
+        <div className="full-time">
+          <span>{match.score.fullTime.homeTeam}</span> Fulltime <span>{match.score.fullTime.awayTeam}</span>
+        </div>
         <div className="half-time">
           <span>{match.score.halfTime.homeTeam}</span> Halftime <span>{match.score.halfTime.awayTeam}</span>
         </div>
@@ -46,11 +51,11 @@ const Match = ({match}) => {
             match.referees.map((elem, ind) => {
               const nationality = `../../images/Countries/${elem.nationality}.png`;
               return (
-                <div className="referee" key={elem.id + 1}>
-                  <div className="referee__name">{ind + 1}. {elem.name}</div>
-                  <div className="referee__nationality">
+                <div className="referee" key={ind}>
+                  {elem.name && <div className="referee__name">{elem.name}</div>}
+                  {elem.nationality && <div className="referee__nationality">
                     <img className="flag" src={nationality} alt={elem.nationality} title={elem.nationality}/>
-                  </div>
+                  </div>}
                 </div>
               )
             })
