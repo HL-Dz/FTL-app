@@ -11,6 +11,7 @@
   display: flex;
   align-items: flex-start;
   padding-bottom: 50px;
+  @extend %transition;
 }
 
 .table-title {
@@ -74,6 +75,14 @@
   font-size: 1.4rem;
   padding: 5px 2px;
   background: linear-gradient(180deg, rgba(56, 55, 55, 0.5) 50%, rgba(15, 15, 15, 0.5) 50%, rgba(48, 47, 47, 0.5) 100%);
+}
+
+.table-th-search {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+  z-index: 1;
 }
 
 .table-td {
