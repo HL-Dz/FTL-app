@@ -18,7 +18,6 @@ const LeagueTable = ({league, isFetchError, scorers}) => {
     return elem.team.name.toLowerCase().includes(search.toLowerCase());
   });
 
-
   return (
     <>
       <h1 className="table-title">league table</h1>

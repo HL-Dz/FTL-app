@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import SearchElem from '../../../common/SearchElem/SearchElem';
 
 
 const PlayerList = ({team, isFetchError}) => {
+  const [searchPlayer, setSearchPlayer] = useState('');
+
   if(isFetchError) return null;
+  if(!team) return null;
+
+  const filteredPlayers = team.squad.filter(player => {
+    return player.name.toLowerCase().includes(searchPlayer.toLowerCase());
+  });
+  
 
   return (
     <div className="player-list">
@@ -22,7 +31,10 @@ const PlayerList = ({team, isFetchError}) => {
             <thead className="table-head">
               <tr className="table-tr">
                 <th className="table-th">#</th>
-                <th className="table-th">NAME</th>
+                <th className="table-th table-th-search">
+                  NAME
+                  <SearchElem search={searchPlayer} setSearch={setSearchPlayer}/>
+                </th>
                 <th className="table-th">POSITION</th>
                 <th className="table-th">NATIONALITY</th>
                 <th className="table-th">COUNTRY OF BIRTH</th>
@@ -31,7 +43,8 @@ const PlayerList = ({team, isFetchError}) => {
             </thead>
             <tbody>
               {
-                team.squad.map((elem, index) => {
+                filteredPlayers.length === 0 ? <tr><td></td><td className="td-no-matches">No matches...</td></tr> : 
+                filteredPlayers.map((elem, index) => {
                   const name = elem.name.trim().toLowerCase().replace(/\s/g, "-");
                   const countryOfBirth = `../../images/Countries/${elem.countryOfBirth}.png`;
                   const nationality = `../../images/Countries/${elem.nationality}.png`;

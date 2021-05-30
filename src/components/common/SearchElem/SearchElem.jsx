@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import "./SearchElem.scss";
 
 const SearchElem = ({search, setSearch}) => {
   const [isActive, setIsActive] = useState(false);
 
+  const textInput = useRef(null);
+
   const showForm = () => {
     setIsActive(true);
+    textInput.current.focus();
   }
 
   const closeForm = () => {
@@ -25,6 +28,7 @@ const SearchElem = ({search, setSearch}) => {
       <form onSubmit={(e) => {e.preventDefault()}} className={isActive ? "search-form search-form_visible" : "search-form"}>
         <input 
           className="search-input" 
+          ref={textInput}
           value={search} 
           placeholder="Search..." 
           type="text" 
