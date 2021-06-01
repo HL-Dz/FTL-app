@@ -77,6 +77,40 @@
   }
 }
 
+// Competitions
+.competitions {
+  display: flex;
+}
+
+.competition {
+  position: relative;
+  border: 1px solid rgb(59, 61, 60);
+  padding: 7px;
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 1.7rem;
+  border-radius: 3px;
+  cursor: pointer;
+  @extend %transition;
+
+  &:last-child:after {
+    display: none;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    height: 0.5px;
+    width: 10px;
+    background: rgb(97, 100, 99);
+    transform: translateY(-50%);
+  }
+}
+
+
+// Match
 .match {
   position: relative;
   cursor: pointer;
@@ -279,7 +313,6 @@
   justify-content: space-between;
   justify-content: center;
   flex-wrap: wrap;
-  // max-width: 600px;
   background: #0e1110f3;
   padding: 20px 10px;
   z-index: 2;
