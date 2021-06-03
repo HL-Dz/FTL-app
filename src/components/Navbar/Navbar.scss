@@ -76,16 +76,13 @@
   position: relative;
   border-radius: 3px;
   @extend %transition;
+  border: 1px solid transparent;
 
+  
   &:last-child {
     margin-right: 0;
   }
-
-  &:hover {
-    box-shadow: 0 0 25px #ffffff59 inset;
-    background: rgba(0, 0, 0, 0.7);
-  }
-
+  
   @include media-tablet {
     width: 100%;
   }
@@ -107,17 +104,61 @@
 }
 
 .nav__link {
+  position: relative;
   display: flex;
   align-items: center;
   font-size: 1.9rem;
-  padding: 7px 20px;
+  padding: 7px 15px;
+  overflow: hidden;
+  @extend %transition;
+
+  &:hover {
+
+    &:before {
+      left: 0%;
+    }
+  
+    &:after {
+      right: 0%;
+    }
+  }
+
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    background: rgb(59, 85, 81);
+    width: 100%;
+    @extend %transition;
+  }
+
+  &:before {
+    top: 0;
+    left: -100%;
+  }
+
+  &:after {
+    bottom: 0;
+    right: -100%;
+  }
   
   & i {
-    margin-left: 5px;
+    margin-left: 7px;
   }
 
   @include media-tablet {
     width: 100%;
     justify-content: center;
   }
+}
+
+.fa-globe {
+  color: rgb(102, 177, 211);
+}
+.fa-folder {
+  color: rgb(240, 241, 127);
+}
+
+.fa-file-alt {
+  color: rgb(157, 223, 157);
 }
