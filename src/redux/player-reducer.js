@@ -36,6 +36,7 @@ const playerReducer = (state = initialState, action) => {
         ...state,
         player: null,
         isLoading: action.isLoading,
+        isLoadingMatches: false
       }
     case SET_FETCH_PLAYER_ERROR: 
       return {
@@ -55,7 +56,7 @@ const playerReducer = (state = initialState, action) => {
     case RESET_MATCHES: 
       return {
         ...state,
-        matches: null
+        matches: null,
       }
     default:
       return state
@@ -89,6 +90,7 @@ export const getPlayerProfile = (player) => async dispatch =>  {
 }
 
 export const getMatсhes = (player, dateFrom, dateTo) => async dispatch => {
+  dispatch(setFetchPlayerError(false));
   dispatch(isLoadingMatches(true));
   await delay(500);
   try {

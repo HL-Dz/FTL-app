@@ -38,6 +38,7 @@ const LeagueTable = ({league, isFetchError, scorers}) => {
               <th className="table-th">GA</th>
               <th className="table-th">GD</th>
               <th className="table-th">PTS</th>
+              <th className="table-th">+/-</th>
             </tr>
           </thead>
           <tbody>
@@ -66,6 +67,9 @@ const LeagueTable = ({league, isFetchError, scorers}) => {
                       <td className="table-td">{elem.goalsAgainst}</td>
                       <td className="table-td">{elem.goalDifference}</td>
                       <td className="table-td">{elem.points}</td>
+                      <td className="table-td toggle-club" title="Save the club">
+                        <i className="fas fa-folder-plus"></i>
+                      </td>
                     </tr>
                   )
                   })

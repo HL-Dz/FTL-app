@@ -65,6 +65,7 @@ const resetScorers = () => ({type: RESET_SCORERS });
 
 // Get league standings
 export const getLeague = (league) => async dispatch =>  {
+    dispatch(setFetchError(false));
     dispatch(resetLeagueProfile(true));
     try {
       await delay(300);

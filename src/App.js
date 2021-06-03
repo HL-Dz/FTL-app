@@ -3,7 +3,7 @@ import Navbar from './components/Navbar/Navbar.jsx';
 import {Route, Switch} from 'react-router-dom';
 import Leagues from './components/pages/Leagues/Leagues';
 import Clubs from './components/pages/Clubs/Clubs';
-import Info from './components/pages/Info/Info';
+import Documentation from './components/pages/Documentation/Documentation';
 import ChampionsLeague from './components/pages/Leagues/ChampionsLeague/ChampionsLeague';
 import EuropeanLeague from './components/pages/Leagues/EuropeanC/EuropeanC';
 import WorldCup from './components/pages/Leagues/WorldCup/WorldCup';
@@ -27,7 +27,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={Leagues}/>
         <Route path="/clubs" component={Clubs}/>
-        <Route path="/info" component={Info}/>
+        <Route path="/documentation" component={Documentation}/>
         <Route path="/players/:id/:name" component={Player}/>
         <Route path="/teams/:id/:name" component={Team}/>
         <Route path="/brasilial-division-1" component={BrasilContainer}/>

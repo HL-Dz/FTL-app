@@ -8,7 +8,9 @@ const ScorerList = ({elem}) => {
     <li className="scorer">
       <div className="scorer__primary">
         <div className="scorer__name">
-          <img className="flag" src={countryOfBirth} alt={elem.player.countryOfBirth} title={elem.player.countryOfBirth}/>
+          {!elem.player.countryOfBirth ? <span className="no-flag">?</span> :
+            <img className="flag" src={countryOfBirth} alt={elem.player.countryOfBirth} title={elem.player.countryOfBirth}/>
+          }
           <NavLink to={`/players/${elem.player.id}/${name}`}>
             <span>{elem.player.name}</span>
           </NavLink>

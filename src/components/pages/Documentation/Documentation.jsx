@@ -1,8 +1,8 @@
 import React from 'react';
 import Footer from '../../common/Footer/Footer';
-import "./Info.scss";
+import "./Documentation.scss";
 
-const Info = () => {
+const Documentation = () => {
   return (
     <div className="info flex-container-column">
       <div className="container">
@@ -13,4 +13,4 @@ const Info = () => {
   )
 }
 
-export default Info
+export default Documentation;

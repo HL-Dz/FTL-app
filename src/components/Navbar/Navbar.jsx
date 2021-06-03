@@ -26,16 +26,23 @@ const Navbar = (props) => {
           <li className="nav-item" onMouseOver={showDropdopwn} onMouseOut={hideDropdown}>
             <Link to="/" className="nav__link" onClick={closeMenu}>
               Leagues
+              <i className="fas fa-globe"></i>
             </Link>
             <div className={drop ? "nav-dropdown" : "nav-dropdown nav-dropdown_hidden"}>
               <NavigationDropdown hideDropdown={hideDropdown}/>
             </div>
           </li>
           <li className="nav-item">
-            <Link to="/clubs" className="nav__link" onClick={closeMenu}>Saved clubs</Link>
+            <Link to="/clubs" className="nav__link" onClick={closeMenu}>
+              Saved clubs
+              <i className="fas fa-folder"></i>
+            </Link>
           </li>
           <li className="nav-item">
-            <Link to="/info" className="nav__link" onClick={closeMenu}>Info</Link>
+            <Link to="/documentation" className="nav__link" onClick={closeMenu}>
+              Documentation
+              <i className="far fa-file-alt"></i>
+            </Link>
           </li>
         </ul>
       </div>

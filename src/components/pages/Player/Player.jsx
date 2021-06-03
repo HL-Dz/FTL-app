@@ -50,11 +50,14 @@ const Player = () => {
                 </div>
                 <div className="player-card__country">
                   <span>Country of birth: </span>
-                  <img className="flag" src={countryOfBirth} alt={player.countryOfBirth} title={player.countryOfBirth}/>
+                  {
+                    !player.countryOfBirth ? <span class="no-flag">?</span> :
+                    <img className="flag" src={countryOfBirth} alt={player.countryOfBirth} title={player.countryOfBirth}/>
+                  }
                 </div>
                 <div className="player-card-position">
                   <span>Position: </span>
-                  {player.position || '-------'}
+                  {player.position || 'No data...'}
                 </div>
               </div>
             </div>

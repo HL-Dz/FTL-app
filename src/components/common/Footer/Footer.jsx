@@ -12,7 +12,7 @@ const Footer = ({isFetching, isFetchError}) => {
           <div className="footer-nav">
             <NavLink to="/" className="footer-nav__link">Home</NavLink>
             <NavLink to="/clubs" className="footer-nav__link">Saved clubs</NavLink>
-            <NavLink to="/info" className="footer-nav__link">Info</NavLink>
+            <NavLink to="/info" className="footer-nav__link">Documentation</NavLink>
           </div>
           <div className="dev-contacts">
             <span>Developer contacts: </span>
