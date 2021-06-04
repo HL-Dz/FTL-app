@@ -41,6 +41,10 @@
   justify-content: space-between;
   background: linear-gradient(-45deg, rgba(28, 66, 50, 0.5) 18%, #121313 52%);
   border-radius: 5px;
+
+  & .no-flag {
+    margin-left: 0;
+  }
 }
 
 .scorer__primary {
@@ -79,6 +83,7 @@
   justify-content: center;
   border-radius: 2px;
   margin-right: 10px;
+  margin-left: 10px;
   font-weight: bold;
 }
 

@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import noPhoto from '../../../../images/no-image.png';
+import { addNewClub } from '../../../../redux/clubs-reducer';
 import SearchElem from '../../SearchElem/SearchElem';
 import BestScorers from '../BestScorers/BestScorers';
 import LeagueDesignations from '../LeagueDesignations/LeagueDesignations';
 
 const LeagueTable = ({league, isFetchError, scorers}) => {
   const [search, setSearch] = useState('');
+  const dispatch = useDispatch();
 
   if(isFetchError) {
     return null;
+  }
+
+  const addClub = (club) => {
+    dispatch(addNewClub(club));
   }
 
   const code = league.competition.code;
@@ -67,7 +74,7 @@ const LeagueTable = ({league, isFetchError, scorers}) => {
                       <td className="table-td">{elem.goalsAgainst}</td>
                       <td className="table-td">{elem.goalDifference}</td>
                       <td className="table-td">{elem.points}</td>
-                      <td className="table-td toggle-club" title="Save the club">
+                      <td className="table-td toggle-club" title="Save the club" onClick={() => {addClub(elem.team)}}>
                         <i className="fas fa-folder-plus"></i>
                       </td>
                     </tr>

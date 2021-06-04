@@ -1,12 +1,48 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Footer from '../../common/Footer/Footer';
 import "./Clubs.scss";
+import noPhoto from '../../../images/no-image.png';
+import {removeFootballClub} from '../../../redux/clubs-reducer';
 
 const Clubs = () => {
+  const clubs = useSelector(state => state.clubsPage.clubs);
+  const dispatch = useDispatch();
+  
+
+  const removeClub = (id) => {
+    dispatch(removeFootballClub(id));
+  }
+
+
   return (
     <div className="clubs flex-container-column">
       <div className="container">
-        <h1 className="clubs__title">Saved clubs</h1>
+        {
+         !clubs.length ? <div>Please, save clubs to view information.</div> : 
+          <div className="clubs-wrapper">
+            <aside className="sidebar-club">
+              {clubs.map(elem => {
+                return (
+                  <div key={elem.id} className="current-club">
+                    <div className="club-pic">
+                      <img className="club-img" src={elem.crestUrl || noPhoto} alt={elem.name} title={elem.name}/>
+                    </div>
+                    <div className="club-name">{elem.name}</div>
+                    <div className={"club-remove"} title="Remove club" onClick={() => {removeClub(elem.id)}}>
+                      <div className="remove-icon">
+                        <i className="fas fa-minus"></i>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+            </aside>
+            <div className="club-content">
+              Content
+            </div>
+          </div>
+        }
       </div>
       <Footer/>
     </div>

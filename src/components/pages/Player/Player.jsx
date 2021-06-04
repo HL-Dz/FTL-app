@@ -51,7 +51,7 @@ const Player = () => {
                 <div className="player-card__country">
                   <span>Country of birth: </span>
                   {
-                    !player.countryOfBirth ? <span class="no-flag">?</span> :
+                    !player.countryOfBirth ? <span className="no-flag">?</span> :
                     <img className="flag" src={countryOfBirth} alt={player.countryOfBirth} title={player.countryOfBirth}/>
                   }
                 </div>

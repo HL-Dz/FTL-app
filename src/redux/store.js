@@ -4,6 +4,7 @@ import leagueReducer from "./league-reducer.js";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import teamReducer from "./team-reducer.js";
 import playerReducer from "./player-reducer.js";
+import clubsReducer from "./clubs-reducer.js";
 
 const persistedState = localStorage.getItem('mainState')
                         ? JSON.parse(localStorage.getItem('mainState'))
@@ -12,7 +13,8 @@ const persistedState = localStorage.getItem('mainState')
 let rootReducer = combineReducers({
   leaguePage: leagueReducer,
   teamPage: teamReducer,
-  playerPage: playerReducer
+  playerPage: playerReducer,
+  clubsPage: clubsReducer
 });
 
 let store = createStore(rootReducer, persistedState, composeWithDevTools(applyMiddleware(thunkMiddleware)));

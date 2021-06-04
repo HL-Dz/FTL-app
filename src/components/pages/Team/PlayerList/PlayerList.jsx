@@ -56,14 +56,20 @@ const PlayerList = ({team, isFetchError}) => {
                           {elem.name}
                         </NavLink>
                       </td>
-                      <td className="table-td">{elem.position}</td>
+                      <td className="table-td">{elem.position || 'No data'}</td>
                       <td className="table-td">
-                        <img className="flag" src={nationality} alt={elem.nationality} title={elem.nationality}/>
+                        {
+                          !elem.nationality ? <span className="no-flag" title="No flag">?</span> : 
+                          <img className="flag" src={nationality} alt={elem.nationality} title={elem.nationality}/>
+                        }
                       </td>
                       <td className="table-td">
-                        <img className="flag" src={countryOfBirth} alt={elem.countryOfBirth} title={elem.countryOfBirth}/>
+                        {
+                          !elem.countryOfBirth ? <span className="no-flag" title="No flag">?</span> : 
+                          <img className="flag" src={countryOfBirth} alt={elem.countryOfBirth} title={elem.countryOfBirth}/>
+                        }
                       </td>
-                      <td className="table-td">{elem.role}</td>
+                      <td className="table-td">{elem.role || 'No data'}</td>
                     </tr>
                   )
                 })

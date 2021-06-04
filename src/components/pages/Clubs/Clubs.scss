@@ -1,3 +1,90 @@
+@use "../../../sass/abstracts";
+
 .clubs {
   height: 100vh;
+}
+
+.clubs-wrapper {
+  display: flex;
+  padding-bottom: 30px;
+}
+
+.sidebar-club {
+  min-width: 300px;
+}
+
+// CLUB-----------------------------
+.current-club {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #333333b3;
+  margin-bottom: 5px;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 3px;
+  @extend %transition;
+
+  &:hover {
+    .club-pic {
+      margin-left: 30px;
+    }
+  }
+}
+
+.club-name {
+  font-weight: bold;
+  color: rgb(199, 216, 205);
+  font-size: 1.4rem;
+  border-radius: 5px;
+  flex-basis: 100%;
+  margin: 0 10px;
+}
+
+.club-pic {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  @extend %transition;
+}
+
+.club-img {
+  max-width: 100%;
+  height: auto;
+}
+
+.club-remove {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  width: 35px;
+  font-size: 2rem;
+  color: rgb(199, 216, 205);
+  background: #333333b3;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  &:hover {
+    background: #424242;
+  }
+}
+
+.remove-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 100%;
+}
+// -----------------------------
+
+.club-content {
+  width: 100%;
+  padding: 0 10px;
+  margin-left: 10px;
 }

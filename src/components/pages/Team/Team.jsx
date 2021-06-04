@@ -16,7 +16,6 @@ const Team = () => {
   const isFetchError = useSelector(state => state.teamPage.isFetchError);
   const isLoading = useSelector(state => state.teamPage.isLoading);
 
-
   useEffect(() => {
     dispatch(getTeamProfile(id));
   }, [dispatch, id])
