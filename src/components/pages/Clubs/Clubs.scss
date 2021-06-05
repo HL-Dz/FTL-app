@@ -12,6 +12,8 @@
 .sidebar-club {
   min-width: 300px;
   max-width: 300px;
+  overflow: hidden;
+  transition: height 0.5s ease;
 }
 
 // CLUB-----------------------------
@@ -27,9 +29,15 @@
   border-radius: 3px;
   @extend %transition;
 
+  &_inactive {
+    transform: translateX(-100%);
+    margin-bottom: -13.2%;
+    opacity: 0;
+  }
+
   &:hover {
     .club-pic {
-      margin-left: 20px;
+      margin-left: 5px;
     }
   }
 }
@@ -42,6 +50,7 @@
   flex-basis: 100%;
   margin: 0 10px;
   padding-right: 35px;
+  @extend %transition;
 }
 
 .club-pic {

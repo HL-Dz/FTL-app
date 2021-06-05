@@ -3,15 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import Footer from '../../common/Footer/Footer';
 import "./Clubs.scss";
 import noPhoto from '../../../images/no-image.png';
-import {removeFootballClub} from '../../../redux/clubs-reducer';
+import {removeSavedClub} from '../../../redux/clubs-reducer';
 
 const Clubs = () => {
   const clubs = useSelector(state => state.clubsPage.clubs);
+  const inActiveItem = useSelector(state => state.clubsPage.inActiveItem);
   const dispatch = useDispatch();
   
 
   const removeClub = (id) => {
-    dispatch(removeFootballClub(id));
+    dispatch(removeSavedClub(id));
   }
 
 
@@ -24,7 +25,7 @@ const Clubs = () => {
             <aside className="sidebar-club">
               {clubs.map(elem => {
                 return (
-                  <div key={elem.id} className="current-club">
+                  <div key={elem.id} className={`${elem.cls} ${elem.id === inActiveItem ? "current-club_inactive" : ""}`}>
                     <div className="club-pic">
                       <img className="club-img" src={elem.crestUrl || noPhoto} alt={elem.name} title={elem.name}/>
                     </div>
