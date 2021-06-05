@@ -29,6 +29,7 @@ const Player = () => {
     countryOfBirth = `../../images/Countries/${player.countryOfBirth}.png`;
   }
 
+
   return (
     <div className="football-player flex-container-column">
       {isLoading && <Loading/>}

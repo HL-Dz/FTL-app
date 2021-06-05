@@ -11,6 +11,7 @@
 
 .sidebar-club {
   min-width: 300px;
+  max-width: 300px;
 }
 
 // CLUB-----------------------------
@@ -28,7 +29,7 @@
 
   &:hover {
     .club-pic {
-      margin-left: 30px;
+      margin-left: 20px;
     }
   }
 }
@@ -40,6 +41,7 @@
   border-radius: 5px;
   flex-basis: 100%;
   margin: 0 10px;
+  padding-right: 35px;
 }
 
 .club-pic {

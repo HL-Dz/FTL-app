@@ -76,8 +76,8 @@ const resetMatches = () => ({type: RESET_MATCHES});
 
 export const getPlayerProfile = (player) => async dispatch =>  {
     dispatch(resetPlayer(true));
-    dispatch(setFetchPlayerError(false));
     dispatch(resetMatches());
+    dispatch(setFetchPlayerError(false));
     await delay(700);
     try {
       const response = await playerAPI.getPlayer(player);

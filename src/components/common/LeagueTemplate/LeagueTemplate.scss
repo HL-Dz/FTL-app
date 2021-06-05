@@ -99,12 +99,17 @@
   }
 }
 
+.checked-club {
+  color: rgb(98, 197, 111);
+  i {
+    animation: checked-club 0.5s ease;
+  }
+}
+
 .toggle-club {
   font-size: 2.5rem;
   cursor: pointer;
   color: rgb(159, 161, 159);
-  border-left: 1px solid rgb(63, 65, 63);
-  border-right: 1px solid rgb(63, 65, 63);
   @extend %transition;
 
   & i {
@@ -268,5 +273,20 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes checked-club {
+  0% {
+    transform: scale(1);
+    color: #9fa19f;
+  }
+  50% {
+    transform: scale(2.3);
+    color: #9fa19f;
+  }
+  100% {
+    transform: scale(1);
+    color: rgb(98, 197, 111);
   }
 }

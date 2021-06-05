@@ -15,7 +15,7 @@ const clubsReducer = (state = initialState, action) => {
       }
       return {
         ...state,
-        clubs: [...state.clubs, club]
+        clubs: [club, ...state.clubs]
       }
     case REMOVE_CLUB: 
       return {
