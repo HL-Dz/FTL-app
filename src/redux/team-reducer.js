@@ -26,17 +26,13 @@ const teamReducer = (state = initialState, action) => {
         ...state,
         isLoading: action.isLoading
       }
-    case RESET_TEAM_PROFILE:
-      return {
-        ...state,
-        team: null,
-        isLoading: action.isLoading
-      }
     case SET_FETCH_TEAM_ERROR: 
       return {
         ...state,
         isFetchError: action.isFetchError
       }
+    case RESET_TEAM_PROFILE:
+      return initialState
     default:
       return state
   }
@@ -45,12 +41,13 @@ const teamReducer = (state = initialState, action) => {
 
 const setTeamProfile = (team) => ({type: SET_TEAM, team});
 const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading});
-const resetTeam = (isLoading) => ({type: RESET_TEAM_PROFILE, isLoading});
 const setFetchTeamError = (isFetchError) => ({type: SET_FETCH_TEAM_ERROR, isFetchError});
+export const resetTeam = () => ({type: RESET_TEAM_PROFILE});
 
 
 
 export const getTeamProfile = (team) => async dispatch =>  {
+  dispatch(setFetchTeamError(false));
     dispatch(resetTeam(true))
     try {
       await delay(500);
