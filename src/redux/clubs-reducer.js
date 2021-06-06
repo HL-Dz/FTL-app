@@ -44,9 +44,9 @@ const removeFootballClub = (clubId) => ({type: REMOVE_CLUB, clubId});
 
 export const removeSavedClub = (id) => async dispatch => {
   dispatch(setInactiveItem(id));
-  await delay(700);
-  dispatch(setInactiveItem(null));
+  await delay(300);
   dispatch(removeFootballClub(id));
+  dispatch(setInactiveItem(null));
 }
 
 

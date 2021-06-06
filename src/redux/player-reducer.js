@@ -7,14 +7,13 @@ const RESET_PLAYER_PROFILE = 'RESET_PLAYER_PROFILE';
 const SET_FETCH_PLAYER_ERROR = 'SET_FETCH_PLAYER_ERROR';
 const SET_MATCHES = 'SET_MATCHES';
 const IS_LOADING_INFO = "IS_LOADING_INFO";
-const RESET_MATCHES = "RESET_MATCHES";
-
+const RESET_ALL_DATA = 'RESET_ALL_DATA';
 
 let initialState = {
   player: null,
+  matches: null,
   isLoading: false,
   isFetchError: false,
-  matches: null,
   isLoadingMatches: false
 };
 
@@ -36,6 +35,7 @@ const playerReducer = (state = initialState, action) => {
         ...state,
         player: null,
         isLoading: action.isLoading,
+        matches: null,
         isLoadingMatches: false
       }
     case SET_FETCH_PLAYER_ERROR: 
@@ -53,11 +53,8 @@ const playerReducer = (state = initialState, action) => {
         ...state,
         isLoadingMatches: action.isLoadingMatches
       }
-    case RESET_MATCHES: 
-      return {
-        ...state,
-        matches: null,
-      }
+    case RESET_ALL_DATA:
+      return initialState
     default:
       return state
   }
@@ -68,16 +65,14 @@ const setPlayerProfile = (player) => ({type: SET_PLAYER, player});
 const playerIsLoading = (isLoading) => ({type: PLAYER_IS_LOADING, isLoading});
 const resetPlayer = (isLoading) => ({type: RESET_PLAYER_PROFILE, isLoading});
 const setFetchPlayerError = (isFetchError) => ({type: SET_FETCH_PLAYER_ERROR, isFetchError});
-
 const setMatches = (matches) => ({type: SET_MATCHES, matches});
 const isLoadingMatches = (isLoadingMatches) => ({type: IS_LOADING_INFO, isLoadingMatches}); 
-const resetMatches = () => ({type: RESET_MATCHES});
+export const resetAllData = () => ({type: RESET_ALL_DATA});
 
 
 export const getPlayerProfile = (player) => async dispatch =>  {
-    dispatch(resetPlayer(true));
-    dispatch(resetMatches());
     dispatch(setFetchPlayerError(false));
+    dispatch(resetPlayer(true));
     await delay(700);
     try {
       const response = await playerAPI.getPlayer(player);

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { getPlayerProfile } from '../../../redux/player-reducer';
+import { getPlayerProfile, resetAllData } from '../../../redux/player-reducer';
 import Footer from '../../common/Footer/Footer';
 import "./Player.scss";
 import photo from '../../../images/noname.jpg'
@@ -21,6 +21,8 @@ const Player = () => {
 
   useEffect(() => {
     dispatch(getPlayerProfile(id));
+
+    return () => { dispatch(resetAllData())}
   }, [dispatch, id]);
 
   let countryOfBirth = '';

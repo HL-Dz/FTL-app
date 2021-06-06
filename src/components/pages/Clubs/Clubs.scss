@@ -13,7 +13,7 @@
   min-width: 300px;
   max-width: 300px;
   overflow: hidden;
-  transition: height 0.5s ease;
+  transition: height 0.5s ease-in-out;
 }
 
 // CLUB-----------------------------
@@ -27,7 +27,7 @@
   cursor: pointer;
   overflow: hidden;
   border-radius: 3px;
-  @extend %transition;
+  transition: all 0.3s ease-in-out;
 
   &_inactive {
     transform: translateX(-100%);
