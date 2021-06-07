@@ -10,8 +10,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-right: 1px solid rgb(71, 71, 71);
-  border-left: 1px solid rgb(71, 71, 71);
+  border-right: 1px dashed rgb(71, 71, 71);
+  border-left: 1px dashed rgb(71, 71, 71);
   cursor: pointer;
   opacity: 0.5;
   @extend %transition;

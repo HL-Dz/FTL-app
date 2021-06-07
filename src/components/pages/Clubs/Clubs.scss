@@ -16,6 +16,19 @@
   transition: height 0.5s ease-in-out;
 }
 
+.search-club {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  margin-bottom: 5px;
+  color: #c7d8cd;
+  font-weight: bold;
+  background: rgb(55,170,89);
+  background: linear-gradient(0deg, rgba(61, 223, 96, 0.185) 0%, rgb(20, 20, 20) 100%);
+}
+
 // CLUB-----------------------------
 .current-club {
   position: relative;

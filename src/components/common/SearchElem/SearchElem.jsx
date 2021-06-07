@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import "./SearchElem.scss";
 
 const SearchElem = ({search, setSearch}) => {
@@ -19,6 +19,19 @@ const SearchElem = ({search, setSearch}) => {
   const changeSearchElem = (e) => {
     setSearch(e.target.value);
   }
+
+  const closeFormWithKeyPress  =  e => {
+    if(e.key === 'Escape') {
+      setIsActive(false);
+      setSearch('');
+    } 
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', closeFormWithKeyPress);
+
+    return () => document.removeEventListener('keydown', closeFormWithKeyPress);
+  });
 
   return (
     <>
