@@ -40,7 +40,7 @@
   cursor: pointer;
   overflow: hidden;
   border-radius: 3px;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in-out;
   border: 1px solid transparent;
 
   &_inactive {
