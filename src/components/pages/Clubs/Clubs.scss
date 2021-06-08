@@ -40,7 +40,8 @@
   cursor: pointer;
   overflow: hidden;
   border-radius: 3px;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
 
   &_inactive {
     transform: translateX(-100%);

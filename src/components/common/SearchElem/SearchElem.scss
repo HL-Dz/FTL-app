@@ -12,12 +12,21 @@
   justify-content: center;
   border-right: 1px dashed rgb(71, 71, 71);
   border-left: 1px dashed rgb(71, 71, 71);
+  border-radius: 3px;
   cursor: pointer;
   opacity: 0.5;
   @extend %transition;
 
   &:hover {
     opacity: 1;
+  }
+
+  i {
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    animation: active-icon 2s ease infinite;
   }
 }
 
@@ -78,5 +87,17 @@
 
   &:hover {
     color: rgb(202, 71, 71);
+  }
+}
+
+@keyframes active-icon {
+  0% {
+  transform: scale(1);
+  }
+  50% {
+    transform: scale(1.35);
+  }
+  100% {
+    transform: scale(1);
   }
 }

@@ -24,6 +24,7 @@ const SearchElem = ({search, setSearch}) => {
     if(e.key === 'Escape') {
       setIsActive(false);
       setSearch('');
+      textInput.current.blur();
     } 
   }
 

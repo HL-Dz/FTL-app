@@ -22,8 +22,8 @@ const LeagueTable = ({league, isFetchError, scorers}) => {
     return savedClubs;
   }
 
-  const addClub = (club) => {
-    dispatch(addNewClub(club));
+  const addClub = (club, num) => {
+    dispatch(addNewClub(club, num));
   }
 
   const code = league.competition.code;
@@ -60,7 +60,7 @@ const LeagueTable = ({league, isFetchError, scorers}) => {
               <>
                 {
                   filteredLeague.length === 0 ? <tr><td></td><td className="td-no-matches">No matches...</td></tr> :
-                  filteredLeague.map(elem => {
+                  filteredLeague.map(elem=> {
                   const name = elem.team.name.trim().toLowerCase().replace(/\s/g, "-");
                   return (
                     <tr className="table-tr" key={elem.team.id}>
@@ -86,7 +86,7 @@ const LeagueTable = ({league, isFetchError, scorers}) => {
                         <td className="table-td checked-club" title="Saved">
                           <i className="fas fa-check"></i>
                         </td> : 
-                        <td className="table-td toggle-club" title="Save the club" onClick={() => {addClub(elem.team)}}>
+                        <td className="table-td toggle-club" title="Save the club" onClick={() => {addClub(elem.team, Date.now())}}>
                           <i className="fas fa-folder-plus"></i>
                         </td>
                       }
