@@ -1,0 +1,41 @@
+.no-clubs {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  padding: 15px;
+  background: #1c1d1c;
+  border-radius: 3px;
+  animation: diplay-saved-clubs 0.5s ease-in-out;
+}
+
+.no-clubs__pic {
+  max-width: 250px;
+}
+
+.no-clubs__img {
+  max-width: 100%;
+  height: auto;
+}
+
+.no-clubs__text {
+  border: 1px dashed rgb(54, 54, 54);
+  padding: 60px 10px;
+  width: 100%;
+  font-size: 2.3rem;
+  border-radius: 3px;
+  text-align: center;
+  font-weight: bold;
+  color: transparent;    
+	-webkit-background-clip: text;
+	background-clip: text;
+	background-image: linear-gradient(90deg, #e6e6e2 20%, #b8bd87 50%);
+}
+
+@keyframes diplay-saved-clubs {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

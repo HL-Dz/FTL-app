@@ -4,6 +4,7 @@ import Footer from '../../common/Footer/Footer';
 import "./Clubs.scss";
 import SearchElem from '../../common/SearchElem/SearchElem';
 import SavedClub from './SavedClub/SavedClub';
+import NoClubsInfo from './NoClubs/NoClubsInfo';
 
 const Clubs = () => {
   const clubs = useSelector(state => state.clubsPage.clubs);
@@ -26,7 +27,7 @@ const Clubs = () => {
     <div className="clubs flex-container-column">
       <div className="container">
         {
-         !clubs.length ? <div>Please, save clubs to view information.</div> : 
+         !clubs.length ? <NoClubsInfo/> : 
           <div className="clubs-wrapper">
             <aside className="sidebar-club">
               <div className="search-club">
