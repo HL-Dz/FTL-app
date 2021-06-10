@@ -47,8 +47,9 @@ export const resetTeam = () => ({type: RESET_TEAM_PROFILE});
 
 
 export const getTeamProfile = (team) => async dispatch =>  {
-  dispatch(setFetchTeamError(false));
-    dispatch(resetTeam(true))
+    dispatch(setFetchTeamError(false));
+    dispatch(resetTeam())
+    dispatch(toggleIsLoading(true));
     try {
       await delay(500);
       const response = await teamAPI.getTeam(team);

@@ -1,0 +1,52 @@
+@use "../../../../sass/abstracts";
+
+.club-content {
+  width: 100%;
+  padding: 0 10px;
+  position: relative;
+  transition: all 0.5s ease;
+
+  .section-primary {
+    padding: 20px 0;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    animation: transparency-animation 0.5s ease;
+  }
+
+  .team__name {
+    font-size: 3rem;
+  }
+
+  .section-description {
+    padding-top: 35px;
+    border-radius: 5px;
+    animation: transparency-animation 0.5s ease;
+  }
+
+  .team__pic {
+    padding: 0 20px;
+    margin-right: 20px;
+    &:after {
+      background: rgba(23, 24, 27, 0.1);
+    }
+  }
+
+  .error {
+    position: relative;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    transform: translateX(0);
+  }
+
+  #loader {
+    position: absolute;
+    left: 50%;
+    top: 0;
+  }
+
+  .breadcrumbs {
+    width: 100%;
+  }
+}

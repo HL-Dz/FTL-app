@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import noPhoto from '../../../../images/no-image.png';
 import { changeOrderOfClubs, removeSavedClub, setCurrentClub } from '../../../../redux/clubs-reducer';
+import { getTeamProfile } from '../../../../redux/team-reducer';
 
 const SavedClub = (props) => {
   const dispatch = useDispatch();
@@ -18,20 +19,22 @@ const SavedClub = (props) => {
 
   const dragEndHandler = (e) => {
     e.currentTarget.style.background = '#333333b3';
-    e.currentTarget.style.borderColor = 'transparent';
   };
 
   const dragOverHandler = (e) => {
     e.preventDefault();
     e.currentTarget.style.background = 'none';
-    e.currentTarget.style.borderColor = 'grey';
   }
 
   const dropHandler = (e, club) => {
     e.preventDefault();
     dispatch(changeOrderOfClubs(club));
     e.currentTarget.style.background = '#333333b3';
-    e.currentTarget.style.borderColor = 'transparent';
+  }
+
+  const showCurrentTeam = (e, elem) => {
+    if(e.target.className === 'club-remove' || e.target.className === 'club-remove' || e.target.className === 'fas fa-minus') return;
+    dispatch(getTeamProfile(elem.id));
   }
   
   return (
@@ -43,6 +46,7 @@ const SavedClub = (props) => {
       onDragEnd={(e) => {dragEndHandler(e)}}
       onDragOver={(e) => {dragOverHandler(e)}}
       onDrop={(e) => {dropHandler(e, elem)}}
+      onClick={(e) => {showCurrentTeam(e, elem)}}
     >
       <div className="club-pic">
         <img className="club-img" src={crestUrl || noPhoto} alt={name} title={name}/>

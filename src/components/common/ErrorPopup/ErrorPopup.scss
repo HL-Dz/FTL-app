@@ -15,9 +15,20 @@
   z-index: 5;
   border-top: 1px dashed rgb(99, 98, 98);
   border-bottom: 1px dashed rgb(99, 98, 98);
+  transition: all 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  animation: show-error 0.7s ease-in-out;
 }
 
 .error-icon {
   font-size: 3rem;
   margin-right: 10px;
+}
+
+@keyframes show-error {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

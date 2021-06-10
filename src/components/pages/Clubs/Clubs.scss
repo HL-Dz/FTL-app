@@ -41,7 +41,6 @@
   overflow: hidden;
   border-radius: 3px;
   transition: all 0.3s ease-in-out;
-  border: 1px solid transparent;
 
   &_inactive {
     transform: translateX(-100%);
@@ -85,12 +84,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
   right: 0;
   width: 35px;
   font-size: 2rem;
   color: rgb(199, 216, 205);
   background: #333333b3;
-  height: 100%;
   z-index: 1;
   transition: all 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
 
@@ -103,13 +102,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 35px;
   height: 100%;
+  width: 35px;
+  width: 100%;
+
+  i {
+    display: inline-flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
 }
 // -----------------------------
-
-.club-content {
-  width: 100%;
-  padding: 0 10px;
-  margin-left: 10px;
-}

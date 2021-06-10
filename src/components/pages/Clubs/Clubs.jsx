@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, {useState } from 'react';
 import { useSelector } from 'react-redux';
 import Footer from '../../common/Footer/Footer';
 import "./Clubs.scss";
 import SearchElem from '../../common/SearchElem/SearchElem';
 import SavedClub from './SavedClub/SavedClub';
 import NoClubsInfo from './NoClubs/NoClubsInfo';
+import ClubContent from './ClubContent/ClubContent';
 
 const Clubs = () => {
   const clubs = useSelector(state => state.clubsPage.clubs);
@@ -45,9 +46,7 @@ const Clubs = () => {
                 )
               })}
             </aside>
-            <div className="club-content">
-              Content
-            </div>
+            <ClubContent />
           </div>
         }
       </div>
