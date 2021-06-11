@@ -46,7 +46,7 @@ const Clubs = () => {
                 )
               })}
             </aside>
-            <ClubContent />
+            <ClubContent/>
           </div>
         }
       </div>

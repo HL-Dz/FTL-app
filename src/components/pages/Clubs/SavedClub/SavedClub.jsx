@@ -30,6 +30,7 @@ const SavedClub = (props) => {
     e.preventDefault();
     dispatch(changeOrderOfClubs(club));
     e.currentTarget.style.background = '#333333b3';
+    e.currentTarget.style.marginBottom = '5px';
   }
 
   const showCurrentTeam = (e, elem) => {

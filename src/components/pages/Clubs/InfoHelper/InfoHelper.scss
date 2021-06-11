@@ -1,0 +1,54 @@
+@use "../../../../sass/abstracts";
+
+.info-helper {
+  position: absolute;
+  border: 1px solid #475751;
+  border-left-color: transparent;
+  border-radius: 0 10px 10px 0;
+  top: 0;
+  bottom: 5px;
+  width: 10px;
+
+  &_hidden {
+    opacity: 0;
+    @extend %transition;
+  }
+}
+
+.gif-pic {
+  position: absolute;
+  left: 25px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 0 15px #959695c5;
+
+  &:before {
+    content: '';
+    position: absolute;
+    right: calc(100% + 1px);
+    top: 0px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px;
+    border-color: transparent #626362c5 transparent transparent;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    right: 100%;
+    top: 1px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 9px;
+    border-color: transparent #0f0f0f transparent transparent;
+  }
+}
+
+.gif-pic__img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 2px;
+}

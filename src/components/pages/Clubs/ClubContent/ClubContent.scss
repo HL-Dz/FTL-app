@@ -34,10 +34,9 @@
 
   .error {
     position: relative;
-    margin: 0 auto;
     top: 0;
-    left: 0;
-    transform: translateX(0);
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   #loader {

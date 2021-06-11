@@ -5,6 +5,7 @@ import ErrorPopup from '../../../common/ErrorPopup/ErrorPopup';
 import Loading from '../../../common/Loading/Loading';
 import TeamDescription from '../../Team/TeamDescription/TeamDescription';
 import TeamPrimary from '../../Team/TeamPrimary/TeamPrimary';
+import InfoHelper from '../InfoHelper/InfoHelper';
 import './ClubContent.scss';
 
 const ClubContent = () => {
@@ -13,16 +14,20 @@ const ClubContent = () => {
   const isFetchError = useSelector(state => state.teamPage.isFetchError);
   const isLoading = useSelector(state => state.teamPage.isLoading);
 
+  const errorMessage = ' Please, select the club a little later.';
+
   useEffect(() => {
-    return () => { dispatch(resetTeam())}
+    return () => {
+      dispatch(resetTeam());
+    }
   }, [dispatch])
 
 
   return (
     <div className="club-content">
-      {isFetchError && <ErrorPopup/>}
+      {isFetchError && <ErrorPopup message={errorMessage}/>}
       { (isLoading) ? <Loading/> : 
-        !team ? null : 
+        !team  ? <InfoHelper isFetchError={isFetchError}/> : 
         <>
           <TeamPrimary team={team} isFetchError={isFetchError}/>
           <TeamDescription team={team} isFetchError={isFetchError}/>
