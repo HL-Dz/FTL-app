@@ -22,14 +22,13 @@ const ClubContent = () => {
     }
   }, [dispatch])
 
-
   return (
     <div className="club-content">
       {isFetchError && <ErrorPopup message={errorMessage}/>}
       { (isLoading) ? <Loading/> : 
         !team  ? <InfoHelper isFetchError={isFetchError}/> : 
         <>
-          <TeamPrimary team={team} isFetchError={isFetchError}/>
+          <TeamPrimary team={team} isFetchError={isFetchError} shortList={true}/>
           <TeamDescription team={team} isFetchError={isFetchError}/>
         </>
       }

@@ -1,10 +1,13 @@
 import React from 'react'
+import ShortList from '../../Clubs/ShortList/ShortList';
 
-const TeamPrimary = ({team, isFetchError}) => {
+const TeamPrimary = ({team, isFetchError, shortList}) => {
   if(isFetchError) return null;
+
   
   return (
     <section className="section-primary">
+      {!shortList ? null : <ShortList team={team}/>}
       <div className="team-container">
         {
           !team ? <h1 className='team__name loading-bg'>Loading data...</h1> :

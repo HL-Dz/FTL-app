@@ -4,7 +4,6 @@
   position: absolute;
   border: 1px solid #475751;
   border-left-color: transparent;
-  border-radius: 0 10px 10px 0;
   top: 0;
   bottom: 5px;
   width: 10px;
@@ -25,13 +24,13 @@
   &:before {
     content: '';
     position: absolute;
-    right: calc(100% + 1px);
+    right: 100%;
     top: 0px;
     width: 0;
     height: 0;
     border-style: solid;
     border-width: 10px;
-    border-color: transparent #626362c5 transparent transparent;
+    border-color: transparent #474747c5 transparent transparent;
   }
 
   &:after {

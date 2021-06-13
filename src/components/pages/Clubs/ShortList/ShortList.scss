@@ -1,0 +1,157 @@
+@use "../../../../sass/abstracts";
+
+.short-list {
+  position: absolute;
+  right: 20px;
+  min-width: 300px;
+  max-width: 300px;
+  background: #303131;
+  cursor: pointer;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.short-list-header {
+  padding: 5px;
+}
+
+.short-list-content {
+  padding: 5px;
+}
+
+.short-list-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  display: none;
+  z-index: -1;
+
+  &_active {
+    background: transparent;
+    display: block;
+    cursor: auto;
+  }
+}
+
+.short-list__title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  @extend %transition;
+}
+
+.short-list__icon {
+  margin: 0 15px;
+  font-size: 1.7rem;
+}
+
+.short-list__players {
+  display: flex;
+  flex-direction: column;
+  max-height: 400px;
+  background: #1e1e21;
+  overflow-y: auto;
+  animation: diplay-short-list__players 0.5s ease-in-out;
+  @extend %transition;
+
+  &::-webkit-scrollbar {
+      width: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+      background: #7cac8f;
+      background: #4d554f;
+      border-radius: 7px;
+  }
+
+  &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 1px transparent;
+  }
+}
+
+.search-player {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  background: #3e4240b3;
+  padding: 7px 0;
+  @extend %transition;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  animation: diplay-short-list__players 0.5s ease-in-out;
+}
+
+.no-players {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0;
+  margin-top: 5px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;;
+  @extend %transition;
+  animation: no-players 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.short-list__player {
+  border-top: 1px solid rgb(72, 73, 72);
+
+  &:first-child {
+    border-top: none;
+  }
+
+  a {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    font-weight: bold;
+    @extend %transition;
+
+    &:hover {
+      background: rgb(8, 19, 14);
+    }
+
+    .flag {
+      width: 25px;
+    }
+
+    .no-flag {
+      margin-right: 0;
+      width: 25px;
+    }
+  }
+}
+
+@keyframes diplay-short-list__players {
+  0% {
+    opacity: 0;
+    margin-top: -10px;
+  }
+  50% {
+    margin-top: 15px;
+  }
+  100% {
+    opacity: 1;
+    margin-top: 0px;
+  }
+}
+
+@keyframes no-players {
+  0% {
+    opacity: 0;
+    margin-top: -20px;
+  }
+  100% {
+    opacity: 1;
+    margin-top: 5px;
+  }
+}
