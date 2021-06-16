@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1400px;
+  max-width: 1500px;
   width: 100%;
   padding: 0 20px;
   margin: 0 auto;
@@ -150,6 +150,10 @@
     width: 100%;
     justify-content: center;
   }
+}
+
+.fa-newspaper {
+  color: rgb(135, 111, 199);
 }
 
 .fa-globe {

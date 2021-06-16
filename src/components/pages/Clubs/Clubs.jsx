@@ -25,7 +25,7 @@ const Clubs = () => {
   }
 
   return (
-    <div className="clubs flex-container-column">
+    <div className="primary-container clubs">
       <div className="container">
         {
          !clubs.length ? <NoClubsInfo/> : 

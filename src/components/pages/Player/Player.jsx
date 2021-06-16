@@ -33,7 +33,7 @@ const Player = () => {
 
 
   return (
-    <div className="football-player flex-container-column">
+    <div className="primary-container football-player">
       {isLoading && <Loading/>}
       {isFetchError && <ErrorPopup/>}
       {

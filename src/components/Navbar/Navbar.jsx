@@ -23,6 +23,12 @@ const Navbar = (props) => {
           <i className={click ? "fa fa-times" : "fa fa-bars"}></i>
         </div>
         <ul className={click ? "nav-menu nav-menu-active" : "nav-menu"}>
+          <li className="nav-item">
+            <Link to="/news" className="nav__link" onClick={closeMenu}>
+              News
+              <i className="far fa-newspaper"></i>
+            </Link>
+          </li>
           <li className="nav-item" onMouseOver={showDropdopwn} onMouseOut={hideDropdown}>
             <Link to="/" className="nav__link" onClick={closeMenu}>
               Leagues

@@ -24,7 +24,7 @@ const Team = () => {
 
 
   return (
-    <div className="team flex-container-column">
+    <div className="primary-container team">
       {isFetchError && <ErrorPopup/>}
       <TeamPrimary team={team} isFetchError={isFetchError}/>
       <TeamDescription team={team} isFetchError={isFetchError}/>

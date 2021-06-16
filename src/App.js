@@ -18,6 +18,7 @@ import Team from "./components/pages/Team/Team";
 import ErediviseContainer from "./components/pages/Leagues/Eredivise/ErediviseContainer";
 import BrasilContainer from "./components/pages/Leagues/Brasil/BrasilContainer";
 import Player from "./components/pages/Player/Player";
+import News from "./components/pages/News/News";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={Leagues}/>
         <Route path="/clubs" component={Clubs}/>
+        <Route path="/news" component={News}/>
         <Route path="/documentation" component={Documentation}/>
         <Route path="/players/:id/:name" component={Player}/>
         <Route path="/teams/:id/:name" component={Team}/>

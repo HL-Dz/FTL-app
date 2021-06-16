@@ -4,7 +4,7 @@ import "./EuropeanC.scss";
 
 const EuropeanLeague = () => {
   return (
-    <div className="european-league flex-container-column">
+    <div className="primary-container european-league">
       <div className="container">
         <h1 className="eurepean-c-title">European Championships</h1>
       </div>
