@@ -1,11 +1,18 @@
-import React from 'react'
+import React from 'react';
+import "./News.scss";
 import Footer from '../../common/Footer/Footer';
+import SignIn from '../../common/Auth/SignIn';
 
 const News = () => {
+  const isAuth = false;
   return (
     <div className="primary-container news">
       <div className="container">
-        <h1 className="news__title">News</h1>
+        {
+          !isAuth ? <SignIn/> : (
+            <h1 className="news__title">News</h1>
+          )
+        }
       </div>
       <Footer/>
     </div>

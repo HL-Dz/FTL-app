@@ -1,0 +1,109 @@
+@use "../../../sass/abstracts/" as *;
+
+.registration {
+  position: absolute;
+  left: 0;
+  top: -100%;
+  width: 100%;
+  height: 100%;
+  background: red;
+  z-index: 1;
+  padding: 10px;
+  background: linear-gradient(0deg, #19331e 0%, #181a19 52%);
+  transition: top 0.7s ease-in-out;
+
+  &_active {
+    top: 0;
+  }
+}
+
+.registration__form {
+  padding-top: 30px;
+}
+
+
+.registration__label {
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 1.5px;
+}
+
+.registration__input {
+  background: none;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgb(63, 63, 63);
+  padding: 5px 0;
+  font-size: 1.7rem;
+  color: rgb(212, 211, 211);
+  text-align: center;
+}
+
+.registration__row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.registration__error {
+  color: rgb(236, 75, 75);
+  font-weight: bold;
+  min-height: 20px;
+  text-align: center;
+}
+
+.registration__button {
+  width: 100%;
+  background: #2fb96d80;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 2px;
+  color: rgb(209, 200, 200);
+  font-weight: bold;
+  font-size: 1.9rem;
+  margin-top: 20px;
+}
+
+.registration__spare {
+  text-align: right;
+  margin-top: 10px;
+  font-size: 1.5rem;
+  color: rgb(192, 190, 190);
+
+  span {
+    color: rgb(60, 196, 132);
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 7px;
+  }
+}
+
+.registration__close {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.registration__close-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: #2fb96d80;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 1;
+  }
+}
