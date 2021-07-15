@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "./News.scss";
 import Footer from '../../common/Footer/Footer';
 import SignIn from '../../common/Auth/SignIn';
+import firebase from '../../../firebase';
 
 const News = () => {
   const isAuth = false;
+
+  const newsRef = firebase.firestore().collection("news");
+
+  const getNews = () => {
+    newsRef
+      .onSnapshot((querySnapshot) => {
+        const items = [];
+        querySnapshot.forEach((doc) => {
+          items.push(doc.data())
+        })
+      })
+  }
+
+  useEffect(() => {
+    getNews();
+  }, [])
+
+
   return (
     <div className="primary-container news">
       <div className="container">

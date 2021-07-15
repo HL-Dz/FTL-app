@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 import { getPlayerProfile, resetAllData } from '../../../redux/player-reducer';
 import Footer from '../../common/Footer/Footer';
 import "./Player.scss";
-import photo from '../../../images/noname.jpg'
+import photo from '../../../assets/images/noname.jpg'
 import ErrorPopup from '../../common/ErrorPopup/ErrorPopup';
 import YearSelection from '../../common/YearSelection/YearSelection';
 import dataYears from '../../common/YearSelection/dataYears';
@@ -49,7 +49,8 @@ const Player = () => {
                 <div className="player-card__first-name">{player.firstName}</div>
                 <div className="player-card_name">{player.name}</div>
                 <div className="player-card__birth">
-                <span>Date of birth: </span>{`${player.dateOfBirth} ( ${getCurrentAge(player.dateOfBirth)} )`}
+                <span>Date of birth: </span>
+                {player.dateOfBirth ? `${player.dateOfBirth} ( ${getCurrentAge(player.dateOfBirth)} )` : "No data..."}
                 </div>
                 <div className="player-card__country">
                   <span>Country of birth: </span>

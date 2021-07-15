@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import noPhoto from '../../../../images/no-image.png';
+import noPhoto from '../../../../assets/images/no-image.png';
 import { addNewClub } from '../../../../redux/clubs-reducer';
 import SearchElem from '../../SearchElem/SearchElem';
 import BestScorers from '../BestScorers/BestScorers';

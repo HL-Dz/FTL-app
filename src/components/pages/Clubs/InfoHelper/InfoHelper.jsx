@@ -1,6 +1,6 @@
 import React from 'react';
 import './InfoHelper.scss';
-import gifClubs from '../../../../images/SelectClub.gif';
+import gifClubs from '../../../../assets/images/SelectClub.gif';
 
 const InfoHelper = ({isFetchError}) => {
   if(isFetchError) return null;

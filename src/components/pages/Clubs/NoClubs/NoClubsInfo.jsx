@@ -1,5 +1,5 @@
 import React from 'react';
-import tournament from '../../../../images/tournament.png';
+import tournament from '../../../../assets/images/tournament.png';
 import './NoClubsInfo.scss';
 
 const NoClubs = () => {

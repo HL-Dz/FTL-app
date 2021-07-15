@@ -1,5 +1,5 @@
 import React from 'react';
-import noPhoto from '../../../../images/no-image.png';
+import noPhoto from '../../../../assets/images/no-image.png';
 
 const TeamDescription = ({team, isFetchError}) => {
   if(isFetchError) return null;

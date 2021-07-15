@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import noPhoto from '../../../../images/no-image.png';
+import noPhoto from '../../../../assets/images/no-image.png';
 import { changeOrderOfClubs, removeSavedClub, setCurrentClub } from '../../../../redux/clubs-reducer';
 import { getTeamProfile } from '../../../../redux/team-reducer';
 
