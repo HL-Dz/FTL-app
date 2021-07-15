@@ -2,8 +2,12 @@ import React, {useState} from 'react';
 import './Navbar.scss';
 import {Link} from 'react-router-dom';
 import NavigationDropdown from '../common/NavigationDropdown/NavigationDropdown';
+import { useSelector } from 'react-redux';
+import { logout } from '../../redux/auth-reducer';
 
 const Navbar = (props) => {
+  const user = useSelector(state => state.auth.user);
+  const userEmail = user ? user.email : '';
   const [click, setClick] = useState(false);
   const [drop, setDrop] = useState(false);
 
@@ -19,6 +23,16 @@ const Navbar = (props) => {
         <Link to="/" className="navbar__logo">
           tfl <span className="logo-description">- top football leagues</span>
         </Link>
+        {
+          user ? (
+            <>
+              <button style={{color: '#000'}} onClick={logout}>Logout</button>
+              <span>{userEmail}</span>
+            </>
+          ) : (
+            <span></span>
+          )
+        }
         <div className="menu-icon" onClick={handleClick}>
           <i className={click ? "fa fa-times" : "fa fa-bars"}></i>
         </div>

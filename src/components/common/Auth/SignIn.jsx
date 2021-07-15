@@ -41,6 +41,7 @@ const SignIn = () => {
           emailRegistration={emailRegistration}
           setEmailRegistration={setEmailRegistration}
           resetFields={resetFields}
+          resetErrors={resetErrors}
         />
         <button className="signIn__button tfl-email" onClick={() => setEmailRegistration(true)}>
           <span className="fas fa-angle-down signIn__down"></span>

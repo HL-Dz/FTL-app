@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import "./App.scss";
 import Navbar from './components/Navbar/Navbar.jsx';
 import {Route, Switch} from 'react-router-dom';
@@ -19,9 +21,19 @@ import ErediviseContainer from "./components/pages/Leagues/Eredivise/ErediviseCo
 import BrasilContainer from "./components/pages/Leagues/Brasil/BrasilContainer";
 import Player from "./components/pages/Player/Player";
 import News from "./components/pages/News/News";
+import firebase from './firebase';
+import { setAuthUser } from "./redux/auth-reducer";
 
 
 function App() {
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(user => {
+      dispatch(setAuthUser(user));
+    })
+  }, [])
+
   return (
     <div className="app">
       <Navbar/>
