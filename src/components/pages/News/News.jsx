@@ -30,6 +30,7 @@ const News = () => {
   // }, [])
 
 
+
   return (
     <div className="primary-container news">
       <div className="container">

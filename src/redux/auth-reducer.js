@@ -19,22 +19,36 @@ const userAuthReducer = (state = initialStata, action) => {
   }
 };
 
+// Action Creators
 export const setAuthUser = (user) => ({type: SET_USER, user});
 
+
+// Firebase authorazation methods
+
+// *** Register with email/password
 export const userRegisterHandler = (email, password) => {
   return firebase
     .auth()
     .createUserWithEmailAndPassword(email, password);
 }
 
+// *** Sign In with email/password
 export const signInHandler = (email, password) => {
   return firebase
     .auth()
     .signInWithEmailAndPassword(email, password);
 }
 
+
+// *** Sign In with social networks
+export const signInWithSocialNetwork = (provider) => {
+  return firebase.auth().signInWithPopup(provider);
+}
+
+// ***Logout
 export const logout = () => {
   firebase.auth().signOut();
 }
+
 
 export default userAuthReducer;

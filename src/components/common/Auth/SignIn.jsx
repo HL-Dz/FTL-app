@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
+import { githubProvider, googleProvider } from '../../../api/authMethods';
+import { signInWithSocialNetwork } from '../../../redux/auth-reducer';
 import EmailForm from './EmailForm';
 import "./SignIn.scss";
 
@@ -19,6 +21,16 @@ const SignIn = () => {
   const resetErrors = () => {
     setEmailError('');
     setPasswordError('');
+  }
+
+  const socialNetworkHandler = (provider) => {
+    signInWithSocialNetwork(provider)
+      .then(res => {
+        return 'Successful authorization';
+      })
+      .catch(err => {
+        return err;
+      })
   }
   
   return (
@@ -50,13 +62,13 @@ const SignIn = () => {
           </span>
           <span className="signIn__cursor far fa-hand-point-left"></span>
         </button>
-        <button className="signIn__button tfl-google">
+        <button className="signIn__button tfl-google" onClick={() => socialNetworkHandler(googleProvider)}>
           <span className="signIn__button-text">
             Google
           </span>
           <span className="signIn__cursor far fa-hand-point-left"></span>
         </button>
-        <button className="signIn__button tfl-github">
+        <button className="signIn__button tfl-github" onClick={() => socialNetworkHandler(githubProvider)}>
           <span className="signIn__button-text">
             GitHub
           </span>
