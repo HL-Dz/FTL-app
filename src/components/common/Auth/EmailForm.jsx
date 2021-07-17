@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { delay } from '../../../helpers/helpers';
+import { isValidEmailFormData } from '../../../helpers/validation';
 import { userRegisterHandler, signInHandler } from '../../../redux/auth-reducer';
 import Spinner from '../Spinner/Spinner';
 import "./EmailForm.scss";
@@ -29,58 +30,71 @@ const EmailForm = ({
     resetErrors();
   }
 
+  const getValidationErrors = () => {
+    setEmailError('Invalid email or password');
+    setPasswordError('Invalid email or password');
+  }
+
   const registerNewUser = async () => {
     resetErrors()
-    setEmailLoading(true);
-    await delay(500);
-    userRegisterHandler(email, password)
-      .then(() => {
-        resetFields();
-        setEmailLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setEmailLoading(false);
-        switch(err.code) {
-          case "auth/email-already-in-use":
-          case "auth/invalid-email":
-            setEmailError(err.message);
-            break;
-          case "auth/weak-password":
-            setPasswordError(err.message)
-            break;
-          default:
-            break;
-        }
-      })
+    if(isValidEmailFormData(email, password)) {
+      setEmailLoading(true);
+      await delay(500);
+      userRegisterHandler(email, password)
+        .then(() => {
+          resetFields();
+          setEmailLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setEmailLoading(false);
+          switch(err.code) {
+            case "auth/email-already-in-use":
+            case "auth/invalid-email":
+              setEmailError(err.message);
+              break;
+            case "auth/weak-password":
+              setPasswordError(err.message)
+              break;
+            default:
+              break;
+          }
+        })
+    } else {
+      getValidationErrors();
+    }
   }
 
   const signIn =  async () => {
     resetErrors();
-    setEmailLoading(true);
-    await delay(500);
-    signInHandler(email, password)
-      .then(() => {
-        resetFields()
-        setEmailLoading(false);
-      })
-      .catch(err => {
-        setEmailLoading(false);
-        switch(err.code) {
-          case "auth/invalid-email":
-          case "auth/user-not-found":
-            setEmailError(err.message);
-            break;
-          case "auth/wrong-password":
-            setPasswordError(err.message);
-            break;
-          case "auth/user-disabled":
-            setEmailError("The user was blocked!");
-            break;
-          default:
-            break;
-        }
-      })
+    if(isValidEmailFormData(email,password)){
+      setEmailLoading(true);
+      await delay(500);
+      signInHandler(email, password)
+        .then(() => {
+          resetFields()
+          setEmailLoading(false);
+        })
+        .catch(err => {
+          setEmailLoading(false);
+          switch(err.code) {
+            case "auth/invalid-email":
+            case "auth/user-not-found":
+              setEmailError(err.message);
+              break;
+            case "auth/wrong-password":
+              setPasswordError(err.message);
+              break;
+            case "auth/user-disabled":
+              setEmailError("The user was blocked!");
+              break;
+            default:
+              break;
+          }
+        })
+    } else {
+      getValidationErrors();
+    }
   }
   
   return (
