@@ -82,18 +82,6 @@ const SignIn = () => {
             </span>
             <span className="signIn__cursor far fa-hand-point-left"></span>
           </button>
-          <button className="signIn__button tfl-facebook">
-            <span className="signIn__button-text">
-              Facebook
-            </span>
-            <span className="signIn__cursor far fa-hand-point-left"></span>
-          </button>
-          <button className="signIn__button tfl-twitter">
-            <span className="signIn__button-text">
-              Twitter
-            </span>
-            <span className="signIn__cursor far fa-hand-point-left"></span>
-          </button>
         </div>
       </div>
     </>

@@ -28,6 +28,7 @@ const News = () => {
   // useEffect(() => {
   //   getNews();
   // }, [])
+  console.log(user);
 
 
 
