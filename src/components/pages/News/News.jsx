@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./News.scss";
 import Footer from '../../common/Footer/Footer';
 import SignIn from '../../common/Auth/SignIn';
 import firebase from '../../../firebase';
 import { useDispatch, useSelector } from 'react-redux';
 
-const News = () => {
+const News = () => {  
   // const dispatch = useDispatch();
   const user = useSelector(state => state.auth.user);
   let userName = '';
@@ -32,7 +32,7 @@ const News = () => {
 
 
   return (
-    <div className="primary-container news">
+    <div className={`primary-container ${user ? 'news' : ' news news_inactive'}`}>
       <div className="container">
         {
           !user ? <SignIn/> : (
