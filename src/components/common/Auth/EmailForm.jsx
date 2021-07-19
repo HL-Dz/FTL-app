@@ -46,7 +46,6 @@ const EmailForm = ({
           setEmailLoading(false);
         })
         .catch((err) => {
-          console.log(err);
           setEmailLoading(false);
           switch(err.code) {
             case "auth/email-already-in-use":

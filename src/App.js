@@ -23,6 +23,7 @@ import Player from "./components/pages/Player/Player";
 import News from "./components/pages/News/News";
 import firebase from './firebase';
 import { setAuthUser } from "./redux/auth-reducer";
+import Whoops from "./components/common/Whoops/Whoops";
 
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
         <Route path="/portuguese-primera-division" component={PortugalContainer}/>
         <Route path="/la-liga" component={PrimeraContainer}/>
         <Route path="/world-cup" component={WorldCup}/>
+        <Route component={Whoops}/>
       </Switch>
     </div>
   );

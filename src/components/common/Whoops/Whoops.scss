@@ -1,0 +1,71 @@
+@use "../../../sass/abstracts" as *;
+
+.whoops {
+  background-image: url(../../../assets/images/grass.jpg);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .container {
+    padding-top: 60px;
+    height: 100%;
+  }
+}
+
+.whoops__primary {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+.whoops__title {
+  font-size: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', serif;
+  font-weight: bold;
+  color: rgb(228, 228, 228);
+
+  > * {
+    flex-basis: 50%;
+  }
+
+  span {
+    text-align: center;
+  }
+}
+
+.whoops__ball {
+  max-width: 100%;
+  height: auto;
+}
+
+.whoops__desc {
+  font-size: 3rem;
+  text-align: center;
+  background: rgba(17, 17, 17, 0.671);
+  border-radius: 5px;
+  padding: 7px;
+}
+
+.whoops__path  {
+  color: rgb(216, 218, 101);
+  font-weight: bold;
+}
+
+.whoops__wrap {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.whoops__player {
+  align-self: flex-end;
+}
+
+.whoops__img {
+  max-width: 100%;
+  height: auto;
+}
