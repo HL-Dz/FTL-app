@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import "./News.scss";
+import "./Articles.scss";
 import Footer from '../../common/Footer/Footer';
 import SignIn from '../../common/Auth/SignIn';
 import firebase from '../../../firebase';
 import { useDispatch, useSelector } from 'react-redux';
 
-const News = () => {  
+const Articles = () => {  
   // const dispatch = useDispatch();
   const user = useSelector(state => state.auth.user);
   let userName = '';
@@ -45,4 +45,4 @@ const News = () => {
   )
 }
 
-export default News;
+export default Articles;

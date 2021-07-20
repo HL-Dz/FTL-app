@@ -31,7 +31,7 @@ const ErrorModal = ({errorMessage, setErrorModal}) => {
     return () => {
       window.removeEventListener('keyup', handleEscape);
     }
-  }, [])
+  })
 
   return (
     <div className={slowlyInActive ? "errorModal errorModal_temp" : "errorModal"} onClick={closeModalForm}>

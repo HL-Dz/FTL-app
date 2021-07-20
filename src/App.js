@@ -20,10 +20,10 @@ import Team from "./components/pages/Team/Team";
 import ErediviseContainer from "./components/pages/Leagues/Eredivise/ErediviseContainer";
 import BrasilContainer from "./components/pages/Leagues/Brasil/BrasilContainer";
 import Player from "./components/pages/Player/Player";
-import News from "./components/pages/News/News";
 import firebase from './firebase';
 import { setAuthUser } from "./redux/auth-reducer";
 import Whoops from "./components/common/Whoops/Whoops";
+import Articles from "./components/pages/News/Articles";
 
 
 function App() {
@@ -40,23 +40,23 @@ function App() {
       <Navbar/>
       <Switch>
         <Route path="/" exact component={Leagues}/>
-        <Route path="/clubs" component={Clubs}/>
-        <Route path="/news" component={News}/>
-        <Route path="/documentation" component={Documentation}/>
+        <Route path="/clubs" exact component={Clubs}/>
+        <Route path="/articles" exact component={Articles}/>
+        <Route path="/documentation" exact  component={Documentation}/>
         <Route path="/players/:id/:name" component={Player}/>
         <Route path="/teams/:id/:name" component={Team}/>
-        <Route path="/brasilial-division-1" component={BrasilContainer}/>
-        <Route path="/english-premiere-league" component={EplContainer}/>
-        <Route path="/championship" component={ChampionshipContainer}/>
-        <Route path="/champions-league" component={ChampionsLeague}/>
-        <Route path="/european-championships" component={EuropeanLeague}/>
-        <Route path="/france-league-1" component={FranceLeagueContainer}/>
-        <Route path="/bundesliga" component={BundesligaContainer}/>
-        <Route path="/serie-a" component={SerieAContainer}/>
-        <Route path="/eredivise" component={ErediviseContainer}/>
-        <Route path="/portuguese-primera-division" component={PortugalContainer}/>
-        <Route path="/la-liga" component={PrimeraContainer}/>
-        <Route path="/world-cup" component={WorldCup}/>
+        <Route path="/brasilial-division-1" exact component={BrasilContainer}/>
+        <Route path="/english-premiere-league" exact component={EplContainer}/>
+        <Route path="/championship" exact component={ChampionshipContainer}/>
+        <Route path="/champions-league" exact component={ChampionsLeague}/>
+        <Route path="/european-championships" exact component={EuropeanLeague}/>
+        <Route path="/france-league-1" exact component={FranceLeagueContainer}/>
+        <Route path="/bundesliga" exact component={BundesligaContainer}/>
+        <Route path="/serie-a" exact component={SerieAContainer}/>
+        <Route path="/eredivise" exact component={ErediviseContainer}/>
+        <Route path="/portuguese-primera-division" exact component={PortugalContainer}/>
+        <Route path="/la-liga" exact component={PrimeraContainer}/>
+        <Route path="/world-cup" exact component={WorldCup}/>
         <Route component={Whoops}/>
       </Switch>
     </div>

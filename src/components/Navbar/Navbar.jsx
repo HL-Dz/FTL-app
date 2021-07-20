@@ -3,7 +3,6 @@ import './Navbar.scss';
 import {Link} from 'react-router-dom';
 import NavigationDropdown from '../common/NavigationDropdown/NavigationDropdown';
 import { useSelector } from 'react-redux';
-import { logout } from '../../redux/auth-reducer';
 import User from '../common/User/User';
 
 const Navbar = (props) => {
@@ -31,8 +30,8 @@ const Navbar = (props) => {
         </div>
         <ul className={click ? "nav-menu nav-menu-active" : "nav-menu"}>
           <li className="nav-item">
-            <Link to="/news" className="nav__link" onClick={closeMenu}>
-              News
+            <Link to="/articles" className="nav__link" onClick={closeMenu}>
+              Articles
               <i className="far fa-newspaper"></i>
             </Link>
           </li>
