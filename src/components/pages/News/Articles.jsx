@@ -32,7 +32,7 @@ const Articles = () => {
 
 
   return (
-    <div className={`primary-container ${user ? 'news' : ' news news_inactive'}`}>
+    <div className="primary-container news">
       <div className="container">
         {
           !user ? <SignIn/> : (

@@ -1,9 +1,11 @@
 import firebase from '../firebase';
 const SET_USER = 'SET_USER';
+const USER_IS_AUTHORIZED = 'SUCCESS_AUTH';
 
 
 let initialStata = {
-  user: null
+  user: null,
+  isAuthorized: false
 };
 
 
@@ -12,7 +14,12 @@ const userAuthReducer = (state = initialStata, action) => {
     case SET_USER:
       return {
         ...state,
-        user: action.user
+        user: action.user,
+      }
+    case USER_IS_AUTHORIZED:
+      return {
+        ...state,
+        isAuthorized: action.auth
       }
     default:
       return state
@@ -21,7 +28,7 @@ const userAuthReducer = (state = initialStata, action) => {
 
 // Action Creators
 export const setAuthUser = (user) => ({type: SET_USER, user});
-
+export const setIsAuthorized = (auth) => ({type: USER_IS_AUTHORIZED, auth});
 
 // Firebase authorazation methods
 

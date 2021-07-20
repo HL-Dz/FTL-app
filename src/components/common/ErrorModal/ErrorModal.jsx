@@ -38,6 +38,7 @@ const ErrorModal = ({errorMessage, setErrorModal}) => {
       <div className="errorModal__content">
         <button className="errorModal__close fas fa-times" onClick={closeModal}></button>
         <div className="errorModal__text">
+          <i className="fas fa-exclamation-triangle"></i>
           {errorMessage}
         </div>
       </div>

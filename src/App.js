@@ -21,17 +21,25 @@ import ErediviseContainer from "./components/pages/Leagues/Eredivise/ErediviseCo
 import BrasilContainer from "./components/pages/Leagues/Brasil/BrasilContainer";
 import Player from "./components/pages/Player/Player";
 import firebase from './firebase';
-import { setAuthUser } from "./redux/auth-reducer";
+import { setAuthUser, setIsAuthorized } from "./redux/auth-reducer";
 import Whoops from "./components/common/Whoops/Whoops";
 import Articles from "./components/pages/News/Articles";
+import { delay } from "./helpers/helpers";
 
 
 function App() {
   const dispatch = useDispatch();
   
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(user => {
-      dispatch(setAuthUser(user));
+    firebase.auth().onAuthStateChanged( async (user) => {
+      if(user) {
+        dispatch(setIsAuthorized(true))
+        await delay(800);
+        dispatch(setAuthUser(user));
+      } else {
+        dispatch(setIsAuthorized(false))
+        dispatch(setAuthUser(user));
+      }
     })
   }, [])
 
