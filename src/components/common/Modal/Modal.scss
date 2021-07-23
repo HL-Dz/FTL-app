@@ -1,0 +1,32 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.9);
+  overflow-y: auto;
+  animation: transparency-animation 0.5s ease;
+
+  &_inactive {
+    animation: back-transparency-animation 0.5s ease;
+  }
+}
+
+.modal-content {
+  position: absolute;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  max-width: 700px;
+  min-width: 400px;
+  min-height: 50px;
+  animation: slowly-top-transform 0.5s ease;
+
+  &_inactive {
+    animation: slowly-botom-transform 0.5s ease;
+  }
+}
+

@@ -1,0 +1,145 @@
+.matchday {
+  display: flex;
+  min-width: 700px;
+  box-shadow: 0px 29px 25px -20px #30d47a80;
+  border-radius: 7px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+
+.matchday__bg {
+  position: relative;
+  background-image: url(../../../../../assets/images/matchday.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 45%;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.matchday__desc {
+  padding: 5px 0 15px 0;
+  text-align: center;
+  flex-grow: 1;
+  background: rgb(10, 15, 14);
+}
+
+.matchday__date {
+  font-size: 3.3rem;
+  font-weight: bold;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+
+.matchday__league {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.9rem;
+  margin-bottom: 10px;
+}
+
+.matchday__row {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  margin: 0 10px 10px;
+  font-size: 1.8rem;
+  justify-content: space-between;
+  background: rgb(4,24,9);
+  background: linear-gradient(90deg, rgba(4,24,9,1) 0%, #0a5226 50%, rgba(4,24,9,1) 100%);
+  padding: 5px 0;
+  border-radius: 3px;
+
+    span {
+    margin: 0 10px;
+    display: inline-flex;
+    border: 1px solid #2e5f41;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    font-weight: bold;
+  }
+
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.referees {
+  margin: 0 10px 15px;
+}
+
+.referees__title {
+  font-weight: bold;
+  font-size: 1.9rem;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.referee {
+  background: rgb(4,24,9);
+  background: linear-gradient(45deg, rgba(4,24,9,0.7) 0%, #0a522669 50% 100%);
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  border-radius: 5px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+
+.referee__name {
+  margin-right: 5px;
+  width: 100%;
+  max-width: 250px;
+  margin: 0 auto;
+}
+
+.referee__nationality {
+
+}
+
+.matchday__buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0px 10px 0;
+}
+
+.matchday__close {
+  width: 70px;
+  padding: 7px;
+  background: rgb(4,24,9);
+  background: linear-gradient(90deg, rgba(4,24,9,1) 0%, #0a5226 50%, rgba(4,24,9,1) 100%);
+  outline: none;
+  border:none;
+  color: rgb(226, 224, 224);
+  text-transform: uppercase;
+  border-radius: 5px;
+  font-weight: bold;
+  opacity: 0.5;
+  transition: opacity 0.3s ease-out;
+
+  &:hover {
+    opacity: 1;
+  }
+}

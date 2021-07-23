@@ -124,38 +124,6 @@
   margin-bottom: 10px;
   z-index: 2;
 
-  &_active {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 10;
-    padding-top: 20px;
-    background: linear-gradient(90deg, #0e1110f3 10%, #101f1b 50%, #0e1110f3 90%);
-    cursor: auto;
-    animation: match-active 0.5s ease;
-    overflow-y: auto;
-
-    .match__date {
-      font-size: 3rem;
-    }
-
-    .match__rivals {
-      padding: 10px;
-      margin-bottom: 20px;
-      background: #0e1110f3;
-    }
-
-    .away-team, .home-team {
-      font-size: 2.5rem;
-    }
-
-    .match__competition {
-      font-size: 1.9rem;
-    }
-  }
-
   &:last-child {
     margin-bottom: 0;
     &:after {
@@ -259,86 +227,6 @@
   font-weight: bold;
 }
 
-.match__details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 2.3rem;
-  font-weight: bold;
-
-  > * {
-    width: 100%;
-    text-align: center;
-  }
-}
-
-.matchday, .half-time, .full-time, .extra-time, .penalties {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  background: #113025;
-  padding: 5px 0;
-  width: 250px;
-  border-top: 1px solid rgb(93, 94, 94);
-  border-bottom: 1px solid rgb(93, 94, 94);
-
-  span {
-    margin: 0 10px;
-    display: inline-flex;
-    border: 2px solid #525f57;
-    justify-content: center;
-    align-items: center;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    overflow: hidden;
-    background: linear-gradient(90deg, #1c413196 10%, #1e1e21 50%, #1c413196 90%);
-  }
-}
-
-.matchday {
-  justify-content: center;
-  margin: 10px 0;
-}
-
-.referees-title {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.referees {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  justify-content: center;
-  flex-wrap: wrap;
-  background: #0e1110f3;
-  padding: 20px 10px;
-  z-index: 2;
-  border-radius: 5px;
-}
-
-
-.referee {
-  display: flex;
-  font-size: 1.7rem;
-  margin-bottom: 10px;
-  padding: 0 15px;
-}
-
-.referee__name, .referee__role, .referee__nationality {
-  padding: 5px;
-}
-
-.referee__name {
-  text-align: left;
-  font-size: 1.8rem;
-}
-
-.referee__role {
-  text-transform: lowercase;
-}
 
 @keyframes count-show {
   0% {

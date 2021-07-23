@@ -1,11 +1,17 @@
 import React from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { delay } from '../../../../helpers/helpers';
+import Modal from '../../../common/Modal/Modal';
 import Match from './Match/Match';
+import MatchDetails from './MatchDetails/MatchDetails';
 import "./Matches.scss";
 
 const Matches = () => {
   const matches = useSelector(state => state.playerPage.matches);
   const isLoadingMatches = useSelector(state => state.playerPage.isLoadingMatches);
+  const [isDetails, setIsDetails] = useState(false);
+  const [isHideModal, setIshideModal] = useState(false);
 
   let commpetitions = [];
   if(matches) {
@@ -13,9 +19,22 @@ const Matches = () => {
     commpetitions = allCompetitions.filter((elem, index) => allCompetitions.indexOf(elem) === index);
   }
 
+  const hideDetailsModal = async () => {
+    setIshideModal(true);
+    await delay(490);
+    document.body.style.overflow = "auto";
+    setIshideModal(false);
+    setIsDetails(false);
+  }
+
   return (
     <div className="matches">
       <div className="container-width">
+        {isDetails ? (
+            <Modal hideDetailsModal={hideDetailsModal} isHideModal={isHideModal}>
+              <MatchDetails hideDetailsModal={hideDetailsModal}/>
+            </Modal>
+          ) : null}
         <div className={isLoadingMatches ? "matches-list matches-list_inactive" : "matches-list"}>
           {!matches ? <div className="notification">Please, select a year to display player matches.</div> : null}
           <div className="competitions">
@@ -33,7 +52,13 @@ const Matches = () => {
               <div><span className="matches-count">{matches.matches.length}</span></div>
             </div>}
           {!matches ? null : 
-            matches.matches.map((match, ind) => <Match key={match.id} match={match}/>)
+            matches.matches.map((match, ind) => {
+              return <Match 
+                key={match.id} 
+                match={match}
+                setIsDetails={setIsDetails}
+              />
+            })
           }
         </div>
       </div>
