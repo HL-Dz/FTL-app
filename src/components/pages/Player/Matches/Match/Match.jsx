@@ -1,18 +1,10 @@
 import React from 'react';
 import {getCurrnetDate} from '../../../../../helpers/helpers';
 
-const Match = ({match, setIsDetails}) => {
-
-  const showDetailsModal = (e) => {
-    if(e.currentTarget.className === 'match') {
-      setIsDetails(true);
-      document.body.style.overflow = "hidden";
-    }
-  }
-
+const Match = ({match, showDetailsModal}) => {
 
   return (
-    <div className="match" onClick={showDetailsModal}>
+    <div className="match" onClick={(e) => showDetailsModal(e, match)}>
       <div className="short-match-info">
         <div className="match__date">{getCurrnetDate(match.utcDate.slice(0, 10))}</div>
         <div className="match__rivals">

@@ -1,64 +1,65 @@
 import React from 'react';
+import { getCurrnetDate } from '../../../../../helpers/helpers';
 import "./MatchDetails.scss";
+import Referee from './Referee/Referee';
 
-const MatchDetails = ({hideDetailsModal}) => {
-  const nationality = `../../images/Countries/Argentina.png`;
-  
+const MatchDetails = ({hideDetailsModal, selectedMatch}) => {
+
+  const competition = selectedMatch.competition.name ? selectedMatch.competition.name : "No data";
+
+  const scoreHomeFull = selectedMatch.score.fullTime.homeTeam ? selectedMatch.score.fullTime.homeTeam : 0;
+  const scoreAwayFull = selectedMatch.score.fullTime.awayTeam ? selectedMatch.score.fullTime.awayTeam : 0;
+
+  const scoreHomeHalf = selectedMatch.score.halfTime.homeTeam ? selectedMatch.score.halfTime.homeTeam : 0;
+  const scoreAwayHalf = selectedMatch.score.halfTime.awayTeam ? selectedMatch.score.halfTime.awayTeam : 0;
+
+  const scoreHomeExtra = selectedMatch.score.extraTime.homeTeam ? selectedMatch.score.extraTime.homeTeam : 0;
+  const scoreAwayExtra = selectedMatch.score.extraTime.awayTeam ? selectedMatch.score.extraTime.awayTeam : 0;
+
+  const petaltiesHomeTeam = selectedMatch.score.penalties.homeTeam ? selectedMatch.score.penalties.homeTeam : 0;
+  const petaltiesAwayTeam = selectedMatch.score.penalties.awayTeam ? selectedMatch.score.penalties.awayTeam : 0;
+
   return (
     <div className="match-details">
       <div className="matchday">
-
         <div className="matchday__bg">
-          <div className="matchday__date">
-            December 16,2021
+          <div className="matchday__wrap">
+            <div className="matchday__date">
+              {getCurrnetDate(selectedMatch.utcDate.slice(0, 10))}
+            </div>
+            <div className="matchday__teams">
+              <div className="matchday__team">{selectedMatch.homeTeam.name}</div>
+              <div className="matchday__vs">
+                <span>vs</span>
+              </div>
+              <div className="matchday__team">{selectedMatch.awayTeam.name}</div>
+            </div>
           </div>
         </div>
-
         <div className="matchday__desc">
           <div className="matchday__league">
-            Eredivise
+            {competition}
           </div>
           <div className="matchday__full matchday__row">
-            <span>9</span> Fulltime <span>7</span>
+            <span>{scoreHomeFull}</span> Fulltime <span>{scoreAwayFull}</span>
           </div>
           <div className="matchday__half matchday__row">
-            <span>0</span> Halftime <span>8</span>
+            <span>{scoreHomeHalf}</span> Halftime <span>{scoreAwayHalf}</span>
           </div>
           <div className="matchday__extra matchday__row">
-            <span>0</span> Extratime <span>0</span>
+            <span>{scoreHomeExtra}</span> Extratime <span>{scoreAwayExtra}</span>
           </div>
           <div className="matchday__penalties matchday__row">
-            <span>0</span> Penalties <span>0</span>
+            <span>{petaltiesHomeTeam}</span> Penalties <span>{petaltiesAwayTeam}</span>
           </div>
           <div className="matchday__referees">
             <div className="referees">
               <div className="referees__title">Referees</div>
-              <div className="referee">
-                <div className="referee__name">Carlos Oliveera</div>
-                <div className="referee__nationality">
-                  <img className="flag" src={nationality} alt="Nationality" />
-                </div>
-              </div>
-
-              <div className="referee">
-                <div className="referee__name">Gilberto</div>
-                <div className="referee__nationality">
-                  <img className="flag" src={nationality} alt="Nationality" />
-                </div>
-              </div>
-              <div className="referee">
-                <div className="referee__name">Gilberto</div>
-                <div className="referee__nationality">
-                  <img className="flag" src={nationality} alt="Nationality" />
-                </div>
-              </div>
-              <div className="referee">
-                <div className="referee__name">Gilberto</div>
-                <div className="referee__nationality">
-                  <img className="flag" src={nationality} alt="Nationality" />
-                </div>
-              </div>
-
+              {
+                selectedMatch.referees.length === 0 ? 
+                <div>No referees...</div> : 
+                selectedMatch.referees.map((referee, ind) => <Referee key={ind} referee={referee}/>)
+              }
             </div>
           </div>
           <div className="matchday__buttons">
@@ -72,36 +73,3 @@ const MatchDetails = ({hideDetailsModal}) => {
 }
 
 export default MatchDetails;
-
-
-{/* <div className="match__details">
-  <div className="matchday">Matchday: {match.matchday ? match.matchday : ' - '}</div>
-  <div className="full-time">
-    <span>{match.score.fullTime.homeTeam}</span> Fulltime <span>{match.score.fullTime.awayTeam}</span>
-  </div>
-  <div className="half-time">
-    <span>{match.score.halfTime.homeTeam}</span> Halftime <span>{match.score.halfTime.awayTeam}</span>
-  </div>
-  <div className="extra-time">
-    <span>{match.score.extraTime.homeTeam || '0'}</span>Extratime<span>{match.score.extraTime.awayTeam || '0'}</span>
-  </div>
-  <div className="penalties">
-    <span>{match.score.extraTime.homeTeam || '0'}</span>Penalties<span>{match.score.extraTime.awayTeam || '0'}</span>
-  </div>
-  <div className="referees-title">Referees</div>
-  <div className="referees">
-    {
-      match.referees.map((elem, ind) => {
-        const nationality = `../../images/Countries/${elem.nationality}.png`;
-        return (
-          <div className="referee" key={ind}>
-            {elem.name && <div className="referee__name">{elem.name}</div>}
-            {elem.nationality && <div className="referee__nationality">
-              <img className="flag" src={nationality} alt={elem.nationality} title={elem.nationality}/>
-            </div>}
-          </div>
-        )
-      })
-    }
-  </div>
-</div> */}

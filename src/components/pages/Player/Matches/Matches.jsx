@@ -12,6 +12,7 @@ const Matches = () => {
   const isLoadingMatches = useSelector(state => state.playerPage.isLoadingMatches);
   const [isDetails, setIsDetails] = useState(false);
   const [isHideModal, setIshideModal] = useState(false);
+  const [selectedMatch, setSelectedMatch] = useState({});
 
   let commpetitions = [];
   if(matches) {
@@ -19,6 +20,14 @@ const Matches = () => {
     commpetitions = allCompetitions.filter((elem, index) => allCompetitions.indexOf(elem) === index);
   }
 
+  const showDetailsModal = (e, match) => {
+    if(e.currentTarget.className === 'match') {
+      setIsDetails(true);
+      handleSelectCurrentMatch(match)
+      document.body.style.overflow = "hidden";
+    }
+  }
+  
   const hideDetailsModal = async () => {
     setIshideModal(true);
     await delay(490);
@@ -27,12 +36,19 @@ const Matches = () => {
     setIsDetails(false);
   }
 
+  const handleSelectCurrentMatch = (match) => {
+    setSelectedMatch(match);
+  }
+
   return (
     <div className="matches">
       <div className="container-width">
         {isDetails ? (
             <Modal hideDetailsModal={hideDetailsModal} isHideModal={isHideModal}>
-              <MatchDetails hideDetailsModal={hideDetailsModal}/>
+              <MatchDetails 
+                hideDetailsModal={hideDetailsModal} 
+                selectedMatch={selectedMatch} 
+              />
             </Modal>
           ) : null}
         <div className={isLoadingMatches ? "matches-list matches-list_inactive" : "matches-list"}>
@@ -57,6 +73,7 @@ const Matches = () => {
                 key={match.id} 
                 match={match}
                 setIsDetails={setIsDetails}
+                showDetailsModal={showDetailsModal}
               />
             })
           }
