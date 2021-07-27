@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { FC } from 'react';
 import "./ErrorPopup.scss";
 
-const ErrorPopup = ({message}) => {
+interface IErrorPopup {
+  message?: string
+}
+
+
+const ErrorPopup: FC<IErrorPopup> = ({message}) => {
   return (
     <div className="error">
       <i className="fas fa-exclamation-circle error-icon"></i>

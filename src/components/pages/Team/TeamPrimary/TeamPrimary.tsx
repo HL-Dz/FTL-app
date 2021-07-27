@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { FC } from 'react'
+import { ITeam } from '../../../../types/team';
 import ShortList from '../../Clubs/ShortList/ShortList';
 
-const TeamPrimary = ({team, isFetchError, shortList}) => {
+interface ITeamPrimary {
+  team: ITeam | null
+  isFetchError: boolean
+  shortList?: boolean
+}
+
+const TeamPrimary: FC<ITeamPrimary> = ({team, isFetchError, shortList}) => {
   if(isFetchError) return null;
 
   

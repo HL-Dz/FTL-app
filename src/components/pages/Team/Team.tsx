@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, FC } from 'react';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import { getTeamProfile, resetTeam } from '../../../redux/team-reducer';
 import TeamDescription from './TeamDescription/TeamDescription';
@@ -8,13 +8,16 @@ import "./Team.scss";
 import PlayerList from './PlayerList/PlayerList';
 import ErrorPopup from '../../common/ErrorPopup/ErrorPopup';
 import Footer from '../../common/Footer/Footer';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
 
-const Team = () => {
+interface TeamParams {
+  id: string
+}
+
+const Team: FC = () => {
   const dispatch = useDispatch();
-  const {id} = useParams();
-  const team = useSelector(state => state.teamPage.team);
-  const isFetchError = useSelector(state => state.teamPage.isFetchError);
-  const isLoading = useSelector(state => state.teamPage.isLoading);
+  const { id } = useParams<TeamParams>();
+  const { isFetchError, isLoading, team } = useTypedSelector(state => state.teamPage);
 
   useEffect(() => {
     dispatch(getTeamProfile(id));
