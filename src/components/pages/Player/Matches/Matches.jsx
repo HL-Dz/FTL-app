@@ -20,6 +20,7 @@ const Matches = () => {
     commpetitions = allCompetitions.filter((elem, index) => allCompetitions.indexOf(elem) === index);
   }
 
+  
   const showDetailsModal = (e, match) => {
     if(e.currentTarget.className === 'match') {
       setIsDetails(true);

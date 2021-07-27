@@ -1,20 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState, FC } from 'react';
+import { useDispatch } from 'react-redux';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { getMatсhes } from '../../../redux/player-reducer';
+import { IPlayer } from '../../../types/player';
 import Spinner from '../Spinner/Spinner';
+import { IDataYear, IDataYears } from './dataYears';
 import './YearSelection.scss';
 
-const YearSelection = ({selection, player}) => {
+
+interface IYearSelection {
+  selection: IDataYears
+  player: IPlayer
+}
+
+
+const YearSelection: FC<IYearSelection>  = ({selection, player}) => {
+  const dispatch = useDispatch();
   const [display, setDisplay] = useState(false);
   const [currentYear, setCurrentYear] = useState('');
-  const dispatch = useDispatch();
-  const isLoadingMatches = useSelector(state => state.playerPage.isLoadingMatches);
+  const { isLoadingMatches } = useTypedSelector(state => state.playerPage);
 
   const toggleDisplay = () => {
     setDisplay(!display);
   }
 
-  const showMatches = (year) => {
+  const showMatches = (year: IDataYear) => {
     setCurrentYear(year.title);
     setDisplay(false);
 
@@ -22,12 +32,6 @@ const YearSelection = ({selection, player}) => {
       dispatch(getMatсhes(player.id, year.dateFrom, year.dateTo))
     }
   }
-
-  useEffect(() => {
-    return () => {
-      document.removeEventListener('click', showMatches)
-    }
-  })
 
   
   return (

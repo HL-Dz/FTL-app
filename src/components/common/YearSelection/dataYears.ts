@@ -1,4 +1,17 @@
-let dataYears = {
+export interface IDataYear {
+  id: number
+  title: string
+  dateFrom: string
+  dateTo: string
+}
+
+export interface IDataYears {
+  text: string
+  years: Array<IDataYear>
+}
+
+
+let dataYears:IDataYears  = {
   text: 'Select year',
   years: [
     {id: 1, title: '2021', dateFrom: '2021-01-01', dateTo: '2021-12-31'},

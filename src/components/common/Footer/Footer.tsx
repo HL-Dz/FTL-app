@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import "./Footer.scss";
 
-const Footer = ({isFetching, isFetchError}) => {
+interface IFooter {
+  isFetchError: boolean
+  isFetching: boolean
+}
+
+const Footer: FC<IFooter> = ({isFetchError, isFetching}) => {
   if(isFetchError) return null;
   
   return (

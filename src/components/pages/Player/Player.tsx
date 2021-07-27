@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { getPlayerProfile, resetAllData } from '../../../redux/player-reducer';
@@ -11,13 +11,16 @@ import dataYears from '../../common/YearSelection/dataYears';
 import Matches from './Matches/Matches';
 import Loading from '../../common/Loading/Loading';
 import { getCurrentAge } from '../../../helpers/helpers';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
 
-const Player = () => {
+interface PlayerParams {
+  id: string
+}
+
+const Player: FC = () => {
   const dispatch = useDispatch();
-  const player = useSelector(state => state.playerPage.player);
-  const isFetchError = useSelector(state => state.playerPage.isFetchError);
-  const isLoading = useSelector(state => state.playerPage.isLoading);
-  const {id} = useParams();
+  const {player, isFetchError, isLoading} = useTypedSelector(state => state.playerPage)
+  const {id} = useParams<PlayerParams>();
 
   useEffect(() => {
     dispatch(getPlayerProfile(id));
@@ -30,7 +33,6 @@ const Player = () => {
   if(player) {
     countryOfBirth = `../../images/Countries/${player.countryOfBirth}.png`;
   }
-
 
   return (
     <div className="primary-container football-player">
@@ -69,7 +71,7 @@ const Player = () => {
           <Matches/>
         </>
       }
-      <Footer/>
+      <Footer isFetchError={isFetchError} isFetching={isLoading}/>
     </div>
   )
 }
