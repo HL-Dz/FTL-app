@@ -1,22 +1,22 @@
 import React, {useState } from 'react';
-import { useSelector } from 'react-redux';
 import Footer from '../../common/Footer/Footer';
 import "./Clubs.scss";
 import SearchElem from '../../common/SearchElem/SearchElem';
 import SavedClub from './SavedClub/SavedClub';
 import NoClubsInfo from './NoClubs/NoClubsInfo';
 import ClubContent from './ClubContent/ClubContent';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
+import { IClub } from '../../../types/clubs';
 
 const Clubs = () => {
-  const clubs = useSelector(state => state.clubsPage.clubs);
-  const inActiveItem = useSelector(state => state.clubsPage.inActiveItem);
   const [search, setSearch] = useState('');
+  const {clubs, inActiveItem} = useTypedSelector(state => state.clubsPage)
 
-  const filteredClubs = clubs.filter(elem => {
+  const filteredClubs = clubs.filter((elem: IClub) => {
     return elem.name.toLowerCase().includes(search.toLowerCase());
   });
 
-  const sortClubs = (a,b) => {
+  const sortClubs = (a: IClub, b: IClub) => {
     if(a.order > b.order) {
       return 1;
     } else {

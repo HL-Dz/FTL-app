@@ -1,4 +1,4 @@
-export const isValidEmailFormData = (email, password) => {
+export const isValidEmailFormData = (email:string, password:string) => {
   return (
     typeof email === 'string' && email !== '' && 
     typeof password === 'string' && password !== ''

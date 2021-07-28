@@ -1,5 +1,5 @@
 import React, {useEffect, FC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import { getPlayerProfile, resetAllData } from '../../../redux/player-reducer';
 import Footer from '../../common/Footer/Footer';
