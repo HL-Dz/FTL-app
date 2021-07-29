@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, {useState, FC } from 'react';
 import Footer from '../../common/Footer/Footer';
 import "./Clubs.scss";
 import SearchElem from '../../common/SearchElem/SearchElem';
@@ -8,9 +8,9 @@ import ClubContent from './ClubContent/ClubContent';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { IClub } from '../../../types/clubs';
 
-const Clubs = () => {
+const Clubs: FC = () => {
   const [search, setSearch] = useState('');
-  const {clubs, inActiveItem} = useTypedSelector(state => state.clubsPage)
+  const { clubs, inActiveItem } = useTypedSelector(state => state.clubsPage)
 
   const filteredClubs = clubs.filter((elem: IClub) => {
     return elem.name.toLowerCase().includes(search.toLowerCase());

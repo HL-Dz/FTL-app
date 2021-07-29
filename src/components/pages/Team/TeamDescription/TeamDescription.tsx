@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 import noPhoto from '../../../../assets/images/no-image.png';
+import { ITeam } from '../../../../types/team';
 
-const TeamDescription = ({team, isFetchError}) => {
+interface ITeamDescription {
+  team: ITeam | null
+  isFetchError: boolean
+}
+
+const TeamDescription: FC<ITeamDescription> = ({team, isFetchError}) => {
   if(isFetchError) return null;
   
   const detailListWithoutContent = 
@@ -19,7 +25,7 @@ const TeamDescription = ({team, isFetchError}) => {
           Loading data...
         </div> :
         <div className="team__pic">
-          <img className="team__img" src={team.crestUrl || noPhoto} alt={team.name} />
+          <img className="team__img" src={team.crestUrl || noPhoto} alt={team.name || 'Team'} />
         </div>
         }
         <div className="team__info">

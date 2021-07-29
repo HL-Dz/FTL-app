@@ -19,13 +19,13 @@ const Team: FC = () => {
   const { id } = useParams<TeamParams>();
   const { isFetchError, isLoading, team } = useTypedSelector(state => state.teamPage);
 
+  
   useEffect(() => {
-    dispatch(getTeamProfile(id));
-
+    dispatch(getTeamProfile(Number(id)));
+    
     return () => { dispatch(resetTeam())}
   }, [dispatch, id])
-
-
+  
   return (
     <div className="primary-container team">
       {isFetchError && <ErrorPopup/>}

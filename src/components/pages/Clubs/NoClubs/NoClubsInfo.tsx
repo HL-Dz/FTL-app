@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import tournament from '../../../../assets/images/tournament.png';
 import './NoClubsInfo.scss';
 
-const NoClubs = () => {
+const NoClubs: FC = () => {
   return (
     <div className="no-clubs">
       <div className="no-clubs__pic">

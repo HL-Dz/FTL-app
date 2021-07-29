@@ -53,7 +53,7 @@ export const resetTeam = (): ResetTeamProfileAction => ({type: TeamActionTypes.R
 
 
 
-export const getTeamProfile = (team: string) => async (dispatch: Dispatch<TeamAction>) =>  {
+export const getTeamProfile = (team: number) => async (dispatch: Dispatch<TeamAction>) =>  {
   dispatch(setFetchTeamError(false));
   dispatch(resetTeam())
   dispatch(toggleIsLoading(true));

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { resetTeam } from '../../../../redux/team-reducer';
 import ErrorPopup from '../../../common/ErrorPopup/ErrorPopup';
 import Loading from '../../../common/Loading/Loading';
@@ -10,9 +11,11 @@ import './ClubContent.scss';
 
 const ClubContent = () => {
   const dispatch = useDispatch();
-  const team = useSelector(state => state.teamPage.team);
-  const isFetchError = useSelector(state => state.teamPage.isFetchError);
-  const isLoading = useSelector(state => state.teamPage.isLoading);
+  // const team = useSelector(state => state.teamPage.team);
+  // const isFetchError = useSelector(state => state.teamPage.isFetchError);
+  // const isLoading = useSelector(state => state.teamPage.isLoading);
+
+  const {team, isFetchError, isLoading} = useTypedSelector(state => state.teamPage);
 
   const errorMessage = ' Please, select the club a little later.';
 

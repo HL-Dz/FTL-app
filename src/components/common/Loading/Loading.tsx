@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import './Loading.scss';
 
-const Loading = () => {
+const Loading: FC = () => {
   return (
       <div id="loader"></div>
   )

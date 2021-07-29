@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { ISquadItem, ITeam } from '../../../../types/team';
 import SearchElem from '../../../common/SearchElem/SearchElem';
 import "./ShortList.scss";
 
-const ShortList = ({team}) => {
+interface IShortList {
+  team: ITeam | null
+}
+
+const ShortList: FC<IShortList> = ({team}) => {
   const [display, setDisplay] = useState(false);
   const [search, setSearch] = useState('');
 
-  const toggleShortList = (e) => {
-     setDisplay(!display);
-  }
+  const toggleShortList = () => {
+    setDisplay(!display);
+ }
 
-  const filteredPlayers = team.squad.filter(elem => {
-    return elem.name.toLowerCase().includes(search.toLowerCase());
+  if(!team) return null;
+
+  const filteredPlayers = team.squad.filter((elem: ISquadItem) => {
+    return elem.name?.toLowerCase().includes(search.toLowerCase());
   });
-
-
   
   return (
     <div className="short-list">
@@ -42,7 +47,7 @@ const ShortList = ({team}) => {
               {
                 filteredPlayers.length < 1 ? <div className="no-players">No players...</div> : 
                 filteredPlayers.map(elem => {
-                  const name = elem.name.trim().toLowerCase().replace(/\s/g, "-");
+                  const name = elem.name?.trim().toLowerCase().replace(/\s/g, "-");
                   const countryOfBirth = `../../images/Countries/${elem.countryOfBirth}.png`;
                   return (
                     <div className="short-list__player" key={elem.id}>

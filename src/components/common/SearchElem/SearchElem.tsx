@@ -1,14 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
+import { ISearch } from '../../../types/common';
 import "./SearchElem.scss";
 
-const SearchElem = ({search, setSearch}) => {
+const SearchElem: FC<ISearch> = ({search, setSearch}) => {
   const [isActive, setIsActive] = useState(false);
 
-  const textInput = useRef(null);
+  const textInput = useRef<HTMLInputElement>(null);
 
   const showForm = () => {
     setIsActive(true);
-    textInput.current.focus();
+    textInput.current?.focus();
   }
 
   const closeForm = () => {
@@ -16,15 +17,15 @@ const SearchElem = ({search, setSearch}) => {
     setSearch('');
   }
 
-  const changeSearchElem = (e) => {
+  const changeSearchElem = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   }
 
-  const closeFormWithKeyPress  =  e => {
+  const closeFormWithKeyPress  =  (e: any) => {
     if(e.key === 'Escape') {
       setIsActive(false);
       setSearch('');
-      textInput.current.blur();
+      textInput.current?.blur();
     } 
   }
 
