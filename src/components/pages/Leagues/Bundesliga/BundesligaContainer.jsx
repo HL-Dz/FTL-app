@@ -1,4 +1,4 @@
-import { withLeagueData } from '../../../../hocs/withLeagueData.js';
+import { withLeagueData } from '../../../../hocs/withLeagueData';
 import Bundesliga from './Bundesliga.jsx';
 
 let BundesligaContainer = withLeagueData(Bundesliga, "BL1");

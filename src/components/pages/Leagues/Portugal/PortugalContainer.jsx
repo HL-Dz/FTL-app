@@ -1,4 +1,4 @@
-import { withLeagueData } from '../../../../hocs/withLeagueData.js';
+import { withLeagueData } from '../../../../hocs/withLeagueData';
 import Portugal from './Portugal.jsx';
 
 let PortugalContainer = withLeagueData(Portugal, "PPL");

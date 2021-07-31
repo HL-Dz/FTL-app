@@ -1,4 +1,4 @@
-import { withLeagueData } from '../../../../hocs/withLeagueData.js';
+import { withLeagueData } from '../../../../hocs/withLeagueData';
 import SerieA from './SerieA.jsx';
 
 let SerieAContainer = withLeagueData(SerieA, "SA");
