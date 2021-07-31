@@ -71,7 +71,7 @@ interface IMatch {
 }
 
 export interface IPlayer {
-  id: number
+  id: string
   countryOfBirth: string | null
   dateOfBirth: string | null
   firstName: string | null

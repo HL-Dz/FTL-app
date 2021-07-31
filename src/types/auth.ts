@@ -16,7 +16,7 @@ export interface IUser {
 
 export interface SetAuthUserAction {
   type: UserActionTypes.SET_USER
-  user: IUser
+  user: IUser | null
 }
 
 export interface SetIsAuthorizedAction {

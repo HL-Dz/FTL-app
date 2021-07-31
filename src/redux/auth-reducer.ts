@@ -34,7 +34,7 @@ const userAuthReducer = (state = initialState, action: AuthAction): AuthInitialS
 };
 
 // Action Creators
-export const setAuthUser = (user: IUser): SetAuthUserAction => ({type: UserActionTypes.SET_USER, user});
+export const setAuthUser = (user: IUser | null): SetAuthUserAction => ({type: UserActionTypes.SET_USER, user});
 export const setIsAuthorized = (isAuthorized: boolean): SetIsAuthorizedAction => ({type: UserActionTypes.USER_IS_AUTHORIZED, isAuthorized});
 
 // Firebase authorazation methods

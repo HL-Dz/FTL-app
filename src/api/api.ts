@@ -1,4 +1,4 @@
-import * as axios from 'axios';
+import axios from 'axios';
 
 const instance = axios.create({
   baseURL: 'https://api.football-data.org/v2',
@@ -8,25 +8,25 @@ const instance = axios.create({
 });
 
 export const standingsAPI = {
-  getLeagueStandings(league){
+  getLeagueStandings(league: string){
     return instance.get(`/competitions/${league}/standings`);
   },
-  getScorers(league){
+  getScorers(league:string){
     return instance.get(`/competitions/${league}/scorers`)
   }
 }
 
 export const teamAPI = {
-  getTeam(team){
+  getTeam(team:number){
     return instance.get(`teams/${team}`);
   }
 }
 
 export const playerAPI = {
-  getPlayer(player){
+  getPlayer(player:string){
     return instance.get(`players/${player}`)
   },
-  getMatches(player, dateFrom, dateTo){
+  getMatches(player:string, dateFrom:string, dateTo:string){
     return instance.get(`players/${player}/matches?dateFrom=${dateFrom}&dateTo=${dateTo}`);
   }
 }

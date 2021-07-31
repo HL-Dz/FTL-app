@@ -92,7 +92,7 @@ export const getPlayerProfile = (player: string) => async (dispatch: Dispatch<Pl
     }
 }
 
-export const getMatсhes = (player:number, dateFrom:string, dateTo:string) => async (dispatch: Dispatch<PlayerAction>) => {
+export const getMatсhes = (player:string, dateFrom:string, dateTo:string) => async (dispatch: Dispatch<PlayerAction>) => {
   dispatch(setFetchPlayerError(false));
   dispatch(isLoadingMatches(true));
   await delay(500);
