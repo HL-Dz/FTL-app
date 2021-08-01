@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { delay } from '../../../helpers/helpers';
 import "./ErrorModal.scss";
 
-const ErrorModal = ({errorMessage, setErrorModal}) => {
+interface ErrorModalProps {
+  errorMessage: string
+  setErrorModal: (err: boolean) => void
+}
+
+const ErrorModal: FC<ErrorModalProps> = ({errorMessage, setErrorModal}) => {
   const [slowlyInActive, setSlowlyInActive] = useState(false);
 
   const closeModal = async () => {
@@ -13,13 +18,13 @@ const ErrorModal = ({errorMessage, setErrorModal}) => {
     setErrorModal(false);
   }
 
-  const closeModalForm = (e) => {
-    if(e.target.className === 'errorModal') {
+  const closeModalForm = (e: React.MouseEvent) => {
+    if(e.currentTarget.className === 'errorModal') {
       closeModal()
     }
   }
 
-  const handleEscape = (e) => {
+  const handleEscape = (e:any) => {
     if(e.key === 'Escape') {
       closeModal()
     }

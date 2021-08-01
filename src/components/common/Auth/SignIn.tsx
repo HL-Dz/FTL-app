@@ -6,10 +6,10 @@ import ErrorModal from '../ErrorModal/ErrorModal';
 import EmailForm from './EmailForm';
 import "./SignIn.scss";
 import auth from '../../../assets/images/authorized.png';
-import { useSelector } from 'react-redux';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
 
 const SignIn = () => {
-  const isAuthorized = useSelector(state => state.auth.isAuthorized);
+  const {isAuthorized} = useTypedSelector(state => state.auth);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,7 +31,7 @@ const SignIn = () => {
     setPasswordError('');
   }
 
-  const socialNetworkHandler = (provider) => {
+  const socialNetworkHandler = (provider:any) => {
     signInWithSocialNetwork(provider)
       .then(res => {
         return 'Successful authorization';

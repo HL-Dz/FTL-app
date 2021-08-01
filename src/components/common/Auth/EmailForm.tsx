@@ -1,11 +1,28 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { delay } from '../../../helpers/helpers';
 import { isValidEmailFormData } from '../../../helpers/validation';
 import { userRegisterHandler, signInHandler } from '../../../redux/auth-reducer';
 import Spinner from '../Spinner/Spinner';
 import "./EmailForm.scss";
 
-const EmailForm = ({
+interface EmalFormProps {
+  hasAccount: boolean
+  email: string
+  password: string
+  emailError: string
+  passwordError: string
+  emailRegistration: boolean
+  setHasAccount: (hasAccountElem: boolean) => void
+  setEmail: (emailElem: string) => void
+  setPassword: (passwordElem: string) => void
+  setEmailError: (emailErr: string) =>  void
+  setPasswordError: (passwordError: string) => void
+  setEmailRegistration: (register: boolean) => void
+  resetFields: () => void
+  resetErrors: () => void
+}
+
+const EmailForm: FC<EmalFormProps> = ({
   hasAccount,
   setHasAccount,
   email,
