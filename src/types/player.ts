@@ -25,7 +25,7 @@ interface ICompetition {
   name: string | null
 }
 
-interface IReferee {
+export interface IReferee {
   id: number
   name: string | null
   role: string | null
@@ -53,7 +53,7 @@ interface ISeason {
   endDate: string | null
 }
 
-interface IMatch {
+export interface IMatch {
   id: number
   competition: ICompetition
   awayTeam: IMatchTeam
@@ -67,7 +67,7 @@ interface IMatch {
   season: ISeason
   stage: string | null
   status: string | null
-  utcDate: string | null
+  utcDate: string
 }
 
 export interface IPlayer {

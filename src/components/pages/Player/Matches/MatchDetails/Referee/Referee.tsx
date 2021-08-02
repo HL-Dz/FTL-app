@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { IReferee } from '../../../../../../types/player';
 
-const Referee = ({referee}) => {
+interface RefereeProps {
+  referee: IReferee
+}
+
+const Referee: FC<RefereeProps> = ({referee}) => {
   const nationality = `../../images/Countries/${referee.nationality}.png`;
   return (
     <div className="referee">

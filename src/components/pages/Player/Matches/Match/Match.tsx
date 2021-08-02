@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {getCurrnetDate} from '../../../../../helpers/helpers';
+import { IMatch } from '../../../../../types/player';
 
-const Match = ({match, showDetailsModal}) => {
+interface MatchProps {
+  match: IMatch
+  showDetailsModal: (e: React.MouseEvent<HTMLDivElement>, match: IMatch) => void
+}
 
+const Match: FC<MatchProps> = ({match, showDetailsModal}) => {  
   return (
     <div className="match" onClick={(e) => showDetailsModal(e, match)}>
       <div className="short-match-info">

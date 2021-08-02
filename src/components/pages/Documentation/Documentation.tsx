@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Footer from '../../common/Footer/Footer';
 import "./Documentation.scss";
 
-const Documentation = () => {
+const Documentation: FC = () => {
   return (
     <div className="primary-container info">
       <div className="container">

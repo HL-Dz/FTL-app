@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { getCurrnetDate } from '../../../../../helpers/helpers';
+import { IMatch } from '../../../../../types/player';
 import "./MatchDetails.scss";
 import Referee from './Referee/Referee';
 
-const MatchDetails = ({hideDetailsModal, selectedMatch}) => {
+interface MatchDetailsProps {
+  selectedMatch: IMatch | null
+  hideDetailsModal: () => void
+}
+
+const MatchDetails: FC<MatchDetailsProps> = ({hideDetailsModal, selectedMatch}) => {
+
+  if(!selectedMatch) return null;
 
   const competition = selectedMatch.competition.name ? selectedMatch.competition.name : "No data";
 

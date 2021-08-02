@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { FC } from 'react';
 import './InfoHelper.scss';
 import gifClubs from '../../../../assets/images/SelectClub.gif';
 
-const InfoHelper = ({isFetchError}) => {
+interface InfoHelperProps {
+  isFetchError: boolean
+}
+
+const InfoHelper: FC<InfoHelperProps> = ({isFetchError}) => {
   if(isFetchError) return null;
   
   return (
