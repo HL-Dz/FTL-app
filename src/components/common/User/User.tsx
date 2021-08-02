@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { FC } from 'react';
 import "./User.scss";
 import noPhoto from '../../../assets/images/noname.jpg';
 import { logout } from '../../../redux/auth-reducer';
 import { useState } from 'react';
 import Spinner from '../Spinner/Spinner';
 import { delay } from '../../../helpers/helpers';
+import { IUser } from '../../../types/auth';
 
-const Users = ({user}) => {
+interface UserProps {
+  user: IUser
+}
+
+
+const User: FC<UserProps> = ({user}) => {
   const [isLogout, setIsLogout] = useState(false);
   const [isVisibleUser, setIsVisibleUser] = useState(false);
   const [isSlowlyAnim, setIsSlowlyAnim] = useState(false);
@@ -23,9 +29,10 @@ const Users = ({user}) => {
   }
 
 
-  const showUserInfo = (e) => {
+  const showUserInfo = (e: React.SyntheticEvent) => {
     setIsSlowlyAnim(false);
-    if(e.target.className === 'user' || e.target.className === 'user__img') {
+    let target =  e.target as HTMLDivElement;
+    if(target.className === 'user' || target.className === 'user__img') {
       setIsVisibleUser(true);
     }
   }
@@ -66,4 +73,4 @@ const Users = ({user}) => {
   )
 }
 
-export default Users;
+export default User;

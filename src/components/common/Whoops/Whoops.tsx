@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Footer from '../Footer/Footer';
 import "./Whoops.scss";
 import ronaldo from '../../../assets/images/ronaldo.png';
 import halland from '../../../assets/images/halland.png';
 import ball from '../../../assets/images/ball.png';
+import { ILocationProps } from '../../../types/common';
 
-const Whoops = ({location}) => {
-  console.log(location);
+interface WhoopsPprops {
+  location: ILocationProps
+}
+
+const Whoops: FC<WhoopsPprops> = ({location}) => {
   return (
     <div className="primary-container whoops">
       <div className="container">

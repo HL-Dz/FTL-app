@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import "./App.scss";
-import Navbar from './components/Navbar/Navbar.jsx';
+import Navbar from './components/common/Navbar/Navbar';
 import {Route, Switch} from 'react-router-dom';
 import Leagues from './components/pages/Leagues/Leagues';
 import Clubs from './components/pages/Clubs/Clubs';

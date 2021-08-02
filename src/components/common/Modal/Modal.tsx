@@ -1,16 +1,22 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { useEffect } from 'react';
 import "./Modal.scss";
 
-const Modal = ({children, hideDetailsModal, isHideModal}) => {  
+interface ModalProps {
+  isHideModal: boolean
+  children: React.ReactNode
+  hideDetailsModal: () => void
+}
 
-  const hideModal = async (e) => {
-    if(e.target.className === 'modal-overlay') {
+const Modal: FC<ModalProps> = ({children, hideDetailsModal, isHideModal}) => {  
+
+  const hideModal = async (e: React.MouseEvent<HTMLDivElement>) => {
+    if(e.currentTarget.className === 'modal-overlay') {
       hideDetailsModal()
     }
   }
 
-  const hideModalWithEscape = (e) => {
+  const hideModalWithEscape = (e: any) => {
     if(e.key === 'Escape') {
       hideDetailsModal()
     }

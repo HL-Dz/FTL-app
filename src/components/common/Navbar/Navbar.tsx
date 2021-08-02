@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import './Navbar.scss';
 import {Link} from 'react-router-dom';
-import NavigationDropdown from '../common/NavigationDropdown/NavigationDropdown';
-import { useSelector } from 'react-redux';
-import User from '../common/User/User';
+import NavigationDropdown from '../NavigationDropdown/NavigationDropdown';
+import User from '../User/User';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
 
-const Navbar = (props) => {
-  const user = useSelector(state => state.auth.user);
+const Navbar = () => {
+  const { user } = useTypedSelector(state => state.auth)
   const [click, setClick] = useState(false);
   const [drop, setDrop] = useState(false);
 

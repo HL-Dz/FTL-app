@@ -1,7 +1,25 @@
-import React from 'react';
+import React, { FC } from 'react';
 import "./Players.scss";
 
-const Players = ({isFetching, players, isFetchError}) => {
+interface PlayersObjProps {
+  first: IPlayerItem
+  second: IPlayerItem
+}
+
+interface IPlayerItem {
+  name: string
+  club: string
+  path: string
+}
+
+interface PlayersProps {
+  isFetching: boolean
+  isFetchError: boolean
+  players: PlayersObjProps
+}
+
+
+const Players: FC<PlayersProps> = ({isFetching, players, isFetchError}) => {
   if(isFetchError) {
     return null;
   }

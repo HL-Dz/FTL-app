@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { LeaguesData } from '../../pages/Leagues/LeaguesData';
 import './NavigationDropdown.scss';
 
-const NavigationDropdown = ({hideDropdown}) => {
+interface NavigationDropdownProps {
+  hideDropdown: () => void
+}
+
+const NavigationDropdown: FC<NavigationDropdownProps> = ({hideDropdown}) => {
   return (
     <div className="dropdown">
       <ul className="dropdown__list">
