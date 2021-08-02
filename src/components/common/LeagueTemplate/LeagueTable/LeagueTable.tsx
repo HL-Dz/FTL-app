@@ -1,35 +1,46 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { FC, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import noPhoto from '../../../../assets/images/no-image.png';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { addNewClub } from '../../../../redux/clubs-reducer';
+import { ILeague, ITeamDesc } from '../../../../types/league';
 import SearchElem from '../../SearchElem/SearchElem';
 import BestScorers from '../BestScorers/BestScorers';
 import LeagueDesignations from '../LeagueDesignations/LeagueDesignations';
 
-const LeagueTable = ({league, isFetchError, scorers}) => {
-  const [search, setSearch] = useState('');
-  const dispatch = useDispatch();
+interface LeagueTableProps {
+  league: ILeague
+  isFetchError: boolean
+}
 
-  const clubs = useSelector(state => state.clubsPage.clubs);
+const LeagueTable: FC<LeagueTableProps> = ({league, isFetchError}) => {
+  const dispatch = useDispatch();
+  const [search, setSearch] = useState('');
+  const {clubs} = useTypedSelector(state => state.clubsPage);
 
   if(isFetchError) {
     return null;
   }
 
-  const isSavedClub = (id) => {
+  const isSavedClub = (id: number) => {
     const savedClubs = clubs.some(el => el.id === id);
     return savedClubs;
   }
 
-  const addClub = (club, num) => {
-    dispatch(addNewClub(club, num));
+  const addClub = (club: ITeamDesc, order: number) => {
+    let newClub = {
+      ...club,
+      cls: 'current-club',
+      order: order
+    }
+    dispatch(addNewClub(newClub));
   }
 
   const code = league.competition.code;
 
   const filteredLeague = league.standings[0].table.filter(elem => {
-    return elem.team.name.toLowerCase().includes(search.toLowerCase());
+    return elem.team.name?.toLowerCase().includes(search.toLowerCase());
   });
 
   return (
@@ -61,14 +72,14 @@ const LeagueTable = ({league, isFetchError, scorers}) => {
                 {
                   filteredLeague.length === 0 ? <tr><td></td><td className="td-no-matches">No matches...</td></tr> :
                   filteredLeague.map(elem=> {
-                  const name = elem.team.name.trim().toLowerCase().replace(/\s/g, "-");
+                  const name = elem.team.name?.trim().toLowerCase().replace(/\s/g, "-");
                   return (
                     <tr className="table-tr" key={elem.team.id}>
                       <td className="table-td">{elem.position}</td>
                       <td className="table-td table-td-active">
                         <NavLink to={`/teams/${elem.team.id}/${name}`}>
                           <span className="has-logo">
-                            <img className="td-logo" src={elem.team.crestUrl || noPhoto} alt={elem.team.name}/>
+                            <img className="td-logo" src={elem.team.crestUrl || noPhoto} alt={elem.team.name || 'Object'}/>
                           </span>
                           {elem.team.name}
                         </NavLink>
@@ -100,7 +111,7 @@ const LeagueTable = ({league, isFetchError, scorers}) => {
         </table>
         <div className="table-description">
           <LeagueDesignations/>
-          <BestScorers scorers={scorers} code={code}/>
+          <BestScorers code={code}/>
         </div>
       </div>
     </>

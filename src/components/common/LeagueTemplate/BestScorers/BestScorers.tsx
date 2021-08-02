@@ -1,16 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { FC, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { getBestLeaguePlayers } from '../../../../redux/league-reducer';
 import Spinner from '../../Spinner/Spinner';
 import ToggleButton from '../../ToggleButton/ToggleButton';
 import './BestScorers.scss';
 import ScorerList from './ScorerList/ScorerList';
 
-const BestScorers = ({code}) => {
+interface BestScorersProps {
+  code: string
+}
+
+const BestScorers: FC<BestScorersProps> = ({code}) => {
   const dispatch = useDispatch()
+  const {scorers} = useTypedSelector(state => state.leaguePage);
   const [isVisible, setVisible] = useState(false);
   const [isScorersLoading, setScorersLoading] = useState(false);
-  const scorers = useSelector(state => state.leaguePage.scorers);
 
   const toggleButton = async ()  => {
       if(!isVisible) {

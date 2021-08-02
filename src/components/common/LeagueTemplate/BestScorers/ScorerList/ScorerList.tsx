@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
+import { IScorer } from '../../../../../types/league';
 
-const ScorerList = ({elem}) => {
-  let name = elem.player.name.trim().toLowerCase().replace(/\s/g, "-");
+interface ScorerListProps {
+  elem: IScorer
+}
+
+const ScorerList: FC<ScorerListProps> = ({elem}) => {
+  let name = elem.player.name?.trim().toLowerCase().replace(/\s/g, "-");
   let countryOfBirth = `../../images/Countries/${elem.player.countryOfBirth}.png`;
   return (
     <li className="scorer">

@@ -23,14 +23,9 @@ type ClubsInitialState = typeof initialState;
 const clubsReducer = (state = initialState, action: ClubsAction): ClubsInitialState => {
   switch(action.type) {
     case ClubsActionTypes.ADD_CLUB: 
-      let club = {
-        ...action.club,
-        cls: 'current-club',
-        order: action.index
-      }
       return {
         ...state,
-        clubs: [club, ...state.clubs],
+        clubs: [action.club, ...state.clubs],
       }
     case ClubsActionTypes.REMOVE_CLUB: 
       return {
@@ -67,7 +62,7 @@ const clubsReducer = (state = initialState, action: ClubsAction): ClubsInitialSt
 
 
 // Action Creators
-export const addNewClub = (club: IClub, index: number): AddNewClubAction => ({type: ClubsActionTypes.ADD_CLUB, club, index});
+export const addNewClub = (club: IClub): AddNewClubAction => ({type: ClubsActionTypes.ADD_CLUB, club});
 const setInactiveItem = (itemId: number): SetInactiveItemAction => ({type: ClubsActionTypes.SET_INACTIVE_ITEM, itemId})
 const removeFootballClub = (clubId: number): RemoveFootballClubAction => ({type: ClubsActionTypes.REMOVE_CLUB, clubId});
 export const setCurrentClub = (currentClub: IClub): SetCurrentClubAction => ({type: ClubsActionTypes.SET_CURRENT_CLUB, currentClub});

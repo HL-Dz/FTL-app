@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { ILeague } from '../../../../types/league';
 
-const OverviewLeagueCard = ({league, isFetchError}) => {
+interface OverviewLeagueCardProps {
+  league: ILeague
+  isFetchError: boolean
+}
+
+const OverviewLeagueCard: FC<OverviewLeagueCardProps> = ({league, isFetchError}) => {
   if(isFetchError) {
     return null;
   }

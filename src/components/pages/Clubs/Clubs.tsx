@@ -13,7 +13,7 @@ const Clubs: FC = () => {
   const { clubs, inActiveItem } = useTypedSelector(state => state.clubsPage)
 
   const filteredClubs = clubs.filter((elem: IClub) => {
-    return elem.name.toLowerCase().includes(search.toLowerCase());
+    return elem.name?.toLowerCase().includes(search.toLowerCase());
   });
 
   const sortClubs = (a: IClub, b: IClub) => {

@@ -37,7 +37,9 @@ export interface ISeason {
   currentMatchday: number | null
   startDate: string | null
   endDate: string | null
-  winner: string | null
+  winner: {
+    name: string
+  } | null
 }
 
 // Standings

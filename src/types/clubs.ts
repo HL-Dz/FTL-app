@@ -8,8 +8,8 @@ export enum ClubsActionTypes {
 
 export interface IClub {
   id: number
-  name: string
-  cls: string
+  name: string | null
+  cls: string | null
   crestUrl: string | null
   order: number
 }
@@ -17,7 +17,6 @@ export interface IClub {
 export interface AddNewClubAction {
   type: ClubsActionTypes.ADD_CLUB
   club: IClub
-  index: number
 }
 
 export interface SetInactiveItemAction {

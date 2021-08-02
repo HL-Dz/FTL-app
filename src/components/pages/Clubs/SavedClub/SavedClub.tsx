@@ -58,7 +58,7 @@ const SavedClub: FC<ISavedClub> = ({elem, inActiveItem}) => {
       onClick={(e) => {showCurrentTeam(e, elem)}}
     >
       <div className="club-pic">
-        <img className="club-img" src={elem.crestUrl || noPhoto} alt={elem.name} title={elem.name}/>
+        <img className="club-img" src={elem.crestUrl || noPhoto} alt={elem.name || 'Club'} title={elem.name || 'Club'}/>
       </div>
       <div className="club-name">{elem.name}</div>
       <button className="club-remove" onClick={(e) => {removeClub(e, elem.id)}}>

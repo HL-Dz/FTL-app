@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import './LeagueDesignations.scss'
 
-const LeagueDesignations = () => {
+const LeagueDesignations: FC = () => {
   return (
     <div className="league-designations">
       <div className="designations-text">

@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { FC } from 'react';
 import './ToggleButton.scss';
 
-const ToggleButton = ({isVisible, toggleElem}) => {
+interface ToggleButtoProps {
+  isVisible: boolean
+  toggleElem: () => void
+}
+
+const ToggleButton: FC<ToggleButtoProps> = ({isVisible, toggleElem}) => {
   return (
     <>
       {
