@@ -1,3 +1,5 @@
+import { ILeague } from "./league";
+
 export interface ISearch {
   search: string
   setSearch: (elem: string) => void
@@ -8,4 +10,18 @@ export interface ILocationProps {
   pathname: string
   serach: string
   state?: undefined
+}
+
+export interface LeagueProps {
+  league: ILeague
+  isFetching: boolean
+  isFetchError: boolean
+}
+
+export interface LeagueDataCardProps {
+  id: number,
+  title: string,
+  path: string,
+  imgSrc: string
+  imgSrcMini: string
 }

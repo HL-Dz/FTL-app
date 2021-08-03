@@ -1,23 +1,25 @@
-import React from 'react';
-import "./Portugal.scss";
-import alvalade from './Alvalade.jpg'
-import Players from '../../../common/Players/Players';
+import React, { FC } from 'react';
+import "./Primera.scss";
+import bernabeu from './Bernabeu.jpg'
 import players from '../../../common/Players/playersData';
+import Players from '../../../common/Players/Players';
 import LeagueTemplate from '../../../common/LeagueTemplate/LeagueTemplate';
 import Footer from '../../../common/Footer/Footer';
+import { LeagueProps } from '../../../../types/common';
 
-let portugalBackground = {
-  backgroundImage: `url(${alvalade})`,
+
+
+let PrimeraBackground = {
+  backgroundImage: `url(${bernabeu})`,
   backgroundPosition: "top center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "contain",
 }
 
-
-const PortugalLeague = ({league, isFetching, isFetchError }) => {
+const Primera: FC<LeagueProps> = ({league, isFetching, isFetchError}) => {
   return (
-    <div className="primary-container portugal" style={portugalBackground}>
-      <Players isFetching={isFetching} players={players.portugal} isFetchError={isFetchError}/>
+    <div className="primary-container primera" style={PrimeraBackground}>
+      <Players isFetching={isFetching} players={players.primera} isFetchError={isFetchError}/>
       <div className="container">
         <LeagueTemplate 
           league={league} 
@@ -30,4 +32,4 @@ const PortugalLeague = ({league, isFetching, isFetchError }) => {
   )
 }
 
-export default PortugalLeague;
+export default Primera;

@@ -1,4 +1,6 @@
-export const LeaguesData = [
+import { LeagueDataCardProps } from "../../../types/common";
+
+export const LeaguesData: Array<LeagueDataCardProps> = [
   {
     id: 1,
     title: 'Bundesliga',

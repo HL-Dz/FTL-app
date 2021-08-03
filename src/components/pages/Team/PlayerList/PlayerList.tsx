@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { ITeam } from '../../../../types/team';
 import SearchElem from '../../../common/SearchElem/SearchElem';
 
 
-const PlayerList = ({team, isFetchError}) => {
+interface PlayerListProps {
+  isFetchError: boolean
+  team: ITeam | null
+}
+
+const PlayerList: FC<PlayerListProps> = ({team, isFetchError}) => {
   const [searchPlayer, setSearchPlayer] = useState('');
 
   if(isFetchError) return null;
   if(!team) return null;
 
   const filteredPlayers = team.squad.filter(player => {
-    return player.name.toLowerCase().includes(searchPlayer.toLowerCase());
+    return player.name?.toLowerCase().includes(searchPlayer.toLowerCase());
   });
   
 
@@ -45,7 +51,7 @@ const PlayerList = ({team, isFetchError}) => {
               {
                 filteredPlayers.length === 0 ? <tr><td></td><td className="td-no-matches">No matches...</td></tr> : 
                 filteredPlayers.map((elem, index) => {
-                  const name = elem.name.trim().toLowerCase().replace(/\s/g, "-");
+                  const name = elem.name?.trim().toLowerCase().replace(/\s/g, "-");
                   const countryOfBirth = `../../images/Countries/${elem.countryOfBirth}.png`;
                   const nationality = `../../images/Countries/${elem.nationality}.png`;
                   return (

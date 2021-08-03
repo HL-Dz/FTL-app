@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { FC } from 'react'
+import { LeagueProps } from '../../../../types/common';
 import Footer from '../../../common/Footer/Footer';
 import LeagueTemplate from '../../../common/LeagueTemplate/LeagueTemplate';
 import Players from '../../../common/Players/Players';
@@ -13,12 +14,11 @@ let championshipBackground = {
   backgroundSize: "contain",
 }
 
-
-const Championship = ({league, isFetching, isFetchError}) => {
+const Championship: FC<LeagueProps> = ({league, isFetching, isFetchError}) => {
   return (
     <div className="primary-container championship" style={championshipBackground}>
       <Players isFetching={isFetching} players={players.chapmionship} isFetchError={isFetchError}/>
-      <div className="container"> 
+      <div className="container">
         <LeagueTemplate 
           league={league} 
           isFetching={isFetching} 

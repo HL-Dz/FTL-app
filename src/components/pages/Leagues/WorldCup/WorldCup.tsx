@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Footer from '../../../common/Footer/Footer';
 import "./WorldCup.scss";
 
-const WorldCup = () => {
+const WorldCup: FC = () => {
   return (
     <div className="primary-container world-cup">
       <div className="container">

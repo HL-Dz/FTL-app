@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-const LeagueCard = ({path,imgSrc,title}) => {
+interface LeagueCardProps {
+  path: string
+  imgSrc: string
+  title: string
+}
+
+const LeagueCard: FC<LeagueCardProps> = ({path,imgSrc,title}) => {
   return (
     <div className="league">
       <Link to={path} className="league__link">

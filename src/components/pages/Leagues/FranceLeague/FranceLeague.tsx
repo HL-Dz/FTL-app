@@ -1,22 +1,23 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { LeagueProps } from '../../../../types/common';
 import Footer from '../../../common/Footer/Footer';
 import LeagueTemplate from '../../../common/LeagueTemplate/LeagueTemplate';
 import Players from '../../../common/Players/Players';
 import players from '../../../common/Players/playersData';
-import "./Eredivise.scss";
-import Philips from './Philips.jpg';
+import "./FranceLeague.scss";
+import velodrom from './Velodrom.jpg'
 
-let ErediviseBackground = {
-  backgroundImage: `url(${Philips})`,
+let fl1Background = {
+  backgroundImage: `url(${velodrom})`,
   backgroundPosition: "top center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "contain",
 }
 
-const Eredivise = ({league, isFetching, isFetchError}) => {
+const FranceLeague: FC<LeagueProps> = ({league, isFetching, isFetchError }) => {
   return (
-    <div className="primary-container eredivise" style={ErediviseBackground}>
-      <Players isFetching={isFetching} players={players.netherlands} isFetchError={isFetchError}/>
+    <div className="primary-container france-league" style={fl1Background}>
+      <Players isFetching={isFetching} players={players.france} isFetchError={isFetchError}/>
       <div className="container">
         <LeagueTemplate 
           league={league} 
@@ -29,4 +30,4 @@ const Eredivise = ({league, isFetching, isFetchError}) => {
   )
 }
 
-export default Eredivise;
+export default FranceLeague;

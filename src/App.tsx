@@ -21,10 +21,10 @@ import ErediviseContainer from "./components/pages/Leagues/Eredivise/ErediviseCo
 import BrasilContainer from "./components/pages/Leagues/Brasil/BrasilContainer";
 import Player from "./components/pages/Player/Player";
 import firebase from './firebase';
-import { setAuthUser, setIsAuthorized } from "./redux/auth-reducer";
 import Whoops from "./components/common/Whoops/Whoops";
 import Articles from "./components/pages/News/Articles";
 import { delay } from "./helpers/helpers";
+import { setAuthUser, setIsAuthorized } from "./redux/auth-reducer";
 
 
 function App() {
