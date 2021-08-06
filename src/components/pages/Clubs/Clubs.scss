@@ -1,5 +1,11 @@
 @use "../../../sass/abstracts";
 
+.clubs {
+  .icon-location {
+    display: none;
+  } 
+}
+
 .clubs-wrapper {
   display: flex;
   padding-bottom: 30px;

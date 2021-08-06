@@ -3,11 +3,12 @@ import "./Articles.scss";
 import Footer from '../../common/Footer/Footer';
 import SignIn from '../../common/Auth/SignIn';
 import firebase from '../../../firebase';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
 
 const Articles = () => {  
   // const dispatch = useDispatch();
-  const user = useSelector(state => state.auth.user);
+  const { user } = useTypedSelector(state => state.auth);
   let userName = '';
   if(user) {
     userName = user.displayName ? user.displayName : 'user';

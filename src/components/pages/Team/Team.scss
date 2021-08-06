@@ -4,6 +4,10 @@
   padding-top: 80px;
   background: #17181b;
   color: #d3cfcf;
+
+  .icon-address {
+    display: none;
+  }
 }
 
 .team-container {
@@ -149,6 +153,29 @@
   color: #6eac6e;
 }
 
+.icon-address {
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  animation: puls-location 2s ease infinite;
+}
+
+// .details-map {
+//   display: inline-flex;
+//   justify-content: center;
+//   align-items: center;
+//   border: none;
+//   outline: none;
+//   margin-left: 15px;
+//   font-size: 2rem;
+//   background: none;
+//   width: 30px;
+//   height: 30px;
+//   border-radius: 50%;
+// }
+
 .player-list {
   background: #17181b;
   padding-bottom: 80px;
@@ -165,5 +192,19 @@
 
   td {
     padding: 0;
+  }
+}
+
+
+@keyframes puls-location {
+  0% {
+    box-shadow: 0 0 0 0 rgb(153 152 152 / 70%);
+  }
+
+  50% {
+      box-shadow: 0 0 0 20px rgb(56 56 56 / 0%);
+  }
+  100% {
+      box-shadow: 0 0 0 20px rgb(56 56 56 / 0%);
   }
 }

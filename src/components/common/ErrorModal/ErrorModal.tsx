@@ -18,8 +18,9 @@ const ErrorModal: FC<ErrorModalProps> = ({errorMessage, setErrorModal}) => {
     setErrorModal(false);
   }
 
-  const closeModalForm = (e: React.MouseEvent) => {
-    if(e.currentTarget.className === 'errorModal') {
+  const closeModalForm = (e: React.SyntheticEvent) => {
+    let target = e.target as HTMLInputElement;
+    if(target.className === 'errorModal') {
       closeModal()
     }
   }

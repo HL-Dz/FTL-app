@@ -34,8 +34,9 @@ const TeamDescription: FC<ITeamDescription> = ({team, isFetchError}) => {
             <div className="team__details">
               <dl className="detail-list">
                 <dt>
-                  <span className="detail-text">Address</span>
-                  <i className="fas fa-map-marker-alt icon-setting"></i>
+                  <span className="detail-text">Location</span>
+                  <i className="fas fa-map-marker-alt icon-setting icon-location"></i>
+                  <i className="fas fa-street-view icon-setting icon-address" title="Show on the map"></i>
                 </dt>
                 <dd>{team.address || '-------'}</dd>
                 <dt>
