@@ -1,6 +1,8 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import noPhoto from '../../../../assets/images/no-image.png';
+import { delay } from '../../../../helpers/helpers';
 import { ITeam } from '../../../../types/team';
+import Map from '../../../common/Map/Map';
 
 interface ITeamDescription {
   team: ITeam | null
@@ -8,6 +10,17 @@ interface ITeamDescription {
 }
 
 const TeamDescription: FC<ITeamDescription> = ({team, isFetchError}) => {
+  const [isMap, setIsMap] = useState(false);
+  const [isActiveCloseAnim, setIsActiveCloseAnim] = useState(false);
+
+  const closeMap = async () => {
+    setIsActiveCloseAnim(true);
+    await delay(490);
+    setIsActiveCloseAnim(false);
+    setIsMap(false);
+  }
+  
+  
   if(isFetchError) return null;
   
   const detailListWithoutContent = 
@@ -19,6 +32,7 @@ const TeamDescription: FC<ITeamDescription> = ({team, isFetchError}) => {
 
   return (
     <section className="section-description">
+      {isMap ? <Map closeMap={closeMap} isActiveCloseAnim={isActiveCloseAnim}/> : null}
       <div className="team-container team-container-flex">
         { !team ? 
         <div className="team__pic loading-bg">
@@ -36,7 +50,12 @@ const TeamDescription: FC<ITeamDescription> = ({team, isFetchError}) => {
                 <dt>
                   <span className="detail-text">Location</span>
                   <i className="fas fa-map-marker-alt icon-setting icon-location"></i>
-                  <i className="fas fa-street-view icon-setting icon-address" title="Show on the map"></i>
+                  <i 
+                    className="fas fa-street-view icon-setting icon-address" 
+                    title="Show on the map"
+                    onClick={() => setIsMap(true)}
+                  >
+                  </i>
                 </dt>
                 <dd>{team.address || '-------'}</dd>
                 <dt>
