@@ -10,8 +10,9 @@ interface ModalProps {
 
 const Modal: FC<ModalProps> = ({children, hideDetailsModal, isHideModal}) => {  
 
-  const hideModal = async (e: React.MouseEvent<HTMLDivElement>) => {
-    if(e.currentTarget.className === 'modal-overlay') {
+  const hideModal = async (e: React.SyntheticEvent<HTMLDivElement>) => {
+    let target = e.target as HTMLDivElement;
+    if(target.className === 'modal-overlay') {
       hideDetailsModal()
     }
   }

@@ -33,7 +33,7 @@ export interface ISquadItem {
 export interface ITeam {
   id: number
   activeCompetition: Array<IActiveCompetition>
-  address: string | null
+  address: string
   area: IAreaTeam
   clubColors: string | null
   crestUrl: string | null

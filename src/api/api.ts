@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { IGeoLocation } from '../types/geolocation';
 import { ICompetition, ILeague, IScorer, ISeason } from '../types/league';
 import { IMatches, IPlayer } from '../types/player';
 import { ITeam } from '../types/team';
@@ -39,4 +40,10 @@ export const playerAPI = {
   getMatches(player:string, dateFrom:string, dateTo:string){
     return instance.get<IMatches>(`players/${player}/matches?dateFrom=${dateFrom}&dateTo=${dateTo}`);
   }
+}
+
+// Forward geocoding
+export const geoCoding = (query: string) => {
+  const requestURL = `https://api.opencagedata.com/geocode/v1/json?q=${query}&key=${process.env.REACT_APP_GEOCODING_API_KEY}&language=en`;
+  return axios.get<IGeoLocation>(requestURL).then(response=> response.data);
 }

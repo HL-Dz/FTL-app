@@ -2,7 +2,8 @@ import React, { FC, useState } from 'react';
 import noPhoto from '../../../../assets/images/no-image.png';
 import { delay } from '../../../../helpers/helpers';
 import { ITeam } from '../../../../types/team';
-import Map from '../../../common/Map/Map';
+// import Map from '../../../common/Map/Map';
+import MapContainer from '../../../common/Map/MapContainer';
 
 interface ITeamDescription {
   team: ITeam | null
@@ -12,12 +13,18 @@ interface ITeamDescription {
 const TeamDescription: FC<ITeamDescription> = ({team, isFetchError}) => {
   const [isMap, setIsMap] = useState(false);
   const [isActiveCloseAnim, setIsActiveCloseAnim] = useState(false);
+  const [currentAddress, setCurrentAddres] = useState('');
 
   const closeMap = async () => {
     setIsActiveCloseAnim(true);
-    await delay(490);
-    setIsActiveCloseAnim(false);
+    await delay(80);
     setIsMap(false);
+    setIsActiveCloseAnim(false);
+  }
+
+  const showMap = async (address: string) => {
+    setIsMap(true);
+    setCurrentAddres(address);
   }
   
   
@@ -32,7 +39,11 @@ const TeamDescription: FC<ITeamDescription> = ({team, isFetchError}) => {
 
   return (
     <section className="section-description">
-      {isMap ? <Map closeMap={closeMap} isActiveCloseAnim={isActiveCloseAnim}/> : null}
+      {isMap ? <MapContainer 
+        closeMap={closeMap} 
+        isActiveCloseAnim={isActiveCloseAnim}
+        currentAddress={currentAddress}
+      /> : null}
       <div className="team-container team-container-flex">
         { !team ? 
         <div className="team__pic loading-bg">
@@ -53,7 +64,7 @@ const TeamDescription: FC<ITeamDescription> = ({team, isFetchError}) => {
                   <i 
                     className="fas fa-street-view icon-setting icon-address" 
                     title="Show on the map"
-                    onClick={() => setIsMap(true)}
+                    onClick={() => showMap(team.address)}
                   >
                   </i>
                 </dt>
