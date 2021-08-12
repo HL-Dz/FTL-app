@@ -14,6 +14,7 @@ const ClubContent = () => {
   const {team, isFetchError, isLoading} = useTypedSelector(state => state.teamPage);
 
   const errorMessage = ' Please, select the club a little later.';
+  
 
   useEffect(() => {
     return () => {

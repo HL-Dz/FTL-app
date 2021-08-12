@@ -1,10 +1,10 @@
 import React from 'react';
 import "./MapLoader.scss";
 
-const MapCoader = () => {
+const MapLoader = () => {
   return (
     <div className="map-loader"></div>
   )
 }
 
-export default MapCoader;
+export default MapLoader;

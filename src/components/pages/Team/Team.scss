@@ -162,19 +162,18 @@
   animation: puls-location 2s ease infinite;
 }
 
-// .details-map {
-//   display: inline-flex;
-//   justify-content: center;
-//   align-items: center;
-//   border: none;
-//   outline: none;
-//   margin-left: 15px;
-//   font-size: 2rem;
-//   background: none;
-//   width: 30px;
-//   height: 30px;
-//   border-radius: 50%;
-// }
+.team-color {
+  display: inline-flex;
+  width: 40px;
+  height: 15px;
+  border-radius: 2px;
+  margin-right: 5px;
+  border: 1px solid rgb(57, 59, 57);
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
 
 .player-list {
   background: #17181b;
