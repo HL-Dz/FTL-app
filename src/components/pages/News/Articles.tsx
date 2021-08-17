@@ -5,6 +5,8 @@ import SignIn from '../../common/Auth/SignIn';
 import firebase from '../../../firebase';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
+import Tournaments from './Tournaments/Tournaments';
+
 
 const Articles = () => {  
   // const dispatch = useDispatch();
@@ -33,11 +35,23 @@ const Articles = () => {
 
 
   return (
-    <div className="primary-container news">
+    <div className="primary-container articles">
       <div className="container">
         {
           !user ? <SignIn/> : (
-            <h1 className="news__title">{`Hello, ${userName}!`}</h1>
+            <>
+              <header className="articles__header">
+                <h1 className="articles__title">football articles</h1>
+              </header>
+              <div className="articles__container">
+                <div className="articles__content">
+                  Content
+                </div>
+                <aside className="articles__sidebar">
+                  <Tournaments/>
+                </aside>
+              </div>
+            </>
           )
         }
       </div>

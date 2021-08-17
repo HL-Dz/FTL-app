@@ -1,0 +1,106 @@
+.tournament-standings {
+  position: relative;
+  margin-top: -470px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  min-height: 470px;
+  background: #0f0f0f;
+  animation: standings-anim-start 0.5s ease-in-out;
+
+  &_inactive {
+    animation: standings-anim-end 0.5s ease-in-out;
+  }
+}
+
+.standings {
+  position: relative;
+}
+
+.standings__close {
+  position: absolute;
+  left: 10px;
+  top: 3px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.standings__title {
+  padding-top: 3px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+
+.standings__table, .standings__head, .standings__body {
+  width: 100%;
+  --td-border: rgb(66, 60, 60);
+}
+
+.standings__tr {
+  border-bottom: 1px solid var(--td-border);
+}
+
+.standings__th {
+  padding: 5px;
+  font-size: 1.4rem;
+}
+
+.standings__th_team {
+  text-align: left;
+  padding-left: 5px;
+}
+
+.standings__td {
+  text-align: center;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.standings__td_pos {
+  background: rgb(37, 37, 37);
+  color: rgb(67, 204, 112);
+  font-weight: bold;
+}
+
+.standings__td_team {
+  text-align: left;
+  padding-left: 5px;
+  background: rgb(31, 28, 28);
+}
+
+.standings__td_points {
+  background: rgb(37, 37, 37);
+  font-weight: bold;
+}
+
+.standings__td_link {
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@keyframes standings-anim-start {
+  0% {
+    margin-top: -500px;
+    opacity: 0;
+  }
+  100%{
+    margin-top: -470px;
+    opacity: 1;
+  }
+}
+
+@keyframes standings-anim-end {
+  0% {
+    margin-left: 0;
+    opacity: 1;
+  }
+  100%{
+    margin-left: -100%;
+    opacity: 0;
+  }
+}

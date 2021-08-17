@@ -5,7 +5,7 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { IGeometry } from '../../../types/geolocation';
 import { delay } from '../../../helpers/helpers';
-import MapLoader from '../MapLoader/MapLoader';
+import UniversalLoader from '../UniversalLoader/UniversalLoader';
 
 
 interface MapProps {
@@ -63,7 +63,7 @@ const Map: FC<MapProps> = ({closeMap, isActiveCloseAnim, coords}) => {
   return (
     <div className={isActiveCloseAnim ? "map map_inactive" : "map"}>
       <div className={isActiveCloseAnim ? "map__container map__container_inactive" : "map__container"}>
-        {isMapLoading ? <MapLoader/> : null}
+        {isMapLoading ? <UniversalLoader/> : null}
         <div className="map__close" onClick={removeCurrentMap}>
           <img src={closeMapImg} alt="Close map" className="map__close-img" />
         </div>

@@ -1,0 +1,68 @@
+.tournaments {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  // padding-top: 0;
+}
+
+.tournaments__loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.7);
+  animation: transparency-animation 0.5s ease;
+
+  .map-loader {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.tournaments__title {
+  text-align: center;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.7rem;
+}
+
+.tournament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: rgba(75, 74, 74, 0.6);
+  font-family: 'Montserrat';
+  cursor: pointer;
+  margin-bottom: 7px;
+  background: linear-gradient(180deg, rgba(41, 40, 40, 0.5) 50%, rgba(15, 15, 15, 0.9) 50%, rgba(41, 40, 40, 0.9) 100%);
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    background: linear-gradient(180deg, rgba(65, 63, 63, 0.5) 50%, rgba(15, 15, 15, 0.9) 50%, rgba(36, 48, 32, 0.9) 100%);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.tournament__name {
+  min-width: 170px;
+  font-size: 1.5rem;
+}
+
+.tournament__pic {
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+}
+
+.tournament__img {
+  max-width: 100%;
+  height: auto;
+}

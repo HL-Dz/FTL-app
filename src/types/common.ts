@@ -23,5 +23,6 @@ export interface LeagueDataCardProps {
   title: string,
   path: string,
   imgSrc: string
-  imgSrcMini: string
+  imgSrcMini: string,
+  code: string
 }
