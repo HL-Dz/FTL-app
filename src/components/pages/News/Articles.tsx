@@ -9,7 +9,7 @@ import Tournaments from './Tournaments/Tournaments';
 
 
 const Articles = () => {  
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { user } = useTypedSelector(state => state.auth);
   let userName = '';
   if(user) {

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { delay } from '../../../../helpers/helpers';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
-import { getLeague, toggleIsFetching } from '../../../../redux/league-reducer';
+import { getLeague, resetLeagueProfile, toggleIsFetching } from '../../../../redux/league-reducer';
 import UniversalLoader from '../../../common/UniversalLoader/UniversalLoader';
 import { LeaguesData } from '../../Leagues/LeaguesData'
 import Tournament from './Tournament';
@@ -15,12 +15,14 @@ const Tournaments: FC = () => {
   const [isCloseStandings, setIsCloseStandings] = useState(false);
   const { league, isFetchError, isFetching } = useTypedSelector(state => state.leaguePage);
 
+
   const dispatch = useDispatch();
 
   const getTournament = async (code:string) => {
     setIsCloseStandings(false);
     dispatch(getLeague(code));
     await delay(490);
+    localStorage.setItem('competitionCode', code);
     setIsVisibleStandings(true);
   }
 
@@ -31,12 +33,17 @@ const Tournaments: FC = () => {
   }
 
   useEffect(() => {
-    dispatch(toggleIsFetching(false));
+    let competitionCode = localStorage.getItem('competitionCode')  || 'BL1';
+    getTournament(competitionCode);
   }, [])
-  
+
+
   return (
     <div className="tournaments">
       <div className="tournaments__title">Standings</div>
+      {
+        isFetchError ? <div className="tournaments__error">Network error. Try get data a little later.</div> : null
+      }
       {
         isFetching ? (
           <div className="tournaments__loading">

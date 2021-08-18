@@ -1,12 +1,12 @@
 .tournament-standings {
   position: relative;
-  margin-top: -470px;
+  margin-top: -467px;
   left: 0;
   top: 0;
   width: 100%;
   min-height: 470px;
   background: #0f0f0f;
-  animation: standings-anim-start 0.5s ease-in-out;
+  animation: transparency-animation 0.5s ease-in-out;
 
   &_inactive {
     animation: standings-anim-end 0.5s ease-in-out;
@@ -83,16 +83,16 @@
   }
 }
 
-@keyframes standings-anim-start {
-  0% {
-    margin-top: -500px;
-    opacity: 0;
-  }
-  100%{
-    margin-top: -470px;
-    opacity: 1;
-  }
-}
+// @keyframes standings-anim-start {
+//   0% {
+//     margin-top: -500px;
+//     opacity: 0;
+//   }
+//   100%{
+//     margin-top: -470px;
+//     opacity: 1;
+//   }
+// }
 
 @keyframes standings-anim-end {
   0% {

@@ -66,7 +66,7 @@ const leagueReducer = (state = initialState, action: LeagueAction): LeagueInitia
 export const resetLeagueProfile = (isFetching: boolean): ResetLeagueAction => ({type: LeagueActionTypes.RESET_LEAGUE, isFetching});
 const setLeagueProfile = (league: ILeague): SetLeagueAction => ({type: LeagueActionTypes.SET_LEAGUE, league});
 export const toggleIsFetching = (isFetching: boolean): LeagueIsFetchingAction => ({type: LeagueActionTypes.LEAGUE_IS_FETCHING, isFetching});
-const setFetchError = (isFetchError: boolean): SetFetchLeagueErrorAction => ({type: LeagueActionTypes.SET_FETCH_LEAGUE_ERROR, isFetchError});
+export const setFetchError = (isFetchError: boolean): SetFetchLeagueErrorAction => ({type: LeagueActionTypes.SET_FETCH_LEAGUE_ERROR, isFetchError});
 const setScorers = (scorers: Array<IScorer>): SetScorersAction => ({type: LeagueActionTypes.SET_SCORERS, scorers});
 const resetScorers = (): ResetScorersAction => ({type: LeagueActionTypes.RESET_SCORERS });
 

@@ -2,7 +2,17 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  // padding-top: 0;
+}
+
+.tournaments__error {
+  text-align: center;
+  padding: 7px 0;
+  background: rgba(180, 21, 21, 0.37);
+  border-radius: 3px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  animation: tournaments__error-anim 0.4s ease-in-out;
+  transition: height 0.7s ease-in-out;
 }
 
 .tournaments__loading {
@@ -65,4 +75,16 @@
 .tournament__img {
   max-width: 100%;
   height: auto;
+}
+
+
+@keyframes tournaments__error-anim {
+  0% {
+    transform: translateY(-33px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }
