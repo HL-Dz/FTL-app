@@ -1,0 +1,134 @@
+@use "../../../../sass/abstracts";
+
+.article {
+  display: flex;
+  align-items: center;
+  min-height: 170px;
+  margin-bottom: 50px;
+  background: #141414;
+  cursor: pointer;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid rgb(51, 53, 51);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &:hover {
+    .article__title {
+      text-decoration: underline;
+    }
+
+    .article__comments_icon {
+      animation: comments-anim 0.5s ease;
+    }
+  }
+}
+
+.article__pic {
+  position: relative;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 270px;
+  height: 170px;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+
+.article__info {
+  background: rgb(33, 34, 33);
+  padding: 0 10px;
+  width: 100%;
+  margin: 7px;
+  border-radius: 5px;
+}
+
+.article__title {
+  font-size: 1.8rem;
+  margin: 10px 0 0;
+  font-weight: bold;
+  border-bottom: 1px solid rgb(65, 66, 66);
+  padding-bottom: 5px;
+}
+
+.article__time {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  background: rgba(0, 0, 0, 0.719);
+}
+
+.article__status {
+  font-size: 2.7rem;
+  margin-left: 10px;
+  color: rgb(7, 192, 7);
+
+  &_hot {
+    color: rgb(253, 54, 54); // Hot
+  }
+
+  &_high {
+    color: rgb(247, 247, 14); // High
+  }
+
+  &_normal {
+    color: rgb(7, 192, 7); // Normal
+  }
+}
+
+.article__details {
+  color: rgb(211, 211, 211);
+  padding: 10px 0;
+}
+
+.article__comments {
+  display: inline-flex;
+  align-items: center;
+  color: rgb(109, 135, 250);
+  border-radius: 3px;
+  padding: 3px;
+  font-size: 1.4rem;
+  margin-left: 7px;
+}
+
+.article__comments-count {
+  margin-right: 5px;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.article__comments_icon {
+  transition: all 0.3s ease-in-out;
+}
+
+@keyframes comments-anim {
+  0% {
+    transform: translateX(-5px);
+  }
+  20%{
+    transform: translateX(5px);
+  }
+  40%{
+    transform: translateX(-5px);
+  }
+  60%{
+    transform: translateX(5px);
+  }
+  80%{
+    transform: translateX(-5px);
+  }
+  100%{
+    transform: translateX(0);
+  }
+}

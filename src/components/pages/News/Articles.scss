@@ -18,9 +18,16 @@
 }
 
 .articles__content {
-  border: 1px solid grey;
-  height: 150px;
+  align-self: start;
+  background: #1c1f1e;
+  padding: 10px;
+  border-radius: 5px;
   width: calc(100% - 330px);
+}
+
+.articles__list {
+  display: flex;
+  flex-direction: column;
 }
 
 .articles__sidebar {
@@ -28,11 +35,12 @@
   width: 320px;
   min-height: 470px;
   border-radius: 5px;
+  align-self: start;
 }
 
 .articles__header {
   position: relative;
-  background-image: linear-gradient(to right, rgba(4, 4, 7, 0.1) 0%, rgba(0, 0, 0, 0.5) 100%), url(../../../assets/images/foot-field-1.jpg);
+  background-image: linear-gradient(to right, rgba(4, 4, 7, 0.1) 0%, rgba(0, 0, 0, 0.5) 100%), url(../../../assets/images/foot-field.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom center;

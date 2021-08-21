@@ -6,6 +6,8 @@ import firebase from '../../../firebase';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import Tournaments from './Tournaments/Tournaments';
+import Article from './Article/Article';
+import articlesData from './articles-data';
 
 
 const Articles = () => {  
@@ -16,7 +18,7 @@ const Articles = () => {
     userName = user.displayName ? user.displayName : 'user';
   }
 
-  // const newsRef = firebase.firestore().collection("news");
+  // const newsRef = firebase.firestore().collection("articles");
 
   // const getNews = () => {
   //   newsRef
@@ -33,7 +35,6 @@ const Articles = () => {
   // }, [])
 
 
-
   return (
     <div className="primary-container articles">
       <div className="container">
@@ -45,7 +46,11 @@ const Articles = () => {
               </header>
               <div className="articles__container">
                 <div className="articles__content">
-                  Content
+                  <div className="articles__list">
+                    {
+                      articlesData.map(article => <Article key={article.id} {...article}/>)
+                    }
+                  </div>
                 </div>
                 <aside className="articles__sidebar">
                   <Tournaments/>
