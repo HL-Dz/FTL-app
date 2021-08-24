@@ -25,6 +25,7 @@ import Whoops from "./components/common/Whoops/Whoops";
 import Articles from "./components/pages/News/Articles";
 import { delay } from "./helpers/helpers";
 import { setAuthUser, setIsAuthorized } from "./redux/auth-reducer";
+import CurrentArticle from "./components/pages/CurrentArticle/CurrentArticle";
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
         <Route path="/" exact component={Leagues}/>
         <Route path="/clubs" exact component={Clubs}/>
         <Route path="/articles" exact component={Articles}/>
+        <Route path="/articles/:id" component={CurrentArticle}/>
         <Route path="/documentation" exact  component={Documentation}/>
         <Route path="/players/:id/:name" component={Player}/>
         <Route path="/teams/:id/:name" component={Team}/>

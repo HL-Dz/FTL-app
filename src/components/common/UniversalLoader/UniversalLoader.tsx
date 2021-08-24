@@ -3,7 +3,7 @@ import "./UniversalLoader.scss";
 
 const UniversalLoader = () => {
   return (
-    <div className="map-loader"></div>
+    <div className="universal-loader"></div>
   )
 }
 

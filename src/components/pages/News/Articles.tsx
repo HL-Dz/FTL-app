@@ -53,7 +53,7 @@ const Articles = () => {
                   </div>
                 </div>
                 <aside className="articles__sidebar">
-                  <Tournaments/>
+                  <Tournaments disTournament/>
                 </aside>
               </div>
             </>

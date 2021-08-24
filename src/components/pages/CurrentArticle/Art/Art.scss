@@ -1,0 +1,60 @@
+.art {
+  min-height: 150px;
+}
+
+.art__header {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  height: 400px;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 5px;
+  margin-bottom: 20px;
+
+  .article__status {
+    margin-left: 0;
+  }
+}
+
+.art__title {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  text-align: center;
+  min-height: 50px;
+  font-size: 2.7rem;
+}
+
+.art__time {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 1.7rem;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 0 0 5px 0;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.art__status {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.65);
+  border-radius: 50%;
+}
+
+.art__description {
+  background: rgb(41, 41, 41);
+  padding: 10px;
+  border-radius: 2px;
+  color: rgb(216, 216, 216);
+  line-height: 1.4;
+  margin-bottom: 10px;
+}

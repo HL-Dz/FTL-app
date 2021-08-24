@@ -9,8 +9,12 @@ import { LeaguesData } from '../../Leagues/LeaguesData'
 import Tournament from './Tournament';
 import TournamentStandings from './TournamentStandings/TournamentStandings';
 
+interface TournamentsProps {
+  disTournament?: boolean
+}
 
-const Tournaments: FC = () => {
+
+const Tournaments: FC<TournamentsProps> = ({disTournament}) => {
   const [isVisibleStandings, setIsVisibleStandings] = useState(false);
   const [isCloseStandings, setIsCloseStandings] = useState(false);
   const { league, isFetchError, isFetching } = useTypedSelector(state => state.leaguePage);
@@ -34,7 +38,9 @@ const Tournaments: FC = () => {
 
   useEffect(() => {
     let competitionCode = localStorage.getItem('competitionCode')  || 'BL1';
-    getTournament(competitionCode);
+    if(!disTournament) {
+      getTournament(competitionCode);
+    }
   }, [])
 
 
