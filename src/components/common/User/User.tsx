@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import "./User.scss";
-import noPhoto from '../../../assets/images/noname.jpg';
+import userPhoto from '../../../assets/images/comment-user.png';
 import { logout } from '../../../redux/auth-reducer';
 import { useState } from 'react';
 import Spinner from '../Spinner/Spinner';
@@ -19,7 +19,7 @@ const User: FC<UserProps> = ({user}) => {
 
   const name = user.displayName ?  user.displayName : '-------';
   const email = user.email ? user.email : '-------';
-  const photo = user.photoURL ? user.photoURL : noPhoto;
+  const photo = user.photoURL ? user.photoURL : userPhoto;
   const phoneNumber = user.phoneNumber ? user.phoneNumber : '-------';
 
   const handleLogout = async () => {

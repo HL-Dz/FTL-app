@@ -18,3 +18,38 @@
 .comments__icon {
   transition: 0.5s ease-in-out;
 }
+
+.comments__length {
+  display: inline-flex;
+  justify-content: center;
+  color:#6d87fa;
+  font-weight: bold;
+  font-size: 1.7rem;
+  margin-left: 5px;
+  border-top: 1px solid rgb(68, 68, 68);
+  border-bottom: 1px solid rgb(68, 68, 68);
+  padding: 0 7px;
+  animation: length-anim 0.3s ease-in-out;
+}
+
+.comments__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.no-comments {
+  text-align: center;
+  font-size: 1.7rem;
+  color: rgb(212, 212, 212);
+}
+
+@keyframes length-anim {
+  0%{
+    opacity: 0;
+    padding: 0;
+  }
+  100%{
+    opacity: 1;
+    padding: 0 7px;
+  }
+}

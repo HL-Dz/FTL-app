@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { delay } from '../../../../helpers/helpers';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
-import { getLeague, resetLeagueProfile, toggleIsFetching } from '../../../../redux/league-reducer';
+import { getLeague } from '../../../../redux/league-reducer';
 import UniversalLoader from '../../../common/UniversalLoader/UniversalLoader';
 import { LeaguesData } from '../../Leagues/LeaguesData'
 import Tournament from './Tournament';
@@ -13,21 +13,22 @@ interface TournamentsProps {
   disTournament?: boolean
 }
 
-
 const Tournaments: FC<TournamentsProps> = ({disTournament}) => {
   const [isVisibleStandings, setIsVisibleStandings] = useState(false);
   const [isCloseStandings, setIsCloseStandings] = useState(false);
-  const { league, isFetchError, isFetching } = useTypedSelector(state => state.leaguePage);
+  const [isFetching, setIsFetching] = useState(false);
+  const { league, isFetchError } = useTypedSelector(state => state.leaguePage);
 
 
   const dispatch = useDispatch();
 
   const getTournament = async (code:string) => {
     setIsCloseStandings(false);
-    dispatch(getLeague(code));
-    await delay(490);
+    setIsFetching(true);
+    await dispatch(getLeague(code));
     localStorage.setItem('competitionCode', code);
     setIsVisibleStandings(true);
+    setIsFetching(false);
   }
 
   const closeCurrentStandings = async () => {
@@ -37,8 +38,10 @@ const Tournaments: FC<TournamentsProps> = ({disTournament}) => {
   }
 
   useEffect(() => {
-    let competitionCode = localStorage.getItem('competitionCode')  || 'BL1';
-    if(!disTournament) {
+    if(disTournament) {
+      return;
+    } else {
+      let competitionCode = localStorage.getItem('competitionCode')  || 'BL1';
       getTournament(competitionCode);
     }
   }, [])

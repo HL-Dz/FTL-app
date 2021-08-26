@@ -27,6 +27,8 @@ const Articles = () => {
   //       querySnapshot.forEach((doc) => {
   //         items.push(doc.data())
   //       })
+  //     }, (err) => {
+  //       console.log(err);
   //     })
   // }
 
@@ -53,7 +55,7 @@ const Articles = () => {
                   </div>
                 </div>
                 <aside className="articles__sidebar">
-                  <Tournaments disTournament/>
+                  <Tournaments/>
                 </aside>
               </div>
             </>

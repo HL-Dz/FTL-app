@@ -12,8 +12,13 @@ export interface IArticle {
   comments: Array<IComment>
 }
 
-interface IComment {
-  name: string
-  surname: string
+export interface IComment {
+  id: string
+  ownerId: string
+  ownerEmail: string
+  ownerName: string | null
+  photoUrl: string | null
+  text: string
   createdAt: string
+  lastUpdate: string
 }

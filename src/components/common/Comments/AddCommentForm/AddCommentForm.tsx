@@ -1,38 +1,38 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { delay } from '../../../../helpers/helpers';
 import UniversalLoader from '../../UniversalLoader/UniversalLoader';
 import "./AddCommentForm.scss";
 
-const AddCommentForm = () => {
-  const [comment, setComment] = useState('')
+interface AddCommentFormProps {
+  addComment: (text: string) => void
+}
+
+const AddCommentForm: FC<AddCommentFormProps> = ({addComment}) => {
+  const [commentText, setCommentText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const addComment = async (e: any) => {
+  const addCommentHandler = async (e: any) => {
     e.preventDefault()
     setIsLoading(true);
-    await delay(1000);
-    let comment = {
-      id: 1,
-      text: 'Something interesting',
-      createdAt: 'May 20, 2021'
-    }
+    await delay(500);
     setIsSuccess(true);
     await delay(500);
+    addComment(commentText);
     setIsLoading(false);
     setIsSuccess(false);
+    setCommentText('');
   }
 
   return (
     <div className="comments__form">
-      <form onSubmit={addComment}>
+      <form onSubmit={addCommentHandler}>
         <textarea 
           className="comments__textarea" 
           name="comment"
           placeholder="What do you think?"
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-          autoFocus
+          value={commentText}
+          onChange={(e) => setCommentText(e.target.value)}
         ></textarea>
         <div className="comments__send">
           <div className="comments__send-text">

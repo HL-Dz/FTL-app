@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import "./Art.scss";
 import noArticleImg from  '../../../../assets/images/noArticleImg.jpg';
-import test from '../../../../assets/images/test2.jpg'
+import test from '../../../../assets/images/test.jpg'
 import Comments from '../../../common/Comments/Comments';
+import DisabeldComments from '../../../common/Comments/DisabeldComments/DisabeldComments';
 
 let article = {
   id: 1, // generate uuidv4()
@@ -28,6 +29,7 @@ let article = {
   createdAt: 'August 21, 2021 14:45',
   // lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
   comments: [],
+  displayComments: true
 }
 
 const Art: FC = () => {
@@ -43,7 +45,9 @@ const Art: FC = () => {
       <div className="art__description">
         {article.desc}
       </div>
-      <Comments/>
+      {
+        article.displayComments ? <Comments/> : <DisabeldComments/>
+      }
     </div>
   )
 }
