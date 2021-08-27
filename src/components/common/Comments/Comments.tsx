@@ -7,12 +7,19 @@ import { IComment } from '../../../types/articles';
 import { v4 as uuidv4 } from 'uuid';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import firebase from 'firebase';
+import { delay } from '../../../helpers/helpers';
 
 const Comments = () => {
   const [comments, setComments] = useState<IComment[] | []>([]);
+  const [isValidationError, setIsValidationError] = useState('');
+  const [isLoadingComment, setIsLoadingComment] = useState(false);
+  const [isSuccessComment, setIsSuccessComment] = useState(false);
+
   const { user } = useTypedSelector(state => state.auth);
 
-  const addComment = ( text:string ) => {
+  
+  
+  const addComment = async ( text:string ) => {
     const ownerId = user ? user.uid : '';
     const ownerEmail = user?.email ? user?.email : '';
     const ownerName = user ? user.displayName : null;
@@ -28,11 +35,16 @@ const Comments = () => {
       createdAt: new Date().toLocaleString(),
       lastUpdate: new Date().toLocaleString()
     }
-
+    setIsValidationError('')
+    setIsLoadingComment(true);
+    await delay(500);
+    setIsSuccessComment(true);
     setComments((prev: Array<IComment>)=> [...prev, comment]);
+    await delay(500);
+    setIsLoadingComment(false);
+    setIsSuccessComment(false);
   }
 
-  
   return (
     <div className="comments">
       <div className="commnets__title">
@@ -43,7 +55,11 @@ const Comments = () => {
         }
       </div>
       <AddCommentForm 
-        addComment={addComment}  
+        addComment={addComment}
+        isValidationError={isValidationError}
+        setIsValidationError={setIsValidationError}
+        isLoadingComment={isLoadingComment}
+        isSuccessComment={isSuccessComment}
       />
       <div className="comments__list">
         {

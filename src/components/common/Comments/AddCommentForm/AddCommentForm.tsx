@@ -1,27 +1,36 @@
 import React, { FC, useState } from 'react'
 import { delay } from '../../../../helpers/helpers';
+import { isValidation } from '../../../../helpers/validation';
 import UniversalLoader from '../../UniversalLoader/UniversalLoader';
 import "./AddCommentForm.scss";
 
 interface AddCommentFormProps {
+  isValidationError: string
+  isLoadingComment: boolean
+  isSuccessComment: boolean
   addComment: (text: string) => void
+  setIsValidationError: (text: string ) => void
 }
 
-const AddCommentForm: FC<AddCommentFormProps> = ({addComment}) => {
+const AddCommentForm: FC<AddCommentFormProps> = ({
+  addComment, 
+  isValidationError, 
+  setIsValidationError,
+  isLoadingComment,
+  isSuccessComment
+}) => {
   const [commentText, setCommentText] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+
 
   const addCommentHandler = async (e: any) => {
+    let errorValidation = isValidation(commentText);
     e.preventDefault()
-    setIsLoading(true);
-    await delay(500);
-    setIsSuccess(true);
-    await delay(500);
-    addComment(commentText);
-    setIsLoading(false);
-    setIsSuccess(false);
-    setCommentText('');
+    if(errorValidation) {
+      setIsValidationError(errorValidation);
+    } else {
+      await addComment(commentText);
+      setCommentText('');
+    }
   }
 
   return (
@@ -34,6 +43,9 @@ const AddCommentForm: FC<AddCommentFormProps> = ({addComment}) => {
           value={commentText}
           onChange={(e) => setCommentText(e.target.value)}
         ></textarea>
+        <div className="comments__error">
+          {isValidationError}
+        </div>
         <div className="comments__send">
           <div className="comments__send-text">
             Comments are moderated. Please write in a correct and friendly manner.
@@ -41,10 +53,10 @@ const AddCommentForm: FC<AddCommentFormProps> = ({addComment}) => {
           </div>
           <div className="comments__wrap-button">
             {
-              isLoading ? (
+              isLoadingComment ? (
                 <div className="comments__load">
-                  {isSuccess ? <i className="far fa-check-circle comments__load-success"></i> : null}
-                  {!isSuccess ? <UniversalLoader/> : null}
+                  {isSuccessComment ? <i className="far fa-check-circle comments__load-success"></i> : null}
+                  {!isSuccessComment ? <UniversalLoader/> : null}
                 </div>
               ) : null
             }

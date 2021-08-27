@@ -13,7 +13,16 @@
   border-top: 1px solid rgb(61, 61, 61);
   border-bottom: 1px solid rgb(61, 61, 61);
   color: rgb(212, 212, 212);
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+}
+
+.comments__error {
+  justify-content: center;
+  margin-bottom: 5px;
+  text-align: center;
+  color: rgba(250, 98, 98, 0.973);
+  padding-bottom: 5px;
+  font-family: 'Roboto';
 }
 
 .comments__send {
@@ -23,7 +32,6 @@
 
 .comments__send-text {
   max-width: 400px;
-  // text-align: center;
   color: grey;
   padding: 0 10px;
   margin-right: 10px;
