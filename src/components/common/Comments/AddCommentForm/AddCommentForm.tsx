@@ -29,6 +29,7 @@ const AddCommentForm: FC<AddCommentFormProps> = ({
       setIsValidationError(errorValidation);
     } else {
       await addComment(commentText);
+      await delay(500)
       setCommentText('');
     }
   }

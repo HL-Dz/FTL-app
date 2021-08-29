@@ -6,7 +6,8 @@ import { NavLink } from 'react-router-dom';
 
 
 
-const Article: FC<IArticle> = ({...article}) => {
+const Article: FC<IArticle | null> = ({...article}) => {
+  // if(!article) return null;
   return (
     <div key={article.id} className="article">
       <NavLink className="article__link" to={`/articles/${article.id}`}>

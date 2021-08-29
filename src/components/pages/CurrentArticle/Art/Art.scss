@@ -51,10 +51,30 @@
 }
 
 .art__description {
+  position: relative;
   background: rgb(41, 41, 41);
   padding: 10px;
+  padding-bottom: 40px;
   border-radius: 2px;
   color: #c4c5c5;
   line-height: 1.4;
   margin-bottom: 10px;
+  white-space: pre-line;
+}
+
+.art__author {
+  position: absolute;
+  right: 5px;
+  color: rgb(224, 224, 224);
+  bottom: 5px;
+  padding: 3px 10px;
+  font-family: 'Roboto';
+  border-top: 1px solid rgb(58, 92, 58);
+  border-bottom: 1px solid rgb(58, 92, 58);
+  border: 1px solid rgb(58, 92, 58);
+  border-radius: 3px;
+
+  span {
+    margin-left: 5px;
+  }
 }

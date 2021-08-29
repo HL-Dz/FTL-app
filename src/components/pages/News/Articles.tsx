@@ -18,7 +18,31 @@ const Articles = () => {
     userName = user.displayName ? user.displayName : 'user';
   }
 
+    // let adminsRef = firebase.firestore().collection("admins").doc('current-admins');
+    // adminsRef.update({
+    //   users: firebase.firestore.FieldValue.arrayUnion({
+    //     name: 'Alina',
+    //     surname: 'Trebnikabva',
+    //     age: 23,
+    //     isAdmin: true,
+    //     uid: '434343543-5e452345v45f486776-43'
+    //   })
+    // }).then(() => {
+    //   console.log('Success!!!');
+    // }).catch((err) => {
+    //   console.log(err);
+    // });
+
   // const newsRef = firebase.firestore().collection("articles");
+  // const admins = firebase.firestore().collection("admins");
+  // admins.doc('current-admins').update({
+  //   users: firebase.firestore.FieldValue.arrayUnion({
+  //     name: 'dzmitry',
+  //     surname: 'Hlushak',
+  //     isAdmin: true,
+  //     uid: '454254679254vbireu6543f75f45-4f5463g54'
+  //   })
+  // })
 
   // const getNews = () => {
   //   newsRef
