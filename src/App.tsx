@@ -26,6 +26,7 @@ import Articles from "./components/pages/News/Articles";
 import { delay } from "./helpers/helpers";
 import { setAuthUser, setIsAuthorized } from "./redux/auth-reducer";
 import CurrentArticle from "./components/pages/CurrentArticle/CurrentArticle";
+import AdminPanel from "./components/pages/AdminPanel/AdminPanel";
 
 
 function App() {
@@ -68,6 +69,7 @@ function App() {
         <Route path="/portuguese-primera-division" exact component={PortugalContainer}/>
         <Route path="/la-liga" exact component={PrimeraContainer}/>
         <Route path="/world-cup" exact component={WorldCup}/>
+        <Route path={`/${process.env.REACT_APP_ADMIN}`} exact component={AdminPanel}/>
         <Route component={Whoops}/>
       </Switch>
     </div>

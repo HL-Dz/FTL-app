@@ -22,11 +22,11 @@ const CurrentArticle: FC = () => {
   const { id } = useParams<CurrentArticleParams>();
   const [article, setArticle] = useState<IArticle | null>(null);
 
-
   const ref = firebase.firestore().collection('articles').doc('fZGoUeMHbbdic0vxw7TM');
-
+  let unsbscribe: () => void;
+  
   const getCurrentArticeData  = () => {
-    ref.onSnapshot((doc:any) => {
+    unsbscribe =  ref.onSnapshot((doc:any) => {
       setArticle(doc.data())
     })
   }
@@ -35,6 +35,7 @@ const CurrentArticle: FC = () => {
     if(user) {
       getCurrentArticeData()
     }
+    return unsbscribe;
   }, [])
   
   

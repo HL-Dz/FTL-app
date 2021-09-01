@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import "./Art.scss";
 import noArticleImg from  '../../../../assets/images/noArticleImg.jpg';
-import test from '../../../../assets/images/test.jpg'
+import test from '../../../../assets/images/test2.jpg'
 import Comments from '../../../common/Comments/Comments';
 import DisabeldComments from '../../../common/Comments/DisabeldComments/DisabeldComments';
 import { IArticle } from '../../../../types/articles';

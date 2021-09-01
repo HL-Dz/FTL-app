@@ -5,7 +5,7 @@ export enum UserActionTypes {
 
 // ***User***
 export interface IUser {
-  displayName: string| null,
+  displayName: string | null,
   email: string | null
   emailVerified?: boolean
   isAnonimus?: boolean

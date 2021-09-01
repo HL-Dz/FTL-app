@@ -8,7 +8,8 @@
   height: 60px;
   display: flex;
   align-items: center;
-  background: rgba(51, 51, 51, 0.7);
+  // background: rgba(51, 51, 51, 0.7);
+  background: linear-gradient(320deg, #273031 30%, #1c2122 55%, #2a3638 55%, #1c2122 2%, #1c2122 70%);
   z-index: 10;
 }
 

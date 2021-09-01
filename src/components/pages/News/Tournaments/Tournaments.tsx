@@ -22,6 +22,8 @@ const Tournaments: FC<TournamentsProps> = ({disTournament}) => {
 
   const dispatch = useDispatch();
 
+  let unsbscribe:any;
+
   const getTournament = async (code:string) => {
     setIsCloseStandings(false);
     setIsFetching(true);
@@ -42,8 +44,10 @@ const Tournaments: FC<TournamentsProps> = ({disTournament}) => {
       return;
     } else {
       let competitionCode = localStorage.getItem('competitionCode')  || 'BL1';
-      getTournament(competitionCode);
+      unsbscribe = getTournament(competitionCode);
     }
+
+    return unsbscribe;
   }, [])
 
 

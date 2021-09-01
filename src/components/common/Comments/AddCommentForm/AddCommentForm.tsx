@@ -1,5 +1,4 @@
 import React, { FC, useState } from 'react'
-import { delay } from '../../../../helpers/helpers';
 import { isValidation } from '../../../../helpers/validation';
 import UniversalLoader from '../../UniversalLoader/UniversalLoader';
 import "./AddCommentForm.scss";
@@ -8,8 +7,10 @@ interface AddCommentFormProps {
   isValidationError: string
   isLoadingComment: boolean
   isSuccessComment: boolean
+  commentText: string
   addComment: (text: string) => void
   setIsValidationError: (text: string ) => void
+  setCommentText: (text: string) => void
 }
 
 const AddCommentForm: FC<AddCommentFormProps> = ({
@@ -17,9 +18,10 @@ const AddCommentForm: FC<AddCommentFormProps> = ({
   isValidationError, 
   setIsValidationError,
   isLoadingComment,
-  isSuccessComment
+  isSuccessComment,
+  commentText,
+  setCommentText
 }) => {
-  const [commentText, setCommentText] = useState('');
 
 
   const addCommentHandler = async (e: any) => {
@@ -29,8 +31,6 @@ const AddCommentForm: FC<AddCommentFormProps> = ({
       setIsValidationError(errorValidation);
     } else {
       await addComment(commentText);
-      await delay(500)
-      setCommentText('');
     }
   }
 
