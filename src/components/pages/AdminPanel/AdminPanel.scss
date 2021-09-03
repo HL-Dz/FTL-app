@@ -163,9 +163,7 @@
   color: #cecfcf;
   box-shadow: 0 0 10px 10px rgb(12, 12, 12);
   background: #202323;
-  // background: linear-gradient(326deg, #1a1f20 25%, #2d3a3b 50%, #30393c 20%, #1b2122 62%, #161d1f 71%);
   padding: 15px;
-  // min-height: 600px;
   border-radius: 3px;
 }
 
@@ -178,6 +176,12 @@
 
   &_buttons {
     text-align: right;
+  }
+
+  &_multi {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
   }
 }
 
@@ -199,20 +203,79 @@
   }
 
   label {
+    display: inline-flex;
+    align-items: center;
     margin-right: 10px;
     color: rgb(159, 160, 159);
     &:last-child {
       margin-right: 0;
     }
   }
+}
 
-  [type="radio"] {
-    margin-right: 5px;
-  }
+.radio-duplication {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 22px;
+  height: 22px;
+  border: 2px solid rgb(106, 182, 106);
+  border-radius: 50%;
+  margin-right: 7px;
 
-  [type="file"]:disabled {
-    background-color: none;
+  &:before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: rgb(106, 182, 106);
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.2s ease;
   }
+}
+
+.radio-input {
+  margin-right: 5px;
+  display: none;
+}
+
+.radio-input:checked + .radio-duplication:before {
+  opacity: 1;
+}
+
+.label-file {
+
+}
+
+.file-input {
+  display: none;
+}
+
+.file {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #383a3a;
+  padding: 3px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.file__text {
+  padding-right: 5px;
+  width: 150px;
+  max-width: 150px;
+  border-right: 1px solid grey;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file__icon {
+  color: #6ab66a;
+  font-size: 1.7rem;
+  padding-left: 5px;
 }
 
 .operation__sup {
@@ -223,7 +286,6 @@
   color: rgb(196, 196, 196);
   background: #202323;
   padding: 0 5px;
-  // background: red;
 }
 
 .operation__input-text {
@@ -261,7 +323,7 @@
   }
 
   &_description {
-    max-height: 300px;
+    max-height: 600px;
   }
 }
 
@@ -271,9 +333,17 @@
 }
 
 .operation__button {
+  font-family: 'Montserrat';
+  font-size: 1.4rem;
+  text-transform: uppercase;
   outline: none;
-  border: 1px solid rgb(68, 68, 68);;
+  border: 1px solid rgb(68, 68, 68);
   background: none;
   padding: 10px 20px;
   border-radius: 2px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #2f3030;
+  }
 }

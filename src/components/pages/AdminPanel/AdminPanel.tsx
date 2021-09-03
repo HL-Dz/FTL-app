@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { IDownloadImage } from '../../../types/admin';
 import "./AdminPanel.scss";
 
 const AdminPanel = () => {
@@ -12,11 +13,24 @@ const AdminPanel = () => {
   const [checkedStatus, setCheckedStatus] = useState('normal');
   const [displayCheckedComments, setDisplayCheckedComments] = useState(true);
 
+  const [image, setImage] = useState<IDownloadImage | null>(null);
+  const [imageName, setImageName] = useState('');
+
   const statusItems = ['normal', 'high', 'hot'];
   const commentsValueItems = [
     {id: 1, value: true, title: 'Display'},
     {id: 2, value: false, title: 'Hide'},
   ];
+
+  // const fileRef = React.createRef<HTMLInputElement>();
+
+  const handleFileChange = (e: React.SyntheticEvent) => {
+    let target = e.target as HTMLInputElement;
+    if(target.files?.[0]) {
+      setImage(target.files[0]);
+      setImageName(target.files[0].name)
+    }
+  }
 
   const resetForm = () => {
     setTitle('');
@@ -25,6 +39,8 @@ const AdminPanel = () => {
     setAuthor('');
     setCheckedStatus('normal');
     setDisplayCheckedComments(true);
+    setImage(null);
+    setImageName('');
   }
 
   const toggleSidebar = () => {
@@ -49,6 +65,8 @@ const AdminPanel = () => {
       displayComments: displayCheckedComments
     }
     console.log(article);
+    console.log(image);
+    
     resetForm()
   }
   
@@ -123,7 +141,7 @@ const AdminPanel = () => {
               ></textarea>
               {/* <div className="operation__error">Something wrong. Please try a little later. Maybe we have very important error. Firebase error!</div> */}
             </div>
-            <div className="operation__row">
+            <div className="operation__row operation__row_multi" >
               <div className="operation__field">
                 <span className="operation__sup">Author</span>
                 <input 
@@ -144,14 +162,16 @@ const AdminPanel = () => {
                         type="radio"
                         checked={checkedStatus === item}
                         name="status"
+                        className="radio-input"
                         onChange={() => setCheckedStatus(item)}
-                      />{item}
-                    </label>    
+                      />
+                      <span className="radio-duplication"></span>{item}
+                    </label>
                   )
                 })}
               </div>
               <div className="operation__field">
-                <span className="operation__sup">Display comments</span>
+                <span className="operation__sup">Comments</span>
                 {commentsValueItems.map(elem => {
                   return (
                     <label key={elem.id}>
@@ -159,20 +179,27 @@ const AdminPanel = () => {
                         type="radio"
                         name="comment"
                         checked={displayCheckedComments === elem.value}
+                        className="radio-input"
                         onChange={() => setDisplayCheckedComments(elem.value)}
-                      />{elem.title}
+                      /><span className="radio-duplication"></span>{elem.title}
                     </label>
                   )
                 })}
               </div>
               <div className="operation__field">
                 <span className="operation__sup">Download image</span>
-                <input type="file" name="Hello" accept="jpg,png,gif"/>
+                <label className="label-file">
+                  <input className="file-input" onChange={handleFileChange} type="file" accept="image/*"/>
+                  <span className="file">
+                    <span className="file__text">{!imageName ? 'Choose a file...' : imageName}</span>
+                    <i className="fas fa-cloud-download-alt file__icon"></i>
+                  </span>
+                </label>
               </div>
               {/* <div className="operation__error">Something wrong. Please try a little later. Maybe we have very important error. Firebase error!</div> */}
             </div>
             <div className="operation__row operation__row_buttons">
-              <button className="operation__button">Add article</button>
+              <button className="operation__button">Publish article</button>
             </div>
           </form>
         </section>
