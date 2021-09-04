@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { IDownloadImage } from '../../../types/admin';
+import RadioInput from '../../common/CustomInputs/RadioInput';
 import "./AdminPanel.scss";
 
 const AdminPanel = () => {
@@ -147,7 +148,7 @@ const AdminPanel = () => {
                 <input 
                   value={author}
                   type="text"
-                  name="author" 
+                  name="author"
                   className="operation__input-text"
                   placeholder="Type the author..."
                   onChange={(e) => setAuthor(e.target.value)}
@@ -155,36 +156,25 @@ const AdminPanel = () => {
               </div>
               <div className="operation__field">
                 <span className="operation__sup">Article status</span>
-                {statusItems.map((item, ind) => {
-                  return (
-                    <label key={ind}>
-                      <input
-                        type="radio"
-                        checked={checkedStatus === item}
-                        name="status"
-                        className="radio-input"
-                        onChange={() => setCheckedStatus(item)}
-                      />
-                      <span className="radio-duplication"></span>{item}
-                    </label>
-                  )
-                })}
+                {statusItems.map((item, ind) => <RadioInput
+                  key={ind}
+                  radioName="status"
+                  labelText={item}
+                  checkedValue={checkedStatus}
+                  valueElem={item}
+                  setValue={() => setCheckedStatus(item)}
+                />)}
               </div>
               <div className="operation__field">
                 <span className="operation__sup">Comments</span>
-                {commentsValueItems.map(elem => {
-                  return (
-                    <label key={elem.id}>
-                      <input
-                        type="radio"
-                        name="comment"
-                        checked={displayCheckedComments === elem.value}
-                        className="radio-input"
-                        onChange={() => setDisplayCheckedComments(elem.value)}
-                      /><span className="radio-duplication"></span>{elem.title}
-                    </label>
-                  )
-                })}
+                {commentsValueItems.map(elem => <RadioInput
+                    key={elem.id}
+                    radioName='comment'
+                    labelText={elem.title}
+                    checkedValue={displayCheckedComments}
+                    valueElem={elem.value}
+                    setValue={() => setDisplayCheckedComments(elem.value)}
+                  />)}
               </div>
               <div className="operation__field">
                 <span className="operation__sup">Download image</span>
