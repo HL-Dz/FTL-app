@@ -1,4 +1,5 @@
-import React, { FC } from 'react'
+import React, { FC } from 'react';
+import "./RadioInput.scss";
 
 interface RadioInputProps {
   radioName: string
