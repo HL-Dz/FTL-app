@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { IDownloadImage } from '../../../types/admin';
+import { storage } from '../../../firebase';
+import { delay } from '../../../helpers/helpers';
+// import { IDownloadImage } from '../../../types/admin';
 import RadioInput from '../../common/CustomInputs/RadioInput';
 import "./AdminPanel.scss";
 import AdminSidebar from './AdminSidebar/AdminSidebar';
@@ -15,8 +17,13 @@ const AdminPanel = () => {
   const [checkedStatus, setCheckedStatus] = useState('normal');
   const [displayCheckedComments, setDisplayCheckedComments] = useState(true);
 
-  const [image, setImage] = useState<IDownloadImage | null>(null);
-  const [imageName, setImageName] = useState('');
+  const [photo, setPhoto] = useState<null | File>(null);
+  const [photoName, setPhotoName] = useState('');
+  const [photoUrl, setPhotoUrl] = useState('');
+  const [photoBy, setPhotoBy] = useState('');
+
+  const [startUpload, setStartUpload] = useState(false);
+  const [isSuccessfulUpload, setIsSuccessfulUpload] = useState(false);
 
   const statusItems = ['normal', 'high', 'hot'];
   const commentsValueItems = [
@@ -29,8 +36,8 @@ const AdminPanel = () => {
   const handleFileChange = (e: React.SyntheticEvent) => {
     let target = e.target as HTMLInputElement;
     if(target.files?.[0]) {
-      setImage(target.files[0]);
-      setImageName(target.files[0].name)
+      setPhoto(target.files[0]);
+      setPhotoName(target.files[0].name)
     }
   }
 
@@ -41,8 +48,11 @@ const AdminPanel = () => {
     setAuthor('');
     setCheckedStatus('normal');
     setDisplayCheckedComments(true);
-    setImage(null);
-    setImageName('');
+    setPhoto(null);
+    setPhotoName('');
+    setPhotoUrl('');
+    setPhotoBy('');
+    setIsSuccessfulUpload(false);
   }
 
   const toggleSidebar = () => {
@@ -57,20 +67,65 @@ const AdminPanel = () => {
       title,
       shortDesc,
       desc: description,
-      imgSrc: '',
+      imgSrc: photoUrl,
       articleAuthor: author,
       status: checkedStatus,
       public: true,
       createdAt: new Date().toLocaleString(), // timestam с сервера Firebase 
       lastUpdate: new Date().toLocaleString(), // timestam с сервера Firebase 
       comments: [],
-      displayComments: displayCheckedComments
+      displayComments: displayCheckedComments,
+      photoBy: photoBy
     }
     console.log(article);
-    console.log(image);
-    
+    console.log(photo);
     resetForm()
   }
+
+  const uploadImage = async (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setStartUpload(true);
+    await delay(2000);
+    setStartUpload(false);
+    setIsSuccessfulUpload(true);
+
+    // await delay(2000);
+    // setIsSuccessfulUpload(false);
+
+    // if(photo) {
+    //   setStartUpload(true);
+    //   await delay(2000);
+    //   const uploadTask = storage.ref(`images/${photo?.name}`).put(photo);
+    //   uploadTask.on(
+    //     "state_changed",
+    //     snapshot => {
+
+    //     },
+    //     error => {
+    //       setStartUpload(false);
+    //       console.log(error);
+    //     },
+    //     () => {
+    //       storage
+    //         .ref('images')
+    //         .child(photo.name)
+    //         .getDownloadURL()
+    //         .then(url => {
+    //           setStartUpload(false);
+    //           setIsSuccessfulUpload(true);
+    //           setPhotoUrl(url);
+    //         })
+    //     }
+    //   )
+    // }
+  }
+
+  // useEffect(() => {
+  //   return () => {
+  //     setIsSuccessfulUpload(false);
+  //   }
+  // }, [])
+
   
   return (
     <div className="primary-container admin">
@@ -121,17 +176,6 @@ const AdminPanel = () => {
             </div>
             <div className="operation__row operation__row_multi" >
               <div className="operation__field">
-                <span className="operation__sup">Author</span>
-                <input 
-                  value={author}
-                  type="text"
-                  name="author"
-                  className="operation__input-text"
-                  placeholder="Type the author..."
-                  onChange={(e) => setAuthor(e.target.value)}
-                />
-              </div>
-              <div className="operation__field">
                 <span className="operation__sup">Article status</span>
                 {statusItems.map((item, ind) => <RadioInput
                   key={ind}
@@ -154,16 +198,62 @@ const AdminPanel = () => {
                   />)}
               </div>
               <div className="operation__field">
-                <span className="operation__sup">Download image</span>
+                <span className="operation__sup">Upload photo</span>
                 <label className="label-file">
                   <input className="file-input" onChange={handleFileChange} type="file" accept="image/*"/>
                   <span className="file">
-                    <span className="file__text">{!imageName ? 'Choose a file...' : imageName}</span>
-                    <i className="fas fa-cloud-download-alt file__icon"></i>
+                    <span className="file__text">{!photoName ? 'Choose a file...' : photoName}</span>
+                    <i className={`fas fa-cloud-download-alt ${photoName ? 'file__icon file__icon_active' : 'file__icon'}`}></i>
                   </span>
                 </label>
+                {
+                  photo ? (
+                    <div className="upload" title={isSuccessfulUpload ? 'Successful finish upload' : "Start upload"}>
+                      <button 
+                        className={`${startUpload ? 'upload__button upload__button_load' : 'upload__button'} fas fa-server`}
+                        onClick={uploadImage}
+                        disabled={(startUpload || isSuccessfulUpload) ? true : false}
+                      ></button>
+                      <i className={`fas fa-arrow-down ${startUpload ? "upload__start upload__start_active" : "upload__start"}`}></i>
+                      {isSuccessfulUpload ? <i className="fas fa-check upload__success"></i> :  null}
+                    </div>
+                  ) : null
+                }
               </div>
-              {/* <div className="operation__error">Something wrong. Please try a little later. Maybe we have very important error. Firebase error!</div> */}
+              <div className="operation__field">
+                <span className="operation__sup">Photo URL</span>
+                <input 
+                  value={photoUrl}
+                  type="text"
+                  name="photoUrl"
+                  className="operation__input-text"
+                  placeholder="Type the photo URL..."
+                  onChange={(e) => setPhotoUrl(e.target.value)}
+                  title={photoUrl}
+                />
+              </div>
+              <div className="operation__field">
+                <span className="operation__sup">Photo by:</span>
+                <input 
+                  value={photoBy}
+                  type="text"
+                  name="photoAuthor"
+                  className="operation__input-text"
+                  placeholder="Owner copyright..."
+                  onChange={(e) => setPhotoBy(e.target.value)}
+                />
+              </div>
+              <div className="operation__field">
+                <span className="operation__sup">Article author</span>
+                <input 
+                  value={author}
+                  type="text"
+                  name="author"
+                  className="operation__input-text"
+                  placeholder="Type the article author..."
+                  onChange={(e) => setAuthor(e.target.value)}
+                />
+              </div>
             </div>
             <div className="operation__row operation__row_buttons">
               <button className="operation__button">Publish article</button>

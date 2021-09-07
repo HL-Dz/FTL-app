@@ -10,6 +10,7 @@ export interface IArticle {
   createdAt: string
   comments: Array<IComment>
   displayComments: boolean
+  photoBy: string
   // lastUpdated: string
 }
 

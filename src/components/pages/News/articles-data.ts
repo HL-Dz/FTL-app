@@ -22,7 +22,8 @@ let articlesData = [
     // lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
     comments: [],
     displayComments: true,
-    articleAuthor: 'Some author'
+    articleAuthor: 'Some author',
+    photoBy: 'Dzmitry Hlushak'
   },
   {
     id: 2, // generate uuidv4(),
@@ -47,7 +48,8 @@ let articlesData = [
     // lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
     comments: [],
     displayComments: true,
-    articleAuthor: 'Some author'
+    articleAuthor: 'Some author',
+    photoBy: 'Dzmitry Hlushak'
   },
   {
     id: 3, // generate uuidv4(),
@@ -72,7 +74,8 @@ let articlesData = [
     // lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
     comments: [],
     displayComments: true,
-    articleAuthor: 'Some author'
+    articleAuthor: 'Some author',
+    photoBy: 'Dzmitry Hlushak'
   },
   {
     id: 4, // generate uuidv4()
@@ -97,7 +100,8 @@ let articlesData = [
     // lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
     comments: [],
     displayComments: true,
-    articleAuthor: 'Some author'
+    articleAuthor: 'Some author',
+    photoBy: 'Dzmitry Hlushak'
   },
 ];
 

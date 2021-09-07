@@ -68,7 +68,7 @@ const Articles = () => {
           !user ? <SignIn/> : (
             <>
               <header className="articles__header">
-                <h1 className="articles__title">football articles</h1>
+                <h1 className="articles__title">tfl articles</h1>
               </header>
               <div className="articles__container">
                 <div className="articles__content">

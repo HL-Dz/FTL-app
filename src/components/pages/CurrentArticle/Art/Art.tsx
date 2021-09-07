@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import "./Art.scss";
 import noArticleImg from  '../../../../assets/images/noArticleImg.jpg';
-import test from '../../../../assets/images/test2.jpg'
+import test from '../../../../assets/images/MC.jpg'
 import Comments from '../../../common/Comments/Comments';
 import DisabeldComments from '../../../common/Comments/DisabeldComments/DisabeldComments';
 import { IArticle } from '../../../../types/articles';
@@ -41,8 +41,13 @@ const Art: FC<ArtProps> = ({article}) => {
         </div>
       </div>
       <div className="art__description">
-        <div className="art__author">Author :<span>{article.articleAuthor}</span></div>
         {article.desc}
+        <div className="art__info">
+          <div className="art__info-photo">
+            Photo: <span>Dzmitry Hlushak</span>
+          </div>
+          <div className="art__info-author">Author: <span>{article.articleAuthor}</span></div>
+        </div>
       </div>
       {
         article.displayComments ? <Comments comments={article.comments}/> : <DisabeldComments/>
