@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { storage } from '../../../firebase';
-import { delay } from '../../../helpers/helpers';
-// import { IDownloadImage } from '../../../types/admin';
+import { delay, storageError } from '../../../helpers/helpers';
 import RadioInput from '../../common/CustomInputs/RadioInput';
+import ErrorModal from '../../common/ErrorModal/ErrorModal';
 import "./AdminPanel.scss";
 import AdminSidebar from './AdminSidebar/AdminSidebar';
 
@@ -25,19 +25,31 @@ const AdminPanel = () => {
   const [startUpload, setStartUpload] = useState(false);
   const [isSuccessfulUpload, setIsSuccessfulUpload] = useState(false);
 
+  const [errorModal, setErrorModal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
   const statusItems = ['normal', 'high', 'hot'];
   const commentsValueItems = [
     {id: 1, value: true, title: 'Display'},
     {id: 2, value: false, title: 'Hide'},
   ];
 
-  // const fileRef = React.createRef<HTMLInputElement>();
 
   const handleFileChange = (e: React.SyntheticEvent) => {
     let target = e.target as HTMLInputElement;
     if(target.files?.[0]) {
-      setPhoto(target.files[0]);
-      setPhotoName(target.files[0].name)
+    let alowedTypes = target.files?.[0].type === 'image/jpeg' ||
+                     target.files?.[0].type === 'image.jpg' ||
+                     target.files?.[0].type === 'image/png' ||
+                     target.files?.[0].type === 'image/gif';
+      if(alowedTypes) {
+        setPhoto(target.files[0]);
+        setPhotoName(target.files[0].name)
+      } else {
+        setErrorModal(true);
+        setErrorMessage('Only images can be upload (jpeg | jpg | png | gif).');
+        return;
+      }
     }
   }
 
@@ -83,52 +95,42 @@ const AdminPanel = () => {
   }
 
   const uploadImage = async (e: React.FormEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    setStartUpload(true);
-    await delay(2000);
-    setStartUpload(false);
-    setIsSuccessfulUpload(true);
+    e.preventDefault()
+    if(photo) {
+      setStartUpload(true);
+      await delay(2000);
+      const uploadTask = storage.ref(`images/${photo?.name}`).put(photo);
+      uploadTask.on(
+        "state_changed",
+        snapshot => {
 
-    // await delay(2000);
-    // setIsSuccessfulUpload(false);
-
-    // if(photo) {
-    //   setStartUpload(true);
-    //   await delay(2000);
-    //   const uploadTask = storage.ref(`images/${photo?.name}`).put(photo);
-    //   uploadTask.on(
-    //     "state_changed",
-    //     snapshot => {
-
-    //     },
-    //     error => {
-    //       setStartUpload(false);
-    //       console.log(error);
-    //     },
-    //     () => {
-    //       storage
-    //         .ref('images')
-    //         .child(photo.name)
-    //         .getDownloadURL()
-    //         .then(url => {
-    //           setStartUpload(false);
-    //           setIsSuccessfulUpload(true);
-    //           setPhotoUrl(url);
-    //         })
-    //     }
-    //   )
-    // }
+        },
+        error => {
+          let errorMessage = storageError(error.code);
+          setStartUpload(false);
+          setErrorMessage(errorMessage);
+          setErrorModal(true);
+          setPhoto(null);
+          setPhotoName('');
+        },
+        () => {
+          storage
+            .ref('images')
+            .child(photo.name)
+            .getDownloadURL()
+            .then(url => {
+              setStartUpload(false);
+              setIsSuccessfulUpload(true);
+              setPhotoUrl(url);
+            })
+        }
+      )
+    }
   }
-
-  // useEffect(() => {
-  //   return () => {
-  //     setIsSuccessfulUpload(false);
-  //   }
-  // }, [])
-
   
   return (
     <div className="primary-container admin">
+      {errorModal ? <ErrorModal errorMessage={errorMessage} setErrorModal={setErrorModal}/> : null}
       <AdminSidebar isHiddenSidebar={isHiddenSidebar} toggleSidebar={toggleSidebar}/>
       <section className="admin__content">
         
@@ -200,7 +202,12 @@ const AdminPanel = () => {
               <div className="operation__field">
                 <span className="operation__sup">Upload photo</span>
                 <label className="label-file">
-                  <input className="file-input" onChange={handleFileChange} type="file" accept="image/*"/>
+                  <input 
+                    className="file-input" 
+                    onChange={handleFileChange} 
+                    type="file" 
+                    accept="image/png,image/jpg,image/jpeg,image/gif"
+                  />
                   <span className="file">
                     <span className="file__text">{!photoName ? 'Choose a file...' : photoName}</span>
                     <i className={`fas fa-cloud-download-alt ${photoName ? 'file__icon file__icon_active' : 'file__icon'}`}></i>

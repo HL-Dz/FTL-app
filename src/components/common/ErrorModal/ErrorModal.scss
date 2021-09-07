@@ -43,6 +43,9 @@
 }
 
 .errorModal__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: rgb(11, 10, 12);
   border-radius: 5px;
   padding: 10px 5px;
