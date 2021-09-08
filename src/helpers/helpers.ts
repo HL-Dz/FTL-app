@@ -42,7 +42,7 @@ export const storageError = (value: string) => {
     case "storage/unauthenticated":
       return "User is unauthenticated, please authenticate and try again.";
     case "storage/unauthorized":
-      return "You don't have access to the storage.";
+      return "You don't have access to the storage or you are not authorized.";
     case "storage/retry-limit-exceeded":
       return "The maximum time limit on an operation (upload, download, delete, etc.) has been excceded. Try uploading again.";
     case "storage/invalid-checksum":
