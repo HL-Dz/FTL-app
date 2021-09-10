@@ -54,9 +54,11 @@
 
   &_buttons {
     text-align: right;
+    margin-top: 20px;
   }
 
   &_multi {
+    margin-top: 20px;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -71,18 +73,18 @@
 .operation__field {
   position: relative;
   display: inline-flex;
-  margin-bottom: 20px;
   align-items: center;
+  flex-direction: column;
   border: 1px solid rgb(56, 58, 58);
   padding: 10px;
-  min-height: 51px;
   min-width: 200px;
   font-family: 'Roboto';
   border-radius: 3px;
   transition: all 0.5s ease;
 
-  &:last-child {
-    margin-right: 0;
+
+  &:nth-child(-n+3) {
+    margin-bottom: 20px;
   }
 
   label {
@@ -94,6 +96,15 @@
       margin-right: 0;
     }
   }
+}
+
+.operation__field-wrap {
+  width: 100%;
+  align-items: center;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .file-input {
@@ -151,6 +162,7 @@
   width: 100%;
   border-radius: 3px;
   background: #111213;
+  color: #a09c9c;
   padding: 5px;
   font-size: 1.5rem;
 }
@@ -165,6 +177,7 @@
   width: 100%;
   resize: vertical;
   background: #111213;
+  color: #a09c9c;
   padding: 5px;
   border: none;
   font-family: 'Roboto';
@@ -188,6 +201,8 @@
 .operation__error {
   color: rgb(201, 67, 67);
   font-family: 'Poppins';
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 .upload {
