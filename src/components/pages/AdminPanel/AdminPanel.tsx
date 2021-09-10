@@ -4,6 +4,7 @@ import { storage } from '../../../firebase';
 import { delay, storageError } from '../../../helpers/helpers';
 import { articleValidation } from '../../../helpers/validation';
 import useForm from '../../../hooks/useForm';
+import CharacterCounter from '../../common/CharacterCounter/CharacterCounter';
 import RadioInput from '../../common/CustomInputs/RadioInput';
 import ErrorModal from '../../common/ErrorModal/ErrorModal';
 import "./AdminPanel.scss";
@@ -153,6 +154,7 @@ const AdminPanel = () => {
             <div className="operation__row">
               <div className="operation__title">
                 Article title
+                <CharacterCounter value={values.title} min={20} max={300}/>
               </div>
               <textarea 
                 value={values.title}
@@ -167,6 +169,7 @@ const AdminPanel = () => {
             <div className="operation__row">
               <div className="operation__title">
                 Short article description
+                <CharacterCounter value={values.shortDesc} min={20} max={500}/>
               </div>
               <textarea 
                 value={values.shortDesc}
@@ -180,6 +183,7 @@ const AdminPanel = () => {
             <div className="operation__row">
               <div className="operation__title">
                 Article description
+                <CharacterCounter value={values.description} min={50} max={20000}/>
               </div>
               <textarea 
                 value={values.description}
@@ -264,7 +268,9 @@ const AdminPanel = () => {
               </div>
               <div className="operation__field">
                 <div className="operation__field-wrap">
-                  <span className="operation__sup">Photo by:</span>
+                  <span className="operation__sup">
+                    Photo by <CharacterCounter value={values.photoBy} min={5} max={50}/>
+                  </span>
                   <input 
                     value={values.photoBy}
                     type="text"
@@ -278,7 +284,9 @@ const AdminPanel = () => {
               </div>
               <div className="operation__field">
                 <div className="operation__field-wrap">
-                  <span className="operation__sup">Article author</span>
+                  <span className="operation__sup">
+                    Article author <CharacterCounter value={values.author} min={5} max={50}/>
+                  </span>
                   <input 
                     value={values.author}
                     type="text"
