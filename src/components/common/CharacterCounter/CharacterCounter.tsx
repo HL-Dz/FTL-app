@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import "./CharacterCounter.scss";
-
 interface CharacterCounterProps {
   value: string
   min: number
@@ -8,14 +7,13 @@ interface CharacterCounterProps {
 }
 
 const CharacterCounter: FC<CharacterCounterProps> = ({value,min,max}) => {
+  let cls = (value.length < min || value.length > max )  ? "character-count  character-count_invalid" :
+            (value.length >= min || value.length <= max) ? "character-count character-count_valid" : "character-count";
+
   return (
     <>
       {
-        value.length > 0 ? 
-          <span
-            className={
-              value.length < min || value.length > max ? "character-count  character-count_invalid" : "character-count"}
-          >{value.length} chars.</span> : null
+        value.length > 0 ? <span className={cls}>{value.length} chars.</span> : null
       }
     </>
   )
