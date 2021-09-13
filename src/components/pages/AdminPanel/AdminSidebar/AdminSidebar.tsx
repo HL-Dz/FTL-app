@@ -4,9 +4,11 @@ import "./AdminSidebar.scss";
 interface AdminSidebarProps {
   isHiddenSidebar: boolean
   toggleSidebar: () => void
+  showFormControl: () => void
+  showAdminArticles: () => void
 }
 
-const AdminSidebar:FC<AdminSidebarProps> = ({isHiddenSidebar, toggleSidebar}) => {
+const AdminSidebar:FC<AdminSidebarProps> = ({isHiddenSidebar, toggleSidebar, showFormControl, showAdminArticles}) => {
   return (
     <aside className={isHiddenSidebar ? "admin__sidebar admin__sidebar_hide" : "admin__sidebar"}>
       <div className="toggle-sidebar" onClick={toggleSidebar}>
@@ -17,13 +19,13 @@ const AdminSidebar:FC<AdminSidebarProps> = ({isHiddenSidebar, toggleSidebar}) =>
         <span>Dzmitry Hlushak</span>
       </div>
       <div className="admin__elems">
-        <div className="admin__elem">
+        <div className="admin__elem" onClick={showAdminArticles}>
           <div className="admin__elem-wrap">
             <i className="far fa-newspaper admin__elem-icon"></i>
           </div>
           <span className="admin__elem-text">Current articles</span>
         </div>
-        <div className="admin__elem">
+        <div className="admin__elem" onClick={showFormControl}>
           <div className="admin__elem-wrap">
             <i className="fas fa-plus admin__elem-icon"></i>
           </div>
