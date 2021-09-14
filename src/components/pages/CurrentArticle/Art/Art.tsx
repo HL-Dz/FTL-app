@@ -33,7 +33,10 @@ const Art: FC<ArtProps> = ({article}) => {
   
   return (
     <div className="art">
-      <div className="art__header" style={{backgroundImage: `url(${article.imgSrc || test})`}}>
+      <div className="art__header">
+        <div className="art__pic">
+          <img src={article.imgSrc || test} alt="Elem" className="art__img" />
+        </div>
         <div className="art__title">{article.title}</div>
         <div className="art__time">{article.createdAt}</div>
         <div className="art__status">

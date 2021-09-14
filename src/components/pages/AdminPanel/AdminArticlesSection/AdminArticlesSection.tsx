@@ -9,10 +9,13 @@ const AdminArticlesSection = () => {
       <div className="admin-section__list">
         {
           articlesData.map(elem => {
-            let bg = `linear-gradient(45deg, #00000033 50%, #00000040 82%), url(${elem.imgSrc})`
+            // let bg = `linear-gradient(45deg, #00000033 50%, #00000040 82%), url(${elem.imgSrc})`
             return (
-              <div key={elem.id} className="admin-article" style={{backgroundImage: bg}}>
+              <div key={elem.id} className="admin-article">
                 <OwnerLabel/>
+                <div className="admin-article__pic">
+                  <img src={elem.imgSrc} alt="Article" className="admin-article__img" />
+                </div>
                 <div className="admin-article__time">{elem.createdAt}</div>
                 <div className="admin-article__buttons">
                   <div className="article-btn article-edit-btn">Edit</div>

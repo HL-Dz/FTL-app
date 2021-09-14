@@ -7,7 +7,7 @@
   -webkit-box-shadow: 10px 0px 10px -3px rgba(15, 15, 15, 0.75);
   -moz-box-shadow: 10px 0px 10px -3px rgba(15, 15, 15, 0.75);
   box-shadow: 10px 0px 10px -3px rgba(15, 15, 15, 0.75);
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s linear;
 
   &_hide {
     width: 50px;
@@ -17,18 +17,16 @@
       span {
         opacity: 0;
         max-width: 0px;
-        margin-left: 100px;
       }
     }
 
     .admin__elem-text {
       opacity: 0;
       max-width: 0px;
-      margin-left: 100px;
     }
 
     .toggle-sidebar {
-      padding-right: 20px;
+      padding-right: 15px;
     }
 
     .toggle-sidebar-icon {
@@ -69,7 +67,7 @@
     border-radius: 2px;
     min-width: 210px;
     max-width: 210px;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.5s linear;
   }
 }
 
@@ -94,7 +92,7 @@
   align-items: center;
   color: #cecfcf;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.5s ease-in-out;
 
   &:hover {
     background: #161618;
@@ -117,5 +115,5 @@
   display: inline-flex;
   min-width: 210px;
   max-width: 100%;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.5s linear;
 }

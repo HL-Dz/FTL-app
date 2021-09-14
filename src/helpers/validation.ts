@@ -26,8 +26,8 @@ export const articleValidation = (values: {[key: string]:any}) => {
   // Title field
   if(!values.title.trim()) {
     errors.title = 'Article title is required'
-  } else if(values.title.length < 20 || values.title.length > 300) {
-    errors.title = 'Min - 20, max - 300 characters.';
+  } else if(values.title.length < 20 || values.title.length > 150) {
+    errors.title = 'Min - 20, max - 150 characters.';
   } else if (values.title.match(/[а-яё]+/i)) {
     errors.title = 'Only Latin characters are allowed.';
   }
@@ -35,8 +35,8 @@ export const articleValidation = (values: {[key: string]:any}) => {
   // ShortDescr field
   if(!values.shortDesc.trim()) {
     errors.shortDesc = 'Short article description is required';
-  } else if (values.shortDesc.length < 20 || values.shortDesc.length > 500) {
-    errors.shortDesc = 'Min - 20, max - 500 characters.';
+  } else if (values.shortDesc.length < 20 || values.shortDesc.length > 300) {
+    errors.shortDesc = 'Min - 20, max - 300 characters.';
   } else if (values.shortDesc.match(/[а-яё]+/i)) {
     errors.shortDesc = 'Only Latin characters are allowed.';
   }
