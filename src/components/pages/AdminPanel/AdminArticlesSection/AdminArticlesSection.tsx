@@ -6,8 +6,13 @@ import articlesData from '../../News/articles-data';
 import AdminModal from '../AdminModal/AdminModal';
 import ArticleForm from '../ArticleForm/ArticleForm';
 import "./AdminArticlesSection.scss";
+import Art from '../../CurrentArticle/Art/Art';
 
 const AdminArticlesSection = () => {
+    const [isPreview, setIsPreview] = useState(false);
+    const [isEditForm, setIsEditForm] = useState(false);
+
+
     const [isAdminModal, setIsAdminModal] = useState(false);
     const [isFadeOutModal, setIsFadeOutModal] = useState(false);
     const [selectedAdminArticle, setSelectedAdminArticle] = useState<null | IArticle>(null);
@@ -18,9 +23,11 @@ const AdminArticlesSection = () => {
 
     const hideAdminModal = async () => {
       setIsFadeOutModal(true);
-      await delay(400);
+      await delay(350);
       setIsFadeOutModal(false);
       setIsAdminModal(false);
+      setIsPreview(false);
+      setIsEditForm(false);
     }
 
     const hideAdminModalWithEscape = (e: any) => {
@@ -30,22 +37,44 @@ const AdminArticlesSection = () => {
     }
 
     const getSelectedAdminArticle = (article: IArticle) => {
+      setIsEditForm(true);
       showAdminModal();
-      setSelectedAdminArticle(article)
+      setSelectedAdminArticle(article);
+    }
+
+    const shoArticlePreview = (article: IArticle) => {
+      setIsPreview(true);
+      showAdminModal();
+      setSelectedAdminArticle(article);
     }
 
 
   return (
     <div className="admin-section">
-      {isAdminModal ? (
-        <AdminModal isFadeOutModal={isFadeOutModal} hideAdminModalWithEscape={hideAdminModalWithEscape}>
-          <ArticleForm 
-            editArticleForm 
-            articleData={selectedAdminArticle}
-            hideAdminModal={hideAdminModal}
-          />
-        </AdminModal>
-      ) : null}
+      {
+        (isAdminModal && isEditForm) ? (
+          <AdminModal isFadeOutModal={isFadeOutModal} hideAdminModalWithEscape={hideAdminModalWithEscape}>
+            <ArticleForm 
+              editArticleForm 
+              articleData={selectedAdminArticle}
+              hideAdminModal={hideAdminModal}
+            />
+          </AdminModal>
+        ) : null
+      }
+      {
+       (isAdminModal && isPreview) ?  (
+         <AdminModal isFadeOutModal={isFadeOutModal} hideAdminModalWithEscape={hideAdminModalWithEscape}>
+           <div className="preview">
+            <Art 
+              article={selectedAdminArticle}
+              adminAccess
+              hideAdminModal={hideAdminModal}
+            />
+           </div>
+         </AdminModal>
+       ) : null
+      }
       <div className="admin-section__list">
         {
           articlesData.map(elem => {
@@ -58,7 +87,7 @@ const AdminArticlesSection = () => {
                 <div className="admin-article__time">{elem.createdAt}</div>
                 <div className="admin-article__buttons">
                   <div className="article-btn article-edit-btn" onClick={() => getSelectedAdminArticle(elem)}>Edit</div>
-                  <div className="article-btn article-preview-btn">Preview</div>
+                  <div className="article-btn article-preview-btn" onClick={() => shoArticlePreview(elem)}>Preview</div>
                 </div>
                 <div className="admin-article__title">{elem.title}</div>
               </div>

@@ -26,14 +26,23 @@ let article = {
 
 interface ArtProps {
   article: IArticle | null
+  adminAccess?: boolean
+  hideAdminModal?: () => void
 }
 
-const Art: FC<ArtProps> = ({article}) => {
+const Art: FC<ArtProps> = ({article, adminAccess, hideAdminModal}) => {
   if(!article) return null;
   
   return (
     <div className="art">
       <div className="art__header">
+        {
+          adminAccess ? (
+            <div className="art__close" title="Close" onClick={hideAdminModal}>
+            <i className="fas fa-arrow-up"></i>
+            </div>
+          ) : null
+        }
         <div className="art__pic">
           <img src={article.imgSrc || test} alt="Elem" className="art__img" />
         </div>
