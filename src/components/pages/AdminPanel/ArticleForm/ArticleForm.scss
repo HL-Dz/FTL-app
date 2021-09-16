@@ -1,6 +1,6 @@
 .operation {
   font-family: 'Montserrat';
-  max-width: 1400px;
+  max-width: 1200px;
   margin-top: 20px;
   margin-left: 17px;
   margin-bottom: 30px;
@@ -19,7 +19,8 @@
   }
 
   &_buttons {
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
     margin-top: 20px;
   }
 
@@ -232,11 +233,19 @@
   font-size: 1.4rem;
   text-transform: uppercase;
   outline: none;
+  min-width: 165px;
+  text-align: center;
   border: 1px solid rgb(68, 68, 68);
   background: none;
   padding: 10px 20px;
   border-radius: 2px;
   transition: all 0.3s ease;
+
+  &_close {
+    cursor: pointer;
+    text-align: center;
+    margin-right: 10px;
+  }
 
   &:hover {
     background: #2f3030;

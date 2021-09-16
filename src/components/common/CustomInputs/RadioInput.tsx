@@ -4,7 +4,7 @@ import "./RadioInput.scss";
 interface RadioInputProps {
   radioName: string
   labelText: string
-  checkedValue: string | boolean
+  checkedValue: string | boolean 
   valueElem: string | boolean
   setValue: (val:string | boolean) => void
 }

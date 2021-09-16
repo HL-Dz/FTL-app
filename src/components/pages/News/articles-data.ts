@@ -2,9 +2,7 @@ let articlesData = [
   {
     id: 1, // generate uuidv4()
     title: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, magnam?`,
-    shortDesc: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                Asperiores, consequuntur! Minima doloribus expedita similique suscipit ipsam, repellat
-                ad debitis ea dolorum unde obcaecati quod accusamus laborum excepturi quaerat modi dolor fugit dignissimos repellendus!`,
+    shortDesc: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, consequuntur! Minima doloribus expedita similique suscipit ipsam, repellatad debitis ea dolorum unde obcaecati quod accusamus laborum excepturi quaerat modi dolor fugit dignissimos repellendus!`,
     desc: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non, 
             amet voluptas! Qui iusto quis dolorum voluptate dolor necessitatibus natus 
             voluptatem molestias nisi aliquid optio repellendus aperiam hic corporis 
@@ -16,12 +14,12 @@ let articlesData = [
             dignissimos soluta nobis in repudiandae cupiditate modi, alias dolor 
             praesentium quae quidem tempore officiis dolorum. Blanditiis, omnis sed atque quam totam sint mollitia?`,
     imgSrc: 'images/articles-img/arsenal.jpeg',
-    status: 'normal', // ['normal', 'high', 'hot']
+    status: 'hot', // ['normal', 'high', 'hot']
     public: true,
     createdAt: 'August 21, 2021 14:45',
     // lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
     comments: [],
-    displayComments: true,
+    displayComments: false,
     articleAuthor: 'Some author',
     photoBy: 'Dzmitry Hlushak'
   },
@@ -47,7 +45,7 @@ let articlesData = [
     createdAt: 'August 21, 2021 13:20',
     // lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
     comments: [],
-    displayComments: true,
+    displayComments: false,
     articleAuthor: 'Some author',
     photoBy: 'Dzmitry Hlushak'
   },
@@ -73,7 +71,7 @@ let articlesData = [
     createdAt: 'August 21, 2021 12:00',
     // lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
     comments: [],
-    displayComments: true,
+    displayComments: false,
     articleAuthor: 'Some author',
     photoBy: 'Dzmitry Hlushak'
   },
@@ -151,7 +149,7 @@ let articlesData = [
     createdAt: 'August 21, 2021 13:20',
     // lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
     comments: [],
-    displayComments: true,
+    displayComments: false,
     articleAuthor: 'Some author',
     photoBy: 'Dzmitry Hlushak'
   },
@@ -177,7 +175,7 @@ let articlesData = [
     createdAt: 'August 21, 2021 12:00',
     // lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
     comments: [],
-    displayComments: true,
+    displayComments: false,
     articleAuthor: 'Some author',
     photoBy: 'Dzmitry Hlushak'
   },
@@ -255,7 +253,7 @@ let articlesData = [
     createdAt: 'August 21, 2021 13:20',
     // lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
     comments: [],
-    displayComments: true,
+    displayComments: false,
     articleAuthor: 'Some author',
     photoBy: 'Dzmitry Hlushak'
   },

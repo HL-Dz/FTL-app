@@ -44,7 +44,13 @@ const textareaFieldsData : Array<IFieldData> = [
 
 const statusItemsData: Array<string> = ['normal', 'high', 'hot'];
 
-const commentsItemsData = [
+export interface CommentProps {
+  id: number
+  value: boolean,
+  title: string
+}
+
+const commentsItemsData: Array<CommentProps>  = [
   {id: 1, value: true, title: 'Display'},
   {id: 2, value: false, title: 'Hide'},
 ]

@@ -16,12 +16,14 @@ import UploadPhotoField from './UploadPhotoField/UploadPhotoField';
 
 interface ArticleFormProps {
   editArticleForm?: boolean // If true then displays the article edit form
-  articleData?: IArticle // Object with data for editing an article
+  articleData?: IArticle | null // Object with data for editing an article
+  hideAdminModal?: () => void
 }
 
-const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData}) => {
-  const [checkedStatus, setCheckedStatus] = useState('normal');
-  const [displayCheckedComments, setDisplayCheckedComments] = useState(true);
+const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdminModal}) => {
+  const [checkedStatus, setCheckedStatus] = useState(articleData?.status || 'normal');
+  let serverCommments = editArticleForm ? articleData?.displayComments : true;
+  const [displayCheckedComments, setDisplayCheckedComments] = useState<any>(serverCommments);
 
   const [photo, setPhoto] = useState<null | File>(null);
   const [photoName, setPhotoName] = useState('');
@@ -33,12 +35,12 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData}) => {
   const [errorMessage, setErrorMessage] = useState('');
 
   let formState = {
-    title: '',
-    shortDesc: '',
-    description: '',
-    photoUrl: '',
-    photoBy: '',
-    author: ''
+    title: editArticleForm ?  articleData?.title : '',
+    shortDesc: editArticleForm ?  articleData?.shortDesc :'',
+    description: editArticleForm ?  articleData?.desc : '',
+    photoUrl: editArticleForm ?  articleData?.imgSrc : '',
+    photoBy: editArticleForm ?  articleData?.photoBy : "",
+    author: editArticleForm ?  articleData?.articleAuthor : ''
   }
 
   const {values, setValues, errors, setErrors, handleChange} = useForm(formState);
@@ -126,6 +128,9 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData}) => {
       )
     }
   }
+
+  console.log(articleData);
+  
 
   return (
     <>
@@ -223,6 +228,9 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData}) => {
           </div>
         </div>
         <div className="operation__row operation__row_buttons">
+          {editArticleForm ? (
+            <div className="operation__button operation__button_close" onClick={hideAdminModal}>Close</div>
+          ) : null}
           <button className="operation__button" type="submit">
             {editArticleForm ? "Update article" : "Publish article"}
           </button>
