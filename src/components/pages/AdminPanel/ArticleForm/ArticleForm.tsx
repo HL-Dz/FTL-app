@@ -83,7 +83,6 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
 
     setErrors(articleValidation(values));
     if(Object.keys(articleValidation(values)).length === 0) {
-      console.log(article);
       resetForm();
     } else {
       setErrors(articleValidation(values));
@@ -129,7 +128,18 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
     }
   }
 
-  console.log(articleData);
+  const resetFormButton = () => {
+    resetForm()
+    setErrors({
+      ...errors,
+      title: '',
+      shortDesc: '',
+      description: '',
+      photoUrl: '',
+      photoBy: '',
+      author: ''
+    })
+  }
   
 
   return (
@@ -230,6 +240,9 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
         <div className="operation__row operation__row_buttons">
           {editArticleForm ? (
             <div className="operation__button operation__button_close" onClick={hideAdminModal}>Close</div>
+          ) : null}
+          {!editArticleForm ? (
+            <div className="operation__button operation__button_reset" onClick={resetFormButton}>Reset Form</div>
           ) : null}
           <button className="operation__button" type="submit">
             {editArticleForm ? "Update article" : "Publish article"}

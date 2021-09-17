@@ -5,7 +5,12 @@ import { IComment } from '../../../../types/articles';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import OwnerLabel from '../../OwnerLabel/OwnerLabel';
 
-const Comment: FC<IComment> = ({...comment}) => {
+interface CommentProps {
+  adminAccess?: boolean
+  comment: IComment
+}
+
+const Comment: FC<CommentProps> = ({adminAccess, comment}) => {
   const {user} = useTypedSelector(state => state.auth);
   
   return (
@@ -13,8 +18,18 @@ const Comment: FC<IComment> = ({...comment}) => {
       {
         user?.uid === comment.ownerId ? <OwnerLabel/>: null
       }
+      <OwnerLabel/>
       <div className="comment__photo">
         <div className="comment__pic">
+          {
+            adminAccess ? (
+              <div className="comment__delete" title="Delete comment">
+                <div className="comment__delete-btn">
+                  <i className="fas fa-minus"></i>
+                </div>
+              </div>
+            ) : null
+          }
           <img src={comment.photoUrl || userPhoto} alt="User" className="comment__img" />
         </div>
       </div>

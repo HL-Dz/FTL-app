@@ -62,7 +62,14 @@ const Art: FC<ArtProps> = ({article, adminAccess, hideAdminModal}) => {
         </div>
       </div>
       {
-        article.displayComments ? <Comments comments={article.comments}/> : <DisabeldComments/>
+        article.displayComments ? (
+          <Comments
+            comments={article.comments}
+            adminAccess={adminAccess && true}
+          />
+        ) : (
+          <DisabeldComments/>
+        )
       }
     </div>
   )

@@ -1,5 +1,6 @@
 .art {
   min-height: 150px;
+  max-width: 1100px;
 }
 
 .art__header {
@@ -78,10 +79,10 @@
   background: rgba(0, 0, 0, 0.6);
   text-align: center;
   min-height: 50px;
-  font-size: 2.7rem;
+  font-size: 2.3rem;
   box-shadow: 0 -6px 15px 10px rgba(0, 0, 0, 0.6);
   z-index: 1;
-  padding: 0 7px;
+  padding: 3px 7px;
 }
 
 .art__time {

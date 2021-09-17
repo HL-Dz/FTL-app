@@ -9,12 +9,13 @@ import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import firebase from '../../../firebase';
 import { delay } from '../../../helpers/helpers';
 
-interface CommetnsProps {
+interface CommentsProps {
   comments: Array<IComment>
+  adminAccess?: boolean
 }
 
 
-const Comments: FC<CommetnsProps> = ({comments}) => {
+const Comments: FC<CommentsProps> = ({comments, adminAccess}) => {
   // const [comments, setComments] = useState<IComment[] | []>([]);
   const [commentText, setCommentText] = useState('');
   const [isValidationError, setIsValidationError] = useState('');
@@ -82,7 +83,7 @@ const Comments: FC<CommetnsProps> = ({comments}) => {
         {
           comments.length < 1 ? <div className="no-comments">There is nothing here yet...</div> : 
           (
-            comments.map((comment) => <Comment key={comment.id} {...comment}/>)
+            comments.map((elem) => <Comment key={elem.id} comment={elem} adminAccess={adminAccess && true}/>)
           )
         }
       </div>
