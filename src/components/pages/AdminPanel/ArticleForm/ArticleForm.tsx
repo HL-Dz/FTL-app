@@ -166,7 +166,7 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
                 setValue={() => setCheckedStatus(item)}
               />)}
           </OperationField>
-          <OperationField name="Comment">
+          <OperationField name="Comments">
             {commentsItemsData.map(elem => <RadioInput
               key={elem.id}
               radioName='comment'

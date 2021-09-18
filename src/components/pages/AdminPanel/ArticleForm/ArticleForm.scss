@@ -233,23 +233,25 @@
   font-family: 'Poppins';
   font-size: 1.4rem;
   letter-spacing: 1px;
-  color: #a8a8a8;
+  color: #b7d6b7;
   outline: none;
   min-width: 165px;
   text-align: center;
   border: none;
-  background: #292c2c;
+  background: rgb(22,23,22);
+  background: linear-gradient(330deg, #161716 23%, #386338 61%);
   padding: 10px 20px;
   border-radius: 2px;
-  transition: all 0.2s ease;
   box-shadow: 0 0 4px 3px rgb(24, 23, 23);
   padding-top: 12px;
   z-index: 1;
 
   &:active {
     box-shadow: 0 0 1px 1px rgb(24, 23, 23) inset;
+    font-size: 1.3rem;
     &:after {
       box-shadow: 0 0 2px 2px rgb(24, 23, 23) inset;
+      background: linear-gradient(1deg, #1f2120 50%, #333534 70%);
     }
   }
   
@@ -261,8 +263,8 @@
     position: absolute;
     content: '';
     display: block;
-    width: 90%;
-    height: 60%;
+    width: 94%;
+    height: 75%;
     border-radius: 2px;
     background: rgb(23,41,28);
     background: linear-gradient(1deg, #1f2120 33%, #333534 64%);
@@ -280,10 +282,6 @@
   &_reset {
     margin-right: 20px;
     cursor: pointer;
-  }
-
-  &:hover {
-    background: #2f3030;
   }
 }
 

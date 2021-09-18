@@ -18,6 +18,37 @@
   overflow-y: auto;
 }
 
+.admin-info {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  animation: transparency-animation 0.5s ease;
+}
+
+.admin-info__wrap {
+  display: flex;
+  align-self: start;
+  text-align: center;
+  font-size: 2rem;
+  color: #c1c4c1;
+  padding: 20px 10px;
+  background: #1e1d1f;
+  background: rgb(166,36,150);
+  background: linear-gradient(158deg, rgba(166,36,150,0.2) 18%, rgba(23,32,128,0.2) 47%, rgba(166,36,150,0.2) 77%);
+  margin: 20px 10px 0;
+  box-shadow:  10px 10px 5px #080808;
+  border-radius: 2px;
+  max-width: 400px;
+
+  span {
+    display: inline-flex;
+    border: 1px dashed grey;
+    padding: 5px;
+    border-radius: 2px;
+  }
+}
+
 // Form control block, Admin articles
 .form-control, .admin-articles {
   position: absolute;

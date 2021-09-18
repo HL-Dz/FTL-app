@@ -6,7 +6,8 @@ import articlesData from '../../News/articles-data';
 import AdminModal from '../AdminModal/AdminModal';
 import ArticleForm from '../ArticleForm/ArticleForm';
 import "./AdminArticlesSection.scss";
-import Art from '../../CurrentArticle/Art/Art';
+import ArticlePreview from '../ArticlePreview/ArticlePreview';
+import AdminArticle from '../AdminArticle/AdminArticle';
 
 const AdminArticlesSection = () => {
     const [isPreview, setIsPreview] = useState(false);
@@ -42,7 +43,7 @@ const AdminArticlesSection = () => {
       setSelectedAdminArticle(article);
     }
 
-    const shoArticlePreview = (article: IArticle) => {
+    const showArticlePreview = (article: IArticle) => {
       setIsPreview(true);
       showAdminModal();
       setSelectedAdminArticle(article);
@@ -65,34 +66,19 @@ const AdminArticlesSection = () => {
       {
        (isAdminModal && isPreview) ?  (
          <AdminModal isFadeOutModal={isFadeOutModal} hideAdminModalWithEscape={hideAdminModalWithEscape}>
-           <div className="preview">
-            <Art 
-              article={selectedAdminArticle}
-              adminAccess
-              hideAdminModal={hideAdminModal}
-            />
-           </div>
+           <ArticlePreview article={selectedAdminArticle} hideAdminModal={hideAdminModal}/>
          </AdminModal>
        ) : null
       }
-      <div className="admin-section__list">
+      <div className="articles-list">
         {
-          articlesData.map(elem => {
-            return (
-              <div key={elem.id} className="admin-article">
-                <OwnerLabel/>
-                <div className="admin-article__pic">
-                  <img src={elem.imgSrc} alt="Article" className="admin-article__img" />
-                </div>
-                <div className="admin-article__time">{elem.createdAt}</div>
-                <div className="admin-article__buttons">
-                  <div className="article-btn article-edit-btn" onClick={() => getSelectedAdminArticle(elem)}>Edit</div>
-                  <div className="article-btn article-preview-btn" onClick={() => shoArticlePreview(elem)}>Preview</div>
-                </div>
-                <div className="admin-article__title">{elem.title}</div>
-              </div>
-            )
-          })
+          articlesData.map(article => 
+            <AdminArticle
+              key={article.id}
+              article={article}
+              getSelectedAdminArticle={getSelectedAdminArticle}
+              showArticlePreview={showArticlePreview}
+            />)
         }
       </div>
     </div>

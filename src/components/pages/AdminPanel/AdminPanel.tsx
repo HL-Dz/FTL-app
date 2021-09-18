@@ -32,6 +32,16 @@ const AdminPanel = () => {
         showAdminArticles={showAdminArticles}
       />
       <section className="admin__content">
+
+        {
+          (!isVisibleFormControl && !isVisibleAdminArticles) ? (
+            <div className="admin-info">
+              <div className="admin-info__wrap">
+                <span>Create a new article or open the section with current articles.</span>
+              </div>
+            </div>
+          ) : null
+        }
         
         <section className={isVisibleFormControl ? "form-control form-control_visible" : "form-control"}>
           <ArticleForm/>
