@@ -1,0 +1,81 @@
+.admin-info__wrap {
+  display: none;
+  align-self: start;
+  text-align: center;
+  font-size: 2rem;
+  color: #c1c4c1;
+  padding: 20px 10px;
+  background: #1e1d1f;
+  background: rgb(166,36,150);
+  background: linear-gradient(158deg, rgba(166,36,150,0.2) 18%, rgba(23,32,128,0.2) 47%, rgba(166,36,150,0.2) 77%);
+  margin: 20px 10px 0;
+  box-shadow:  10px 10px 5px #080808;
+  border-radius: 2px;
+  max-width: 400px;
+  animation: transparency-animation 0.7s ease;
+
+  span {
+    display: inline-flex;
+    border: 1px dashed grey;
+    padding: 5px;
+    border-radius: 2px;
+  }
+}
+
+.admin-info__screen {
+  position: relative;
+  align-self: start;
+  max-width: 800px;
+  margin: 20px;
+  margin-top: 35px;
+  animation: transparency-animation 0.7s ease;
+}
+
+.screen-toggle {
+  position: absolute;
+  bottom: 115px;
+  right: 325px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border: 1px solid rgb(118, 119, 118);
+  }
+
+  &:active {
+    padding: 3px;
+  }
+
+  &_active {
+    box-shadow: 0 0 2px 3px rgb(86, 223, 86);
+  }
+}
+
+.instruction {
+  position: absolute;
+  top: 29px;
+  left: 32px;
+  bottom: 157px;
+  right: 31px;
+  border-radius: 2px;
+  overflow: hidden;
+  animation: transparency-animation 0.5s ease;
+  z-index: 1;
+
+  &_inactive {
+    animation: back-transparency-animation 0.5s ease;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 2px;
+  }
+}
+
+.admin-info__img {
+  max-width: 100%;
+}

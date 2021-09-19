@@ -3,11 +3,18 @@ import AdminArticlesSection from './AdminArticlesSection/AdminArticlesSection';
 import "./AdminPanel.scss";
 import AdminSidebar from './AdminSidebar/AdminSidebar';
 import ArticleForm from './ArticleForm/ArticleForm';
+import UniversalLoader from '../../common/UniversalLoader/UniversalLoader';
+import { delay } from '../../../helpers/helpers';
+import AdminInfoScreen from './AdminInfoScreen/AdminInfoScreen';
+
 
 const AdminPanel = () => {
   const [isHiddenSidebar, setIsHiddenSidebar] = useState(true);
   const [isVisibleFormControl, setIsVisibleFormControl] = useState(false);
   const [isVisibleAdminArticles, setIsVisibleAdminArticles] = useState(false);
+  const [isLoadingAdmin, setIsLoadingAdmin] = useState(true);
+
+
 
   const toggleSidebar = () => {
     setIsHiddenSidebar(!isHiddenSidebar);
@@ -23,6 +30,14 @@ const AdminPanel = () => {
     setIsVisibleFormControl(false);
   }
 
+  const getAdminPanel = async () => {
+    await delay(1500);
+    setIsLoadingAdmin(false);
+  }
+
+  getAdminPanel();
+
+
   return (
     <div className="primary-container admin">
       <AdminSidebar 
@@ -35,11 +50,15 @@ const AdminPanel = () => {
 
         {
           (!isVisibleFormControl && !isVisibleAdminArticles) ? (
-            <div className="admin-info">
-              <div className="admin-info__wrap">
-                <span>Create a new article or open the section with current articles.</span>
-              </div>
-            </div>
+            <section className="admin-info">
+              {
+                isLoadingAdmin ? (
+                  <div className="admin-loading">
+                    <UniversalLoader/>
+                  </div>                  
+                ) : <AdminInfoScreen/>
+              }
+            </section>
           ) : null
         }
         

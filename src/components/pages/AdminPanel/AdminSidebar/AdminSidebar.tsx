@@ -16,7 +16,7 @@ const AdminSidebar:FC<AdminSidebarProps> = ({isHiddenSidebar, toggleSidebar, sho
       </div>
       <div className="admin__name" title="Administrator">
         <i className="fas fa-user-shield admin__icon"></i>
-        <span>Dzmitry Hlushak</span>
+        <span>Administrator</span>
       </div>
       <div className="admin__elems">
         <div className="admin__elem" onClick={showAdminArticles}>
