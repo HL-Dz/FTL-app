@@ -33,7 +33,7 @@ const Comments: FC<CommentsProps> = ({comments, adminAccess}) => {
     const ownerName = user ? user.displayName : null;
     const photoUrl = user ? user.photoURL : null;
     
-    setIsValidationError('')
+    setIsValidationError('');
     let comment: IComment = {
       id: uuidv4(),
       ownerId,

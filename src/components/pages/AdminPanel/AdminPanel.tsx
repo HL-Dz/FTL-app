@@ -55,7 +55,7 @@ const AdminPanel = () => {
                 isLoadingAdmin ? (
                   <div className="admin-loading">
                     <UniversalLoader/>
-                  </div>                  
+                  </div>          
                 ) : <AdminInfoScreen/>
               }
             </section>

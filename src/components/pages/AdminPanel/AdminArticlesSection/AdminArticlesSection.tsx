@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { delay } from '../../../../helpers/helpers';
 import { IArticle } from '../../../../types/articles';
-import OwnerLabel from '../../../common/OwnerLabel/OwnerLabel';
-import articlesData from '../../News/articles-data';
 import AdminModal from '../AdminModal/AdminModal';
 import ArticleForm from '../ArticleForm/ArticleForm';
 import "./AdminArticlesSection.scss";
 import ArticlePreview from '../ArticlePreview/ArticlePreview';
-import AdminArticle from '../AdminArticle/AdminArticle';
+import ArticlesWrapper from './ArticlesWrapper';
 
 const AdminArticlesSection = () => {
     const [isPreview, setIsPreview] = useState(false);
@@ -50,6 +48,8 @@ const AdminArticlesSection = () => {
     }
 
 
+
+
   return (
     <div className="admin-section">
       {
@@ -70,17 +70,12 @@ const AdminArticlesSection = () => {
          </AdminModal>
        ) : null
       }
-      <div className="articles-list">
-        {
-          articlesData.map(article => 
-            <AdminArticle
-              key={article.id}
-              article={article}
-              getSelectedAdminArticle={getSelectedAdminArticle}
-              showArticlePreview={showArticlePreview}
-            />)
-        }
-      </div>
+      {
+        <ArticlesWrapper
+          getSelectedAdminArticle={getSelectedAdminArticle}
+          showArticlePreview={showArticlePreview}
+        />
+      }
     </div>
   )
 }

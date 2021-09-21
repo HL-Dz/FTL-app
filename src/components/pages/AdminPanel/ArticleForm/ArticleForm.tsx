@@ -13,6 +13,7 @@ import { commentsItemsData, statusItemsData, textareaFieldsData } from './formFi
 import TextareaField from './TextareaField/TextareaField';
 import OperationField from './OperationField/OperationField';
 import UploadPhotoField from './UploadPhotoField/UploadPhotoField';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 
 interface ArticleFormProps {
   editArticleForm?: boolean // If true then displays the article edit form
@@ -21,6 +22,8 @@ interface ArticleFormProps {
 }
 
 const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdminModal}) => {
+  const { user } = useTypedSelector(state => state.auth);
+
   const [checkedStatus, setCheckedStatus] = useState(articleData?.status || 'normal');
   let serverCommments = editArticleForm ? articleData?.displayComments : true;
   const [displayCheckedComments, setDisplayCheckedComments] = useState<any>(serverCommments);
@@ -65,13 +68,26 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
   const addNewArticle = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    const setArticleUrl = (id: string): string => {
+      let titleValue = `${values.title.trim().toLowerCase().slice(0,30)}`;
+      let finishValue = titleValue.replace(/[\s&?!#$%^*()+=/><.`~]/gi, '-');
+      let chars = id.slice(0, 5);
+      let result = `${finishValue}-${chars}`;
+      return result;
+    }
+
+    let articleId = uuidv4();
+    let articleOwnerId = user ? user.uid : '';
+
     let article = {
-      id: uuidv4(),
+      id: articleId,
+      articleUrl: setArticleUrl(articleId),
+      articleAuthorId: articleOwnerId,
+      articleAuthorName: values.author,
       title: values.title,
       shortDesc: values.shortDesc,
       desc: values.description,
       imgSrc: values.photoUrl,
-      articleAuthor: values.author,
       status: checkedStatus,
       public: true,
       createdAt: new Date().toLocaleString(), // timestam с сервера Firebase 
@@ -81,9 +97,10 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
       photoBy: values.photoBy,
     }
 
-    setErrors(articleValidation(values));
+    // setErrors(articleValidation(values));
     if(Object.keys(articleValidation(values)).length === 0) {
-      resetForm();
+      console.log(article);
+      resetFormButton();
     } else {
       setErrors(articleValidation(values));
     }
