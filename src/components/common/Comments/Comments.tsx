@@ -25,7 +25,7 @@ const Comments: FC<CommentsProps> = ({comments, adminAccess}) => {
   const { user } = useTypedSelector(state => state.auth);
   
 
-  const ref = firebase.firestore().collection('articles').doc('fZGoUeMHbbdic0vxw7TM');
+  // const ref = firebase.firestore().collection('articles').doc('fZGoUeMHbbdic0vxw7TM');
 
   const addComment = async ( text:string ) => {
     const ownerId = user ? user.uid : '';
@@ -45,20 +45,25 @@ const Comments: FC<CommentsProps> = ({comments, adminAccess}) => {
       lastUpdate: new Date().toLocaleString()
     }
     setIsLoadingComment(true);
-    await delay(300);
-    ref.update({
-      comments: firebase.firestore.FieldValue.arrayUnion(comment)
-    }).then(async () => {
-      setIsSuccessComment(true);
-      await delay(500);
-      setIsLoadingComment(false);
-      setIsSuccessComment(false);
-      setCommentText('');
-    })
-    .catch((err) => {
-      setIsLoadingComment(false);
-      setIsValidationError(err.message);
-    })
+    await delay(500);
+    setIsSuccessComment(true);
+    await delay(500);
+    setIsSuccessComment(false);
+    setIsLoadingComment(false);
+    setCommentText('');
+    // ref.update({
+    //   comments: firebase.firestore.FieldValue.arrayUnion(comment)
+    // }).then(async () => {
+    //   setIsSuccessComment(true);
+    //   await delay(500);
+    //   setIsLoadingComment(false);
+    //   setIsSuccessComment(false);
+    //   setCommentText('');
+    // })
+    // .catch((err) => {
+    //   setIsLoadingComment(false);
+    //   setIsValidationError(err.message);
+    // })
   }
 
   return (

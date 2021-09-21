@@ -1,17 +1,19 @@
 export interface IArticle {
-  id: number
+  id: string
+  articleUrl: string
+  articleAuthorId: string
+  articleAuthorName: string
   title: string
   shortDesc: string
   desc: string
-  articleAuthor: string
   imgSrc: string
   status: string
   public: boolean
   createdAt: string
+  lastUpdated: string
   comments: Array<IComment>
   displayComments: boolean
   photoBy: string
-  // lastUpdated: string
 }
 
 export interface IComment {

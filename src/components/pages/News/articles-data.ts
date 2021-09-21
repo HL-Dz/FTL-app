@@ -1,6 +1,9 @@
 let articlesData = [
   {
-    id: 1, // generate uuidv4()
+    id: '1', // generate uuidv4()
+    articleUrl: 'https://tribuna101.global.ssl.fastly.net',
+    articleAuthorId: 'fdsr432v4r',
+    articleAuthorName: 'Some author',
     title: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, magnam?`,
     shortDesc: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, consequuntur! Minima doloribus expedita similique suscipit ipsam, repellatad debitis ea dolorum unde obcaecati quod accusamus laborum excepturi quaerat modi dolor fugit dignissimos repellendus!`,
     desc: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non, amet voluptas! Qui iusto quis dolorum voluptate dolor necessitatibus natus voluptatem molestias nisi aliquid optio repellendus aperiam hic corporis beatae, dignissimos illo ea officia, culpa expedita sed! Dolore aspernatur temporibus reiciendis nostrum consectetur praesentium fugit, accusamus ullam. Ex ab fugiat exercitationem autem dolore maiores suscipit, beatae minima quaerat quia amet sed quod at porro nostrum laudantium nisi necessitatibus alias iure ullam ducimus ut. Rem inventore omnis eum ea dignissimos soluta nobis in repudiandae cupiditate modi, alias dolor praesentium quae quidem tempore officiis dolorum. Blanditiis, omnis sed atque quam totam sint mollitia?`,
@@ -8,7 +11,7 @@ let articlesData = [
     status: 'hot', // ['normal', 'high', 'hot']
     public: true,
     createdAt: 'August 21, 2021 14:45',
-    // lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
+    lastUpdated: 'August 21, 2021 14:45',
     comments: [
       {
         id: "4354354-5423543",
@@ -32,11 +35,13 @@ let articlesData = [
       }
     ],
     displayComments: true,
-    articleAuthor: 'Some author',
     photoBy: 'Dzmitry Hlushak'
   },
   {
-    id: 2, // generate uuidv4(),
+    id: '2', // generate uuidv4(),
+    articleUrl: 'https://tribuna101.global.ssl.fastly.net',
+    articleAuthorId: 'fdsfads asdfdsafdsafadsr432v4r',
+    articleAuthorName: 'Some author',
     title: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, magnam?`,
     shortDesc: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
                 Asperiores, consequuntur! Minima doloribus expedita similique suscipit ipsam, repellat
@@ -45,14 +50,16 @@ let articlesData = [
     status: 'high', // ['normal', 'high', 'hot']
     public: true,
     createdAt: 'August 21, 2021 13:20',
-    // lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
+    lastUpdated: 'August 21, 2021 14:45',
     comments: [],
     displayComments: false,
-    articleAuthor: 'Some author',
     photoBy: 'Dzmitry Hlushak'
   },
   {
-    id: 3, // generate uuidv4(),
+    id: '3', // generate uuidv4(),
+    articleUrl: 'https://tribuna101.global.ssl.fastly.net',
+    articleAuthorId: 'fdsr432v45454r',
+    articleAuthorName: 'Some author',
     title: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, magnam?`,
     shortDesc: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
                 Asperiores, consequuntur! Minima doloribus expedita similique suscipit ipsam, repellat
@@ -71,14 +78,16 @@ let articlesData = [
     status: 'hot', // ['normal', 'high', 'hot']
     public: true,
     createdAt: 'August 21, 2021 12:00',
-    // lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
+    lastUpdated: 'August 21, 2021 14:45',
     comments: [],
     displayComments: false,
-    articleAuthor: 'Some author',
     photoBy: 'Dzmitry Hlushak'
   },
   {
-    id: 4, // generate uuidv4()
+    id: '4', // generate uuidv4()
+    articleUrl: 'https://tribuna101.global.ssl.fastly.net',
+    articleAuthorId: 'fdsr5492358476bv2548726545432v4r',
+    articleAuthorName: 'Some author',
     title: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, magnam? Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, magnam? Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, magnam? Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, magnam?`,
     shortDesc: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
                 Asperiores, consequuntur! Minima doloribus expedita similique suscipit ipsam, repellat
@@ -88,7 +97,7 @@ let articlesData = [
     status: 'normal', // ['normal', 'high', 'hot']
     public: true,
     createdAt: 'August 21, 2021 10:46',
-    // lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
+    lastUpdated: 'August 21, 2021 14:45',
     comments: [
       {
         id: "4354354-5423543",
@@ -112,11 +121,13 @@ let articlesData = [
       }
     ],
     displayComments: true,
-    articleAuthor: 'Some author',
     photoBy: 'Dzmitry Hlushak'
   },
   {
-    id: 5, // generate uuidv4()
+    id: '5', // generate uuidv4()
+    articleUrl: 'https://tribuna101.global.ssl.fastly.net',
+    articleAuthorId: 'fdsr432v4vvvvfjkdhj4433r',
+    articleAuthorName: 'Some author',
     title: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, magnam?`,
     shortDesc: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
                 Asperiores, consequuntur! Minima doloribus expedita similique suscipit ipsam, repellat
@@ -135,14 +146,16 @@ let articlesData = [
     status: 'normal', // ['normal', 'high', 'hot']
     public: true,
     createdAt: 'August 21, 2021 14:45',
-    // lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
+    lastUpdated: 'August 21, 2021 14:45',
     comments: [],
     displayComments: true,
-    articleAuthor: 'Some author',
     photoBy: 'Dzmitry Hlushak'
   },
   {
-    id: 6, // generate uuidv4(),
+    id: '6', // generate uuidv4(),
+    articleUrl: 'https://tribuna101.global.ssl.fastly.net',
+    articleAuthorId: 'fdsr432v4333232323r',
+    articleAuthorName: 'Some author',
     title: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, magnam?`,
     shortDesc: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
                 Asperiores, consequuntur! Minima doloribus expedita similique suscipit ipsam, repellat
@@ -161,14 +174,16 @@ let articlesData = [
     status: 'high', // ['normal', 'high', 'hot']
     public: true,
     createdAt: 'August 21, 2021 13:20',
-    // lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
+    lastUpdated: 'August 21, 2021 14:45',
     comments: [],
     displayComments: false,
-    articleAuthor: 'Some author',
     photoBy: 'Dzmitry Hlushak'
   },
   {
-    id: 7, // generate uuidv4(),
+    id: '7', // generate uuidv4(),
+    articleUrl: 'https://tribuna101.global.ssl.fastly.net',
+    articleAuthorId: 'fdsr4lklklkl32v4r',
+    articleAuthorName: 'Some author',
     title: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, magnam?`,
     shortDesc: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
                 Asperiores, consequuntur! Minima doloribus expedita similique suscipit ipsam, repellat
@@ -187,14 +202,16 @@ let articlesData = [
     status: 'hot', // ['normal', 'high', 'hot']
     public: true,
     createdAt: 'August 21, 2021 12:00',
-    // lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
+    lastUpdated: 'August 21, 2021 14:45',
     comments: [],
     displayComments: false,
-    articleAuthor: 'Some author',
     photoBy: 'Dzmitry Hlushak'
   },
   {
-    id: 8, // generate uuidv4()
+    id: '8', // generate uuidv4()
+    articleUrl: 'https://tribuna101.global.ssl.fastly.net',
+    articleAuthorId: 'fdsr41111132v4r',
+    articleAuthorName: 'Some author',
     title: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, magnam? Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, magnam? Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, magnam? Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, magnam?`,
     shortDesc: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
                 Asperiores, consequuntur! Minima doloribus expedita similique suscipit ipsam, repellat
@@ -213,14 +230,16 @@ let articlesData = [
     status: 'normal', // ['normal', 'high', 'hot']
     public: true,
     createdAt: 'August 21, 2021 10:46',
-    // lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
+    lastUpdated: 'August 21, 2021 14:45',
     comments: [],
     displayComments: true,
-    articleAuthor: 'Some author',
     photoBy: 'Dzmitry Hlushak'
   },
   {
-    id: 9, // generate uuidv4()
+    id: '9', // generate uuidv4()
+    articleUrl: 'https://tribuna101.global.ssl.fastly.net',
+    articleAuthorId: 'fdsr432v4r909090967',
+    articleAuthorName: 'Some author',
     title: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, magnam?`,
     shortDesc: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
                 Asperiores, consequuntur! Minima doloribus expedita similique suscipit ipsam, repellat
@@ -239,14 +258,16 @@ let articlesData = [
     status: 'normal', // ['normal', 'high', 'hot']
     public: true,
     createdAt: 'August 21, 2021 14:45',
-    // lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
+    lastUpdated: 'August 21, 2021 14:45',
     comments: [],
     displayComments: true,
-    articleAuthor: 'Some author',
     photoBy: 'Dzmitry Hlushak'
   },
   {
-    id: 10, // generate uuidv4(),
+    id: '10', // generate uuidv4(),
+    articleUrl: 'https://tribuna101.global.ssl.fastly.net',
+    articleAuthorId: 'fdsr432v45454543235r',
+    articleAuthorName: 'Some author',
     title: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, magnam?`,
     shortDesc: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
                 Asperiores, consequuntur! Minima doloribus expedita similique suscipit ipsam, repellat
@@ -265,10 +286,9 @@ let articlesData = [
     status: 'high', // ['normal', 'high', 'hot']
     public: true,
     createdAt: 'August 21, 2021 13:20',
-    // lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
+    lastUpdated: 'August 21, 2021 14:45',
     comments: [],
     displayComments: false,
-    articleAuthor: 'Some author',
     photoBy: 'Dzmitry Hlushak'
   },
 ];

@@ -14,6 +14,8 @@ import TextareaField from './TextareaField/TextareaField';
 import OperationField from './OperationField/OperationField';
 import UploadPhotoField from './UploadPhotoField/UploadPhotoField';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
+import firebase from '../../../../firebase';
+import UniversalLoader from '../../../common/UniversalLoader/UniversalLoader';
 
 interface ArticleFormProps {
   editArticleForm?: boolean // If true then displays the article edit form
@@ -37,16 +39,19 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
   const [errorModal, setErrorModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
+  const [isLoading, setIsLoading] = useState(false);
+
   let formState = {
     title: editArticleForm ?  articleData?.title : '',
     shortDesc: editArticleForm ?  articleData?.shortDesc :'',
     description: editArticleForm ?  articleData?.desc : '',
     photoUrl: editArticleForm ?  articleData?.imgSrc : '',
     photoBy: editArticleForm ?  articleData?.photoBy : "",
-    author: editArticleForm ?  articleData?.articleAuthor : ''
+    author: editArticleForm ?  articleData?.articleAuthorName : ''
   }
 
   const {values, setValues, errors, setErrors, handleChange} = useForm(formState);
+  const ref = firebase.firestore().collection('articles');
 
   const resetForm = () => {
     setValues({
@@ -65,9 +70,26 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
     setIsSuccessfulUpload(false);
   }
 
+  const addNewArticleToServer = async  (article: IArticle) => {
+    setIsLoading(true);
+    await delay(700);
+    ref
+      .doc(article.articleUrl)
+      .set(article)
+      .then(() => {
+        resetFormButton();
+        setIsLoading(false);
+        alert('Article published');
+      })
+      .catch(err => {
+        setErrorModal(true);
+        setErrorMessage(err.message)
+        setIsLoading(false);
+      })
+  }
+
   const addNewArticle = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     const setArticleUrl = (id: string): string => {
       let titleValue = `${values.title.trim().toLowerCase().slice(0,30)}`;
       let finishValue = titleValue.replace(/[\s&?!#$%^*()+=/><.`~]/gi, '-');
@@ -91,16 +113,14 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
       status: checkedStatus,
       public: true,
       createdAt: new Date().toLocaleString(), // timestam с сервера Firebase 
-      lastUpdate: new Date().toLocaleString(), // timestam с сервера Firebase 
+      lastUpdated: new Date().toLocaleString(), // timestam с сервера Firebase 
       comments: [],
       displayComments: displayCheckedComments,
       photoBy: values.photoBy,
     }
 
-    // setErrors(articleValidation(values));
     if(Object.keys(articleValidation(values)).length === 0) {
-      console.log(article);
-      resetFormButton();
+      addNewArticleToServer(article);
     } else {
       setErrors(articleValidation(values));
     }
@@ -162,6 +182,12 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
   return (
     <>
       {errorModal ? <ErrorModal errorMessage={errorMessage} setErrorModal={setErrorModal}/> : null}
+      {
+      isLoading ? 
+        <div className="admin-loading">
+          <UniversalLoader/>
+        </div> : null
+      }
       <form className="operation" onSubmit={editArticleForm ? editArticle : addNewArticle}>
         {
           textareaFieldsData.map((elem) => <TextareaField
