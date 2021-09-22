@@ -11,7 +11,6 @@ const AdminArticlesSection = () => {
     const [isPreview, setIsPreview] = useState(false);
     const [isEditForm, setIsEditForm] = useState(false);
 
-
     const [isAdminModal, setIsAdminModal] = useState(false);
     const [isFadeOutModal, setIsFadeOutModal] = useState(false);
     const [selectedAdminArticle, setSelectedAdminArticle] = useState<null | IArticle>(null);

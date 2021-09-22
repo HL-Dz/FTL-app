@@ -13,6 +13,7 @@
 }
 
 .articles-wrapper {
+  width: 100%;
   margin: 10px 0 0;
   align-self: start;
   display: flex;
@@ -23,7 +24,7 @@
   position: relative;
   display: flex;
   align-items: stretch;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding: 10px;
   background: rgb(29, 29, 29);
   border-radius: 2px;
@@ -96,5 +97,14 @@
     content: '';
     width: 33%;
     display: flex;
+  }
+
+  &__empty {
+    width: 100%;
+    text-transform: uppercase;
+    padding: 10px;
+    font-size: 1.5rem;
+    text-align: center;
+    background: #1d1b1b;
   }
 }

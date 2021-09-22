@@ -41,8 +41,8 @@ const ErrorModal: FC<ErrorModalProps> = ({errorMessage, setErrorModal}) => {
 
   return (
     <div className={slowlyInActive ? "errorModal errorModal_temp" : "errorModal"} onClick={closeModalForm}>
-      <div className="errorModal__content">
-        <button className="errorModal__close fas fa-times" onClick={closeModal}></button>
+      <button className="errorModal__close fas fa-times" onClick={closeModal}></button>
+      <div className={slowlyInActive ? "errorModal__content errorModal__content_inactive" : "errorModal__content"}>
         <div className="errorModal__text">
           <i className="fas fa-exclamation-triangle"></i>
           {errorMessage}

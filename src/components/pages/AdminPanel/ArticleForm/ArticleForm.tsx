@@ -54,15 +54,7 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
   const ref = firebase.firestore().collection('articles');
 
   const resetForm = () => {
-    setValues({
-      ...values,
-      title: '',
-      shortDesc: '',
-      description: '',
-      photoUrl: '',
-      photoBy: '',
-      author: ''
-    })
+    resetValues();
     setCheckedStatus('normal');
     setDisplayCheckedComments(true);
     setPhoto(null);
@@ -76,14 +68,15 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
     ref
       .doc(article.articleUrl)
       .set(article)
-      .then(() => {
+      .then(async () => {
         resetFormButton();
         setIsLoading(false);
         alert('Article published');
       })
-      .catch(err => {
+      .catch(async (err) => {
         setErrorModal(true);
         setErrorMessage(err.message)
+        await delay(500);
         setIsLoading(false);
       })
   }
@@ -120,6 +113,7 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
     }
 
     if(Object.keys(articleValidation(values)).length === 0) {
+      resetErrors()
       addNewArticleToServer(article);
     } else {
       setErrors(articleValidation(values));
@@ -167,8 +161,24 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
 
   const resetFormButton = () => {
     resetForm()
+    resetErrors();
+  }
+
+  const resetErrors = () => {
     setErrors({
       ...errors,
+      title: '',
+      shortDesc: '',
+      description: '',
+      photoUrl: '',
+      photoBy: '',
+      author: ''
+    })
+  }
+
+  const resetValues = () => {
+    setValues({
+      ...values,
       title: '',
       shortDesc: '',
       description: '',

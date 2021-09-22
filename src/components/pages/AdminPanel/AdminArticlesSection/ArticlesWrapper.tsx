@@ -14,6 +14,8 @@ const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showA
   const [isLoading, setIsLoading] = useState(false);
   const [searchElem, setSearchElem] = useState('');
 
+  const [adminArticles, setAdminArticles] = useState<IArticle[] | []>([]);
+
   const getTempArticles = async () => {
     setIsLoading(true);
     await delay(1000);
@@ -42,15 +44,19 @@ const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showA
           <i className="fas fa-search"></i>
         </button>
       </div>
+
       <div className="articles-list">
         {
-          articlesData.map(article => 
-            <AdminArticle
-              key={article.id}
-              article={article}
-              getSelectedAdminArticle={getSelectedAdminArticle}
-              showArticlePreview={showArticlePreview}
-            />)
+          adminArticles.length === 0 ? 
+            <div className="articles-list__empty">No article list...</div> : (
+              adminArticles.map(article => 
+                <AdminArticle
+                  key={article.id}
+                  article={article}
+                  getSelectedAdminArticle={getSelectedAdminArticle}
+                  showArticlePreview={showArticlePreview}
+                />)
+            )
         }
       </div>
     </div>
