@@ -27,7 +27,7 @@ const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showA
     <div className="articles-wrapper">
       {
       isLoading ? 
-        <div className="admin-loading">
+        <div className="app-loading">
           <UniversalLoader/>
         </div> : null
       }

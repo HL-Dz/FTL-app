@@ -16,6 +16,7 @@ export interface LeagueProps {
   league: ILeague
   isFetching: boolean
   isFetchError: boolean
+  errorLeagueMessage: string
 }
 
 export interface LeagueDataCardProps {

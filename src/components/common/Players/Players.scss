@@ -7,7 +7,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  transition: background 0.7s ease-in-out;
+  transition: all 0.3s ease-in-out;
   background: none;
   height: calc(100vh - 60px);
 
@@ -24,8 +24,6 @@
   }
 
   &_inactive {
-    background: rgba(0, 0, 0, 0.7);
-
     & .player img {
       opacity: 0;
       height: 0;

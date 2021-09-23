@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { FC, useState } from 'react';
+import { LeagueProps } from '../../../../types/common';
+import ErrorModal from '../../../common/ErrorModal/ErrorModal';
 import Footer from '../../../common/Footer/Footer';
 import LeagueTemplate from '../../../common/LeagueTemplate/LeagueTemplate';
 import Players from '../../../common/Players/Players';
@@ -14,9 +16,11 @@ let bundesligaBackground = {
   backgroundSize: "contain",
 }
 
-const Bundesliga = ({league, isFetching, isFetchError}) => {
+const Bundesliga: FC<LeagueProps> = ({league, isFetching, isFetchError, errorLeagueMessage}) => {
+  const [errorModal, setErroModal] = useState(true);
   return (
     <div className="primary-container bundesliga" style={bundesligaBackground}>
+      {isFetchError && errorModal ? <ErrorModal errorMessage={errorLeagueMessage} setErrorModal={setErroModal}/> : null}
       <Players isFetching={isFetching} players={players.bundesliga} isFetchError={isFetchError}/>
       <div className="container">
         <LeagueTemplate 

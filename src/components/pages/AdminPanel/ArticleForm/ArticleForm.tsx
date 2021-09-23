@@ -194,7 +194,7 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
       {errorModal ? <ErrorModal errorMessage={errorMessage} setErrorModal={setErrorModal}/> : null}
       {
       isLoading ? 
-        <div className="admin-loading">
+        <div className="app-loading">
           <UniversalLoader/>
         </div> : null
       }

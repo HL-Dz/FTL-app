@@ -78,3 +78,12 @@ export const articleValidation = (values: {[key: string]:any}) => {
   }
   return errors;
 }
+
+export const validateLeagueMessage = (errorMessage: string) => {
+  switch(errorMessage) {
+    case 'Network Error':
+      return "Total requests limit exceeded(max 10/min). Please, try reload page (Ctrl+R or Cmd+R) a little later.";
+    default:
+      return errorMessage;
+  }
+}

@@ -8,6 +8,7 @@ type MapPropsType = {
   league: ILeague
   isFetching: boolean
   isFetchError: boolean
+  errorLeagueMessage: string
 }
 
 type DispatchPropsType = {
@@ -17,7 +18,8 @@ type DispatchPropsType = {
 let mapStateToPropsForDataComponent = (state: RootState) => ({
   league: state.leaguePage.league,
   isFetching: state.leaguePage.isFetching,
-  isFetchError: state.leaguePage.isFetchError
+  isFetchError: state.leaguePage.isFetchError,
+  errorLeagueMessage: state.leaguePage.errorLeagueMessage
 } as MapPropsType);
 
 export const withLeagueData = (Component: any, code: string) => {

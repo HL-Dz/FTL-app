@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { ILeague } from '../../../types/league';
-import ErrorPopup from '../ErrorPopup/ErrorPopup';
 import Loading from '../Loading/Loading';
+import UniversalLoader from '../UniversalLoader/UniversalLoader';
 import LeagueTable from './LeagueTable/LeagueTable';
 import './LeagueTemplate.scss';
 import OverviewLeagueCard from './OverviewLeagueCard/OverviewLeagueCard';
@@ -13,11 +13,19 @@ interface LeagueTemplateProps {
 }
 
 const LeagueTemplate: FC<LeagueTemplateProps> = ({league, isFetching, isFetchError}) => {
+
+  if(isFetchError) {
+    return <div></div>;
+  }
+  
   return (
     <>
-      {isFetching ? <Loading/> : 
+      {isFetching ? (
+        <div className="app-loading">
+          <UniversalLoader/>
+        </div>
+      ) : 
         <div className="league-template">
-          {isFetchError && <ErrorPopup/>}
           <OverviewLeagueCard league={league} isFetchError={isFetchError}/>
           <LeagueTable league={league} isFetchError={isFetchError}/>
         </div>

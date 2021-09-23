@@ -5,6 +5,7 @@ export enum LeagueActionTypes {
   LEAGUE_IS_FETCHING = 'LEAGUE_IS_FETCHING',
   RESET_LEAGUE = 'RESET_LEAGUE',
   SET_FETCH_LEAGUE_ERROR  ='SET_FETCH_LEAGUE_ERROR',
+  SET_LEAGUE_ERROR_MESSAGE = 'SET_LEAGUE_ERROR_MESSAGE',
   SET_SCORERS = 'SET_SCORERS',
   RESET_SCORERS  = 'RESET_SCORERS',
 }
@@ -103,6 +104,11 @@ export interface SetFetchLeagueErrorAction {
   isFetchError: boolean
 }
 
+export interface SetLeagueErroMessageAction {
+  type: LeagueActionTypes.SET_LEAGUE_ERROR_MESSAGE
+  errorLeagueMessage: string
+}
+
 export interface SetScorersAction {
   type: LeagueActionTypes.SET_SCORERS
   scorers: Array<IScorer>
@@ -118,5 +124,6 @@ export type LeagueAction =
         | LeagueIsFetchingAction
         | ResetLeagueAction
         | SetFetchLeagueErrorAction
+        | SetLeagueErroMessageAction
         | SetScorersAction
         | ResetScorersAction;
