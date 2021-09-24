@@ -2,7 +2,8 @@ export enum TeamActionTypes {
   SET_TEAM = "SET_TEAM",
   TOGGLE_IS_LOADING = "TOGGLE_IS_LOADING",
   RESET_TEAM_PROFILE = "RESET_TEAM_PROFILE",
-  SET_FETCH_TEAM_ERROR = "SET_FETCH_TEAM_ERROR"
+  SET_FETCH_TEAM_ERROR = "SET_FETCH_TEAM_ERROR",
+  SET_ERROR_MODAL = "SET_ERROR_MODAL"
 }
 
 export interface IAreaTeam {
@@ -63,13 +64,20 @@ export interface ResetTeamProfileAction {
   type: TeamActionTypes.RESET_TEAM_PROFILE
 }
 
-export interface FetchTeamError {
+export interface FetchTeamErrorAction {
   type: TeamActionTypes.SET_FETCH_TEAM_ERROR
   isFetchError: boolean
+  teamErrorMessage: string
+}
+
+export interface SetErrorModalAction {
+  type: TeamActionTypes.SET_ERROR_MODAL
+  errorModal: boolean
 }
 
 export type TeamAction = 
       SetTeamProfileAction
       | ToggleIsLoadingAction
       | ResetTeamProfileAction
-      | FetchTeamError
+      | FetchTeamErrorAction
+      | SetErrorModalAction;
