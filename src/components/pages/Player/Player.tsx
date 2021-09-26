@@ -1,4 +1,4 @@
-import React, {useEffect, FC } from 'react';
+import React, {useEffect, FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import { getPlayerProfile, resetAllData } from '../../../redux/player-reducer';
@@ -12,14 +12,17 @@ import Matches from './Matches/Matches';
 import Loading from '../../common/Loading/Loading';
 import { getCurrentAge } from '../../../helpers/helpers';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
+import ErrorModal from '../../common/ErrorModal/ErrorModal';
+import UniversalLoader from '../../common/UniversalLoader/UniversalLoader';
 
 interface PlayerParams {
   id: string
 }
 
 const Player: FC = () => {
+  const [errorModal, setErrorModal] = useState(true);
   const dispatch = useDispatch();
-  const {player, isFetchError, isLoading} = useTypedSelector(state => state.playerPage)
+  const {player, isFetchError, isLoading, errorPlayerMessage} = useTypedSelector(state => state.playerPage)
   const {id} = useParams<PlayerParams>();
 
   useEffect(() => {
@@ -36,8 +39,12 @@ const Player: FC = () => {
 
   return (
     <div className="primary-container football-player">
-      {isLoading && <Loading/>}
-      {isFetchError && <ErrorPopup/>}
+      {isLoading && 
+        <div className="app-loading">
+          <UniversalLoader/>
+        </div>
+      }
+      {isFetchError && errorModal ? <ErrorModal errorMessage={errorPlayerMessage} setErrorModal={setErrorModal}/> : null}
       {
         player && 
         <>

@@ -11,7 +11,7 @@ import {
 import { teamAPI } from '../api/api';
 import {delay} from '../helpers/helpers';
 import { Dispatch } from 'redux';
-import { validateLeagueMessage } from '../helpers/validation';
+import { validateFootballData } from '../helpers/validation';
 
 
 let initialState = {
@@ -84,7 +84,8 @@ export const getTeamProfile = (team: number) => async (dispatch: Dispatch<TeamAc
     dispatch(toggleIsLoading(false));
   } catch (err: any) {
     dispatch(setErrorModal(true));
-    dispatch(setFetchTeamError(true, validateLeagueMessage(err.message)));
+    dispatch(setFetchTeamError(true, validateFootballData(err.message)));
+    await delay(500);
     dispatch(toggleIsLoading(false));
   }
 }

@@ -1,7 +1,7 @@
 @use "../../../sass/abstracts";
 
 .team {
-  padding-top: 80px;
+  padding-top: 60px;
   background: #17181b;
   color: #d3cfcf;
 
@@ -19,23 +19,28 @@
 .section-primary {
   width: 100%;
   height: 250px;
-  padding-top: 70px;
-  margin-bottom: 50px;
-  background: rgb(23,24,27);
-  background: linear-gradient(0deg, rgba(23,24,27,1) 0%, rgba(32, 66, 38, 0.534) 50%, rgba(23,24,27,1) 100%);
+  padding-top: 20px;
+  margin-bottom: 30px;
+  background: #17181b;
 }
 
 .team__name {
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 5rem;
+  color: #69cf8d;
+  font-size: 4rem;
   display: inline-flex;
-  padding: 5px;
+  background: #242527;
+  background-image: linear-gradient(225deg, #131413 50%, #292c2a 100%);
+  padding: 5px 10px;
   border-radius: 2px;
   margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 10px 10px 10px #0d0d0d;
 }
 
 .breadcrumbs {
+  color: #c7d8cd;
   position: relative;
   width: 50%;
   font-size: 2rem;
@@ -53,13 +58,20 @@
 
 .team__pic {
   position: relative;
-  padding: 0 50px;
-  width: 40%;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #242527;
+  background-image: linear-gradient(225deg, #075226e7 0%, #051a0d 50%, #075226e7 100%);
+  padding: 20px;
+  min-width: 300px;
+  width: 40%;
   max-width: 350px;
   height: auto;
-  margin-right: 50px;
+  border-radius: 7px;
+  margin-right: 10px;
   overflow: hidden;
-  border-right: 1px solid rgba(128, 128, 128, 0.2);
+  box-shadow: 10px 10px 10px #0d0d0d;
 
   &.loading-bg {
     border-right: none;
@@ -74,12 +86,16 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(23, 24, 27, 0.3);
+    background: rgba(23, 24, 27, 0.1);
   }
 }
 
 .team__img {
-  max-width: 100%;
+  width: 90%;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 5px;
+  height: 90%;
+  border-radius: 5px;
 
   &.loading-bg {
     outline: none;
@@ -92,11 +108,16 @@
 }
 
 .team__details, .team__contacts {
-  background: #1e1e20;
+  background: #242527;
   width: 100%;
+  background-image: linear-gradient(225deg, #131413 50%, #292c2a 100%);
+  border-radius: 7px;
+  box-shadow: 10px 10px 10px #0d0d0d;
+  font-family: 'Roboto';
 }
 
 .team__details {
+  margin-right: 10px;
   & .loading-bg {
     border: none;
   }
@@ -142,9 +163,7 @@
 
 .detail-text {
   color: #a5aca5;
-  font-weight: bold;
   display: inline-block;
-  border-radius: 2px;
 }
 
 .icon-setting {

@@ -5,7 +5,8 @@ export enum PlayerActionTypes {
   SET_FETCH_PLAYER_ERROR = 'SET_FETCH_PLAYER_ERROR',
   SET_MATCHES = 'SET_MATCHES',
   IS_LOADING_INFO = 'IS_LOADING_INFO',
-  RESET_ALL_DATA = 'RESET_ALL_DATA'
+  RESET_ALL_DATA = 'RESET_ALL_DATA',
+  SET_ERROR_PLAYER_MESSAGE = 'SET_ERROR_PLAYER_MESSAGE'
 }
 
 interface IMatchesFilters {
@@ -125,6 +126,11 @@ export interface ResetAllDataAction {
   type: PlayerActionTypes.RESET_ALL_DATA
 }
 
+export interface SetPlayerErrorMessageAction {
+  type: PlayerActionTypes.SET_ERROR_PLAYER_MESSAGE
+  errorPlayerMessage: string
+}
+
 export type PlayerAction = 
             SetPlayerAction
             | PlayerIsLoadingAction
@@ -132,4 +138,5 @@ export type PlayerAction =
             | FetchPlayerErrorAction
             | SetMathesAction
             | IsLoadingMatchesAction
-            | ResetAllDataAction;
+            | ResetAllDataAction
+            | SetPlayerErrorMessageAction;

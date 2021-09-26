@@ -14,7 +14,7 @@ import {
 import { standingsAPI } from "../api/api";
 import {delay} from '../helpers/helpers';  
 import { Dispatch } from 'redux';
-import { validateLeagueMessage } from '../helpers/validation';
+import { validateFootballData } from '../helpers/validation';
 
 
 let initialState = {
@@ -91,7 +91,8 @@ export const getLeague = (league: string) => async (dispatch: Dispatch<LeagueAct
       dispatch(toggleIsFetching(false));
     } catch (err: any) {
         dispatch(setFetchError(true));
-        dispatch(setErrorLeagueMessage(validateLeagueMessage(err.message)));
+        dispatch(setErrorLeagueMessage(validateFootballData(err.message)));
+        await delay(600);
         dispatch(toggleIsFetching(false));
     }
 }
@@ -105,7 +106,7 @@ export const getBestLeaguePlayers = (league: string) => async (dispatch: Dispatc
     dispatch(setScorers(response.data.scorers));
   } catch (err: any) {
     dispatch(setFetchError(true));
-    dispatch(setErrorLeagueMessage(validateLeagueMessage(err.message)));
+    dispatch(setErrorLeagueMessage(validateFootballData(err.message)));
   }
 }
 

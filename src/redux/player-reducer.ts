@@ -9,18 +9,21 @@ import {
   FetchPlayerErrorAction,
   SetMathesAction,
   IsLoadingMatchesAction,
-  ResetAllDataAction
+  ResetAllDataAction,
+  SetPlayerErrorMessageAction
 } from './../types/player';
 import { playerAPI } from '../api/api';
 import { delay } from '../helpers/helpers';
 import { Dispatch } from 'redux';
+import { validateFootballData } from '../helpers/validation';
 
 let initialState = {
   player: null as IPlayer | null,
   matches: null as IMatches | null,
   isLoading: false,
   isFetchError: false,
-  isLoadingMatches: false
+  isLoadingMatches: false,
+  errorPlayerMessage: ''
 };
 
 export type PlayerInitialState = typeof initialState;
@@ -50,6 +53,11 @@ const playerReducer = (state = initialState, action: PlayerAction): PlayerInitia
         ...state,
         isFetchError: action.isFetchError
       }
+    case PlayerActionTypes.SET_ERROR_PLAYER_MESSAGE:
+      return {
+        ...state,
+        errorPlayerMessage: action.errorPlayerMessage
+      }
     case PlayerActionTypes.SET_MATCHES: 
       return {
         ...state,
@@ -75,19 +83,25 @@ const setFetchPlayerError = (isFetchError: boolean): FetchPlayerErrorAction => (
 const setMatches = (matches: IMatches): SetMathesAction => ({type: PlayerActionTypes.SET_MATCHES, matches});
 const isLoadingMatches = (isLoadingMatches: boolean): IsLoadingMatchesAction => ({type: PlayerActionTypes.IS_LOADING_INFO, isLoadingMatches}); 
 export const resetAllData = ():ResetAllDataAction => ({type: PlayerActionTypes.RESET_ALL_DATA});
+export const setErrorPlayerMessage = (errorPlayerMessage: string): SetPlayerErrorMessageAction => ({
+  type: PlayerActionTypes.SET_ERROR_PLAYER_MESSAGE,
+  errorPlayerMessage
+})
 
 
 // Thunks
 export const getPlayerProfile = (player: string) => async (dispatch: Dispatch<PlayerAction>) =>  {
-    dispatch(setFetchPlayerError(false));
     dispatch(resetPlayer(true));
-    await delay(700);
+    dispatch(setFetchPlayerError(false));
+    await delay(500);
     try {
       const response = await playerAPI.getPlayer(player);
       dispatch(setPlayerProfile(response.data));
       dispatch(playerIsLoading(false));
-    } catch (err) {
+    } catch (err:any) {
       dispatch(setFetchPlayerError(true));
+      dispatch(setErrorPlayerMessage(validateFootballData(err.message)))
+      await delay(500);
       dispatch(playerIsLoading(false));
     }
 }
@@ -100,8 +114,10 @@ export const getMatсhes = (player:string, dateFrom:string, dateTo:string) => as
     const response = await playerAPI.getMatches(player, dateFrom, dateTo);
     dispatch(setMatches(response.data));
     dispatch(isLoadingMatches(false));
-  } catch (err) {
+  } catch (err:any) {
     dispatch(setFetchPlayerError(true));
+    dispatch(setErrorPlayerMessage(validateFootballData(err.message)))
+    await delay(500);
     dispatch(resetPlayer(false));
   }
 }

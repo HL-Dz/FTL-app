@@ -13,11 +13,6 @@ interface LeagueTemplateProps {
 }
 
 const LeagueTemplate: FC<LeagueTemplateProps> = ({league, isFetching, isFetchError}) => {
-
-  if(isFetchError) {
-    return <div></div>;
-  }
-  
   return (
     <>
       {isFetching ? (
