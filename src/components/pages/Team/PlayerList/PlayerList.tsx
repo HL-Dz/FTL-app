@@ -15,7 +15,7 @@ const PlayerList: FC<PlayerListProps> = ({team, isFetchError}) => {
   if(isFetchError) return null;
   if(!team) return null;
 
-  const filteredPlayers = team.squad.filter(player => {
+  const filteredPlayers = team?.squad.filter(player => {
     return player.name?.toLowerCase().includes(searchPlayer.toLowerCase());
   });
   
@@ -23,17 +23,13 @@ const PlayerList: FC<PlayerListProps> = ({team, isFetchError}) => {
   return (
     <div className="player-list">
       <div className="team-container">
+        <h2 className="table-title">
+          {
+            team?.squad.length ? "PLAYER LIST" : "No player list, because the season has not started yet..."
+          }
+        </h2>
         {
-          !team ? <h2 className="loading-bg">Loading data</h2> :
-          <h2 className="table-title">
-            {
-              team.squad.length ? "PLAYER LIST" : "No player list, because the season has not started yet..."
-            }
-          </h2>
-        }
-        {
-          !team ?  <div className="loading-bg">Loading data...</div> :
-          team.squad.length !== 0 && <table className="team-table">
+          team?.squad.length !== 0 && <table className="team-table">
             <thead className="table-head">
               <tr className="table-tr">
                 <th className="table-th">#</th>
@@ -49,8 +45,8 @@ const PlayerList: FC<PlayerListProps> = ({team, isFetchError}) => {
             </thead>
             <tbody>
               {
-                filteredPlayers.length === 0 ? <tr><td></td><td className="td-no-matches">No matches...</td></tr> : 
-                filteredPlayers.map((elem, index) => {
+                filteredPlayers?.length === 0 ? <tr><td></td><td className="td-no-matches">No matches...</td></tr> : 
+                filteredPlayers?.map((elem, index) => {
                   const name = elem.name?.trim().toLowerCase().replace(/\s/g, "-");
                   const countryOfBirth = `../../images/Countries/${elem.countryOfBirth}.png`;
                   const nationality = `../../images/Countries/${elem.nationality}.png`;

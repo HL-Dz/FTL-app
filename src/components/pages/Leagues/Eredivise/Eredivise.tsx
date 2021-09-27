@@ -19,7 +19,7 @@ const Eredivise: FC<LeagueProps> = ({league, isFetching, isFetchError, errorLeag
   const [errorModal, setErroModal] = useState(true);
 
   return (
-    <div className="primary-container eredivise" style={ErediviseBackground}>
+    <div className="primary-container eredivise scroll-container" style={ErediviseBackground}>
       {isFetchError && errorModal ? <ErrorModal errorMessage={errorLeagueMessage} setErrorModal={setErroModal}/> : null}
       <Players isFetching={isFetching} players={players.netherlands} isFetchError={isFetchError}/>
       <div className="container">

@@ -62,7 +62,7 @@ const Articles = () => {
 
 
   return (
-    <div className="primary-container articles">
+    <div className="primary-container articles scroll-container">
       <div className="container">
         {
           !user ? <SignIn/> : (

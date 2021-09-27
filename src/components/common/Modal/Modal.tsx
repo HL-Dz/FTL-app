@@ -12,7 +12,7 @@ const Modal: FC<ModalProps> = ({children, hideDetailsModal, isHideModal}) => {
 
   const hideModal = async (e: React.SyntheticEvent<HTMLDivElement>) => {
     let target = e.target as HTMLDivElement;
-    if(target.className === 'modal-overlay') {
+    if(target.classList.contains('modal-overlay')) {
       hideDetailsModal()
     }
   }
@@ -32,7 +32,7 @@ const Modal: FC<ModalProps> = ({children, hideDetailsModal, isHideModal}) => {
   })
   
   return (
-    <div className={isHideModal ? "modal-overlay modal-overlay_inactive" : "modal-overlay"} onClick={hideModal}>
+    <div className={isHideModal ? "modal-overlay modal-overlay_inactive scroll-container" : "modal-overlay scroll-container"} onClick={hideModal}>
       <div className={isHideModal ? "modal-content modal-content_inactive" : "modal-content"}>
         {children}
       </div>

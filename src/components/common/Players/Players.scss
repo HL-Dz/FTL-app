@@ -4,12 +4,22 @@
   position: absolute;
   top: 60px;
   padding-top: 20px;
-  width: 100%;
+  left: 0;
+  right: 0;
+  max-width: 1600px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   transition: all 0.3s ease-in-out;
   background: none;
   height: calc(100vh - 60px);
+
+  overflow-y: scroll;
+  scrollbar-color: transparent transparent;
+
+  &::-webkit-scrollbar {
+    background-color: transparent;
+  }
 
   & >* {
     flex-basis: 50%;

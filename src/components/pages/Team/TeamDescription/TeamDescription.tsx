@@ -37,14 +37,9 @@ const TeamDescription: FC<ITeamDescription> = ({team, isFetchError}) => {
         currentAddress={currentAddress}
       /> : null}
       <div className="team-container team-container-flex">
-        { !team ? 
-        <div className="team__pic loading-bg">
-          Loading data...
-        </div> :
         <div className="team__pic">
-          <img className="team__img" src={team.crestUrl || noPhoto} alt={team.name || 'Team'} />
+          <img className="team__img" src={team?.crestUrl || noPhoto} alt={team?.name || 'Team'} />
         </div>
-        }
         <TeamInfo team={team} showMap={showMap}/>
       </div>
     </section>

@@ -5,7 +5,7 @@
   display: flex;
   font-family: 'Roboto';
   flex-direction: row;
-  background: url(../../../assets/images/bg.png) rgb(15, 15, 15);
+  background: url(../../../assets/images/bg.png) #17181b;
   background-repeat: no-repeat;
 }
 
@@ -16,6 +16,7 @@
   height: 100%;
   width: 100%;
   overflow-y: auto;
+  margin-left: 17px;
 }
 
 .admin-info {

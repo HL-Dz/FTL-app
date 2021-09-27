@@ -19,7 +19,7 @@ let portugalBackground = {
 const PortugalLeague: FC<LeagueProps> = ({league, isFetching, isFetchError, errorLeagueMessage}) => {
   const [errorModal, setErroModal] = useState(true);
   return (
-    <div className="primary-container portugal" style={portugalBackground}>
+    <div className="primary-container portugal scroll-container" style={portugalBackground}>
       {isFetchError && errorModal ? <ErrorModal errorMessage={errorLeagueMessage} setErrorModal={setErroModal}/> : null}
       <Players isFetching={isFetching} players={players.portugal} isFetchError={isFetchError}/>
       <div className="container">

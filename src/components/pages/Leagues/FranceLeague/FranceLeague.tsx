@@ -19,7 +19,7 @@ const FranceLeague: FC<LeagueProps> = ({league, isFetching, isFetchError, errorL
   const [errorModal, setErroModal] = useState(true);
   
   return (
-    <div className="primary-container france-league" style={fl1Background}>
+    <div className="primary-container france-league scroll-container" style={fl1Background}>
       {isFetchError && errorModal ? <ErrorModal errorMessage={errorLeagueMessage} setErrorModal={setErroModal}/> : null}
       <Players isFetching={isFetching} players={players.france} isFetchError={isFetchError}/>
       <div className="container">

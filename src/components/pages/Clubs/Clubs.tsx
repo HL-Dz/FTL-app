@@ -25,7 +25,7 @@ const Clubs: FC = () => {
   }
 
   return (
-    <div className="primary-container clubs">
+    <div className="primary-container clubs scroll-container">
       <div className="container">
         {
          !clubs.length ? <NoClubsInfo/> : 

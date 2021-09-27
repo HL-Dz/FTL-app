@@ -2,7 +2,9 @@
 
 
 .league-template {
+  position: relative;
   animation: opacity-display 0.7s ease;
+  z-index: 1;
 }
 
 // LeagueTable

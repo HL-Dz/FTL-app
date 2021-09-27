@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { ILeague } from '../../../types/league';
-import Loading from '../Loading/Loading';
 import UniversalLoader from '../UniversalLoader/UniversalLoader';
 import LeagueTable from './LeagueTable/LeagueTable';
 import './LeagueTemplate.scss';

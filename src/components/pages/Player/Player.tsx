@@ -5,11 +5,9 @@ import { getPlayerProfile, resetAllData } from '../../../redux/player-reducer';
 import Footer from '../../common/Footer/Footer';
 import "./Player.scss";
 import photo from '../../../assets/images/noname.jpg'
-import ErrorPopup from '../../common/ErrorPopup/ErrorPopup';
 import YearSelection from '../../common/YearSelection/YearSelection';
 import dataYears from '../../common/YearSelection/dataYears';
 import Matches from './Matches/Matches';
-import Loading from '../../common/Loading/Loading';
 import { getCurrentAge } from '../../../helpers/helpers';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import ErrorModal from '../../common/ErrorModal/ErrorModal';
@@ -38,7 +36,7 @@ const Player: FC = () => {
   }
 
   return (
-    <div className="primary-container football-player">
+    <div className="primary-container football-player scroll-container">
       {isLoading && 
         <div className="app-loading">
           <UniversalLoader/>

@@ -3,6 +3,15 @@
 .football-player {
   padding-top: 80px;
   background: #17181b;
+
+  .container-width {
+    padding-left: 17px;
+  }
+  .footer {
+    .container-width {
+      padding-left: 0;
+    }
+  }
 }
 
 .player-card {
@@ -24,12 +33,11 @@
   background: #343435;
   border-radius: 5px;
   padding: 10px;
-  margin-right: 20px;
+  margin-right: 5px;
   border: 1px dashed grey;
 }
 
 .player-card__description {
-  background: #343435;
   background: rgb(31,77,58);
   background: linear-gradient(-45deg, rgb(28, 65, 49) 10%, rgba(30,30,33,1) 52%);
   border-radius: 5px;

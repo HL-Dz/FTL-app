@@ -18,7 +18,7 @@ let PrimeraBackground = {
 const Primera: FC<LeagueProps> = ({league, isFetching, isFetchError, errorLeagueMessage}) => {
   const [errorModal, setErroModal] = useState(true);
   return (
-    <div className="primary-container primera" style={PrimeraBackground}>
+    <div className="primary-container primera scroll-container" style={PrimeraBackground}>
       {isFetchError && errorModal ? <ErrorModal errorMessage={errorLeagueMessage} setErrorModal={setErroModal}/> : null}
       <Players isFetching={isFetching} players={players.primera} isFetchError={isFetchError}/>
       <div className="container">

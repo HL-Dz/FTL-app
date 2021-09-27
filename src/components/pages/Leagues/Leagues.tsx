@@ -5,7 +5,7 @@ import { LeaguesData } from './LeaguesData';
 
 const Leagues: FC = () => {
   return (
-    <div className="leagues">
+    <div className="leagues scroll-container">
       <video  className="video-set" src="./videos/progression.mp4" autoPlay loop muted></video>
       <div className="container">
         <div className="leagues-list">
