@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
+import { NavLink } from 'react-router-dom';
 import { IArticle } from '../../../../types/articles';
 import "./Article.scss";
-import noArticleImg from  '../../../../assets/images/noArticleImg.jpg';
-import { NavLink } from 'react-router-dom';
+import fireball from '../../../../assets/images/fireball.jpg';
 
 
 
@@ -11,7 +11,7 @@ const Article: FC<IArticle | null> = ({...article}) => {
   return (
     <div key={article.id} className="article">
       <NavLink className="article__link" to={`/articles/${article.id}`}>
-        <div className="article__pic" style={{backgroundImage: `url(${article.imgSrc || noArticleImg})`}}>
+        <div className="article__pic" style={{backgroundImage: `url(${article.imgSrc || fireball})`}}>
           <div className="article__time">{article.createdAt}</div>
         </div>
         <div className="article__info">

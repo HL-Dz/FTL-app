@@ -120,9 +120,36 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
     }
   }
 
-  const editArticle = (e:React.FormEvent<HTMLFormElement>) => {
+  const editArticle = async (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Updated!');
+
+    let updatedArticle = {
+      articleAuthorName: values.author,
+      title: values.title,
+      shortDesc: values.shortDesc,
+      desc: values.description,
+      imgSrc: values.photoUrl,
+      status: checkedStatus,
+      lastUpdated: new Date().toLocaleString(),
+      displayComments: displayCheckedComments,
+      photoBy: values.photoBy,
+    }
+    setIsLoading(true);
+    await delay(500);
+    ref
+    .doc(articleData?.articleUrl)
+    .update(updatedArticle)
+    .then(() => {
+      console.log('Article updated!');
+      setIsLoading(false);
+    })
+    .catch(async (err) => {
+      setErrorModal(true);
+      setErrorMessage(err.message)
+      await delay(500);
+      setIsLoading(false);
+    })
+
   }
 
   const uploadImage = async (e: React.FormEvent<HTMLButtonElement>) => {

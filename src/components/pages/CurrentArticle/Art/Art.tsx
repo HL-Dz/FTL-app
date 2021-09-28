@@ -1,10 +1,9 @@
 import React, { FC } from 'react';
 import "./Art.scss";
-import noArticleImg from  '../../../../assets/images/noArticleImg.jpg';
-import test from '../../../../assets/images/MC.jpg'
 import Comments from '../../../common/Comments/Comments';
 import DisabeldComments from '../../../common/Comments/DisabeldComments/DisabeldComments';
 import { IArticle } from '../../../../types/articles';
+import fireball from '../../../../assets/images/fireball.jpg';
 
 
 interface ArtProps {
@@ -27,7 +26,7 @@ const Art: FC<ArtProps> = ({article, adminAccess, hideAdminModal}) => {
           ) : null
         }
         <div className="art__pic">
-          <img src={article.imgSrc || test} alt="Elem" className="art__img" />
+          <img src={article.imgSrc || fireball} alt="Elem" className="art__img" />
         </div>
         <div className="art__title">{article.title}</div>
         <div className="art__time">{article.createdAt}</div>

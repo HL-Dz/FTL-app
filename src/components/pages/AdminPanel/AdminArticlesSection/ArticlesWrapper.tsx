@@ -4,23 +4,38 @@ import { IArticle } from '../../../../types/articles';
 import UniversalLoader from '../../../common/UniversalLoader/UniversalLoader';
 import articlesData from '../../News/articles-data';
 import AdminArticle from '../AdminArticle/AdminArticle';
+import EmptyAdminList from './EmptyAdminList/EmptyAdminList';
+import firebase from '../../../../firebase';
 
 interface ArticlesWrapperProps {
   getSelectedAdminArticle: (article: IArticle) => void
   showArticlePreview: (article: IArticle) => void
 }
 
+const ref = firebase.firestore().collection('articles');
+
 const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showArticlePreview}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchElem, setSearchElem] = useState('');
 
-  const [adminArticles, setAdminArticles] = useState<IArticle[] | []>([]);
+  const [adminArticles, setAdminArticles] = useState<Array<IArticle> | []>([]);
 
   const getTempArticles = async () => {
     setIsLoading(true);
     await delay(1000);
     setIsLoading(false);
     setSearchElem('')
+  }
+
+  const getAdminArticles = async () => {
+    setIsLoading(true);
+    await delay(700);
+    ref.get().then(item => {
+      let articles = item.docs.map((doc:any) => doc.data());
+      setAdminArticles(articles);
+    })
+    await delay(500);
+    setIsLoading(false);
   }
 
   return (
@@ -48,7 +63,7 @@ const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showA
       <div className="articles-list">
         {
           adminArticles.length === 0 ? 
-            <div className="articles-list__empty">No article list...</div> : (
+            <EmptyAdminList getAdminArticles={getAdminArticles}/> : (
               adminArticles.map(article => 
                 <AdminArticle
                   key={article.id}

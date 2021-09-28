@@ -1,16 +1,14 @@
 @use "../../../sass/abstracts";
 
 .footer {
-  background: rgba(51, 51, 51, 0.5);
   margin-top: auto;
-  padding: 10px 0;
+  padding-top: 10px;
   @extend %transition;
   width: calc(100% - 15px);
   opacity: 1;
   z-index: 1;
   margin-left: 15px;
   align-self: stretch;
-  border-radius: 5px 5px 0 0;
 
   &_inactive {
     display: none;
@@ -20,11 +18,13 @@
 
 .footer-info {
   width: 100%;
+  max-width: 1600px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid rgb(37, 37, 37);
-  margin-bottom: 5px;
+  border-radius: 5px 5px 0 0;
+  background: rgba(51, 51, 51, 0.5);
 }
 
 .footer-nav {
@@ -90,9 +90,10 @@
 
 .copyright {
   display: flex;
-  padding: 0 10px;
+  padding: 0 10px 10px;
   justify-content: space-between;
   color: #cfcccc;
+  background: rgba(51, 51, 51, 0.5);
 
   & span:nth-child(1) {
     font-weight: bold;

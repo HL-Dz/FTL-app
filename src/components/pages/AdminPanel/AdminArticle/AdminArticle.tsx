@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { IArticle } from '../../../../types/articles';
 import OwnerLabel from '../../../common/OwnerLabel/OwnerLabel';
 import "./AdminArticle.scss";
+import fireball from '../../../../assets/images/fireball.jpg';
 
 
 interface AdminArticleProps {
@@ -15,7 +16,7 @@ const AdminArticle: FC<AdminArticleProps> = ({article, getSelectedAdminArticle, 
     <div key={article.id} className="admin-article">
       <OwnerLabel/>
       <div className="admin-article__pic">
-        <img src={article.imgSrc} alt="Article" className="admin-article__img" />
+        <img src={article.imgSrc || fireball} alt="Article" className="admin-article__img" />
       </div>
       <div className="admin-article__time">{article.createdAt}</div>
       <div className="admin-article__buttons">
