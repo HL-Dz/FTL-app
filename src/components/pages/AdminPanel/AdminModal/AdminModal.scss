@@ -20,6 +20,10 @@
   &_inactive {
     animation: back-transparency-animation 0.4s ease;
   }
+
+  .operation {
+    margin-left: 15px;
+  }
 }
 
 .admin-modal__content {

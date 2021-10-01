@@ -268,7 +268,6 @@
     background: rgb(23,41,28);
     background: linear-gradient(1deg, #1f2120 33%, #333534 64%);
     box-shadow: 0 0 1px 1px rgb(24, 23, 23);
-    z-index: -1;
   }
   
 
@@ -281,6 +280,11 @@
   &_reset {
     margin-right: 20px;
     cursor: pointer;
+  }
+
+  span {
+    position: relative;
+    z-index: 1;
   }
 }
 

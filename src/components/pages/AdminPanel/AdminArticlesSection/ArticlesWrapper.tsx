@@ -10,15 +10,17 @@ import firebase from '../../../../firebase';
 interface ArticlesWrapperProps {
   getSelectedAdminArticle: (article: IArticle) => void
   showArticlePreview: (article: IArticle) => void
+  adminArticles: Array<IArticle> | []
+  setAdminArticles: any
 }
 
 const ref = firebase.firestore().collection('articles');
 
-const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showArticlePreview}) => {
+const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showArticlePreview, adminArticles, setAdminArticles}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchElem, setSearchElem] = useState('');
 
-  const [adminArticles, setAdminArticles] = useState<Array<IArticle> | []>([]);
+  // const [adminArticles, setAdminArticles] = useState<Array<IArticle> | []>([]);
 
   const getTempArticles = async () => {
     setIsLoading(true);

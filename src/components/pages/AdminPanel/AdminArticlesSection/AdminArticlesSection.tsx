@@ -15,6 +15,8 @@ const AdminArticlesSection = () => {
     const [isFadeOutModal, setIsFadeOutModal] = useState(false);
     const [selectedAdminArticle, setSelectedAdminArticle] = useState<null | IArticle>(null);
 
+    const [adminArticles, setAdminArticles] = useState<Array<IArticle> | []>([]);
+
     const showAdminModal = () => {
       setIsAdminModal(true);
     }
@@ -55,6 +57,8 @@ const AdminArticlesSection = () => {
               editArticleForm 
               articleData={selectedAdminArticle}
               hideAdminModal={hideAdminModal}
+              adminArticles={adminArticles}
+              setAdminArticles={setAdminArticles}
             />
           </AdminModal>
         ) : null
@@ -70,6 +74,8 @@ const AdminArticlesSection = () => {
         <ArticlesWrapper
           getSelectedAdminArticle={getSelectedAdminArticle}
           showArticlePreview={showArticlePreview}
+          adminArticles={adminArticles}
+          setAdminArticles={setAdminArticles}
         />
       }
     </div>

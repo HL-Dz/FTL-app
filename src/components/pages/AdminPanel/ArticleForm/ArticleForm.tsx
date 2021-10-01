@@ -21,9 +21,11 @@ interface ArticleFormProps {
   editArticleForm?: boolean // If true then displays the article edit form
   articleData?: IArticle | null // Object with data for editing an article
   hideAdminModal?: () => void
+  setAdminArticles?: any
+  adminArticles?: Array<IArticle>
 }
 
-const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdminModal}) => {
+const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdminModal, setAdminArticles, adminArticles}) => {
   const { user } = useTypedSelector(state => state.auth);
 
   const [checkedStatus, setCheckedStatus] = useState(articleData?.status || 'normal');
@@ -62,26 +64,7 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
     setIsSuccessfulUpload(false);
   }
 
-  const addNewArticleToServer = async  (article: IArticle) => {
-    setIsLoading(true);
-    await delay(700);
-    ref
-      .doc(article.articleUrl)
-      .set(article)
-      .then(async () => {
-        resetFormButton();
-        setIsLoading(false);
-        alert('Article published');
-      })
-      .catch(async (err) => {
-        setErrorModal(true);
-        setErrorMessage(err.message)
-        await delay(500);
-        setIsLoading(false);
-      })
-  }
-
-  const addNewArticle = (e:React.FormEvent<HTMLFormElement>) => {
+  const addNewArticle = async (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const setArticleUrl = (id: string): string => {
       let titleValue = `${values.title.trim().toLowerCase().slice(0,30)}`;
@@ -114,7 +97,22 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
 
     if(Object.keys(articleValidation(values)).length === 0) {
       resetErrors()
-      addNewArticleToServer(article);
+      setIsLoading(true);
+      await delay(700);
+      ref
+        .doc(article.articleUrl)
+        .set(article)
+        .then(async () => {
+          resetFormButton();
+          setIsLoading(false);
+          alert('Article published');
+        })
+        .catch(async (err) => {
+          setErrorModal(true);
+          setErrorMessage(err.message)
+          await delay(500);
+          setIsLoading(false);
+        })
     } else {
       setErrors(articleValidation(values));
     }
@@ -124,32 +122,52 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
     e.preventDefault();
 
     let updatedArticle = {
+      id: articleData?.id,
+      articleUrl: articleData?.articleUrl,
+      articleAuthorId: articleData?.articleAuthorId,
       articleAuthorName: values.author,
       title: values.title,
       shortDesc: values.shortDesc,
       desc: values.description,
       imgSrc: values.photoUrl,
       status: checkedStatus,
-      lastUpdated: new Date().toLocaleString(),
+      public: true,
+      createdAt: articleData?.createdAt, // timestam с сервера Firebase 
+      lastUpdated: new Date().toLocaleString(), // timestam с сервера Firebase 
+      comments: [],
       displayComments: displayCheckedComments,
       photoBy: values.photoBy,
     }
-    setIsLoading(true);
-    await delay(500);
-    ref
-    .doc(articleData?.articleUrl)
-    .update(updatedArticle)
-    .then(() => {
-      console.log('Article updated!');
-      setIsLoading(false);
-    })
-    .catch(async (err) => {
-      setErrorModal(true);
-      setErrorMessage(err.message)
-      await delay(500);
-      setIsLoading(false);
-    })
 
+    if(Object.keys(articleValidation(values)).length === 0) {
+      resetErrors()
+      setIsLoading(true);
+      await delay(500);
+      ref
+      .doc(articleData?.articleUrl)
+      .update(updatedArticle)
+      .then(() => {
+        if(adminArticles) {
+          let updatedArr =  adminArticles.map((elem: IArticle) => {
+            if(elem.articleUrl !== updatedArticle.articleUrl) {
+              return elem;
+            } else {
+              return updatedArticle;
+            }
+          })
+          setAdminArticles(updatedArr);
+          setIsLoading(false);
+        }
+      })
+      .catch(async (err) => {
+        setErrorModal(true);
+        setErrorMessage(err.message)
+        await delay(500);
+        setIsLoading(false);
+      })
+    } else {
+      setErrors(articleValidation(values));
+    }
   }
 
   const uploadImage = async (e: React.FormEvent<HTMLButtonElement>) => {
@@ -319,13 +337,15 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
         </div>
         <div className="operation__row operation__row_buttons">
           {editArticleForm ? (
-            <div className="operation__button operation__button_close" onClick={hideAdminModal}>Close</div>
+            <div className="operation__button operation__button_close" onClick={hideAdminModal}><span>Close</span></div>
           ) : null}
           {!editArticleForm ? (
-            <div className="operation__button operation__button_reset" onClick={resetFormButton}>Reset Form</div>
+            <div className="operation__button operation__button_reset" onClick={resetFormButton}><span>Reset Form</span></div>
           ) : null}
           <button className="operation__button" type="submit">
+            <span>
             {editArticleForm ? "Update article" : "Publish article"}
+            </span>
           </button>
         </div>
       </form>
