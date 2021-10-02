@@ -16,6 +16,7 @@ import UploadPhotoField from './UploadPhotoField/UploadPhotoField';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import firebase from '../../../../firebase';
 import UniversalLoader from '../../../common/UniversalLoader/UniversalLoader';
+import CompletedTask from '../../../common/CompletedTask/CompletedTask';
 
 interface ArticleFormProps {
   editArticleForm?: boolean // If true then displays the article edit form
@@ -26,6 +27,9 @@ interface ArticleFormProps {
 }
 
 const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdminModal, setAdminArticles, adminArticles}) => {
+  const [completedTask, setCompletedTask] = useState(false);
+  const [taskMessage, setTaskMessage] = useState('');
+
   const { user } = useTypedSelector(state => state.auth);
 
   const [checkedStatus, setCheckedStatus] = useState(articleData?.status || 'normal');
@@ -104,8 +108,10 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
         .set(article)
         .then(async () => {
           resetFormButton();
+          setCompletedTask(true);
+          setTaskMessage('Article has been published.')
+          await delay(490);
           setIsLoading(false);
-          alert('Article published');
         })
         .catch(async (err) => {
           setErrorModal(true);
@@ -146,7 +152,7 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
       ref
       .doc(articleData?.articleUrl)
       .update(updatedArticle)
-      .then(() => {
+      .then(async () => {
         if(adminArticles) {
           let updatedArr =  adminArticles.map((elem: IArticle) => {
             if(elem.articleUrl !== updatedArticle.articleUrl) {
@@ -156,6 +162,9 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
             }
           })
           setAdminArticles(updatedArr);
+          setCompletedTask(true);
+          setTaskMessage('The article has been updated.')
+          await delay(600);
           setIsLoading(false);
         }
       })
@@ -237,6 +246,12 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
   return (
     <>
       {errorModal ? <ErrorModal errorMessage={errorMessage} setErrorModal={setErrorModal}/> : null}
+      {completedTask ? 
+        <CompletedTask 
+          taskMessage={taskMessage} 
+          setCompletedTask={setCompletedTask} 
+          setTaskMessage={setTaskMessage}
+        /> : null}
       {
       isLoading ? 
         <div className="app-loading">

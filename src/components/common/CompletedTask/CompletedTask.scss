@@ -1,6 +1,4 @@
-@use "../../../sass/abstracts/" as *;
-
-.errorModal {
+.task {
   position: fixed;
   display: flex;
   align-items: center;
@@ -12,34 +10,14 @@
   background: rgba(8, 8, 8, 1);
   background-image: url(../../../assets/images/webbg.png);
   z-index: 10;
-  animation: error-modal-anim 0.3s ease-in-out;
-
-  &_temp {
-    animation: error-modal-temp 0.3s ease-in-out;
-  }
-}
-
-.errorModal__content {
-  max-width: 450px;
-  min-width: 300px;
-  background: rgb(40,42,41);
-  background: linear-gradient(0deg, #282a29 20%, #d81035 50%, #282a29 80%);
-  border-radius: 2px;
-  color: #fa5f5f;
-  font-weight: bold;
-  font-size: 1.7rem;
-  border-radius: 3px;
-  padding: 30px;
-  text-align: center;
-  box-shadow: 10px 10px 10px #000;
-  animation: error-content-top 0.5s ease;
+  animation: task-success 0.5s ease;
 
   &_inactive {
-    animation: error-content-bottom 0.3s ease-in-out;
+    animation: task-inactive 0.5s ease;
   }
 }
 
-.errorModal__close {
+.task__close {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -50,7 +28,27 @@
   color: rgb(170, 168, 168);
 }
 
-.errorModal__text {
+.task__content {
+  max-width: 450px;
+  min-width: 300px;
+  background: rgb(40,42,41);
+  background: linear-gradient(0deg, #282a29 20%, #31993e 50%, #282a29 80%);
+  border-radius: 2px;
+  color: #3dcf51;
+  font-weight: bold;
+  font-size: 1.7rem;
+  border-radius: 3px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 10px 10px 10px #000;
+  animation: task-content-success 0.5s ease;
+  
+  &_inactive {
+    animation: task-content-inactive 0.5s ease;
+  }
+}
+
+.task__text {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,24 +56,24 @@
   border-radius: 2px;
   padding: 20px;
   box-shadow: 10px 10px 10px #000;
-  
-  i {
-    margin-right: 10px;
-    font-size: 3rem;
-  }
 }
 
-@keyframes error-modal-anim {
-  0%{
+.task__icon {
+  margin-right: 20px;
+  font-size: 3rem;
+}
+
+@keyframes task-success {
+  0% {
     opacity: 0;
   }
-  100%{
+  100% {
     opacity: 1;
   }
 }
 
-@keyframes error-modal-temp {
-  0%{
+@keyframes task-inactive {
+  0% {
     opacity: 1;
   }
   100%{
@@ -83,24 +81,24 @@
   }
 }
 
-@keyframes error-content-top {
-  0%{
+@keyframes task-content-success {
+  0% {
     transform: translateY(-50px);
     opacity: 0;
   }
-  100%{
-    transform: translateY();
-    opacity: 1;
-  }
-}
-
-@keyframes error-content-bottom {
-  0%{
+  100% {
     transform: translateY(0px);
     opacity: 1;
   }
-  100%{
-    transform: translateY(-50px);
+}
+
+@keyframes task-content-inactive {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(50px);
     opacity: 0;
   }
 }

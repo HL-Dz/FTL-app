@@ -12,6 +12,7 @@
   overflow: hidden;
   border-radius: 5px;
   box-shadow: 0 0 15px 10px #0a0a0a;
+  animation: transparency-animation 0.5s ease;
 
   &:hover {
     .admin-article__title {

@@ -233,6 +233,7 @@
 .overview-info {
   width: 100%;
   padding: 20px;
+  font-family: 'Roboto';
 }
 
 .overview-card__text {
@@ -247,7 +248,7 @@
 .finish-date,
 .current-matchday,
 .winner {
-  font-weight: bold;
+  // font-weight: bold;
   font-size: 1.5rem;
   letter-spacing: 1px;
   background: rgba(36, 44, 41, 0.7);
@@ -256,7 +257,8 @@
   border-radius: 3px;
 
    & span:first-child  {
-    font-family: 'Montserrat', sans-serif;
+    // font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
     font-size: 1.3rem;
     text-transform: uppercase;
     display: inline-block;

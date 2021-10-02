@@ -30,12 +30,6 @@ const AdminArticlesSection = () => {
       setIsEditForm(false);
     }
 
-    const hideAdminModalWithEscape = (e: any) => {
-      if(e.key === 'Escape') {
-        hideAdminModal()
-      }
-    }
-
     const getSelectedAdminArticle = (article: IArticle) => {
       setIsEditForm(true);
       showAdminModal();
@@ -52,7 +46,7 @@ const AdminArticlesSection = () => {
     <div className="admin-section">
       {
         (isAdminModal && isEditForm) ? (
-          <AdminModal isFadeOutModal={isFadeOutModal} hideAdminModalWithEscape={hideAdminModalWithEscape}>
+          <AdminModal isFadeOutModal={isFadeOutModal} hideAdminModal={hideAdminModal}>
             <ArticleForm 
               editArticleForm 
               articleData={selectedAdminArticle}
@@ -65,7 +59,7 @@ const AdminArticlesSection = () => {
       }
       {
        (isAdminModal && isPreview) ?  (
-         <AdminModal isFadeOutModal={isFadeOutModal} hideAdminModalWithEscape={hideAdminModalWithEscape}>
+         <AdminModal isFadeOutModal={isFadeOutModal} hideAdminModal={hideAdminModal}>
            <ArticlePreview article={selectedAdminArticle} hideAdminModal={hideAdminModal}/>
          </AdminModal>
        ) : null

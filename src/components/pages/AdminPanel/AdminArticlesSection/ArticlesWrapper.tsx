@@ -20,8 +20,6 @@ const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showA
   const [isLoading, setIsLoading] = useState(false);
   const [searchElem, setSearchElem] = useState('');
 
-  // const [adminArticles, setAdminArticles] = useState<Array<IArticle> | []>([]);
-
   const getTempArticles = async () => {
     setIsLoading(true);
     await delay(1000);
