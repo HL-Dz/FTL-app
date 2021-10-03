@@ -6,6 +6,7 @@ import articlesData from '../../News/articles-data';
 import AdminArticle from '../AdminArticle/AdminArticle';
 import EmptyAdminList from './EmptyAdminList/EmptyAdminList';
 import firebase from '../../../../firebase';
+import ErrorModal from '../../../common/ErrorModal/ErrorModal';
 
 interface ArticlesWrapperProps {
   getSelectedAdminArticle: (article: IArticle) => void
@@ -19,6 +20,8 @@ const ref = firebase.firestore().collection('articles');
 const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showArticlePreview, adminArticles, setAdminArticles}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchElem, setSearchElem] = useState('');
+  const [errorModal, setErrorModal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const getTempArticles = async () => {
     setIsLoading(true);
@@ -38,8 +41,33 @@ const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showA
     setIsLoading(false);
   }
 
+  const deleteArticle = async (articleUrl: string) => {
+    setIsLoading(true);
+    await delay(700);
+    ref
+    .doc(articleUrl)
+    .delete()
+    .then(async () => {
+      let newArr = adminArticles.filter((elem:IArticle) => elem.articleUrl !== articleUrl);
+      setAdminArticles(newArr);
+      await delay(700);
+      setIsLoading(false);
+    })
+    .catch(async (err: any) => {
+      setErrorModal(true);
+      if(err.code === 'permission-denied') {
+        setErrorMessage("You can't delete articles. No access.")
+      } else {
+        setErrorMessage(err.message)
+      }
+      await delay(500);
+      setIsLoading(false);
+    })
+  }
+
   return (
     <div className="articles-wrapper">
+      {errorModal ? <ErrorModal errorMessage={errorMessage} setErrorModal={setErrorModal}/> : null}
       {
       isLoading ? 
         <div className="app-loading">
@@ -70,6 +98,7 @@ const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showA
                   article={article}
                   getSelectedAdminArticle={getSelectedAdminArticle}
                   showArticlePreview={showArticlePreview}
+                  deleteArticle={deleteArticle}
                 />)
             )
         }

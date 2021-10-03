@@ -64,7 +64,9 @@ const User: FC<UserProps> = ({user}) => {
             </div>
             <div className="user__buttons">
               {isLogout ? <Spinner/> : null}
-              <button className="user__out" onClick={handleLogout}>Sign out</button>
+              <button className="user__out operation__button" onClick={handleLogout}>
+                <span>Sign out</span>
+              </button>
             </div>
           </div>
         ) : (null)
