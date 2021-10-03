@@ -33,17 +33,24 @@ const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showA
   const getAdminArticles = async () => {
     setIsLoading(true);
     await delay(700);
-    ref.get().then(item => {
+    ref.get()
+    .then(async (item) => {
       let articles = item.docs.map((doc:any) => doc.data());
       setAdminArticles(articles);
+      await delay(500);
+      setIsLoading(false);
     })
-    await delay(500);
-    setIsLoading(false);
+    .catch(async (err: any) => {
+      setErrorModal(true);
+      setErrorMessage(err.message)
+      await delay(500);
+      setIsLoading(false);
+    })
   }
 
   const deleteArticle = async (articleUrl: string) => {
     setIsLoading(true);
-    await delay(700);
+    await delay(500);
     ref
     .doc(articleUrl)
     .delete()
