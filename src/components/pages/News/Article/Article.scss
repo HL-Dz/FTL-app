@@ -4,12 +4,13 @@
   display: flex;
   align-items: center;
   min-height: 170px;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
   background: #141414;
   cursor: pointer;
+  font-family: 'Roboto';
   border-radius: 5px;
   overflow: hidden;
-  border: 1px solid rgb(51, 53, 51);
+  box-shadow: 0 0 15px 10px #0a0a0a;
 
   &:last-child {
     margin-bottom: 0;
@@ -35,23 +36,34 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 270px;
-  height: 170px;
+  width: 330px;
+  height: 220px;
   overflow: hidden;
   transition: all 0.5s ease-in-out;
   border-radius: 5px;
   flex-shrink: 0;
+
+  &:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient( 109.6deg,  rgba(15,2,2,0.2) 11.2%, rgba(47, 37, 48, 0.3) 71.1%, rgba(15,2,2,0.5) 110% );
+    content: '';
+    display: flex;
+  }
 }
 
 .article__info {
   background: rgb(33, 34, 33);
+  background-image: linear-gradient( 109.6deg,  rgba(15,2,2,1) 11.2%, rgb(36, 35, 37) 71.1%, rgba(15,2,2,1) 110% );
   padding: 0 10px;
   width: 100%;
-  margin: 7px;
-  border-radius: 5px;
 }
 
 .article__title {
+  color:rgb(209, 207, 209);
   font-size: 1.8rem;
   margin: 10px 0 0;
   font-weight: bold;
@@ -64,7 +76,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
   height: 30px;

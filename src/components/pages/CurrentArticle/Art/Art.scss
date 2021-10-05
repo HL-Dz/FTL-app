@@ -1,6 +1,8 @@
 .art {
   min-height: 150px;
   max-width: 1300px;
+  background: #1c1f1e;
+  padding: 0 10px;
 }
 
 .art__header {
@@ -111,7 +113,6 @@
 
 .art__description {
   position: relative;
-  background: #252525;
   padding: 10px;
   border-radius: 2px;
   color: #aaadad;
@@ -128,18 +129,25 @@
   margin-top: 15px;
 }
 
-.art__info-photo {
-  
-}
-
 .art__info-photo, .art__info-author {
   position: relative;
   margin: 0 10px;
   color: rgb(224, 224, 224);
   bottom: 5px;
+  background: rgb(39, 39, 39);
   padding: 3px 10px;
-  font-family: 'Roboto';
-  border: 1px solid rgb(83, 83, 83);
+  border-radius: 3px;
+  box-shadow: 0 0 5px 5px rgb(26, 25, 25);
+
+  i {
+    margin-left: 3px;
+    margin-right: 3px;
+    color: rgb(132, 90, 160);
+    background: linear-gradient(45deg, #e4e4e4 5%, #049434 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2rem;
+  }
 
   span {
     margin-left: 5px;

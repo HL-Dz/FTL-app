@@ -32,12 +32,12 @@ const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showA
 
   const getAdminArticles = async () => {
     setIsLoading(true);
-    await delay(700);
+    await delay(300);
     ref.get()
     .then(async (item) => {
       let articles = item.docs.map((doc:any) => doc.data());
       setAdminArticles(articles);
-      await delay(500);
+      await delay(300);
       setIsLoading(false);
     })
     .catch(async (err: any) => {
@@ -50,14 +50,14 @@ const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showA
 
   const deleteArticle = async (articleUrl: string) => {
     setIsLoading(true);
-    await delay(500);
+    await delay(300);
     ref
     .doc(articleUrl)
     .delete()
     .then(async () => {
       let newArr = adminArticles.filter((elem:IArticle) => elem.articleUrl !== articleUrl);
       setAdminArticles(newArr);
-      await delay(700);
+      await delay(300);
       setIsLoading(false);
     })
     .catch(async (err: any) => {
@@ -67,7 +67,7 @@ const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showA
       } else {
         setErrorMessage(err.message)
       }
-      await delay(500);
+      await delay(300);
       setIsLoading(false);
     })
   }

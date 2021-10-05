@@ -10,8 +10,7 @@ import Art from './Art/Art';
 import "./CurrentArticle.scss";
 import firebase from '../../../firebase';
 import { IArticle } from '../../../types/articles';
-
-import fireball from '../../../assets/images/fireball.jpg';
+import tfl from '../../../assets/images/tfl.jpg';
 
 let article = {
   id: '1', // generate uuidv4()
@@ -21,7 +20,7 @@ let article = {
   title: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, magnam?`,
   shortDesc: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, consequuntur! Minima doloribus expedita similique suscipit ipsam, repellatad debitis ea dolorum unde obcaecati quod accusamus laborum excepturi quaerat modi dolor fugit dignissimos repellendus!`,
   desc: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non, amet voluptas! Qui iusto quis dolorum voluptate dolor necessitatibus natus voluptatem molestias nisi aliquid optio repellendus aperiam hic corporis beatae, dignissimos illo ea officia, culpa expedita sed! Dolore aspernatur temporibus reiciendis nostrum consectetur praesentium fugit, accusamus ullam. Ex ab fugiat exercitationem autem dolore maiores suscipit, beatae minima quaerat quia amet sed quod at porro nostrum laudantium nisi necessitatibus alias iure ullam ducimus ut. Rem inventore omnis eum ea dignissimos soluta nobis in repudiandae cupiditate modi, alias dolor praesentium quae quidem tempore officiis dolorum. Blanditiis, omnis sed atque quam totam sint mollitia?`,
-  imgSrc: fireball,
+  imgSrc: tfl,
   status: 'hot', // ['normal', 'high', 'hot']
   public: true,
   createdAt: 'August 21, 2021 14:45',
