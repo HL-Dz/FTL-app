@@ -29,15 +29,14 @@
 
 .empty-article {
   display: flex;
-  width: 95%;
+  width: 90%;
   margin: 0 auto;
   justify-content: center;
   align-items: center;
   padding: 10px;
   border-radius: 2px;
   font-size: 2.3rem;
-  background-image: linear-gradient( 0deg,  rgb(20, 19, 36) 25%, rgb(32, 30, 56) 75%, rgb(20, 19, 36) 100% );
-  background-image: linear-gradient( 0deg,  rgb(54, 25, 25) 25%,rgb(44, 3, 3) 100% );
+  background-image: linear-gradient(0deg, #591919 25%, #6f4141 100%);
   box-shadow: 0 0 15px 10px #0a0a0a;
   animation: empty-article-anim 0.5s ease;
   color: rgb(196, 195, 195);

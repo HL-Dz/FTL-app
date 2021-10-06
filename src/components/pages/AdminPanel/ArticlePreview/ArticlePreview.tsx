@@ -18,46 +18,65 @@ const ArticlePreview: FC<ArticlePreviewProps> = ({article, hideAdminModal}) => {
   const [isLoadingArticle, setIsLoadingArticle] = useState(false);
 
   const [isExist, setIsExist] = useState(true);
+  const [error, setError] = useState(false);
+  const [errMessage, setErrorMessage] = useState('');
 
-  let unsubscribe: () => void;
+  let unsubscribe: any;
+
   
-  const getArticlePreview = async () => {
+   async function getArticlePreview (){
     setIsExist(true);
+    setError(false);
+    setErrorMessage('')
     setIsLoadingArticle(true);
     await delay(1000);
     if(article) {
-        ref.get()
+      ref.get()
           .then((docSnapshot) => {
             if(docSnapshot.exists) {
-              unsubscribe =  ref
+              ref
               .onSnapshot((doc) => {
                   setArticlePreview(doc.data());
                   setIsLoadingArticle(false);
                 },
-                (err) => {
+                (error) => {
                   setIsLoadingArticle(false);
-                  console.log(err);
+                  setError(true);
+                  setErrorMessage(error.message);
                 }
               )
             } else {
               setIsLoadingArticle(false);
               setIsExist(false);
+              setErrorMessage('No such document exists...');
             }
+          })
+          .catch(error => {
+            setIsLoadingArticle(false);
+            setError(true);
+            setErrorMessage(error.message);
           })
     }
   }
+
+
   
   useEffect(() => {
     if(article) {
       getArticlePreview();
     }
+
     return unsubscribe;
   }, [])
   
   return (
     <div className={isLoadingArticle ? "preview preview_load" : "preview"}>
       {!isExist ? 
-        <div className="empty-article"><span>No such document exists...</span></div>
+        <div className="empty-article"><span>{errMessage}</span></div>
+         : null
+      }
+      {error ? 
+        <div className="empty-article"><span>{errMessage}</span></div>
          : null
       }
       {isLoadingArticle ? (
@@ -65,11 +84,11 @@ const ArticlePreview: FC<ArticlePreviewProps> = ({article, hideAdminModal}) => {
           <UniversalLoader/>
         </div> ) : null
       }
-      <Art 
+      {!error && <Art 
         article={articlePreview}
         adminAccess
         hideAdminModal={hideAdminModal}
-      />
+      />}
     </div>
   )
 }
