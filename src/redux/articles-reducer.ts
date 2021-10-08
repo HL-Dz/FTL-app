@@ -198,42 +198,34 @@ export const getArticlesFromServer = () => async (dispatch: Dispatch<ArticlesAct
 }
 
 // GET ARTICLE PREVIEW FROM SERVER
-export const getArticlePreviewFromServer = (article: IArticle) => async (dispatch: Dispatch<ArticlesAction>) => {
+export const getArticleFromServer = (article: IArticle) => async (dispatch: Dispatch<ArticlesAction>) => {
   dispatch(resetArticlePreview());
   dispatch(setArticlePreviewError(false));
   dispatch(setExistArticle(true))
   dispatch(setArticleErrorMessage(''))
   dispatch(setArticlePreviewLoading(true));
   await delay(700);
-  if(article) {
-    ref.doc(article.articleUrl).get()
-      .then((docSnapshot) => {
-        if(docSnapshot.exists) {
-          ref
-          .doc(article.articleUrl)
-          .onSnapshot((doc: any) => {
-              dispatch(setArticlePreview(doc.data()));
-              dispatch(setArticlePreviewLoading(false));
-              dispatch(setArticlePreviewError(false));
-            },
-            (error) => {
-              dispatch(setArticlePreviewLoading(false));
-              dispatch(setArticlePreviewError(true));
-              dispatch(setArticleErrorMessage(error.message))
-            }
-          )
-        } else {
-          dispatch(setArticlePreviewLoading(false));
-          dispatch(setExistArticle(false))
-          dispatch(setArticleErrorMessage('No such document exists...'));
-        }
-      })
-      .catch(error => {
+  ref
+  .doc(article.articleUrl)
+  .onSnapshot((doc:firebase.firestore.DocumentData) => {
+      if(doc.exists === true) {
+        dispatch(setArticlePreview(doc.data()));
         dispatch(setArticlePreviewLoading(false));
-        dispatch(setArticlePreviewError(true));
-        dispatch(setArticleErrorMessage(error.message));
-      })
-  }
+        dispatch(setArticlePreviewError(false));
+      } else {
+        dispatch(setArticlePreviewLoading(false));
+        dispatch(setExistArticle(false))
+        dispatch(setArticleErrorMessage('No such document exists...'));
+        dispatch(resetArticlePreview());
+      }
+    },
+    (error) => {
+      dispatch(setArticlePreviewLoading(false));
+      dispatch(setArticlePreviewError(true));
+      dispatch(setArticleErrorMessage(error.message))
+      dispatch(resetArticlePreview());
+    }
+  )
 }
 
 

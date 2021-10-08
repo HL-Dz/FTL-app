@@ -4,7 +4,7 @@ import UniversalLoader from '../../../common/UniversalLoader/UniversalLoader';
 import Art from '../../CurrentArticle/Art/Art';
 import "./ArticlePreview.scss";
 import { useDispatch } from 'react-redux';
-import { getArticlePreviewFromServer } from '../../../../redux/articles-reducer';
+import { getArticleFromServer } from '../../../../redux/articles-reducer';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 
 interface ArticlePreviewProps {
@@ -20,7 +20,7 @@ const ArticlePreview: FC<ArticlePreviewProps> = ({article, hideAdminModal}) => {
   
    const getArticlePreview = async () => {
      if(article) {
-      dispatch(getArticlePreviewFromServer(article));
+      dispatch(getArticleFromServer(article));
      }
   }
 
