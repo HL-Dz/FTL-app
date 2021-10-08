@@ -35,6 +35,7 @@ const AdminArticle: FC<AdminArticleProps> = ({article, getSelectedAdminArticle, 
     setImageLoaded(true);
     setIsSlowlyHide(false);
   }
+
   return (
     <div key={article.id} className="admin-article">
       {!imageLoaded ? 

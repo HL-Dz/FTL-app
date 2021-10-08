@@ -17,6 +17,7 @@
 }
 
 .articles__content {
+  position: relative;
   align-self: start;
   display: flex;
   justify-content: center;
@@ -24,15 +25,45 @@
   padding: 10px;
   border-radius: 5px;
   width: calc(100% - 330px);
+  animation: transparency-animation 0.2s ease;
+
+  &_inactive {
+    min-height: 200px;
+  }
 
   .art {
     max-width: 1300px;
+  }
+
+  .app-loading {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
   }
 }
 
 .articles__list {
   display: flex;
   flex-direction: column;
+}
+
+.empty-arts__section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-arts__text {
+  justify-content: center;
+  display: flex;
+  margin-right: 15px;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 2.3rem;
 }
 
 .articles__sidebar {

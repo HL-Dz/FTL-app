@@ -16,7 +16,8 @@ import {
   SetArticlePreviewAction,
   SetArticlePreviewError,
   ResetArticlePreviewAction,
-  SetArticlePreviewLoadingAction
+  SetArticlePreviewLoadingAction,
+  ResetArticlesAction
 } from './../types/articles';
 import firebase from '../firebase';
 
@@ -169,7 +170,7 @@ export  const setExistArticle = (isExistArticle: boolean): SetExistArticleAction
   type: ArticleActionTypes.SET_EXIST_ARTICLE,
   isExistArticle
 });
-export const resetArticles = () => ({
+export const resetArticles = (): ResetArticlesAction => ({
   type: ArticleActionTypes.RESET_ARTICLES
 })
 export const resetArticlePreview = (): ResetArticlePreviewAction => ({
@@ -179,6 +180,7 @@ export const resetArticlePreview = (): ResetArticlePreviewAction => ({
 
 // GET ARTICLES FROM SERVER
 export const getArticlesFromServer = () => async (dispatch: Dispatch<ArticlesAction>) => {
+  dispatch(resetArticles());
   dispatch(setArticleErrorMessage(''))
   dispatch(toggleArticleLoading(true));
   await delay(300);
@@ -186,7 +188,7 @@ export const getArticlesFromServer = () => async (dispatch: Dispatch<ArticlesAct
   .then(async (item) => {
     let articles = item.docs.map((doc:any) => doc.data());
     dispatch(setArticles(articles));
-    await delay(300);
+    // await delay(300);
     dispatch(toggleArticleLoading(false));
   })
   .catch(async (err: any) => {

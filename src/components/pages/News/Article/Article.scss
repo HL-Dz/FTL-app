@@ -11,6 +11,7 @@
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 0 15px 10px #0a0a0a;
+  animation: transparency-animation 0.5s ease;
 
   &:last-child {
     margin-bottom: 0;
@@ -29,6 +30,7 @@
 
 .article__link {
   display: flex;
+  width: 100%;
 }
 
 .article__pic {
@@ -36,8 +38,8 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 330px;
-  height: 220px;
+  width: 370px;
+  height: 200px;
   overflow: hidden;
   transition: all 0.5s ease-in-out;
   border-radius: 5px;
@@ -52,6 +54,12 @@
     background-image: linear-gradient( 109.6deg,  rgba(15,2,2,0.2) 11.2%, rgba(47, 37, 48, 0.3) 71.1%, rgba(15,2,2,0.5) 110% );
     content: '';
     display: flex;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    animation: transparency-animation 1s ease;
   }
 }
 
