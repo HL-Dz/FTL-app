@@ -12,6 +12,7 @@
   margin-left: 16px;
   box-shadow: 0 0 18px 10px #020202;
   transition: all 0.5s ease;
+  z-index: 3;
 
   &_load {
     background-image: linear-gradient( 178.1deg,  rgba(60,55,106,1) 8.5%, rgba(23,20,69,1) 82.4% );
@@ -24,6 +25,7 @@
     top: 0;
     right: 0;
     bottom: 0;
+    z-index: 1;
   }
 }
 

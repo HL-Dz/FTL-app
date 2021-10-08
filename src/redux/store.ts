@@ -6,6 +6,7 @@ import teamReducer from "./team-reducer";
 import playerReducer from "./player-reducer";
 import clubsReducer from "./clubs-reducer";
 import userAuthReducer from "./auth-reducer";
+import articlesReduer from "./articles-reducer";
 
 const persistedState = localStorage.getItem('mainState')
                         ? JSON.parse(localStorage.getItem('mainState') || '{}')
@@ -16,7 +17,8 @@ let rootReducer = combineReducers({
   teamPage: teamReducer,
   playerPage: playerReducer,
   clubsPage: clubsReducer,
-  auth: userAuthReducer
+  auth: userAuthReducer,
+  articles: articlesReduer
 });
 
 

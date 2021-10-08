@@ -14,23 +14,25 @@ import TextareaField from './TextareaField/TextareaField';
 import OperationField from './OperationField/OperationField';
 import UploadPhotoField from './UploadPhotoField/UploadPhotoField';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
-import firebase from '../../../../firebase';
 import UniversalLoader from '../../../common/UniversalLoader/UniversalLoader';
 import CompletedTask from '../../../common/CompletedTask/CompletedTask';
+import { useDispatch } from 'react-redux';
+import {
+  addArticleToServer,
+  setCompletedTask,
+  updateArticleOnTheServer
+} from '../../../../redux/articles-reducer';
 
 interface ArticleFormProps {
   editArticleForm?: boolean // If true then displays the article edit form
   articleData?: IArticle | null // Object with data for editing an article
   hideAdminModal?: () => void
-  setAdminArticles?: any
-  adminArticles?: Array<IArticle>
 }
 
-const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdminModal, setAdminArticles, adminArticles}) => {
-  const [completedTask, setCompletedTask] = useState(false);
-  const [taskMessage, setTaskMessage] = useState('');
-
+const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdminModal}) => {
   const { user } = useTypedSelector(state => state.auth);
+  const {completedTask, completedTaskMessage, isLoading} = useTypedSelector(state => state.articles);
+  const dispatch = useDispatch();
 
   const [checkedStatus, setCheckedStatus] = useState(articleData?.status || 'normal');
   let serverCommments = editArticleForm ? articleData?.displayComments : true;
@@ -42,10 +44,8 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
   const [startUpload, setStartUpload] = useState(false);
   const [isSuccessfulUpload, setIsSuccessfulUpload] = useState(false);
 
-  const [errorModal, setErrorModal] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
-
-  const [isLoading, setIsLoading] = useState(false);
+  const [errorImgModal, setErrorImgModal] = useState(false);
+  const [errorImgMessage, setErrorImgMessage] = useState('');
 
   let formState = {
     title: editArticleForm ?  articleData?.title : '',
@@ -57,16 +57,6 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
   }
 
   const {values, setValues, errors, setErrors, handleChange} = useForm(formState);
-  const ref = firebase.firestore().collection('articles');
-
-  const resetForm = () => {
-    resetValues();
-    setCheckedStatus('normal');
-    setDisplayCheckedComments(true);
-    setPhoto(null);
-    setPhotoName('');
-    setIsSuccessfulUpload(false);
-  }
 
   const addNewArticle = async (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -100,25 +90,8 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
     }
 
     if(Object.keys(articleValidation(values)).length === 0) {
-      resetErrors()
-      setIsLoading(true);
-      await delay(700);
-      ref
-        .doc(article.articleUrl)
-        .set(article)
-        .then(async () => {
-          resetFormButton();
-          setCompletedTask(true);
-          setTaskMessage('Article has been published.')
-          await delay(490);
-          setIsLoading(false);
-        })
-        .catch(async (err) => {
-          setErrorModal(true);
-          setErrorMessage(err.message)
-          await delay(500);
-          setIsLoading(false);
-        })
+      resetErrors();
+      dispatch(addArticleToServer(article, resetFormButton));
     } else {
       setErrors(articleValidation(values));
     }
@@ -127,7 +100,7 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
   const editArticle = async (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    let updatedArticle = {
+    let updatedArticle:any = {
       id: articleData?.id,
       articleUrl: articleData?.articleUrl,
       articleAuthorId: articleData?.articleAuthorId,
@@ -146,34 +119,10 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
     }
 
     if(Object.keys(articleValidation(values)).length === 0) {
-      resetErrors()
-      setIsLoading(true);
-      await delay(500);
-      ref
-      .doc(articleData?.articleUrl)
-      .update(updatedArticle)
-      .then(async () => {
-        if(adminArticles) {
-          let updatedArr =  adminArticles.map((elem: IArticle) => {
-            if(elem.articleUrl !== updatedArticle.articleUrl) {
-              return elem;
-            } else {
-              return updatedArticle;
-            }
-          })
-          setAdminArticles(updatedArr);
-          setCompletedTask(true);
-          setTaskMessage('The article has been updated.')
-          await delay(600);
-          setIsLoading(false);
-        }
-      })
-      .catch(async (err) => {
-        setErrorModal(true);
-        setErrorMessage(err.message)
-        await delay(500);
-        setIsLoading(false);
-      })
+      resetErrors();
+      if(articleData) {
+        dispatch(updateArticleOnTheServer(articleData, updatedArticle));
+      }
     } else {
       setErrors(articleValidation(values));
     }
@@ -193,8 +142,8 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
         error => {
           let errorMessage = storageError(error.code);
           setStartUpload(false);
-          setErrorMessage(errorMessage);
-          setErrorModal(true);
+          setErrorImgMessage(errorMessage);
+          setErrorImgModal(true);
           setPhoto(null);
           setPhotoName('');
         },
@@ -213,9 +162,13 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
     }
   }
 
-  const resetFormButton = () => {
-    resetForm()
-    resetErrors();
+  const resetForm = () => {
+    resetValues();
+    setCheckedStatus('normal');
+    setDisplayCheckedComments(true);
+    setPhoto(null);
+    setPhotoName('');
+    setIsSuccessfulUpload(false);
   }
 
   const resetErrors = () => {
@@ -230,6 +183,11 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
     })
   }
 
+  const resetFormButton = () => {
+    resetForm()
+    resetErrors();
+  }
+
   const resetValues = () => {
     setValues({
       ...values,
@@ -241,16 +199,18 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
       author: ''
     })
   }
-  
+
+  const setCompletedTaskProcess = (val:boolean) => {
+    dispatch(setCompletedTask(val));
+  }
 
   return (
     <>
-      {errorModal ? <ErrorModal errorMessage={errorMessage} setErrorModal={setErrorModal}/> : null}
+      {errorImgModal ? <ErrorModal errorMessage={errorImgMessage} setErrorModal={setErrorImgModal}/> : null}
       {completedTask ? 
         <CompletedTask 
-          taskMessage={taskMessage} 
-          setCompletedTask={setCompletedTask} 
-          setTaskMessage={setTaskMessage}
+          taskMessage={completedTaskMessage} 
+          setCompletedTask={setCompletedTaskProcess} 
         /> : null}
       {
       isLoading ? 
@@ -298,8 +258,8 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
               uploadImage={uploadImage}
               setPhoto={setPhoto}
               setPhotoName={setPhotoName}
-              setErrorModal={setErrorModal}
-              setErrorMessage={setErrorMessage}
+              setErrorModal={setErrorImgModal}
+              setErrorMessage={setErrorImgMessage}
             />
           </OperationField>
           <div className="operation__field">

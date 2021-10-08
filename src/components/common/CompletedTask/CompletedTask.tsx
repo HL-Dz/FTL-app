@@ -5,17 +5,15 @@ import "./CompletedTask.scss";
 interface CompletedTaskProps {
   taskMessage: string
   setCompletedTask: (elem: boolean) => void
-  setTaskMessage: (message: string) => void
 }
 
-const CompletedTask: FC<CompletedTaskProps> = ({taskMessage, setCompletedTask, setTaskMessage}) => {
+const CompletedTask: FC<CompletedTaskProps> = ({taskMessage, setCompletedTask}) => {
   const [slowlyInActive, setSlowlyInActive] = useState(false);
 
   const closeCompletedTask = async () => {
     setSlowlyInActive(true);
     await delay(490);
     setCompletedTask(false);
-    setTaskMessage('');
   }
 
   const handleClose = (e: React.SyntheticEvent) => {

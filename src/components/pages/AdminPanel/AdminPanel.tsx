@@ -6,9 +6,16 @@ import ArticleForm from './ArticleForm/ArticleForm';
 import UniversalLoader from '../../common/UniversalLoader/UniversalLoader';
 import { delay } from '../../../helpers/helpers';
 import AdminInfoScreen from './AdminInfoScreen/AdminInfoScreen';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
+import { useDispatch } from 'react-redux';
+import { setArticleErrorModal } from '../../../redux/articles-reducer';
+import ErrorModal from '../../common/ErrorModal/ErrorModal';
 
 
 const AdminPanel = () => {
+  const { errorModal, errorMessage } = useTypedSelector(state => state.articles);
+  const dispatch = useDispatch();
+
   const [isHiddenSidebar, setIsHiddenSidebar] = useState(true);
   const [isVisibleFormControl, setIsVisibleFormControl] = useState(false);
   const [isVisibleAdminArticles, setIsVisibleAdminArticles] = useState(false);
@@ -37,9 +44,14 @@ const AdminPanel = () => {
 
   getAdminPanel();
 
+  const setErrorModal = (value: boolean) => {
+    dispatch(setArticleErrorModal(value));
+  }
+
 
   return (
     <div className="primary-container admin">
+      {errorModal? <ErrorModal errorMessage={errorMessage} setErrorModal={setErrorModal}/> : null}
       <AdminSidebar 
         isHiddenSidebar={isHiddenSidebar} 
         toggleSidebar={toggleSidebar}

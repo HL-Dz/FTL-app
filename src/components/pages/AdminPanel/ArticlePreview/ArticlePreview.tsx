@@ -1,10 +1,11 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect } from 'react';
 import { IArticle } from '../../../../types/articles';
 import UniversalLoader from '../../../common/UniversalLoader/UniversalLoader';
 import Art from '../../CurrentArticle/Art/Art';
 import "./ArticlePreview.scss";
-import firebase from '../../../../firebase';
-import { delay } from '../../../../helpers/helpers';
+import { useDispatch } from 'react-redux';
+import { getArticlePreviewFromServer } from '../../../../redux/articles-reducer';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 
 interface ArticlePreviewProps {
   article: IArticle | null
@@ -13,50 +14,14 @@ interface ArticlePreviewProps {
 
 
 const ArticlePreview: FC<ArticlePreviewProps> = ({article, hideAdminModal}) => {
-  const ref = firebase.firestore().collection('articles').doc(article?.articleUrl);
-  const [articlePreview, setArticlePreview] = useState<any>(null);
-  const [isLoadingArticle, setIsLoadingArticle] = useState(false);
-
-  const [isExist, setIsExist] = useState(true);
-  const [error, setError] = useState(false);
-  const [errMessage, setErrorMessage] = useState('');
-
-  let unsubscribe: any;
+  const dispatch = useDispatch();
+  const { articlePreview, articlePreviewLoading, isExistArticle, articlePreviewError, errorMessage } = useTypedSelector(state => state.articles)
 
   
-   async function getArticlePreview (){
-    setIsExist(true);
-    setError(false);
-    setErrorMessage('')
-    setIsLoadingArticle(true);
-    await delay(1000);
-    if(article) {
-      ref.get()
-          .then((docSnapshot) => {
-            if(docSnapshot.exists) {
-              ref
-              .onSnapshot((doc) => {
-                  setArticlePreview(doc.data());
-                  setIsLoadingArticle(false);
-                },
-                (error) => {
-                  setIsLoadingArticle(false);
-                  setError(true);
-                  setErrorMessage(error.message);
-                }
-              )
-            } else {
-              setIsLoadingArticle(false);
-              setIsExist(false);
-              setErrorMessage('No such document exists...');
-            }
-          })
-          .catch(error => {
-            setIsLoadingArticle(false);
-            setError(true);
-            setErrorMessage(error.message);
-          })
-    }
+   const getArticlePreview = async () => {
+     if(article) {
+      dispatch(getArticlePreviewFromServer(article));
+     }
   }
 
 
@@ -65,26 +30,24 @@ const ArticlePreview: FC<ArticlePreviewProps> = ({article, hideAdminModal}) => {
     if(article) {
       getArticlePreview();
     }
-
-    return unsubscribe;
   }, [])
   
   return (
-    <div className={isLoadingArticle ? "preview preview_load" : "preview"}>
-      {!isExist ? 
-        <div className="empty-article"><span>{errMessage}</span></div>
+    <div className={articlePreviewLoading ? "preview preview_load" : "preview"}>
+      {!isExistArticle ? 
+        <div className="empty-article"><span>{errorMessage}</span></div>
          : null
       }
-      {error ? 
-        <div className="empty-article"><span>{errMessage}</span></div>
+      {articlePreviewError ? 
+        <div className="empty-article"><span>{errorMessage}</span></div>
          : null
       }
-      {isLoadingArticle ? (
+      {articlePreviewLoading ? (
         <div className="app-loading">
           <UniversalLoader/>
         </div> ) : null
       }
-      {!error && <Art 
+      {!articlePreviewError && <Art 
         article={articlePreview}
         adminAccess
         hideAdminModal={hideAdminModal}
