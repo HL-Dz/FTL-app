@@ -15,17 +15,15 @@ interface ArticlePreviewProps {
 
 const ArticlePreview: FC<ArticlePreviewProps> = ({article, hideAdminModal}) => {
   const dispatch = useDispatch();
-  const { articlePreview, articlePreviewLoading, isExistArticle, articlePreviewError, errorMessage } = useTypedSelector(state => state.articles)
+  const { articlePreview, articlePreviewLoading, isNotExistArticle, articlePreviewError, errorMessage } = useTypedSelector(state => state.articles)
 
   
    const getArticlePreview = async () => {
      if(article) {
-      dispatch(getArticleFromServer(article));
+      dispatch(getArticleFromServer(article.articleUrl));
      }
   }
 
-
-  
   useEffect(() => {
     if(article) {
       getArticlePreview();
@@ -34,7 +32,7 @@ const ArticlePreview: FC<ArticlePreviewProps> = ({article, hideAdminModal}) => {
   
   return (
     <div className={articlePreviewLoading ? "preview preview_load" : "preview"}>
-      {!isExistArticle ? 
+      {isNotExistArticle ? 
         <div className="empty-article"><span>{errorMessage}</span></div>
          : null
       }

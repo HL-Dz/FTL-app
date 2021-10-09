@@ -68,6 +68,9 @@
     min-width: 210px;
     max-width: 210px;
     transition: all 0.5s linear;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 

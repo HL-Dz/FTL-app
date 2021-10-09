@@ -21,11 +21,7 @@
   align-self: start;
   display: flex;
   justify-content: center;
-  // background: #1c1f1e;
-  padding: 10px;
-  border-radius: 5px;
   width: calc(100% - 330px);
-  animation: transparency-animation 0.2s ease;
 
   &_inactive {
     min-height: 200px;
@@ -33,6 +29,7 @@
 
   .art {
     max-width: 1300px;
+    width: 100%;
   }
 
   .app-loading {
@@ -55,6 +52,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  .operation__button {
+    background: linear-gradient(330deg, #161716 23%, #383963 61%);
+    margin-left: 10px;
+
+    &:active {
+      font-size: 1.4rem;
+    }
+  }
 }
 
 .empty-arts__text {

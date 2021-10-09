@@ -63,6 +63,22 @@
   }
 }
 
+.article__load {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.815);
+
+  &_hide {
+    animation: back-transparency-animation 0.5s ease;
+  }
+}
+
 .article__info {
   background: rgb(33, 34, 33);
   background-image: linear-gradient(109.6deg, #020a0f 11.2%, #242325 71.1%, #020a0f 110%);

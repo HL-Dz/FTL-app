@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import "./AdminSidebar.scss";
 
 interface AdminSidebarProps {
@@ -9,6 +10,8 @@ interface AdminSidebarProps {
 }
 
 const AdminSidebar:FC<AdminSidebarProps> = ({isHiddenSidebar, toggleSidebar, showFormControl, showAdminArticles}) => {
+  const {user} = useTypedSelector(state => state.auth);
+  const adminName = user?.displayName ? user.displayName : user?.email;
   return (
     <aside className={isHiddenSidebar ? "admin__sidebar admin__sidebar_hide" : "admin__sidebar"}>
       <div className="toggle-sidebar" onClick={toggleSidebar}>
@@ -16,7 +19,7 @@ const AdminSidebar:FC<AdminSidebarProps> = ({isHiddenSidebar, toggleSidebar, sho
       </div>
       <div className="admin__name" title="Administrator">
         <i className="fas fa-user-shield admin__icon"></i>
-        <span>Administrator</span>
+        <span>{adminName}</span>
       </div>
       <div className="admin__elems">
         <div className="admin__elem" onClick={showAdminArticles}>

@@ -96,7 +96,7 @@ export interface SetArticleErrorMessageAction {
 
 export interface SetExistArticleAction {
   type: ArticleActionTypes.SET_EXIST_ARTICLE
-  isExistArticle: boolean
+  isNotExistArticle: boolean
 }
 
 export interface DeleteArticleAction {

@@ -34,7 +34,7 @@ let initialState = {
   completedTaskMessage: '',
   errorModal: false,
   errorMessage: '',
-  isExistArticle: true,
+  isNotExistArticle: false,
 }
 
 type ArticleInitialState = typeof initialState;
@@ -106,7 +106,7 @@ const articlesReduer = (state = initialState, action: ArticlesAction): ArticleIn
       case ArticleActionTypes.SET_EXIST_ARTICLE:
         return {
           ...state,
-          isExistArticle: action.isExistArticle
+          isNotExistArticle: action.isNotExistArticle
         }
         case ArticleActionTypes.RESET_ARTICLES:
           return {
@@ -166,15 +166,15 @@ export const setArticleErrorMessage = (errorMessage: string): SetArticleErrorMes
   type: ArticleActionTypes.SET_ARTICLE_ERROR_MESSAGE,
   errorMessage
 });
-export  const setExistArticle = (isExistArticle: boolean): SetExistArticleAction => ({
+export  const setIsNotExistArticle = (isNotExistArticle: boolean): SetExistArticleAction => ({
   type: ArticleActionTypes.SET_EXIST_ARTICLE,
-  isExistArticle
+  isNotExistArticle
 });
 export const resetArticles = (): ResetArticlesAction => ({
   type: ArticleActionTypes.RESET_ARTICLES
 })
 export const resetArticlePreview = (): ResetArticlePreviewAction => ({
-  type: ArticleActionTypes.RESET_ARTICLE_PREVIEW
+  type: ArticleActionTypes.RESET_ARTICLE_PREVIEW,
 })
 
 
@@ -188,7 +188,7 @@ export const getArticlesFromServer = () => async (dispatch: Dispatch<ArticlesAct
   .then(async (item) => {
     let articles = item.docs.map((doc:any) => doc.data());
     dispatch(setArticles(articles));
-    // await delay(300);
+    await delay(300);
     dispatch(toggleArticleLoading(false));
   })
   .catch(async (err: any) => {
@@ -200,25 +200,26 @@ export const getArticlesFromServer = () => async (dispatch: Dispatch<ArticlesAct
 }
 
 // GET ARTICLE PREVIEW FROM SERVER
-export const getArticleFromServer = (article: IArticle) => async (dispatch: Dispatch<ArticlesAction>) => {
+export const getArticleFromServer = (articleUrl: string) => async (dispatch: Dispatch<ArticlesAction>) => {
   dispatch(resetArticlePreview());
   dispatch(setArticlePreviewError(false));
-  dispatch(setExistArticle(true))
+  dispatch(setIsNotExistArticle(false))
   dispatch(setArticleErrorMessage(''))
   dispatch(setArticlePreviewLoading(true));
   await delay(700);
   ref
-  .doc(article.articleUrl)
-  .onSnapshot((doc:firebase.firestore.DocumentData) => {
+  .doc(articleUrl)
+  .onSnapshot(async (doc:firebase.firestore.DocumentData) => {
       if(doc.exists === true) {
         dispatch(setArticlePreview(doc.data()));
         dispatch(setArticlePreviewLoading(false));
         dispatch(setArticlePreviewError(false));
       } else {
         dispatch(setArticlePreviewLoading(false));
-        dispatch(setExistArticle(false))
+        dispatch(setIsNotExistArticle(true));
         dispatch(setArticleErrorMessage('No such document exists...'));
         dispatch(resetArticlePreview());
+        await delay(1000);
       }
     },
     (error) => {
