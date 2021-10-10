@@ -1,6 +1,5 @@
 import React, { FC, useState } from 'react'
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import SignIn from '../../common/Auth/SignIn';
@@ -8,33 +7,60 @@ import Footer from '../../common/Footer/Footer';
 import Tournaments from '../News/Tournaments/Tournaments';
 import Art from './Art/Art';
 import "./CurrentArticle.scss";
-import { getArticleFromServer, resetArticlePreview } from '../../../redux/articles-reducer';
 import UniversalLoader from '../../common/UniversalLoader/UniversalLoader';
+import firebase from '../../../firebase';
+import { IArticle } from '../../../types/articles';
+import { delay } from '../../../helpers/helpers';
 
 
 interface CurrentArticleParams {
   url: string
 }
 
+const ref = firebase.firestore().collection('articles');
 
 const CurrentArticle = () => {
-  const dispatch = useDispatch();
   const { user } = useTypedSelector(state => state.auth);
-  const {
-    articlePreview,
-    articlePreviewLoading,
-    isNotExistArticle,
-    articlePreviewError,
-    errorMessage
-  } = useTypedSelector(state => state.articles)
+  const [articlePreview, setArticlePreview] = useState<IArticle | null>(null);
+  const [articlePreviewLoading, setArticlePreviewLoading] = useState(false);
+  const [isNotExistArticle, setIsNotExistArticle] = useState(false);
+  const [articlePreviewError, setArticlePreviewError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
   const { url } = useParams<CurrentArticleParams>();
 
-  const getUserArticle = () => {
-    dispatch(getArticleFromServer(url))
+  const getUserArticle = async () => {
+  setArticlePreview(null);
+  setArticlePreviewError(false);
+  setIsNotExistArticle(false);
+  setErrorMessage('');
+  setArticlePreviewLoading(true);
+  await delay(700);
+  ref
+  .doc(url)
+  .onSnapshot((doc:firebase.firestore.DocumentData) => {
+      if(doc.exists === true) {
+        setArticlePreviewLoading(false);
+        setArticlePreviewError(false);
+        setArticlePreview(doc.data())
+      } else {
+        setArticlePreviewLoading(false);
+        setIsNotExistArticle(true);
+        setErrorMessage('No such document exists...');
+        setArticlePreview(null);
+      }
+    },
+    (error) => {
+      setArticlePreviewLoading(false);
+      setArticlePreviewError(true)
+      setErrorMessage(error.message);
+      setArticlePreview(null);
+    }
+    )
   }
 
   const reloadPage = () => {
-    dispatch(getArticleFromServer(url))
+    getUserArticle()
   }
   
   useEffect(() => {
@@ -42,7 +68,7 @@ const CurrentArticle = () => {
       getUserArticle();
     }
     return (() => {
-      dispatch(resetArticlePreview());
+      setArticlePreview(null);
     })
   }, [])
   

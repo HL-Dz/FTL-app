@@ -13,10 +13,6 @@ import {
   SetCompletedTaskMessageAction,
   UpdateArticleAction,
   SetExistArticleAction,
-  SetArticlePreviewAction,
-  SetArticlePreviewError,
-  ResetArticlePreviewAction,
-  SetArticlePreviewLoadingAction,
   ResetArticlesAction
 } from './../types/articles';
 import firebase from '../firebase';
@@ -25,16 +21,12 @@ const ref = firebase.firestore().collection('articles');
 
 let initialState = {
   articles: [] as Array<IArticle> | [],
-  articlePreview: null as IArticle | null,
-  articlePreviewError: false,
-  articlePreviewLoading: false,
   updatedArticle: null as IArticle | null,
   isLoading: false,
   completedTask: false,
   completedTaskMessage: '',
   errorModal: false,
   errorMessage: '',
-  isNotExistArticle: false,
 }
 
 type ArticleInitialState = typeof initialState;
@@ -46,21 +38,6 @@ const articlesReduer = (state = initialState, action: ArticlesAction): ArticleIn
         return {
           ...state,
           articles: action.articles
-        }
-      case ArticleActionTypes.SET_ARTICLE_PREVIEW:
-        return {
-          ...state,
-          articlePreview: action.articlePreview
-        }
-      case ArticleActionTypes.SET_ARTICLE_PREVIEW_LOADING:
-        return {
-          ...state,
-          articlePreviewLoading: action.articlePreviewLoading
-        }
-      case ArticleActionTypes.SET_ARTICLE_PREVIEW_ERROR:
-        return {
-          ...state,
-          articlePreviewError: action.articlePreviewError
         }
       case ArticleActionTypes.UPDATE_ARTICLE:
         return {
@@ -103,21 +80,11 @@ const articlesReduer = (state = initialState, action: ArticlesAction): ArticleIn
           ...state,
           errorMessage: action.errorMessage
         }
-      case ArticleActionTypes.SET_EXIST_ARTICLE:
+      case ArticleActionTypes.RESET_ARTICLES:
         return {
           ...state,
-          isNotExistArticle: action.isNotExistArticle
+          articles: []
         }
-        case ArticleActionTypes.RESET_ARTICLES:
-          return {
-            ...state,
-            articles: []
-          }
-        case ArticleActionTypes.RESET_ARTICLE_PREVIEW:
-          return {
-            ...state,
-            articlePreview: null,
-          }
       default:
         return state
   }
@@ -127,18 +94,6 @@ const articlesReduer = (state = initialState, action: ArticlesAction): ArticleIn
 export const setArticles = (articles: Array<IArticle> | []): SetArticlesAction => ({
   type: ArticleActionTypes.SET_ARTICLES,
   articles
-});
-export const setArticlePreview = (articlePreview: IArticle): SetArticlePreviewAction => ({
-  type: ArticleActionTypes.SET_ARTICLE_PREVIEW,
-  articlePreview
-});
-export const setArticlePreviewLoading = (articlePreviewLoading: boolean): SetArticlePreviewLoadingAction => ({
-  type: ArticleActionTypes.SET_ARTICLE_PREVIEW_LOADING,
-  articlePreviewLoading
-});
-export const setArticlePreviewError = (articlePreviewError: boolean): SetArticlePreviewError => ({
-  type: ArticleActionTypes.SET_ARTICLE_PREVIEW_ERROR,
-  articlePreviewError
 });
 export const updateArticle = (updatedArticle: IArticle): UpdateArticleAction => ({
   type: ArticleActionTypes.UPDATE_ARTICLE,
@@ -173,9 +128,6 @@ export  const setIsNotExistArticle = (isNotExistArticle: boolean): SetExistArtic
 export const resetArticles = (): ResetArticlesAction => ({
   type: ArticleActionTypes.RESET_ARTICLES
 })
-export const resetArticlePreview = (): ResetArticlePreviewAction => ({
-  type: ArticleActionTypes.RESET_ARTICLE_PREVIEW,
-})
 
 
 // GET ARTICLES FROM SERVER
@@ -197,38 +149,6 @@ export const getArticlesFromServer = () => async (dispatch: Dispatch<ArticlesAct
     await delay(500);
     dispatch(toggleArticleLoading(false));
   })
-}
-
-// GET ARTICLE PREVIEW FROM SERVER
-export const getArticleFromServer = (articleUrl: string) => async (dispatch: Dispatch<ArticlesAction>) => {
-  dispatch(resetArticlePreview());
-  dispatch(setArticlePreviewError(false));
-  dispatch(setIsNotExistArticle(false))
-  dispatch(setArticleErrorMessage(''))
-  dispatch(setArticlePreviewLoading(true));
-  await delay(700);
-  ref
-  .doc(articleUrl)
-  .onSnapshot(async (doc:firebase.firestore.DocumentData) => {
-      if(doc.exists === true) {
-        dispatch(setArticlePreview(doc.data()));
-        dispatch(setArticlePreviewLoading(false));
-        dispatch(setArticlePreviewError(false));
-      } else {
-        dispatch(setArticlePreviewLoading(false));
-        dispatch(setIsNotExistArticle(true));
-        dispatch(setArticleErrorMessage('No such document exists...'));
-        dispatch(resetArticlePreview());
-        await delay(1000);
-      }
-    },
-    (error) => {
-      dispatch(setArticlePreviewLoading(false));
-      dispatch(setArticlePreviewError(true));
-      dispatch(setArticleErrorMessage(error.message))
-      dispatch(resetArticlePreview());
-    }
-  )
 }
 
 

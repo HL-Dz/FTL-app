@@ -1,31 +1,61 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { IArticle } from '../../../../types/articles';
 import UniversalLoader from '../../../common/UniversalLoader/UniversalLoader';
 import Art from '../../CurrentArticle/Art/Art';
 import "./ArticlePreview.scss";
-import { useDispatch } from 'react-redux';
-import { getArticleFromServer } from '../../../../redux/articles-reducer';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
+import firebase from '../../../../firebase'
+import { delay } from '../../../../helpers/helpers';
 
 interface ArticlePreviewProps {
   article: IArticle | null
   hideAdminModal?: () => void
 }
 
+const ref = firebase.firestore().collection('articles');
 
 const ArticlePreview: FC<ArticlePreviewProps> = ({article, hideAdminModal}) => {
-  const dispatch = useDispatch();
-  const { articlePreview, articlePreviewLoading, isNotExistArticle, articlePreviewError, errorMessage } = useTypedSelector(state => state.articles)
+  const {user} = useTypedSelector(state=> state.auth);
+  const [articlePreview, setArticlePreview] = useState<IArticle | null>(null);
+  const [articlePreviewLoading, setArticlePreviewLoading] = useState(false);
+  const [isNotExistArticle, setIsNotExistArticle] = useState(false);
+  const [articlePreviewError, setArticlePreviewError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   
    const getArticlePreview = async () => {
-     if(article) {
-      dispatch(getArticleFromServer(article.articleUrl));
-     }
-  }
+    setArticlePreview(null);
+    setArticlePreviewError(false);
+    setIsNotExistArticle(false);
+    setErrorMessage('');
+    setArticlePreviewLoading(true);
+    await delay(700);
+    ref
+    .doc(article?.articleUrl)
+    .onSnapshot((doc:firebase.firestore.DocumentData) => {
+        if(doc.exists === true) {
+          setArticlePreviewLoading(false);
+          setArticlePreviewError(false);
+          setArticlePreview(doc.data())
+      
+        } else {
+          setArticlePreviewLoading(false);
+          setIsNotExistArticle(true);
+          setErrorMessage('No such document exists...');
+          setArticlePreview(null);
+        }
+      },
+      (error) => {
+        setArticlePreviewLoading(false);
+        setArticlePreviewError(true)
+        setErrorMessage(error.message);
+        setArticlePreview(null);
+      }
+      )
+    }
 
   useEffect(() => {
-    if(article) {
+    if(user) {
       getArticlePreview();
     }
   }, [])

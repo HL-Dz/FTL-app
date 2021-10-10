@@ -8,7 +8,6 @@ import ArticlePreview from '../ArticlePreview/ArticlePreview';
 import ArticlesWrapper from './ArticlesWrapper';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
-import { resetArticlePreview } from '../../../../redux/articles-reducer';
 
 const AdminArticlesSection = () => {
     const {articles} = useTypedSelector(state => state.articles);
@@ -33,7 +32,6 @@ const AdminArticlesSection = () => {
       setIsAdminModal(false);
       setIsPreview(false);
       setIsEditForm(false);
-      dispatch(resetArticlePreview());
     }
 
     const getSelectedAdminArticle = (article: IArticle) => {

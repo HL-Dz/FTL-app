@@ -1,8 +1,5 @@
 export enum ArticleActionTypes {
   SET_ARTICLES = 'SET_ARTICLES',
-  SET_ARTICLE_PREVIEW = 'SET_ARTICLE_PREVIEW',
-  SET_ARTICLE_PREVIEW_ERROR = 'SET_ARTICLE_PREVIEW_ERROR',
-  SET_ARTICLE_PREVIEW_LOADING = 'SET_ARTICLE_PREVIEW_LOADING',
   UPDATE_ARTICLE = 'UPDATE_ARTICLE',
   TOGGLE_ARTICLE_LOADING = 'TOGGLE_ARTICLE_LOADING',
   SET_COMPLETED_TASK = 'SET_COMPLETED_TASK',
@@ -12,7 +9,6 @@ export enum ArticleActionTypes {
   SET_EXIST_ARTICLE = 'SET_EXIST_ARTICLE',
   DELETE_ARTICLE = 'DELETE_ARTICLE',
   RESET_ARTICLES = 'RESET_ARTICLES',
-  RESET_ARTICLE_PREVIEW = 'RESET_ARTICLE_PREVIEW'
 }
 
 export interface IArticle {
@@ -47,21 +43,6 @@ export interface IComment {
 export interface SetArticlesAction {
   type: ArticleActionTypes.SET_ARTICLES,
   articles: Array<IArticle> | []
-}
-
-export interface SetArticlePreviewAction {
-  type: ArticleActionTypes.SET_ARTICLE_PREVIEW
-  articlePreview: null | IArticle
-}
-
-export interface SetArticlePreviewLoadingAction {
-  type: ArticleActionTypes.SET_ARTICLE_PREVIEW_LOADING,
-  articlePreviewLoading: boolean
-}
-
-export interface SetArticlePreviewError {
-  type: ArticleActionTypes.SET_ARTICLE_PREVIEW_ERROR
-  articlePreviewError: boolean
 }
 
 export interface UpdateArticleAction {
@@ -108,15 +89,8 @@ export interface ResetArticlesAction {
   type: ArticleActionTypes.RESET_ARTICLES
 }
 
-export interface ResetArticlePreviewAction {
-  type: ArticleActionTypes.RESET_ARTICLE_PREVIEW
-}
-
 export type ArticlesAction = 
           SetArticlesAction |
-          SetArticlePreviewAction |
-          SetArticlePreviewLoadingAction |
-          SetArticlePreviewError |
           UpdateArticleAction |
           ToggleArticleLoadingAction |
           SetCompletedTaskAction |
@@ -125,5 +99,4 @@ export type ArticlesAction =
           SetArticleErrorMessageAction |
           SetExistArticleAction |
           DeleteArticleAction |
-          ResetArticlesAction |
-          ResetArticlePreviewAction;
+          ResetArticlesAction;
