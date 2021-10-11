@@ -8,9 +8,10 @@ import OwnerLabel from '../../OwnerLabel/OwnerLabel';
 interface CommentProps {
   adminAccess?: boolean
   comment: IComment
+  deleteComment?: any
 }
 
-const Comment: FC<CommentProps> = ({adminAccess, comment}) => {
+const Comment: FC<CommentProps> = ({adminAccess, comment, deleteComment}) => {
   const {user} = useTypedSelector(state => state.auth);
   
   return (
@@ -18,13 +19,12 @@ const Comment: FC<CommentProps> = ({adminAccess, comment}) => {
       {
         user?.uid === comment.ownerId ? <OwnerLabel/>: null
       }
-      <OwnerLabel/>
       <div className="comment__photo">
         <div className="comment__pic">
           {
             adminAccess ? (
               <div className="comment__delete" title="Delete comment">
-                <div className="comment__delete-btn">
+                <div className="comment__delete-btn" onClick={() => deleteComment(comment)}>
                   <i className="fas fa-minus"></i>
                 </div>
               </div>

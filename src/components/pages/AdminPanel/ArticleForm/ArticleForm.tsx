@@ -113,7 +113,6 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
       public: true,
       createdAt: articleData?.createdAt, // timestam с сервера Firebase 
       lastUpdated: new Date().toLocaleString(), // timestam с сервера Firebase 
-      comments: [],
       displayComments: displayCheckedComments,
       photoBy: values.photoBy,
     }

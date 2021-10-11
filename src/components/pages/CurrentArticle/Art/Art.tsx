@@ -52,6 +52,7 @@ const Art: FC<ArtProps> = ({article, adminAccess, hideAdminModal}) => {
           <Comments
             comments={article.comments}
             adminAccess={adminAccess && true}
+            articleUrl={article.articleUrl}
           />
         ) : (
           <DisabeldComments/>

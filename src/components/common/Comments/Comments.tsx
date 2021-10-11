@@ -8,24 +8,26 @@ import { v4 as uuidv4 } from 'uuid';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import firebase from '../../../firebase';
 import { delay } from '../../../helpers/helpers';
+import { useDispatch } from 'react-redux';
+import { setArticleErrorMessage, setArticleErrorModal } from '../../../redux/articles-reducer';
 
 interface CommentsProps {
   comments: Array<IComment>
-  adminAccess?: boolean
+  adminAccess?: boolean,
+  articleUrl?: string
 }
 
+const ref = firebase.firestore().collection('articles');
 
-const Comments: FC<CommentsProps> = ({comments, adminAccess}) => {
-  // const [comments, setComments] = useState<IComment[] | []>([]);
+const Comments: FC<CommentsProps> = ({comments, adminAccess, articleUrl}) => {
   const [commentText, setCommentText] = useState('');
   const [isValidationError, setIsValidationError] = useState('');
   const [isLoadingComment, setIsLoadingComment] = useState(false);
   const [isSuccessComment, setIsSuccessComment] = useState(false);
 
   const { user } = useTypedSelector(state => state.auth);
+  const dispatch = useDispatch();
   
-
-  // const ref = firebase.firestore().collection('articles').doc('fZGoUeMHbbdic0vxw7TM');
 
   const addComment = async ( text:string ) => {
     const ownerId = user ? user.uid : '';
@@ -46,24 +48,32 @@ const Comments: FC<CommentsProps> = ({comments, adminAccess}) => {
     }
     setIsLoadingComment(true);
     await delay(500);
-    setIsSuccessComment(true);
-    await delay(500);
-    setIsSuccessComment(false);
-    setIsLoadingComment(false);
-    setCommentText('');
-    // ref.update({
-    //   comments: firebase.firestore.FieldValue.arrayUnion(comment)
-    // }).then(async () => {
-    //   setIsSuccessComment(true);
-    //   await delay(500);
-    //   setIsLoadingComment(false);
-    //   setIsSuccessComment(false);
-    //   setCommentText('');
-    // })
-    // .catch((err) => {
-    //   setIsLoadingComment(false);
-    //   setIsValidationError(err.message);
-    // })
+    ref.doc(articleUrl).update({
+      comments: firebase.firestore.FieldValue.arrayUnion(comment)
+    }).then(async () => {
+      setIsSuccessComment(true);
+      await delay(500);
+      setIsLoadingComment(false);
+      setIsSuccessComment(false);
+      setCommentText('');
+    })
+    .catch(() => {
+      setIsLoadingComment(false);
+      setIsValidationError('Sorry, adding comments is temporarily unavailable.');
+    })
+  }
+
+  const deleteComment = (comment: IComment) => {
+    ref.doc(articleUrl).update({
+      comments: firebase.firestore.FieldValue.arrayRemove(comment)
+    })
+    .then(() => {
+      
+    })
+    .catch(() => {
+      dispatch(setArticleErrorModal(true));
+      dispatch(setArticleErrorMessage('Deleting comments is temporarily unavailable.'));
+    })
   }
 
   return (
@@ -86,9 +96,15 @@ const Comments: FC<CommentsProps> = ({comments, adminAccess}) => {
       />
       <div className="comments__list">
         {
-          comments.length < 1 ? <div className="no-comments">There is nothing here yet...</div> : 
+          comments.length === 0 ? <div className="no-comments">There is nothing here yet...</div> : 
           (
-            comments.map((elem) => <Comment key={elem.id} comment={elem} adminAccess={adminAccess && true}/>)
+            comments.map((elem) => 
+            <Comment
+              key={elem.id}
+              comment={elem}
+              adminAccess={adminAccess && true}
+              deleteComment={deleteComment}
+            />)
           )
         }
       </div>
