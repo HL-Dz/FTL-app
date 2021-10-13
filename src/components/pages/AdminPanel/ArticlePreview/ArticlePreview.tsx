@@ -22,6 +22,7 @@ const ArticlePreview: FC<ArticlePreviewProps> = ({article, hideAdminModal}) => {
   const [articlePreviewError, setArticlePreviewError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
+  let unsubscribe = () => {};
   
    const getArticlePreview = async () => {
     setArticlePreview(null);
@@ -30,7 +31,7 @@ const ArticlePreview: FC<ArticlePreviewProps> = ({article, hideAdminModal}) => {
     setErrorMessage('');
     setArticlePreviewLoading(true);
     await delay(700);
-    ref
+    unsubscribe = ref
     .doc(article?.articleUrl)
     .onSnapshot((doc:firebase.firestore.DocumentData) => {
         if(doc.exists === true) {
@@ -57,6 +58,10 @@ const ArticlePreview: FC<ArticlePreviewProps> = ({article, hideAdminModal}) => {
   useEffect(() => {
     if(user) {
       getArticlePreview();
+    }
+
+    return () => {
+      unsubscribe();
     }
   }, [])
   

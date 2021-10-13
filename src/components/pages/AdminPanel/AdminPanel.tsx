@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import AdminArticlesSection from './AdminArticlesSection/AdminArticlesSection';
 import "./AdminPanel.scss";
 import AdminSidebar from './AdminSidebar/AdminSidebar';
@@ -8,7 +8,7 @@ import { delay } from '../../../helpers/helpers';
 import AdminInfoScreen from './AdminInfoScreen/AdminInfoScreen';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
-import { setArticleErrorModal } from '../../../redux/articles-reducer';
+import { setArticleErrorMessage, setArticleErrorModal, toggleArticleLoading } from '../../../redux/articles-reducer';
 import ErrorModal from '../../common/ErrorModal/ErrorModal';
 
 
@@ -47,6 +47,14 @@ const AdminPanel = () => {
   const setErrorModal = (value: boolean) => {
     dispatch(setArticleErrorModal(value));
   }
+
+  useEffect(() => {
+    return (() => {
+      dispatch(toggleArticleLoading(false));
+      dispatch(setArticleErrorMessage(""));
+      dispatch(setArticleErrorModal(false));
+    })
+  }, [])
 
 
   return (

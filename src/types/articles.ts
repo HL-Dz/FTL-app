@@ -1,5 +1,6 @@
 export enum ArticleActionTypes {
   SET_ARTICLES = 'SET_ARTICLES',
+  SET_SEARCHED_ARTICLE = 'SET_SEARCHED_ARTICLE',
   UPDATE_ARTICLE = 'UPDATE_ARTICLE',
   TOGGLE_ARTICLE_LOADING = 'TOGGLE_ARTICLE_LOADING',
   SET_COMPLETED_TASK = 'SET_COMPLETED_TASK',
@@ -9,6 +10,7 @@ export enum ArticleActionTypes {
   SET_EXIST_ARTICLE = 'SET_EXIST_ARTICLE',
   DELETE_ARTICLE = 'DELETE_ARTICLE',
   RESET_ARTICLES = 'RESET_ARTICLES',
+  RESET_SEARCHED_ARTICLE = 'RESET_SEARCHED_ARTICLE'
 }
 
 export interface IArticle {
@@ -89,6 +91,14 @@ export interface ResetArticlesAction {
   type: ArticleActionTypes.RESET_ARTICLES
 }
 
+export interface SetSearchedArticleAction {
+  type: ArticleActionTypes.SET_SEARCHED_ARTICLE
+  searchedArticle: IArticle
+}
+export interface ResetSearchedArticleAction {
+  type: ArticleActionTypes.RESET_SEARCHED_ARTICLE
+}
+
 export type ArticlesAction = 
           SetArticlesAction |
           UpdateArticleAction |
@@ -99,4 +109,6 @@ export type ArticlesAction =
           SetArticleErrorMessageAction |
           SetExistArticleAction |
           DeleteArticleAction |
-          ResetArticlesAction;
+          ResetArticlesAction |
+          SetSearchedArticleAction |
+          ResetSearchedArticleAction;

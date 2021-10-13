@@ -13,7 +13,9 @@ import {
   SetCompletedTaskMessageAction,
   UpdateArticleAction,
   SetExistArticleAction,
-  ResetArticlesAction
+  ResetArticlesAction,
+  SetSearchedArticleAction,
+  ResetSearchedArticleAction
 } from './../types/articles';
 import firebase from '../firebase';
 
@@ -22,6 +24,7 @@ const ref = firebase.firestore().collection('articles');
 let initialState = {
   articles: [] as Array<IArticle> | [],
   updatedArticle: null as IArticle | null,
+  searchedArticle: null as IArticle | null,
   isLoading: false,
   completedTask: false,
   completedTaskMessage: '',
@@ -46,7 +49,7 @@ const articlesReduer = (state = initialState, action: ArticlesAction): ArticleIn
             if(elem.articleUrl !== action.updatedArticle.articleUrl) {
               return elem;
             } else {
-              return {...elem, ...action.updatedArticle}; // Вопросы по данному кейсу!!!!!!
+              return {...elem, ...action.updatedArticle};
             }
           })
         }
@@ -54,6 +57,11 @@ const articlesReduer = (state = initialState, action: ArticlesAction): ArticleIn
         return {
           ...state,
           articles: state.articles.filter(elem => elem.articleUrl !== action.articleUrl)
+        }
+      case ArticleActionTypes.SET_SEARCHED_ARTICLE:
+        return {
+          ...state,
+          searchedArticle: action.searchedArticle
         }
       case ArticleActionTypes.TOGGLE_ARTICLE_LOADING:
         return {
@@ -85,6 +93,11 @@ const articlesReduer = (state = initialState, action: ArticlesAction): ArticleIn
           ...state,
           articles: []
         }
+      case ArticleActionTypes.RESET_SEARCHED_ARTICLE:
+        return {
+          ...state,
+          searchedArticle: null
+        }
       default:
         return state
   }
@@ -102,6 +115,10 @@ export const updateArticle = (updatedArticle: IArticle): UpdateArticleAction => 
 export const deleteArticle = (articleUrl: string): DeleteArticleAction => ({
   type: ArticleActionTypes.DELETE_ARTICLE,
   articleUrl
+})
+export const setSearchedArticle = (searchedArticle: IArticle): SetSearchedArticleAction => ({
+  type: ArticleActionTypes.SET_SEARCHED_ARTICLE,
+  searchedArticle
 })
 export const toggleArticleLoading = (isLoading: boolean): ToggleArticleLoadingAction => ({
   type: ArticleActionTypes.TOGGLE_ARTICLE_LOADING,
@@ -127,6 +144,9 @@ export  const setIsNotExistArticle = (isNotExistArticle: boolean): SetExistArtic
 });
 export const resetArticles = (): ResetArticlesAction => ({
   type: ArticleActionTypes.RESET_ARTICLES
+})
+export const resetSearchedArticle = (): ResetSearchedArticleAction => ({
+  type: ArticleActionTypes.RESET_SEARCHED_ARTICLE
 })
 
 
@@ -213,13 +233,39 @@ export const deleteArticleFromServer = (articleUrl: string) => async (dispatch: 
   .catch(async (err: any) => {
     dispatch(setArticleErrorModal(true));
     if(err.code === 'permission-denied') {
-      dispatch(setArticleErrorMessage("You can't delete articles. No access."))
+      dispatch(setArticleErrorMessage("You do not have access or the article has been deleted."))
     } else {
       dispatch(setArticleErrorMessage(err.message))
     }
     await delay(500);
     dispatch(toggleArticleLoading(false));
   })
+}
+
+export const searchAdminArticle = (articleUrl: string) => async (dispatch: Dispatch<ArticlesAction>) => {
+  dispatch(toggleArticleLoading(true));
+  await delay(500);
+  ref.doc(articleUrl)
+    .get()
+    .then(async (doc: firebase.firestore.DocumentData) => {
+      if(doc.exists) {
+        dispatch(setSearchedArticle(doc.data()));
+        await delay(500);
+        dispatch(toggleArticleLoading(false));
+      } else {
+        dispatch(setArticleErrorModal(true));
+        dispatch(setArticleErrorMessage("Article not found."))
+        await delay(500);
+        dispatch(toggleArticleLoading(false));
+        dispatch(resetSearchedArticle());
+      }
+    })
+    .catch(async (err) => {
+      dispatch(setArticleErrorModal(true));
+      dispatch(setArticleErrorMessage(err.message));
+      await delay(500);
+      dispatch(toggleArticleLoading(false));
+    })
 }
 
 

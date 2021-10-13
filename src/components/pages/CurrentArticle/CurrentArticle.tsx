@@ -29,6 +29,8 @@ const CurrentArticle = () => {
 
   const { url } = useParams<CurrentArticleParams>();
 
+  let unsubscribe = () => {};
+
   const getUserArticle = async () => {
   setArticlePreview(null);
   setArticlePreviewError(false);
@@ -69,6 +71,7 @@ const CurrentArticle = () => {
     }
     return (() => {
       setArticlePreview(null);
+      unsubscribe();
     })
   }, [])
   

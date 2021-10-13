@@ -11,7 +11,6 @@ import { useDispatch } from 'react-redux';
 
 const AdminArticlesSection = () => {
     const {articles} = useTypedSelector(state => state.articles);
-
     const dispatch = useDispatch();
 
     const [isPreview, setIsPreview] = useState(false);
