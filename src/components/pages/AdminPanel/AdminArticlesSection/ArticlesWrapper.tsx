@@ -44,7 +44,8 @@ const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showA
   const searchArticle = async () => {
     let query = searchElem.trim();
     if(query) {
-      await dispatch(searchAdminArticle(query));
+      let result = query.replace(/[/\\]/gi, '-');
+      await dispatch(searchAdminArticle(result));
       setIsSearchModal(true);
       setSearchElem('');
     }

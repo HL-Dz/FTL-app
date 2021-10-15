@@ -156,7 +156,7 @@ export const getArticlesFromServer = () => async (dispatch: Dispatch<ArticlesAct
   dispatch(setArticleErrorMessage(''))
   dispatch(toggleArticleLoading(true));
   await delay(300);
-  ref.get()
+  ref.orderBy('createdAt', 'desc').get()
   .then(async (item) => {
     let articles = item.docs.map((doc:any) => doc.data());
     dispatch(setArticles(articles));

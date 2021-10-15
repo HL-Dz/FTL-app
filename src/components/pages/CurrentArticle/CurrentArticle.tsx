@@ -38,7 +38,7 @@ const CurrentArticle = () => {
   setErrorMessage('');
   setArticlePreviewLoading(true);
   await delay(700);
-  ref
+  unsubscribe = ref
   .doc(url)
   .onSnapshot((doc:firebase.firestore.DocumentData) => {
       if(doc.exists === true) {
@@ -89,7 +89,7 @@ const CurrentArticle = () => {
                 </div> : null
               }
               <header className="articles__header">
-                <h1 className="articles__title">tfl articles</h1>
+                <h1 className="articles__title">tfl article</h1>
               </header>
               <div className="articles__container">
                 <div className="articles__content">

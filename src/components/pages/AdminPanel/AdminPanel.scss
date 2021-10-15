@@ -1,5 +1,9 @@
 @use "../../../sass/abstracts";
 
+.admin-wrap {
+  padding-top: 70px;
+}
+
 .admin {
   padding-top: 60px;
   display: flex;
@@ -17,6 +21,13 @@
   width: 100%;
   overflow-y: auto;
   margin-left: 17px;
+
+  overflow-y: scroll;
+  scrollbar-color: transparent transparent;
+
+  &::-webkit-scrollbar {
+    background-color: transparent;
+  }
 }
 
 .admin-info {
