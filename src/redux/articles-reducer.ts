@@ -15,7 +15,9 @@ import {
   SetExistArticleAction,
   ResetArticlesAction,
   SetSearchedArticleAction,
-  ResetSearchedArticleAction
+  ResetSearchedArticleAction,
+  SetLastArticleAction,
+  SetMoreArticlesAction
 } from './../types/articles';
 import firebase from '../firebase';
 
@@ -23,6 +25,7 @@ const ref = firebase.firestore().collection('articles');
 
 let initialState = {
   articles: [] as Array<IArticle> | [],
+  lastArticle: null as any,
   updatedArticle: null as IArticle | null,
   searchedArticle: null as IArticle | null,
   isLoading: false,
@@ -41,6 +44,16 @@ const articlesReduer = (state = initialState, action: ArticlesAction): ArticleIn
         return {
           ...state,
           articles: action.articles
+        }
+      case ArticleActionTypes.SET_LAST_ARTICLE:
+        return {
+          ...state,
+          lastArticle: action.lastArticle
+        }
+      case ArticleActionTypes.SET_MORE_ARTICLES:
+        return {
+          ...state,
+          articles: [...state.articles, ...action.articles]
         }
       case ArticleActionTypes.UPDATE_ARTICLE:
         return {
@@ -91,7 +104,8 @@ const articlesReduer = (state = initialState, action: ArticlesAction): ArticleIn
       case ArticleActionTypes.RESET_ARTICLES:
         return {
           ...state,
-          articles: []
+          articles: [],
+          lastArticle: null
         }
       case ArticleActionTypes.RESET_SEARCHED_ARTICLE:
         return {
@@ -108,6 +122,14 @@ export const setArticles = (articles: Array<IArticle> | []): SetArticlesAction =
   type: ArticleActionTypes.SET_ARTICLES,
   articles
 });
+export const setMoreArticles = (articles: Array<IArticle> | []): SetMoreArticlesAction => ({
+  type: ArticleActionTypes.SET_MORE_ARTICLES,
+  articles
+})
+export const setLastArticle = (lastArticle: any): SetLastArticleAction => ({
+  type: ArticleActionTypes.SET_LAST_ARTICLE,
+  lastArticle
+})
 export const updateArticle = (updatedArticle: IArticle): UpdateArticleAction => ({
   type: ArticleActionTypes.UPDATE_ARTICLE,
   updatedArticle
@@ -156,10 +178,12 @@ export const getArticlesFromServer = () => async (dispatch: Dispatch<ArticlesAct
   dispatch(setArticleErrorMessage(''))
   dispatch(toggleArticleLoading(true));
   await delay(300);
-  ref.orderBy('createdAt', 'desc').get()
+  ref.orderBy('createdAt', 'desc').limit(3).get()
   .then(async (item) => {
     let articles = item.docs.map((doc:any) => doc.data());
+    let lastDoc:any = item.docs[item.docs.length - 1];
     dispatch(setArticles(articles));
+    dispatch(setLastArticle(lastDoc))
     await delay(300);
     dispatch(toggleArticleLoading(false));
   })
@@ -169,6 +193,37 @@ export const getArticlesFromServer = () => async (dispatch: Dispatch<ArticlesAct
     await delay(500);
     dispatch(toggleArticleLoading(false));
   })
+}
+
+export const getMoreArticles = (lastArticle:any) => async (dispatch: Dispatch<ArticlesAction>) => {
+  dispatch(toggleArticleLoading(true));
+  await delay(300)
+  ref.orderBy('createdAt', 'desc')
+    .startAfter(lastArticle)
+    .limit(3)
+    .get()
+    .then(async (item) => {
+      let articles = item.docs.map((doc:any) => doc.data());
+      let lastDoc:any = item.docs[item.docs.length - 1];
+      const isColletionEmpty = item.size === 0;
+      if(!isColletionEmpty) {
+        dispatch(setMoreArticles(articles));
+        dispatch(setLastArticle(lastDoc));
+        await delay(500);
+        dispatch(toggleArticleLoading(false));
+      } else {
+        dispatch(setArticleErrorModal(true));
+        dispatch(setArticleErrorMessage('No more articles.'))
+        await delay(500);
+        dispatch(toggleArticleLoading(false));
+      }
+    })
+    .catch(async (err) => {
+      dispatch(setArticleErrorModal(true));
+      dispatch(setArticleErrorMessage(err.message))
+      await delay(500);
+      dispatch(toggleArticleLoading(false));
+    })
 }
 
 

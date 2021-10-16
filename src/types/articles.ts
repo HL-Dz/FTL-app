@@ -1,5 +1,7 @@
 export enum ArticleActionTypes {
   SET_ARTICLES = 'SET_ARTICLES',
+  SET_MORE_ARTICLES = 'SET_MORE_ARTICLES',
+  SET_LAST_ARTICLE = 'SET_LAST_ARTICLE',
   SET_SEARCHED_ARTICLE = 'SET_SEARCHED_ARTICLE',
   UPDATE_ARTICLE = 'UPDATE_ARTICLE',
   TOGGLE_ARTICLE_LOADING = 'TOGGLE_ARTICLE_LOADING',
@@ -45,6 +47,16 @@ export interface IComment {
 export interface SetArticlesAction {
   type: ArticleActionTypes.SET_ARTICLES,
   articles: Array<IArticle> | []
+}
+
+export interface SetMoreArticlesAction {
+  type: ArticleActionTypes.SET_MORE_ARTICLES
+  articles: Array<IArticle> | []
+}
+
+export interface SetLastArticleAction {
+  type: ArticleActionTypes.SET_LAST_ARTICLE
+  lastArticle: any
 }
 
 export interface UpdateArticleAction {
@@ -101,6 +113,8 @@ export interface ResetSearchedArticleAction {
 
 export type ArticlesAction = 
           SetArticlesAction |
+          SetMoreArticlesAction |
+          SetLastArticleAction |
           UpdateArticleAction |
           ToggleArticleLoadingAction |
           SetCompletedTaskAction |

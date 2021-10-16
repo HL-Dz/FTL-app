@@ -3,11 +3,12 @@ import { IArticle } from '../../../../types/articles';
 import UniversalLoader from '../../../common/UniversalLoader/UniversalLoader';
 import AdminArticle from '../AdminArticle/AdminArticle';
 import EmptyAdminList from './EmptyAdminList/EmptyAdminList';
-import { deleteArticleFromServer, getArticlesFromServer, resetArticles, resetSearchedArticle, searchAdminArticle } from '../../../../redux/articles-reducer';
+import { deleteArticleFromServer, getArticlesFromServer, getMoreArticles, resetArticles, resetSearchedArticle, searchAdminArticle } from '../../../../redux/articles-reducer';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { delay } from '../../../../helpers/helpers';
 import SearchModal from '../../../common/SearchModal/SearchModal';
+import MoreList from '../../../common/MoreList/MoreList';
 
 interface ArticlesWrapperProps {
   getSelectedAdminArticle: (article: IArticle) => void
@@ -16,7 +17,7 @@ interface ArticlesWrapperProps {
 }
 
 const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showArticlePreview, adminArticles}) => {
-  const { isLoading, searchedArticle } = useTypedSelector(state => state.articles);
+  const { isLoading, searchedArticle, lastArticle} = useTypedSelector(state => state.articles);
   const [searchElem, setSearchElem] = useState('');
   const dispatch = useDispatch();
 
@@ -49,6 +50,10 @@ const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showA
       setIsSearchModal(true);
       setSearchElem('');
     }
+  }
+
+  const showMoreArticles = () => {
+    dispatch(getMoreArticles(lastArticle));
   }
 
   useEffect(() => {
@@ -109,7 +114,9 @@ const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showA
             )
         }
       </div>
-
+      {
+        adminArticles.length !== 0 && <MoreList showMoreList={showMoreArticles}/>
+      }
     </div>
   )
 }
