@@ -43,7 +43,7 @@ const CompletedTask: FC<CompletedTaskProps> = ({taskMessage, setCompletedTask}) 
       <button className="task__close fas fa-times" onClick={closeCompletedTask}></button>
       <div className={slowlyInActive ? "task__content task__content_inactive" : "task__content"}>
         <div className="task__text">
-          <i className="fas fa-check-circle task__icon"></i>
+          <i className="far fa-check-circle task__icon"></i>
           {taskMessage}
         </div>
       </div>
