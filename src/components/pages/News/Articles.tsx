@@ -6,15 +6,16 @@ import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import Tournaments from './Tournaments/Tournaments';
 import Article from './Article/Article';
-import { getArticlesFromServer, resetArticles, setArticleErrorMessage, setArticleErrorModal, toggleArticleLoading } from '../../../redux/articles-reducer';
+import { getArticlesFromServer, getMoreArticles, resetArticles, setArticleErrorMessage, setArticleErrorModal, toggleArticleLoading } from '../../../redux/articles-reducer';
 import UniversalLoader from '../../common/UniversalLoader/UniversalLoader';
 import ErrorModal from '../../common/ErrorModal/ErrorModal';
+import MoreList from '../../common/MoreList/MoreList';
 
 
 const Articles = () => {  
   const dispatch = useDispatch();
   const { user } = useTypedSelector(state => state.auth);
-  const { articles, errorModal, errorMessage, isLoading } = useTypedSelector(state => state.articles);
+  const { articles, errorModal, errorMessage, isLoading, lastArticle } = useTypedSelector(state => state.articles);
   let userName = '';
   if(user) {
     userName = user.displayName ? user.displayName : 'user';
@@ -26,6 +27,10 @@ const Articles = () => {
 
   const setErrorModal = (value: boolean) => {
     dispatch(setArticleErrorModal(value));
+  }
+
+  const showMoreArticles = () => {
+    dispatch(getMoreArticles(lastArticle));
   }
 
 
@@ -50,16 +55,17 @@ const Articles = () => {
         {
           !user ? <SignIn/> : (
             <>
+              {
+              isLoading ? 
+                <div className="app-loading">
+                  <UniversalLoader/>
+                </div> : null
+              }
               <header className="articles__header">
                 <h1 className="articles__title">tfl articles</h1>
               </header>
               <div className="articles__container">
                 <div className={isLoading ? "articles__content articles__content_inactive" : "articles__content"}>
-                  {isLoading ? (
-                    <div className="app-loading">
-                      <UniversalLoader/>
-                    </div> ) : null
-                  }
                   {
                     articles.length === 0 && !isLoading ? (
                       <div className="empty-arts__section">
@@ -74,6 +80,9 @@ const Articles = () => {
                       articles.map(article => <Article key={article.id} {...article}/>)
                     }
                   </div>
+                  {
+                    articles.length !== 0 && <MoreList showMoreList={showMoreArticles}/>
+                  }
                 </div>
                 <aside className="articles__sidebar">
                   <Tournaments/>

@@ -11,10 +11,10 @@
     top: 0;
     width: 30px;
     height: 30px;
-    border-top-color: #bd40a2;
+    border-top-color: #57c057;
 
     &:before {
-      border-top-color: #bd40a2;
+      border-top-color: #57c057;
     }
     
     &:after {
@@ -31,7 +31,7 @@
   font-family: 'Roboto';
   font-weight: bold;
   color: rgb(199, 198, 198);
-  background: linear-gradient(45deg, #bd40a2 40%, #3a7cec 100%);
+  background: linear-gradient(45deg, #57c057 40%, #08963f 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

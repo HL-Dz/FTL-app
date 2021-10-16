@@ -43,6 +43,10 @@
   &_inactive {
     animation: hide-user-info 0.3s ease-in-out;
   }
+
+  .operation__button:active {
+    font-size: 1.4rem;
+  }
 }
 
 .user__bg {
