@@ -37,6 +37,7 @@
   margin-right: 10px;
   overflow: hidden;
   flex-basis: 60%;
+  box-shadow: 0 10px 10px #0f0f0f;
   @extend %transition;
 }
 
@@ -64,11 +65,11 @@
   @extend %transition;
 
   &:nth-child(1n) {
-    background:#222323af;
+    background: #151716;
   }
 
   &:nth-child(2n) {
-    background: #151716;
+    background:#222323;
   }
 }
 
@@ -195,13 +196,14 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  background: rgba(0, 0, 0, 0.384);
+  background: rgba(0, 0, 0, 0.4);
   width: 100%;
   color: #d8d4d4;
   max-width: 900px;
   margin: 0 auto;
   margin-bottom: 50px;
   border-radius: 5px;
+  box-shadow: 0 5px 5px #181818;
 }
 
 .overview-league {
@@ -248,7 +250,6 @@
 .finish-date,
 .current-matchday,
 .winner {
-  // font-weight: bold;
   font-size: 1.5rem;
   letter-spacing: 1px;
   background: rgba(36, 44, 41, 0.7);
@@ -257,7 +258,6 @@
   border-radius: 3px;
 
    & span:first-child  {
-    // font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     font-size: 1.3rem;
     text-transform: uppercase;

@@ -5,4 +5,12 @@
   padding: 3px;
   border-radius: 2px;
   top: 5px;
+  box-shadow: 0 10px 5px #1b1b1b;
+  color: rgb(176, 216, 214);
+
+
+  &:active {
+    box-shadow: none;
+    font-size: 1.5rem;
+  }
 }

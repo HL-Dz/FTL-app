@@ -32,7 +32,7 @@ const Art: FC<ArtProps> = ({article, adminAccess, hideAdminModal}) => {
         <div className="art__pic">
           <img src={article.imgSrc} onError={setImageError} alt="Elem" className="art__img" />
         </div>
-        <div className="art__title">{article.title}</div>
+        {adminAccess ? <div className="art__title">{article.title}</div> : null}
         <div className="art__time">{article.createdAt}</div>
         <div className="art__status">
           <i className={`fab fa-gripfire article__status article__status_${article.status}`} title={`${article.status} status`}></i>

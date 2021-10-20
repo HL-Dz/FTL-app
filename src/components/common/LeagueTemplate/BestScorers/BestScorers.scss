@@ -2,13 +2,15 @@
 
 .scorers {
   position: relative;
-  background: #222323af;
+  background: #222323;
+  background: linear-gradient(90deg, #343535 30%,  #1c2122 70%, #1c2122 100%);
   color: #adadad;
   height: 32px;
   overflow: hidden;
   padding: 10px;
   padding-top: 5px;
-  border-radius: 5px;
+  border-radius: 2px;
+  box-shadow: 0 10px 15px #0f0f0f;
   @extend %transition;
 
   &_active {

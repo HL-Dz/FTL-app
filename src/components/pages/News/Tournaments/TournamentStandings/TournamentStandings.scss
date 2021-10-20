@@ -7,6 +7,7 @@
   min-height: 470px;
   background: #0f0f0f;
   animation: transparency-animation 0.5s ease-in-out;
+  box-shadow: 0 5px 5px #0a0a0a;
 
   &_inactive {
     animation: standings-anim-end 0.5s ease-in-out;
@@ -37,11 +38,15 @@
 
 .standings__table, .standings__head, .standings__body {
   width: 100%;
-  --td-border: rgb(66, 60, 60);
+  --td-border: rgb(41, 40, 40);
 }
 
 .standings__tr {
   border-bottom: 1px solid var(--td-border);
+
+  &:last-child {
+    border-bottom: none;
+  }
 }
 
 .standings__th {
@@ -62,7 +67,7 @@
 
 .standings__td_pos {
   background: rgb(37, 37, 37);
-  color: #9b99ac;
+  color: #6a9c7b;
   font-weight: bold;
 }
 
@@ -82,17 +87,6 @@
     text-decoration: underline;
   }
 }
-
-// @keyframes standings-anim-start {
-//   0% {
-//     margin-top: -500px;
-//     opacity: 0;
-//   }
-//   100%{
-//     margin-top: -470px;
-//     opacity: 1;
-//   }
-// }
 
 @keyframes standings-anim-end {
   0% {

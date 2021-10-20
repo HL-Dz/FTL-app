@@ -89,7 +89,16 @@ const CurrentArticle = () => {
                 </div> : null
               }
               <header className="articles__header">
-                <h1 className="articles__title">tfl article</h1>
+                <h1 className=" articles__title articles__title_primary">
+                  <span className={articlePreview ? 'current-art current-art_active' : "current-art"}>
+                    {articlePreview?.title}
+                  </span>
+                  {articlePreviewError ||  !articlePreview ? 
+                    <span className='current-art current-art_active'>
+                      TFL ARTICLE
+                    </span> : null
+                  }
+                </h1>
               </header>
               <div className="articles__container">
                 <div className="articles__content">
