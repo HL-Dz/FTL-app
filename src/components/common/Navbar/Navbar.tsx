@@ -51,8 +51,8 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/documentation" className="nav__link" onClick={closeMenu}>
-              Documentation
+            <Link to="/info" className="nav__link" onClick={closeMenu}>
+              Info
               <i className="far fa-file-alt"></i>
             </Link>
           </li>

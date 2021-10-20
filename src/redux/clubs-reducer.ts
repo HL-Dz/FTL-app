@@ -11,11 +11,17 @@ import {
   SetInactiveItemAction
 } from "../types/clubs";
 
+
 let initialState = {
   clubs: [] as Array<IClub> | [],
   inActiveItem: null as number | null,
   currentClub: null as IClub | null
 };
+
+let state = localStorage.getItem('savedClubs');
+  if(state) {
+    initialState = JSON.parse(state || JSON.stringify(initialState))
+  }
 
 type ClubsInitialState = typeof initialState;
 

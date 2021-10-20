@@ -5,7 +5,7 @@ import Navbar from './components/common/Navbar/Navbar';
 import {Route, Switch} from 'react-router-dom';
 import Leagues from './components/pages/Leagues/Leagues';
 import Clubs from './components/pages/Clubs/Clubs';
-import Documentation from './components/pages/Documentation/Documentation';
+import Info from './components/pages/Info/Info';
 import ChampionsLeague from './components/pages/Leagues/ChampionsLeague/ChampionsLeague';
 import EuropeanLeague from './components/pages/Leagues/EuropeanC/EuropeanC';
 import WorldCup from './components/pages/Leagues/WorldCup/WorldCup';
@@ -54,7 +54,7 @@ function App() {
         <Route path="/clubs" exact component={Clubs}/>
         <Route path="/articles" exact component={Articles}/>
         <Route path="/articles/:url" component={CurrentArticle}/>
-        <Route path="/documentation" exact  component={Documentation}/>
+        <Route path="/info" exact  component={Info}/>
         <Route path="/players/:id/:name" component={Player}/>
         <Route path="/teams/:id/:name" component={Team}/>
         <Route path="/brasilial-division-1" exact component={BrasilContainer}/>

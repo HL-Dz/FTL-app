@@ -8,9 +8,7 @@ import clubsReducer from "./clubs-reducer";
 import userAuthReducer from "./auth-reducer";
 import articlesReduer from "./articles-reducer";
 
-const persistedState = localStorage.getItem('mainState')
-                        ? JSON.parse(localStorage.getItem('mainState') || '{}')
-                        : {};
+// const persistedState = localStorage.getItem('mainState') ? JSON.parse(localStorage.getItem('mainState') || '{}') : {};
 
 let rootReducer = combineReducers({
   leaguePage: leagueReducer,
@@ -22,8 +20,10 @@ let rootReducer = combineReducers({
 });
 
 
-let store = createStore(rootReducer, persistedState, composeWithDevTools(applyMiddleware(thunkMiddleware)));
-store.subscribe(() => {localStorage.setItem('mainState', JSON.stringify(store.getState()))});
+let store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunkMiddleware)));
+store.subscribe(() => {
+  localStorage.setItem('savedClubs', JSON.stringify(store.getState().clubsPage));
+});
 
 export type RootState = ReturnType<typeof rootReducer>;
 
