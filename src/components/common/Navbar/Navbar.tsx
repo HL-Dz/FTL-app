@@ -31,7 +31,7 @@ const Navbar = () => {
         <ul className={click ? "nav-menu nav-menu-active" : "nav-menu"}>
           <li className="nav-item">
             <Link to="/articles" className="nav__link" onClick={closeMenu}>
-              Articles
+              TFL articles
               <i className="far fa-newspaper"></i>
             </Link>
           </li>

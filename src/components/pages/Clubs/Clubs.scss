@@ -29,7 +29,7 @@
   font-weight: bold;
   background: rgb(55,170,89);
   background: linear-gradient(135deg, #151d1b 10%, #204e32 50%, #151d1b 90%);
-  box-shadow: 0 3px 5px #0a0a0a;
+  box-shadow: 0 3px 5px #0e0e0e;
 }
 
 // CLUB-----------------------------
@@ -44,7 +44,7 @@
   overflow: hidden;
   border-radius: 3px;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0 5px 5px #0a0a0a;
+  box-shadow: 0 5px 5px #0f0f0f;
 
   &_inactive {
     transform: translateX(-100%);

@@ -42,12 +42,22 @@ const User: FC<UserProps> = ({user}) => {
     await delay(250);
     setIsVisibleUser(false);
   }
+
+  const setImageError = (e: React.SyntheticEvent) => {
+    let target = e.target as HTMLImageElement;
+    target.src = userPhoto;
+  }
   
   return (
     <div className="user">
       <div className={isVisibleUser ? "user__bg user__bg_active" : "user__bg"} onClick={hideUserInfo}></div>
       <div className="user__pic" onClick={showUserInfo}>
-        <img className="user__img" src={photo} alt={name} title={name}/>
+        <img className="user__img"
+          src={photo}
+          alt={name}
+          title={name}
+          onError={setImageError}
+        />
       </div>
       {
         isVisibleUser ? (

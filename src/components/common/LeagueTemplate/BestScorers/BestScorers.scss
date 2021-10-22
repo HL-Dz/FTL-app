@@ -15,6 +15,7 @@
 
   &_active {
     height: 567px;
+    height: 555px;
   }
 }
 
@@ -39,10 +40,11 @@
   display: flex;
   align-items: center;
   padding: 3px;
-  margin-bottom: 3px;
+  margin-bottom: 1px;
   justify-content: space-between;
   background: linear-gradient(-45deg, rgba(28, 66, 50, 0.5) 18%, #121313 52%);
-  border-radius: 5px;
+  background: linear-gradient(45deg, #151d1b 80%, #303f36 100%);
+  border-radius: 2px;
 
   & .no-flag {
     margin-left: 0;
@@ -51,6 +53,8 @@
 
 .scorer__primary {
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .scorer__name {
@@ -59,13 +63,13 @@
   align-items: center;
   margin-bottom: 5px;
 
-  & img {
+  img {
     margin-right: 10px;
     max-width: 25px;
     height: auto;
     overflow: hidden;
   }
-  & a {
+  a {
     color: #adadad;
     margin-right: 10px;
     @extend %transition;
@@ -100,12 +104,34 @@
 }
 
 .goals {
-  min-width: 32.56px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
   text-align: center;
   border-radius: 50%;
-  padding: 7px;
   font-weight: bold;
-  background: rgba(31,77,58,0.5);
+  font-size: 1.81rem;
   color: rgb(228, 222, 222);
-  box-shadow: 0 0 5px rgb(211, 210, 210) inset;
+  border: 1px solid rgb(51, 99, 71);
+  box-shadow: 0 5px 5px #131313;
+}
+
+
+.goals_pic {
+  position: absolute;
+  top: 19px;
+  right: 29px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 5px 5px #131313;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }

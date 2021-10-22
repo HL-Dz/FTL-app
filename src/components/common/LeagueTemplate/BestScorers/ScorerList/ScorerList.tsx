@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import { IScorer } from '../../../../../types/league';
+import ballImg from '../../../../../assets/images/goals.png'
 
 interface ScorerListProps {
   elem: IScorer
@@ -23,7 +24,12 @@ const ScorerList: FC<ScorerListProps> = ({elem}) => {
         <div className="scorer__club">{elem.team.name}</div>
       </div>
       <div className="scorer__total">
-        <div className="goals">{elem.numberOfGoals}</div>
+        <div className="goals">
+          <div className="goals_pic">
+            <img src={ballImg} alt="Count" className="goals__img"/>
+          </div>
+          {elem.numberOfGoals}
+        </div>
       </div>
     </li>
   )

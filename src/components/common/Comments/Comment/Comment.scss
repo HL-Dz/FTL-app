@@ -6,12 +6,10 @@
   padding: 10px;
   border-radius: 2px;
   margin-bottom: 20px;
-
+  animation: elem-top-to-down 0.7s ease;
   &:last-child {
     margin-bottom: 0;
   }
-
-
 }
 
 

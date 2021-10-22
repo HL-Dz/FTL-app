@@ -118,9 +118,11 @@
   border-radius: 2px;
   color: #aaadad;
   line-height: 1.4;
+  font-family: 'Roboto';
   margin-bottom: 10px;
   white-space: pre-line;
   box-shadow: 0 0 10px 10px #151616;
+  background: linear-gradient(320deg, #273031 30%, #1c2122 55%, #2a3638 55%, #1c2122 2%, #1c2122 70%);
 }
 
 .art__info {
@@ -135,10 +137,10 @@
   margin: 0 10px;
   color: rgb(224, 224, 224);
   bottom: 5px;
-  background: rgb(39, 39, 39);
+  background: rgb(27, 27, 27);
+  background: linear-gradient(135deg, #273031 30%, #1c2122 55%, #2a3638 55%, #1c2122 2%, #1c2122 70%);
   padding: 3px 10px;
-  border-radius: 3px;
-  box-shadow: 0 0 5px 5px rgb(26, 25, 25);
+  box-shadow: 4px 5px 5px rgb(24, 24, 24);
 
   i {
     margin-left: 3px;

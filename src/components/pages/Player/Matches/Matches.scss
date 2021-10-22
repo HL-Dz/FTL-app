@@ -83,13 +83,14 @@
 
 .competition {
   position: relative;
-  border: 1px solid rgb(59, 61, 60);
   padding: 7px;
   margin-right: 10px;
   font-weight: bold;
   font-size: 1.7rem;
   border-radius: 3px;
   cursor: pointer;
+  box-shadow: 0px 7px 7px #0d0d0d;
+  background: linear-gradient(135deg, #151d1b 10%, #284d36 50%, #151d1b 90%);
   @extend %transition;
 
   &:last-child:after {
@@ -116,11 +117,10 @@
   height: 91px;
   overflow: hidden;
   padding: 5px 0;
-  border-top: 1px solid rgb(39, 39, 39);
-  border-bottom: 1px solid rgb(39, 39, 39);
   background: rgb(21, 24, 23);
   background: linear-gradient(90deg, #0e111096 10%, #1b2b27 50%, #0e111096 90%);
-  margin-bottom: 10px;
+  box-shadow: 0px 7px 7px #0d0d0d;
+  margin-bottom: 15px;
   z-index: 2;
 
   &:last-child {

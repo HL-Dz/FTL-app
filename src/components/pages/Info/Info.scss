@@ -118,6 +118,7 @@ html > ::-webkit-scrollbar-thumb {
   background-image: linear-gradient( 135deg, #151d1b 10%, #305f41 50%, #151d1b 90%);
   box-shadow: 0 0 15px 10px #0f0f0f;
   color: rgb(212, 212, 212);
+  margin-bottom: 10px;
 
   i {
     margin-left: 10px;
@@ -132,6 +133,11 @@ html > ::-webkit-scrollbar-thumb {
   margin: 0 10px 20px;
   color: rgb(202, 202, 202);
   border-radius: 2px;
+  text-align: center;
+  background: #272727;
+  line-height: 1.5;
+  box-shadow: 0 15px 10px #131313;
+
 
   &:last-child {
     margin-bottom: 0;

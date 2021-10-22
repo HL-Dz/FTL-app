@@ -23,6 +23,7 @@
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 15px;
+  box-shadow: 0px 7px 7px #0d0d0d;
 }
 
 .player-card__pic {
@@ -38,8 +39,7 @@
 }
 
 .player-card__description {
-  background: rgb(31,77,58);
-  background: linear-gradient(-45deg, rgb(28, 65, 49) 10%, rgba(30,30,33,1) 52%);
+  background: rgb(32, 32, 32);
   border-radius: 5px;
   flex-basis: 100%;
   padding: 10px;

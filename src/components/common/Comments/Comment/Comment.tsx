@@ -13,6 +13,11 @@ interface CommentProps {
 
 const Comment: FC<CommentProps> = ({adminAccess, comment, deleteComment}) => {
   const {user} = useTypedSelector(state => state.auth);
+
+  const setImageError = (e: React.SyntheticEvent) => {
+    let target = e.target as HTMLImageElement;
+    target.src = userPhoto;
+  }
   
   return (
     <div className="comment">
@@ -30,7 +35,7 @@ const Comment: FC<CommentProps> = ({adminAccess, comment, deleteComment}) => {
               </div>
             ) : null
           }
-          <img src={comment.photoUrl || userPhoto} alt="User" className="comment__img" />
+          <img src={comment.photoUrl || userPhoto} alt="User" className="comment__img" onError={setImageError}/>
         </div>
       </div>
       <div className="comment__info">

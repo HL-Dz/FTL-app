@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { ILeague } from '../../../../../types/league';
 import "./TournamentStandings.scss";
 
+import noPhoto from '../../../../../assets/images/no-image.png';
+
 interface TournamentStandingsProps {
   league: ILeague | null
   isCloseStandings: boolean
@@ -36,9 +38,12 @@ const TournamentStandings: FC<TournamentStandingsProps> = ({league, closeCurrent
                   <tr key={elem.team.id} className="standings__tr">
                     <td className="standings__td standings__td_pos">{elem.position}</td>
                     <td className="standings__td standings__td_team">
-                      <NavLink to={`/teams/${elem.team.id}/${name}`} className="standings__td_link">
-                          {elem.team.name}
-                        </NavLink>
+                      <NavLink to={`/teams/${elem.team.id}/${name}`} className="standings__td-link">
+                        <span className="standigns__td-pic">
+                          <img src={elem.team.crestUrl ? elem.team.crestUrl : noPhoto} alt="Team" className="standigs__td-img" />
+                        </span>
+                        <span>{elem.team.name}</span>
+                      </NavLink>
                     </td>
                     <td className="standings__td">{elem.playedGames}</td>
                     <td className="standings__td standings__td_points">{elem.points}</td>

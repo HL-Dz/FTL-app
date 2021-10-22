@@ -43,7 +43,7 @@ const navigationData = [
   {
     id: 6,
     path: 'articles',
-    text: 'Articles',
+    text: 'TFL articles',
     cls: 'far fa-newspaper'
   },
   {
@@ -72,7 +72,12 @@ const sectionsData = [
     pathId: 'about',
     title: 'About',
     cls: 'fas fa-address-card',
-    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    text: `Hi! This application is intended for all users, but more for football fans.
+          In the application
+          you can find information on football leagues, teams, players. You can read articles, comment on them.
+          Articles are added by application administrators. The application has a limit on the number of requests
+          behind the data. If the request limit is exceeded, a message will be displayed in
+          modal window.`,
     images: [about]
   },
   {
@@ -80,7 +85,9 @@ const sectionsData = [
     pathId: 'league',
     title: 'League',
     cls: 'fas fa-globe',
-    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    text: `On this page you can find information on different football leagues:
+          league overview card, standings, league top scorers. You can save commands
+          for easy viewing on the "Saved clubs" page.`,
     images: [league]
   },
   {
@@ -88,7 +95,9 @@ const sectionsData = [
     pathId: 'clubs',
     title: 'Saved clubs',
     cls: 'fas fa-folder',
-    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    text: `On this page displays all your saved clubs. You can get brief information
+          by club, the player list of the club, view the location of the club on the map. Using drag and drop
+          you can arrange your favorite clubs in the desired order.`,
     images: [clubs, map]
   },
   {
@@ -96,7 +105,7 @@ const sectionsData = [
     pathId: 'team',
     title: 'Team',
     cls: 'fas fa-users',
-    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    text: `On this page displays information about the club.`,
     images: [team]
   },
   {
@@ -104,15 +113,15 @@ const sectionsData = [
     pathId: 'player',
     title: 'Player',
     cls: 'fas fa-user-check',
-    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    text: `On this page displays information about the player and his played matches.`,
     images: [player]
   },
   {
     id: 6,
     pathId: 'articles',
-    title: 'Articles',
+    title: 'TFL articles',
     cls: 'far fa-newspaper',
-    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    text: `The page can only be viewed by authorized users.`,
     images: [articles]
   },
   {
@@ -120,7 +129,7 @@ const sectionsData = [
     pathId: 'article',
     title: 'Article',
     cls: 'far fa-newspaper',
-    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    text: `Only authorized users can view and comment on the article page.`,
     images: [article]
   },
   {
@@ -128,7 +137,7 @@ const sectionsData = [
     pathId: 'signin',
     title: 'Sign In',
     cls: 'fas fa-sign-in-alt',
-    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    text: `Form for registration in the application or authorization.`,
     images: [signin]
   },
   {
@@ -136,7 +145,9 @@ const sectionsData = [
     pathId: 'admin',
     title: 'Admin panel',
     cls: 'fas fa-user-shield',
-    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    text: `Administrators are approved by the developer of the application. Administrators
+          can write articles, edit them, delete them. In addition, administrators have the right to delete
+          comments from users who write in an incorrect and rude form.`,
     images: [admin]
   }
 ]

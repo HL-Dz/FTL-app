@@ -72,29 +72,5 @@ export const LeaguesData: Array<LeagueDataCardProps> = [
     imgSrc: '../../images/BSA/BSA.png',
     imgSrcMini: '../../images/BSA/BSA_mini.png',
     code: 'BSA'
-  },
-  {
-    id: 10,
-    title: 'Champions League',
-    path: '/champions-league',
-    imgSrc: '../../images/CL/CL.png',
-    imgSrcMini: '../../images/CL/CL_mini.png',
-    code: 'CL'
-  },
-  {
-    id: 11,
-    title: 'Europe League',
-    path: '/european-championships',
-    imgSrc: '../../images/EC/EC.png',
-    imgSrcMini: '../../images/EC/EC_mini.png',
-    code: 'EC'
-  },
-  {
-    id: 12,
-    title: 'FIFA',
-    path: '/world-cup',
-    imgSrc: '../../images/WC/WC.png',
-    imgSrcMini: '../../images/WC/WC_mini.png',
-    code: 'WC'
-  },
+  }
 ]

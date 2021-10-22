@@ -5,7 +5,9 @@
   min-width: 200px;
   top: 20px;
   right: 20px;
+  box-shadow: 0px 7px 7px #0d0d0d;
   z-index: 7;
+  border-radius: 2px;
   
 
   & span {
@@ -51,9 +53,8 @@
   font-weight: bold;
   font-size: 1.5rem;
   background: #247938;
-  background: linear-gradient(180deg, rgba(109, 165, 122, 0.2) 20%, #1e1e21 60%);
+  background: linear-gradient(135deg, #151d1b 10%, #305f41 50%, #151d1b 90%);
   text-align: center;
-  border-radius: 5px;
   padding: 10px;
   z-index: 8;
 }

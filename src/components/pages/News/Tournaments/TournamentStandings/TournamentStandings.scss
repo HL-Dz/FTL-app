@@ -1,10 +1,10 @@
 .tournament-standings {
   position: relative;
-  margin-top: -467px;
+  margin-top: -493px;
   left: 0;
   top: 0;
   width: 100%;
-  min-height: 470px;
+  min-height: 493px;
   background: #0f0f0f;
   animation: transparency-animation 0.5s ease-in-out;
   box-shadow: 0 5px 5px #0a0a0a;
@@ -61,8 +61,7 @@
 
 .standings__td {
   text-align: center;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding: 5px;
 }
 
 .standings__td_pos {
@@ -75,18 +74,49 @@
   text-align: left;
   padding-left: 5px;
   background: rgb(31, 28, 28);
-}
+  width: 100%;
+} 
 
 .standings__td_points {
   background: rgb(37, 37, 37);
   font-weight: bold;
 }
 
-.standings__td_link {
+.standings__td-link {
+  display: flex;
+  width: 100%;
+  align-items: center;
   &:hover {
     text-decoration: underline;
   }
 }
+
+.standigns__td-pic {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 5px;
+  box-shadow: 0px 5px 5px #0d0d0d;
+
+  &:after {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.standigs__td-img {
+  max-width: 100%;
+  height: auto;
+}
+
+
 
 @keyframes standings-anim-end {
   0% {

@@ -49,6 +49,7 @@
   font-family: 'Montserrat';
   cursor: pointer;
   margin-bottom: 7px;
+  padding: 5px 0;
   background: linear-gradient(180deg, rgba(41, 40, 40, 0.5) 50%, rgba(15, 15, 15, 0.9) 50%, rgba(41, 40, 40, 0.9) 100%);
   transition: all 0.5s ease-in-out;
 
@@ -68,8 +69,8 @@
 }
 
 .tournament__pic {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   overflow: hidden;
 }
 
