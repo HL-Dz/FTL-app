@@ -17,7 +17,8 @@ import {
   SetSearchedArticleAction,
   ResetSearchedArticleAction,
   SetLastArticleAction,
-  SetMoreArticlesAction
+  SetMoreArticlesAction,
+  UpdateArticleTimeAction
 } from './../types/articles';
 import firebase from '../firebase';
 
@@ -64,7 +65,20 @@ const articlesReduer = (state = initialState, action: ArticlesAction): ArticleIn
             } else {
               return {...elem, ...action.updatedArticle};
             }
-          })
+          }),
+          searchedArticle: {...state.searchedArticle, ...action.updatedArticle}
+        }
+      case ArticleActionTypes.UPDATE_ARTICLE_TIME:
+        return {
+          ...state,
+          articles: state.articles.map(elem => {
+            if(elem.articleUrl !== action.updatedArticleTime.articleUrl) {
+              return elem;
+            } else {
+              return {...elem, ...action.updatedArticleTime};
+            }
+          }),
+          searchedArticle: {...state.searchedArticle, ...action.updatedArticleTime}
         }
       case ArticleActionTypes.DELETE_ARTICLE:
         return {
@@ -134,6 +148,10 @@ export const updateArticle = (updatedArticle: IArticle): UpdateArticleAction => 
   type: ArticleActionTypes.UPDATE_ARTICLE,
   updatedArticle
 });
+export const updateArticleTime = (updatedArticleTime : any) : UpdateArticleTimeAction => ({
+  type: ArticleActionTypes.UPDATE_ARTICLE_TIME,
+  updatedArticleTime
+})
 export const deleteArticle = (articleUrl: string): DeleteArticleAction => ({
   type: ArticleActionTypes.DELETE_ARTICLE,
   articleUrl
@@ -271,6 +289,41 @@ export const updateArticleOnTheServer = (currentArticle:IArticle, updatedArticle
     await delay(500);
     dispatch(toggleArticleLoading(false));
   })
+}
+
+export const updateArticleTimeOnServer = (article: IArticle) => async (dispatch: Dispatch<ArticlesAction>) => {
+  const updatedArticleTime = {
+    // articleUrl: article.articleUrl,
+    // createdAt: new Date().toLocaleString(),
+    // lastUpdated: new Date().toLocaleString(),
+
+    id: article.id,
+    articleUrl: article.articleUrl,
+    articleAuthorId: article.articleAuthorId,
+    articleAuthorName: article.articleAuthorName,
+    title: article.title,
+    shortDesc: article.shortDesc,
+    desc: article.desc,
+    imgSrc: article.imgSrc,
+    status: article.status,
+    public: true,
+    createdAt: new Date().toLocaleString(),
+    lastUpdated: new Date().toLocaleString(), 
+    comments: [],
+    displayComments: article.displayComments,
+    photoBy: article.photoBy,
+  }
+  
+  ref
+    .doc(article.articleUrl)
+    .update(updatedArticleTime)
+    .then(async () => {
+      dispatch(updateArticleTime(updatedArticleTime));
+    })
+    .catch(err => {
+      dispatch(setArticleErrorModal(true));
+      dispatch(setArticleErrorMessage(err.message))
+    })
 }
 
 // DELETE ARTICLE FROM SERVER

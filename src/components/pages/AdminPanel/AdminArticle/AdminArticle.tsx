@@ -6,6 +6,8 @@ import tfl from '../../../../assets/images/tfl.jpg';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import UniversalLoader from '../../../common/UniversalLoader/UniversalLoader';
 import { delay } from '../../../../helpers/helpers';
+import { useDispatch } from 'react-redux';
+import { setArticleErrorMessage, setArticleErrorModal, updateArticleTimeOnServer } from '../../../../redux/articles-reducer';
 
 
 interface AdminArticleProps {
@@ -17,8 +19,11 @@ interface AdminArticleProps {
 
 const AdminArticle: FC<AdminArticleProps> = ({article, getSelectedAdminArticle, showArticlePreview, deleteArticle}) => {
   const {user} = useTypedSelector(state => state.auth);
+  const dispatch = useDispatch();
   const [imageLoaded, setImageLoaded] = useState(false);
   const [isSlowlyHide, setIsSlowlyHide] = useState(false);
+
+  const [isLoadingTime, setIsLoadingTime] = useState(false);
 
   const onImageLoaded = async () => {
     setIsSlowlyHide(true);
@@ -34,6 +39,19 @@ const AdminArticle: FC<AdminArticleProps> = ({article, getSelectedAdminArticle, 
     await delay(700);
     setImageLoaded(true);
     setIsSlowlyHide(false);
+  }
+
+  const updateTime = async (article: IArticle) => {
+    if(user?.uid === article.articleAuthorId) {
+      setIsLoadingTime(true);
+      await delay(1000);
+      dispatch(updateArticleTimeOnServer(article));
+      await delay(500);
+      setIsLoadingTime(false);
+    } else {
+      dispatch(setArticleErrorModal(true));
+      dispatch(setArticleErrorMessage('The author of the article can update the time.'));
+    }
   }
 
   return (
@@ -56,7 +74,12 @@ const AdminArticle: FC<AdminArticleProps> = ({article, getSelectedAdminArticle, 
         <div className="admin-article__delete" title="Delete article" onClick={() => deleteArticle(article.articleUrl)}>
           <i className="fas fa-minus"></i>
         </div>
-        {article.createdAt}
+        <div className="admin-time_upd" onClick={() => {updateTime(article)}}>
+          <span>{article.createdAt}</span>
+          <span className={isLoadingTime ? "time-update time-update_active" : "time-update"} title="Update time">
+            <i className="fas fa-history"></i>
+          </span>
+        </div>
       </div>
       <div className="admin-article__buttons">
         <div className="article-btn article-edit-btn" onClick={() => getSelectedAdminArticle(article)}>Update</div>

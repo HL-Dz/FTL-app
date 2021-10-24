@@ -1,6 +1,7 @@
 export enum UserActionTypes {
   SET_USER = 'SET_USER',
-  USER_IS_AUTHORIZED = 'SUCCESS_AUTH'
+  USER_IS_AUTHORIZED = 'SUCCESS_AUTH',
+  SET_IS_AUTH_LOADING = 'SET_IS_AUTH_LOADING'
 }
 
 // ***User***
@@ -24,4 +25,9 @@ export interface SetIsAuthorizedAction {
   isAuthorized: boolean
 }
 
-export type AuthAction = SetAuthUserAction | SetIsAuthorizedAction;
+export interface SetIsAuthLoadingAction {
+  type: UserActionTypes.SET_IS_AUTH_LOADING
+  isAuthLoading: boolean
+}
+
+export type AuthAction = SetAuthUserAction | SetIsAuthorizedAction | SetIsAuthLoadingAction;

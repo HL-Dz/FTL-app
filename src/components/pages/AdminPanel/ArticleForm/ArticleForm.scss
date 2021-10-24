@@ -41,11 +41,10 @@
   display: inline-flex;
   align-items: center;
   flex-direction: column;
-  border: 1px solid rgb(56, 58, 58);
+  border: 1px solid rgb(56, 56, 56);
   padding: 10px;
   min-width: 200px;
   font-family: 'Roboto';
-  border-radius: 3px;
   transition: all 0.5s ease;
 
 
@@ -142,7 +141,7 @@
 .operation__textarea {
   width: 100%;
   resize: vertical;
-  background: #111213;
+  background: #121313;
   color: #a09c9c;
   padding: 5px;
   border: none;
@@ -150,6 +149,7 @@
   outline: none;
   border-radius: 3px;
   min-height: 50px;
+
 
   &_title {
     max-height: 70px;

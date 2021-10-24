@@ -7,9 +7,10 @@ import EmailForm from './EmailForm';
 import "./SignIn.scss";
 import auth from '../../../assets/images/authorized.png';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
+import UniversalLoader from '../UniversalLoader/UniversalLoader';
 
 const SignIn = () => {
-  const {isAuthorized} = useTypedSelector(state => state.auth);
+  const {isAuthorized, isAuthLoading} = useTypedSelector(state => state.auth);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -47,6 +48,13 @@ const SignIn = () => {
     <>
       {errorModal ? <ErrorModal errorMessage={popupMessage} setErrorModal={setErrorModal}/> : null}
       <div className={isAuthorized ? "auth auth_inactive" : "auth"}>
+        {
+          isAuthLoading ? (
+            <div className="app-loading">
+              <UniversalLoader/>
+            </div>
+          ) : null
+        }
         <div className="auth__info">
           <div className="auth__text">
             Please sign in or sign up to view this page.

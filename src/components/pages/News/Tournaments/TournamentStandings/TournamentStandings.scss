@@ -1,13 +1,14 @@
 .tournament-standings {
   position: relative;
-  margin-top: -493px;
+  margin-top: -449px;
   left: 0;
   top: 0;
   width: 100%;
-  min-height: 493px;
+  min-height: 449px;
   background: #0f0f0f;
   animation: transparency-animation 0.5s ease-in-out;
   box-shadow: 0 5px 5px #0a0a0a;
+  z-index: 2;
 
   &_inactive {
     animation: standings-anim-end 0.5s ease-in-out;
@@ -75,6 +76,7 @@
   padding-left: 5px;
   background: rgb(31, 28, 28);
   width: 100%;
+  background: linear-gradient(135deg, rgb(28, 29, 29) 50%, rgb(43, 43, 43) 100%);
 } 
 
 .standings__td_points {

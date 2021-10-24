@@ -3,6 +3,7 @@ import {
   AuthAction,
   IUser,
   SetAuthUserAction,
+  SetIsAuthLoadingAction,
   SetIsAuthorizedAction,
   UserActionTypes
 } from '../types/auth';
@@ -10,7 +11,8 @@ import {
 
 let initialState = {
   user: null as IUser | null,
-  isAuthorized: false
+  isAuthorized: false,
+  isAuthLoading: true
 };
 
 type AuthInitialState = typeof initialState;
@@ -28,6 +30,11 @@ const userAuthReducer = (state = initialState, action: AuthAction): AuthInitialS
         ...state,
         isAuthorized: action.isAuthorized
       }
+    case UserActionTypes.SET_IS_AUTH_LOADING:
+    return {
+      ...state,
+      isAuthLoading: action.isAuthLoading
+    }
     default:
       return state
   }
@@ -36,6 +43,10 @@ const userAuthReducer = (state = initialState, action: AuthAction): AuthInitialS
 // Action Creators
 export const setAuthUser = (user: IUser | null): SetAuthUserAction => ({type: UserActionTypes.SET_USER, user});
 export const setIsAuthorized = (isAuthorized: boolean): SetIsAuthorizedAction => ({type: UserActionTypes.USER_IS_AUTHORIZED, isAuthorized});
+export const setIsAuthLoading = (isAuthLoading: boolean): SetIsAuthLoadingAction=> ({
+  type: UserActionTypes.SET_IS_AUTH_LOADING,
+  isAuthLoading
+})
 
 // Firebase authorazation methods
 // *** Register with email/password

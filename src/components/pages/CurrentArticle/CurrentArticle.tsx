@@ -69,11 +69,12 @@ const CurrentArticle = () => {
     if(user) {
       getUserArticle();
     }
+
     return (() => {
       setArticlePreview(null);
       unsubscribe();
     })
-  }, [])
+  }, [user])
   
   
   return (

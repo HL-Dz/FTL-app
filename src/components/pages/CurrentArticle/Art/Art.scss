@@ -27,7 +27,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 5px;
+  top: 35px;
   left: 50%;
   transform: translateX(-50%);
   width: 40px;
@@ -92,11 +92,16 @@
   position: absolute;
   top: 0;
   left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 1.7rem;
-  padding: 10px;
-  font-weight: bold;
-  border-radius: 0 0 5px 0;
+  padding: 7px 10px;
+  font-family: 'Roboto';
+  color: #98f098;
   background: rgba(0, 0, 0, 0.65);
+  background: linear-gradient(109.6deg, #020a0fde 11.2%, #484749 50.1%, #020a0fde 110%);
+  background: linear-gradient(109.6deg, #020a0fde 11.2%, #36493d 50.1%, #020a0fde 110%);
+  box-shadow: 0 10px 10px #050505;
 }
 
 .art__status {
@@ -138,9 +143,9 @@
   color: rgb(224, 224, 224);
   bottom: 5px;
   background: rgb(27, 27, 27);
-  background: linear-gradient(135deg, #273031 30%, #1c2122 55%, #2a3638 55%, #1c2122 2%, #1c2122 70%);
+  background: linear-gradient(135deg, #193f34 40%, #1c2122 55%, #2a3638 55%, #1c2122 2%, #1c2122 70%);
   padding: 3px 10px;
-  box-shadow: 4px 5px 5px rgb(24, 24, 24);
+  box-shadow: 0px 5px 5px rgb(24, 24, 24);
 
   i {
     margin-left: 3px;

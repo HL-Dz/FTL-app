@@ -62,7 +62,7 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
     e.preventDefault();
     const setArticleUrl = (id: string): string => {
       let titleValue = `${values.title.trim().toLowerCase().slice(0,30)}`;
-      let finishValue = titleValue.replace(/[\s&?!#$%^*()+=/><.`~]/gi, '-');
+      let finishValue = titleValue.replace(/[\s&?!#$%^*()+=/><.,`~]/gi, '-');
       let chars = id.slice(0, 5);
       let result = `${finishValue}-${chars}`;
       return result;

@@ -2,13 +2,15 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .tournaments__error {
   text-align: center;
   padding: 7px 0;
   background: rgba(180, 21, 21, 0.37);
-  border-radius: 3px;
+  background: linear-gradient(135deg, #3d2529c0 40%, #8b2929c5 100%);
+  box-shadow: 0 0 px 10px #0a0a0a;
   font-weight: bold;
   margin-bottom: 10px;
   animation: tournaments__error-anim 0.4s ease-in-out;
@@ -24,6 +26,7 @@
   border-radius: 5px;
   background: rgba(0, 0, 0, 0.7);
   animation: transparency-animation 0.5s ease;
+  z-index: 3;
 
   .universal-loader {
     top: 50%;
@@ -48,13 +51,18 @@
   background: rgba(75, 74, 74, 0.6);
   font-family: 'Montserrat';
   cursor: pointer;
-  margin-bottom: 7px;
+  margin-bottom: 2px;
   padding: 5px 0;
-  background: linear-gradient(180deg, rgba(41, 40, 40, 0.5) 50%, rgba(15, 15, 15, 0.9) 50%, rgba(41, 40, 40, 0.9) 100%);
-  transition: all 0.5s ease-in-out;
+  background: linear-gradient(135deg, rgb(28, 29, 29) 20%, rgba(51, 51, 51, 1) 100%);
+  box-shadow: 0 10px 10px #0a0a0a;
+  transition: all 0.3s ease;
+  will-change: transform;
 
   &:hover {
-    background: linear-gradient(180deg, rgba(65, 63, 63, 0.5) 50%, rgba(15, 15, 15, 0.9) 50%, rgba(36, 48, 32, 0.9) 100%);
+    transform: scale(1.1);
+    box-shadow: 0 10px 10px #0e0d0d;
+    z-index: 1;
+
   }
 
   &:last-child {

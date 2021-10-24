@@ -45,7 +45,7 @@ const Articles = () => {
       dispatch(setArticleErrorMessage(""));
       dispatch(resetArticles());
     })
-  }, [])
+  }, [user])
 
 
   return (

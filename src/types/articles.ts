@@ -4,6 +4,7 @@ export enum ArticleActionTypes {
   SET_LAST_ARTICLE = 'SET_LAST_ARTICLE',
   SET_SEARCHED_ARTICLE = 'SET_SEARCHED_ARTICLE',
   UPDATE_ARTICLE = 'UPDATE_ARTICLE',
+  UPDATE_ARTICLE_TIME = 'UPDATE_ARTICLE_TIME',
   TOGGLE_ARTICLE_LOADING = 'TOGGLE_ARTICLE_LOADING',
   SET_COMPLETED_TASK = 'SET_COMPLETED_TASK',
   SET_COMPLETED_TASK_MESSAGE = 'SET_COMPLETED_TASK_MESSAGE',
@@ -64,6 +65,11 @@ export interface UpdateArticleAction {
   updatedArticle: IArticle
 }
 
+export interface UpdateArticleTimeAction {
+  type: ArticleActionTypes.UPDATE_ARTICLE_TIME,
+  updatedArticleTime: IArticle
+}
+
 export interface ToggleArticleLoadingAction {
   type: ArticleActionTypes.TOGGLE_ARTICLE_LOADING
   isLoading: boolean
@@ -116,6 +122,7 @@ export type ArticlesAction =
           SetMoreArticlesAction |
           SetLastArticleAction |
           UpdateArticleAction |
+          UpdateArticleTimeAction |
           ToggleArticleLoadingAction |
           SetCompletedTaskAction |
           SetCompletedTaskMessageAction |

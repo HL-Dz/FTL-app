@@ -106,12 +106,15 @@
   align-items: center;
   justify-content: center;
   top: 0;
-  left: 0;
-  right: 0;
-  height: 30px;
-  font-weight: bold;
+  width: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 20px;
+  color: #8af78a;
   font-size: 1.5rem;
-  background: rgba(0, 0, 0, 0.719);
+  border-radius: 0 0 5px 5px;
+  background: linear-gradient(109.6deg, #020a0fde 11.2%, #484749 50.1%, #020a0fde 110%);
+  box-shadow: 0 7px 7px #050505;
 }
 
 .article__status {

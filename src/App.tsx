@@ -24,23 +24,25 @@ import firebase from './firebase';
 import Whoops from "./components/common/Whoops/Whoops";
 import Articles from "./components/pages/News/Articles";
 import { delay } from "./helpers/helpers";
-import { setAuthUser, setIsAuthorized } from "./redux/auth-reducer";
+import { setAuthUser, setIsAuthLoading, setIsAuthorized } from "./redux/auth-reducer";
 import CurrentArticle from "./components/pages/CurrentArticle/CurrentArticle";
 import AdminPanel from "./components/pages/AdminPanel/AdminPanel";
 
 
 function App() {
   const dispatch = useDispatch();
-  
   useEffect(() => {
     firebase.auth().onAuthStateChanged( async (user) => {
       if(user) {
         dispatch(setIsAuthorized(true))
         await delay(800);
         dispatch(setAuthUser(user));
+        dispatch(setIsAuthLoading(false))
       } else {
         dispatch(setIsAuthorized(false))
         dispatch(setAuthUser(user));
+        await delay(900);
+        dispatch(setIsAuthLoading(false))
       }
     })
   }, [])
