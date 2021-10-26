@@ -7,7 +7,7 @@ const FailedAccess = () => {
     <div className="admin-wrap">
       <div className="failed-access">
         <div className="failed-access__content">
-          No access. Please wait...
+          Please wait...
         </div>
         <Loading/> 
       </div>

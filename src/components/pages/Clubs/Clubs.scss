@@ -1,6 +1,10 @@
 @use "../../../sass/abstracts";
 
 .clubs {
+  background: url(../../../assets/images/app-bg.png) #17181b;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+
   .icon-location {
     display: none;
   }
@@ -15,7 +19,9 @@
   min-width: 300px;
   max-width: 300px;
   overflow: hidden;
-  transition: height 0.5s ease-in-out;
+  transition: height 0.3s ease-in-out;
+  box-shadow: 0 7px 7px #050505;
+  align-self: flex-start;
 }
 
 .search-club {
@@ -39,12 +45,12 @@
   align-items: center;
   justify-content: space-between;
   background: #333333b3;
-  margin-bottom: 5px;
+  background: linear-gradient(135deg, #1c1d1d 20%, #333333 100%);
+  margin-bottom: 2px;
   cursor: pointer;
   overflow: hidden;
-  border-radius: 3px;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 5px 5px #0f0f0f;
+  transition: all 0.4s ease;
+  will-change: transform;
 
   &_inactive {
     transform: translateX(-100%);
@@ -53,8 +59,11 @@
   }
 
   &:hover {
-    .club-pic {
-      margin-left: 5px;
+    box-shadow: 0 15px 15px #0e0d0d;
+    z-index: 1;
+
+    .club-name {
+      transform: scale(1.05);
     }
   }
 }
@@ -67,6 +76,8 @@
   flex-basis: 100%;
   margin: 0 10px;
   padding-right: 35px;
+  transition: all 0.3s ease;
+  will-change: transform;
   @extend %transition;
 }
 
@@ -93,14 +104,15 @@
   width: 35px;
   font-size: 2rem;
   color: rgb(199, 216, 205);
-  background: #333333b3;
+  background: #494949b3;
   z-index: 1;
   outline: none;
   border: none;
-  transition: all 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 
   &:hover {
     background: #424242;
+    color: rgb(201, 57, 57);
   }
 }
 // -----------------------------

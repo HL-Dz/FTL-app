@@ -74,10 +74,14 @@ const AdminArticle: FC<AdminArticleProps> = ({article, getSelectedAdminArticle, 
         <div className="admin-article__delete" title="Delete article" onClick={() => deleteArticle(article.articleUrl)}>
           <i className="fas fa-minus"></i>
         </div>
-        <div className="admin-time_upd" onClick={() => {updateTime(article)}}>
+        <div className="admin-time_upd">
           <span>{article.createdAt}</span>
-          <span className={isLoadingTime ? "time-update time-update_active" : "time-update"} title="Update time">
-            <i className="fas fa-history"></i>
+          <span 
+            className={isLoadingTime ? "time-update time-update_active" : "time-update"} 
+            title="Update time"
+            onClick={() => {updateTime(article)}}
+          >
+            <i className="fas fa-sync-alt"></i>
           </span>
         </div>
       </div>

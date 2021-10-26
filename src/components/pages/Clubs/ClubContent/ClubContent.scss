@@ -2,7 +2,7 @@
 
 .club-content {
   width: 100%;
-  margin-left: 10px;
+  margin: 0 15px;
   position: relative;
   transition: all 0.5s ease;
 
@@ -11,17 +11,21 @@
     padding: 20px 0;
     height: auto;
     margin-bottom: 10px;
-    border-radius: 5px;
+    border-radius: 2px;
     animation: transparency-animation 0.5s ease;
+    box-shadow: 0 10px 10px #0e0e0e;
+    background: #222222;
+    background: linear-gradient(109.6deg, #0f1113 11.2%, #242325 71.1%, #0f1113 110%);
   }
 
   .team__name {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    color: #aff0af;
+    margin-left: 10px;
   }
 
   .section-description {
-    padding-top: 35px;
-    border-radius: 5px;
+    border-radius: 2px;
     animation: transparency-animation 0.5s ease;
   }
 
@@ -30,8 +34,7 @@
     justify-content: center;
     align-items: center;
     max-width: 250px;
-    padding: 10px;
-    margin-right: 10px;
+    padding: 5px;
     &:after {
       background: rgba(23, 24, 27, 0.1);
     }
@@ -52,9 +55,14 @@
 
   .breadcrumbs {
     width: 100%;
+    padding-left: 10px;
   }
 
   .team__info {
     border-radius: 2px;
+  }
+
+  .team__contacts {
+    margin-right: 0;
   }
 }

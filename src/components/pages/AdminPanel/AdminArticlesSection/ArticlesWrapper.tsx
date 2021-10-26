@@ -39,7 +39,7 @@ const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showA
   }
 
   const deleteArticle = async (articleUrl: string) => {
-    dispatch(deleteArticleFromServer(articleUrl));
+    dispatch(deleteArticleFromServer(articleUrl, hideSearchModal));
   }
 
   const searchArticle = async () => {

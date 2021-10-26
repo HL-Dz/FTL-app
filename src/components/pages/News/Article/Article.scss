@@ -11,15 +11,13 @@
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 0 15px 10px #0a0a0a;
+  box-shadow: 0 10px 10px #0a0a0a;
   animation: transparency-animation 0.5s ease;
   animation: elem-top-to-down 0.9s ease;
 
-  &:first-child {
-    box-shadow: none;
-  }
-
   &:last-child {
     margin-bottom: 0;
+    box-shadow: 0 10px 10px #0a0a0a;
   }
 
   &:hover {
@@ -110,7 +108,7 @@
   left: 50%;
   transform: translateX(-50%);
   height: 20px;
-  color: #8af78a;
+  color: #96f796;
   font-size: 1.5rem;
   border-radius: 0 0 5px 5px;
   background: linear-gradient(109.6deg, #020a0fde 11.2%, #484749 50.1%, #020a0fde 110%);
@@ -121,6 +119,7 @@
   font-size: 2.7rem;
   margin-left: 10px;
   color: rgb(7, 192, 7);
+  border-radius: 50%;
 
   &_hot {
     color: rgb(253, 54, 54); // Hot

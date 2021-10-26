@@ -6,7 +6,6 @@ import ErrorModal from '../../../common/ErrorModal/ErrorModal';
 import UniversalLoader from '../../../common/UniversalLoader/UniversalLoader';
 import TeamDescription from '../../Team/TeamDescription/TeamDescription';
 import TeamPrimary from '../../Team/TeamPrimary/TeamPrimary';
-import InfoHelper from '../InfoHelper/InfoHelper';
 import './ClubContent.scss';
 
 const ClubContent = () => {
@@ -32,7 +31,7 @@ const ClubContent = () => {
             <UniversalLoader/>
           </div>
         ) : 
-          !team ? <InfoHelper isFetchError={isFetchError}/> : 
+          !team ? null : 
           <>
             <TeamPrimary team={team} isFetchError={isFetchError} shortList={true}/>
             <TeamDescription team={team} isFetchError={isFetchError}/>

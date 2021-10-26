@@ -5,7 +5,7 @@
   border: 1px solid rgb(64, 65, 64);
   padding: 10px;
   border-radius: 2px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   animation: elem-top-to-down 0.7s ease;
   &:last-child {
     margin-bottom: 0;
@@ -104,11 +104,9 @@
 .comment__user {
   display: inline-flex;
   padding: 5px;
-  text-transform: uppercase;
   font-family: 'Roboto';
   border-radius: 2px;
-  font-size: 1.5rem;
-  background: rgb(21, 80, 21);
+  background: rgb(22, 66, 30);
   margin-bottom: 5px;
 }
 
@@ -127,7 +125,7 @@
 }
 
 .comment__text {
-  background: #292929;
+  background: #282a2a;
   padding: 10px;
   width: 100%;
   color: #c4c5c5;

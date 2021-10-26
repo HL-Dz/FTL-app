@@ -48,6 +48,7 @@ const User: FC<UserProps> = ({user}) => {
     target.src = userPhoto;
   }
   
+  
   return (
     <div className="user">
       <div className={isVisibleUser ? "user__bg user__bg_active" : "user__bg"} onClick={hideUserInfo}></div>

@@ -21,7 +21,6 @@
   text-align: center;
   padding-bottom: 10px;
   font-size: 2rem;
-  text-transform: uppercase;
   font-weight: bold;
   color: #cecdcd;
   z-index: 1;
@@ -94,6 +93,7 @@
 .table-td {
   text-align: center;
   font-size: 1.4rem;
+  text-transform: lowercase;
 
   &:first-child{
     font-weight: bold;
@@ -108,6 +108,10 @@
     &:active {
       box-shadow: 0 0 15px 10px #0f0f0f;
     }
+  }
+
+  a {
+    text-transform: capitalize;
   }
 }
 
@@ -163,6 +167,7 @@
 
     &.table-player {
       justify-content: center;
+      text-transform: capitalize;
     }
   }
 

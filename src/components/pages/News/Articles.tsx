@@ -16,10 +16,6 @@ const Articles = () => {
   const dispatch = useDispatch();
   const { user } = useTypedSelector(state => state.auth);
   const { articles, errorModal, errorMessage, isLoading, lastArticle } = useTypedSelector(state => state.articles);
-  let userName = '';
-  if(user) {
-    userName = user.displayName ? user.displayName : 'user';
-  }
 
   const getList = () => {
     dispatch(getArticlesFromServer());
@@ -49,7 +45,7 @@ const Articles = () => {
 
 
   return (
-    <div className="primary-container articles scroll-container">
+    <div className="primary-container articles scroll-container articles_prim">
       {errorModal? <ErrorModal errorMessage={errorMessage} setErrorModal={setErrorModal}/> : null}
       <div className="container">
         {

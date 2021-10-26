@@ -37,7 +37,7 @@ function App() {
         dispatch(setIsAuthorized(true))
         await delay(800);
         dispatch(setAuthUser(user));
-        dispatch(setIsAuthLoading(false))
+        dispatch(setIsAuthLoading(false));
       } else {
         dispatch(setIsAuthorized(false))
         dispatch(setAuthUser(user));

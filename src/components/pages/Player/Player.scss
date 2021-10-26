@@ -2,7 +2,9 @@
 
 .football-player {
   padding-top: 80px;
-  background: #17181b;
+  background: url(../../../assets/images/playerBg.png) #17181b;
+  background-repeat: no-repeat;
+  background-position: bottom left;
 
   .container-width {
     padding-left: 17px;

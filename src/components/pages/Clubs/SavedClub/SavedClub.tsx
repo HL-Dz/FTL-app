@@ -19,7 +19,7 @@ const SavedClub: FC<ISavedClub> = ({elem, inActiveItem}) => {
   };
 
   const dragEndHandler = (e: React.DragEvent<HTMLDivElement>) => {
-    e.currentTarget.style.background = '#333333b3';
+    e.currentTarget.style.background = 'linear-gradient(135deg, #1c1d1d 20%, #333333 100%)';
   };
 
   const dragOverHandler = (e: React.DragEvent<HTMLDivElement>) => {
@@ -30,8 +30,8 @@ const SavedClub: FC<ISavedClub> = ({elem, inActiveItem}) => {
   const dropHandler = (e: React.DragEvent<HTMLDivElement>, club: IClub) => {
     e.preventDefault();
     dispatch(changeOrderOfClubs(club));
-    e.currentTarget.style.background = '#333333b3';
-    e.currentTarget.style.marginBottom = '5px';
+    e.currentTarget.style.background = 'linear-gradient(135deg, #1c1d1d 20%, #333333 100%)';
+    e.currentTarget.style.marginBottom = '2px';
   }
 
   const showCurrentTeam = (e: React.MouseEvent<HTMLDivElement>, club: IClub) => {

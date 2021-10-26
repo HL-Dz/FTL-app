@@ -2,8 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  width: 300px;
   margin: 20px auto 0;
+  padding: 5px;
+  background: linear-gradient(135deg, #151d1b 10%, #305f41 50%, #151d1b 90%);
+  box-shadow: 0 10px 10px #050505;
+  animation: transparency-animation 0.3s ease;
+
 
   #loader {
     position: relative;
@@ -11,10 +16,10 @@
     top: 0;
     width: 30px;
     height: 30px;
-    border-top-color: #57c057;
+    border-top-color: #01a9af;
 
     &:before {
-      border-top-color: #57c057;
+      border-top-color: #01a9af;
     }
     
     &:after {
@@ -26,12 +31,9 @@
 .failed-access__content {
   display: inline-flex;
   margin-right: 45px;
-  padding: 0 10px;
-  font-size: 2.3rem;
-  font-family: 'Roboto';
-  font-weight: bold;
-  color: rgb(199, 198, 198);
-  background: linear-gradient(45deg, #57c057 40%, #08963f 100%);
+  font-size: 2.5rem;
+  font-family: 'Poppins';
+  background: linear-gradient(45deg, #5db482 40%, #01a9af 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

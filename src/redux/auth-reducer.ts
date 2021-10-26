@@ -1,4 +1,5 @@
 import firebase from '../firebase';
+import { v4 as uuidv4 } from 'uuid';
 import {
   AuthAction,
   IUser,
@@ -51,9 +52,15 @@ export const setIsAuthLoading = (isAuthLoading: boolean): SetIsAuthLoadingAction
 // Firebase authorazation methods
 // *** Register with email/password
 export const userRegisterHandler = (email:string, password:string) => {
+  let nickName = `User-${uuidv4().slice(0,5)}`;
   return firebase
     .auth()
-    .createUserWithEmailAndPassword(email, password);
+    .createUserWithEmailAndPassword(email, password)
+    .then(function (data: any) {
+      return data.user.updateProfile({
+        displayName: nickName
+      })
+    })
 }
 
 // *** Sign In with email/password

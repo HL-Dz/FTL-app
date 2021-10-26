@@ -293,25 +293,9 @@ export const updateArticleOnTheServer = (currentArticle:IArticle, updatedArticle
 
 export const updateArticleTimeOnServer = (article: IArticle) => async (dispatch: Dispatch<ArticlesAction>) => {
   const updatedArticleTime = {
-    // articleUrl: article.articleUrl,
-    // createdAt: new Date().toLocaleString(),
-    // lastUpdated: new Date().toLocaleString(),
-
-    id: article.id,
     articleUrl: article.articleUrl,
-    articleAuthorId: article.articleAuthorId,
-    articleAuthorName: article.articleAuthorName,
-    title: article.title,
-    shortDesc: article.shortDesc,
-    desc: article.desc,
-    imgSrc: article.imgSrc,
-    status: article.status,
-    public: true,
     createdAt: new Date().toLocaleString(),
-    lastUpdated: new Date().toLocaleString(), 
-    comments: [],
-    displayComments: article.displayComments,
-    photoBy: article.photoBy,
+    lastUpdated: new Date().toLocaleString(),
   }
   
   ref
@@ -327,7 +311,7 @@ export const updateArticleTimeOnServer = (article: IArticle) => async (dispatch:
 }
 
 // DELETE ARTICLE FROM SERVER
-export const deleteArticleFromServer = (articleUrl: string) => async (dispatch: Dispatch<ArticlesAction>) => {
+export const deleteArticleFromServer = (articleUrl: string, callback: () => void) => async (dispatch: Dispatch<ArticlesAction>) => {
   dispatch(toggleArticleLoading(true));
   await delay(500);
   ref
@@ -337,6 +321,7 @@ export const deleteArticleFromServer = (articleUrl: string) => async (dispatch: 
     dispatch(deleteArticle(articleUrl));
     await delay(500);
     dispatch(toggleArticleLoading(false));
+    callback()
   })
   .catch(async (err: any) => {
     dispatch(setArticleErrorModal(true));

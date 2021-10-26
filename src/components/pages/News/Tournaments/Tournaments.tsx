@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { delay } from '../../../../helpers/helpers';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { getLeague } from '../../../../redux/league-reducer';
-import UniversalLoader from '../../../common/UniversalLoader/UniversalLoader';
 import { LeaguesData } from '../../Leagues/LeaguesData'
 import Tournament from './Tournament';
 import TournamentStandings from './TournamentStandings/TournamentStandings';
@@ -59,9 +58,7 @@ const Tournaments: FC<TournamentsProps> = ({disTournament}) => {
       }
       {
         isFetching ? (
-          <div className="tournaments__loading">
-            <UniversalLoader/>
-          </div>
+          <div className="tournaments__loading"></div>
         ) : null
       }
       {

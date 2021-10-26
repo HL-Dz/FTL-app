@@ -2,9 +2,18 @@
 
 .articles {
   position: relative;
+  background: url(../../../assets/images/app-bg.png) #17181b;
+  background-repeat: no-repeat;
+  background-position: bottom right;
   
   .container {
     padding-top: 60px;
+  }
+
+  &_prim {
+    .articles__content {
+      box-shadow: none;
+    }
   }
 }
 
@@ -23,6 +32,7 @@
   flex-direction: column;
   justify-content: center;
   width: calc(100% - 330px);
+  box-shadow: 0 7px 7px #0a0a0a;
 
   .more-list .operation__button {
     &:active {
@@ -84,9 +94,10 @@
 .articles__sidebar {
   position: relative;
   width: 320px;
-  min-height: 449px;
+  min-height: 446px;
   border-radius: 5px;
   align-self: start;
+  box-shadow: 0 10px 10px #050505;
 }
 
 .articles__header {

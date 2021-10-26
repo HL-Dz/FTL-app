@@ -83,7 +83,7 @@
   min-width: 250px;
   text-align: center;
   padding: 5px;
-  color: #86ea86;
+  color: #aff0af;
   background: #0f0f0fb9;
 }
 
@@ -166,7 +166,7 @@
   }
 
   i {
-    font-size: 1.9rem;
+    font-size: 1.7rem;
     background: linear-gradient(45deg, #e4e4e4 20%, #049434 70%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -224,9 +224,9 @@
 
 @keyframes update-time {
   0%{
-    transform: rotate(360deg);
+    transform: rotate(0deg);
   }
   100% {
-    transform: rotate(0);
+    transform: rotate(360deg);
   }
 }

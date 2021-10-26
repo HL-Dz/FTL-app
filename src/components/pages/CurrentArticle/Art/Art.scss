@@ -97,9 +97,8 @@
   font-size: 1.7rem;
   padding: 7px 10px;
   font-family: 'Roboto';
-  color: #98f098;
+  color: #b5ebb5;
   background: rgba(0, 0, 0, 0.65);
-  background: linear-gradient(109.6deg, #020a0fde 11.2%, #484749 50.1%, #020a0fde 110%);
   background: linear-gradient(109.6deg, #020a0fde 11.2%, #36493d 50.1%, #020a0fde 110%);
   box-shadow: 0 10px 10px #050505;
 }
@@ -113,8 +112,9 @@
   right: 10px;
   width: 40px;
   height: 40px;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(35, 65, 53, 0.829);
   border-radius: 50%;
+  box-shadow: 0 7px 7px #050505;
 }
 
 .art__description {
