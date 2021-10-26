@@ -1,9 +1,11 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import "./Art.scss";
 import Comments from '../../../common/Comments/Comments';
 import DisabeldComments from '../../../common/Comments/DisabeldComments/DisabeldComments';
 import { IArticle } from '../../../../types/articles';
 import tfl from '../../../../assets/images/tfl.jpg';
+import AdminModal from '../../AdminPanel/AdminModal/AdminModal';
+import { delay } from '../../../../helpers/helpers';
 
 
 interface ArtProps {
@@ -13,14 +15,53 @@ interface ArtProps {
 }
 
 const Art: FC<ArtProps> = ({article, adminAccess, hideAdminModal}) => {
-  if(!article) return null;
+  const [isImgModal, setIsImgModal] = useState(false);
+  const [isFadeOutModal, setIsFadeOutModal] = useState(false);
 
   const setImageError = async (e: React.SyntheticEvent) => {
     let target = e.target as HTMLImageElement;
     target.src = tfl;
   }
+
+  const hideImgModal = async () => {
+    setIsFadeOutModal(true);
+    await delay(350);
+    setIsFadeOutModal(false);
+    setIsImgModal(false);
+  }
+
+  const showImgModal = () => {
+    setIsImgModal(true);
+  }
+
+  const handleImgModal = (e:any) => {
+    if(e.key === 'Escape') {
+      hideImgModal();
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('keyup', handleImgModal)
+    return () => {
+      window.removeEventListener('keyup', handleImgModal);
+    }
+  })
+
+  if(!article) return null;
+  
+
   return (
     <div className="art">
+      {
+        isImgModal ? (
+          <AdminModal isFadeOutModal={isFadeOutModal} hideAdminModal={hideImgModal}>
+            <div className="art__wrap-pic">
+              <i className="art__modal-close fas fa-times" onClick={hideImgModal}></i>
+              <img src={article.imgSrc} alt="Article" className="art__img-modal" />
+            </div>
+          </AdminModal>
+        ) : null
+      }
       <div className="art__header">
         {
           adminAccess ? (
@@ -33,6 +74,7 @@ const Art: FC<ArtProps> = ({article, adminAccess, hideAdminModal}) => {
           <img src={article.imgSrc} onError={setImageError} alt="Elem" className="art__img" />
         </div>
         {adminAccess ? <div className="art__title">{article.title}</div> : null}
+        {!adminAccess ? <i className="fas fa-expand art__expand" onClick={showImgModal}></i> :  null}
         <div className="art__time">{article.createdAt}</div>
         <div className="art__status">
           <i className={`fab fa-gripfire article__status article__status_${article.status}`} title={`${article.status} status`}></i>
