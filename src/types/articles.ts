@@ -11,6 +11,7 @@ export enum ArticleActionTypes {
   SET_ARTICLE_ERROR_MODAL = 'SET_ARTICLE_ERROR_MODAL',
   SET_ARTICLE_ERROR_MESSAGE = 'SET_ARTICLE_ERROR_MESSAGE',
   SET_EXIST_ARTICLE = 'SET_EXIST_ARTICLE',
+  SET_IS_SEARCH_MODAL = 'SET_IS_SEARCH_MODAL',
   DELETE_ARTICLE = 'DELETE_ARTICLE',
   RESET_ARTICLES = 'RESET_ARTICLES',
   RESET_SEARCHED_ARTICLE = 'RESET_SEARCHED_ARTICLE'
@@ -58,6 +59,11 @@ export interface SetMoreArticlesAction {
 export interface SetLastArticleAction {
   type: ArticleActionTypes.SET_LAST_ARTICLE
   lastArticle: any
+}
+
+export interface SetIsSearchModalAction {
+  type: ArticleActionTypes.SET_IS_SEARCH_MODAL,
+  isSearchModal: boolean
 }
 
 export interface UpdateArticleAction {
@@ -121,6 +127,7 @@ export type ArticlesAction =
           SetArticlesAction |
           SetMoreArticlesAction |
           SetLastArticleAction |
+          SetIsSearchModalAction |
           UpdateArticleAction |
           UpdateArticleTimeAction |
           ToggleArticleLoadingAction |

@@ -18,7 +18,8 @@ import {
   ResetSearchedArticleAction,
   SetLastArticleAction,
   SetMoreArticlesAction,
-  UpdateArticleTimeAction
+  UpdateArticleTimeAction,
+  SetIsSearchModalAction
 } from './../types/articles';
 import firebase from '../firebase';
 
@@ -33,6 +34,7 @@ let initialState = {
   completedTask: false,
   completedTaskMessage: '',
   errorModal: false,
+  isSearchModal: false,
   errorMessage: '',
 }
 
@@ -78,7 +80,7 @@ const articlesReduer = (state = initialState, action: ArticlesAction): ArticleIn
               return {...elem, ...action.updatedArticleTime};
             }
           }),
-          searchedArticle: {...state.searchedArticle, ...action.updatedArticleTime}
+          searchedArticle: {...state.searchedArticle, ...action.updatedArticleTime} //!!!!!!!!!!!!!!!!!!!!!!!
         }
       case ArticleActionTypes.DELETE_ARTICLE:
         return {
@@ -89,6 +91,11 @@ const articlesReduer = (state = initialState, action: ArticlesAction): ArticleIn
         return {
           ...state,
           searchedArticle: action.searchedArticle
+        }
+      case ArticleActionTypes.SET_IS_SEARCH_MODAL:
+        return {
+          ...state,
+          isSearchModal: action.isSearchModal
         }
       case ArticleActionTypes.TOGGLE_ARTICLE_LOADING:
         return {
@@ -143,6 +150,10 @@ export const setMoreArticles = (articles: Array<IArticle> | []): SetMoreArticles
 export const setLastArticle = (lastArticle: any): SetLastArticleAction => ({
   type: ArticleActionTypes.SET_LAST_ARTICLE,
   lastArticle
+})
+export const setIsSearchModal = (isSearchModal: boolean): SetIsSearchModalAction => ({
+  type: ArticleActionTypes.SET_IS_SEARCH_MODAL,
+  isSearchModal
 })
 export const updateArticle = (updatedArticle: IArticle): UpdateArticleAction => ({
   type: ArticleActionTypes.UPDATE_ARTICLE,
@@ -293,9 +304,9 @@ export const updateArticleOnTheServer = (currentArticle:IArticle, updatedArticle
 
 export const updateArticleTimeOnServer = (article: IArticle) => async (dispatch: Dispatch<ArticlesAction>) => {
   const updatedArticleTime = {
-    articleUrl: article.articleUrl,
-    createdAt: new Date().toLocaleString(),
-    lastUpdated: new Date().toLocaleString(),
+      articleUrl: article.articleUrl,
+      createdAt: new Date().toLocaleString(), // timestam с сервера Firebase 
+      lastUpdated: new Date().toLocaleString(), // timestam с сервера Firebase
   }
   
   ref
@@ -342,10 +353,12 @@ export const searchAdminArticle = (articleUrl: string) => async (dispatch: Dispa
     .get()
     .then(async (doc: firebase.firestore.DocumentData) => {
       if(doc.exists) {
+        dispatch(setIsSearchModal(true));
         dispatch(setSearchedArticle(doc.data()));
         await delay(500);
         dispatch(toggleArticleLoading(false));
       } else {
+        dispatch(setIsSearchModal(false));
         dispatch(setArticleErrorModal(true));
         dispatch(setArticleErrorMessage("Article not found."))
         await delay(500);
@@ -354,6 +367,7 @@ export const searchAdminArticle = (articleUrl: string) => async (dispatch: Dispa
       }
     })
     .catch(async (err) => {
+      dispatch(setIsSearchModal(false));
       dispatch(setArticleErrorModal(true));
       dispatch(setArticleErrorMessage(err.message));
       await delay(500);

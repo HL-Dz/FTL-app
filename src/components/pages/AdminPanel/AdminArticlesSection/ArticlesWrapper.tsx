@@ -3,7 +3,7 @@ import { IArticle } from '../../../../types/articles';
 import UniversalLoader from '../../../common/UniversalLoader/UniversalLoader';
 import AdminArticle from '../AdminArticle/AdminArticle';
 import EmptyAdminList from './EmptyAdminList/EmptyAdminList';
-import { deleteArticleFromServer, getArticlesFromServer, getMoreArticles, resetArticles, resetSearchedArticle, searchAdminArticle } from '../../../../redux/articles-reducer';
+import { deleteArticleFromServer, getArticlesFromServer, getMoreArticles, resetArticles, resetSearchedArticle, searchAdminArticle, setIsSearchModal } from '../../../../redux/articles-reducer';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import { delay } from '../../../../helpers/helpers';
@@ -17,11 +17,9 @@ interface ArticlesWrapperProps {
 }
 
 const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showArticlePreview, adminArticles}) => {
-  const { isLoading, searchedArticle, lastArticle} = useTypedSelector(state => state.articles);
+  const { isLoading, searchedArticle, lastArticle, isSearchModal} = useTypedSelector(state => state.articles);
   const [searchElem, setSearchElem] = useState('');
   const dispatch = useDispatch();
-
-  const [isSearchModal, setIsSearchModal] = useState(false);
   const [isFadeOutModal, setIsFadeOutModal] = useState(false);
 
 
@@ -29,8 +27,8 @@ const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showA
     setIsFadeOutModal(true);
     await delay(350);
     setIsFadeOutModal(false);
-    setIsSearchModal(false);
-    dispatch(dispatch(resetSearchedArticle()));
+    dispatch(setIsSearchModal(false));
+    dispatch(resetSearchedArticle());
   }
   
 
@@ -47,7 +45,6 @@ const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showA
     if(query) {
       let result = query.replace(/[/\\]/gi, '-');
       await dispatch(searchAdminArticle(result));
-      setIsSearchModal(true);
       setSearchElem('');
     }
   }
@@ -57,8 +54,10 @@ const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showA
   }
 
   useEffect(() => {
-    dispatch(resetArticles());
-    setIsSearchModal(false);
+    return() => {
+      dispatch(resetArticles());
+      dispatch(dispatch(setIsSearchModal(false)));
+    }
   }, [])
 
   return (
