@@ -57,7 +57,7 @@ const Art: FC<ArtProps> = ({article, adminAccess, hideAdminModal}) => {
           <AdminModal isFadeOutModal={isFadeOutModal} hideAdminModal={hideImgModal}>
             <div className="art__wrap-pic">
               <i className="art__modal-close fas fa-times" onClick={hideImgModal}></i>
-              <img src={article.imgSrc} alt="Article" className="art__img-modal" />
+              <img src={article.imgSrc} onError={setImageError} alt="Article" className="art__img-modal" />
             </div>
           </AdminModal>
         ) : null

@@ -55,7 +55,7 @@ const ArticlesWrapper:FC<ArticlesWrapperProps> = ({getSelectedAdminArticle,showA
 
   useEffect(() => {
     return() => {
-      dispatch(resetArticles());
+      // dispatch(resetArticles());
       dispatch(dispatch(setIsSearchModal(false)));
     }
   }, [])
