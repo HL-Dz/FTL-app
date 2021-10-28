@@ -7,6 +7,10 @@ import { IGeometry } from '../../../types/geolocation';
 import { delay } from '../../../helpers/helpers';
 import UniversalLoader from '../UniversalLoader/UniversalLoader';
 
+// @ts-ignore
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
+
 
 interface MapProps {
   closeMap: () => void
