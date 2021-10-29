@@ -70,7 +70,7 @@ export const articleValidation = (values: {[key: string]:any}) => {
 
   // Article author field
   if(!values.author.trim()) {
-    errors.author = 'Article author field is required'
+    errors.author = 'Source field is required'
   } else if(values.author.length < 5 || values.author.length > 50) {
     errors.author = 'Min - 5, max - 50 characters.';
   } else if (values.author.match(/[а-яё]+/i)) {

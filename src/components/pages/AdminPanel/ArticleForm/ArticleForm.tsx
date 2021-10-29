@@ -295,14 +295,14 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
           <div className="operation__field">
             <div className="operation__field-wrap">
               <span className="operation__sup">
-                Article author <CharacterCounter value={values.author} min={5} max={50}/>
+                Source <CharacterCounter value={values.author} min={5} max={50}/>
               </span>
               <input 
                 value={values.author}
                 type="text"
                 name="author"
                 className="operation__input-text"
-                placeholder="Type the article author..."
+                placeholder="Type the source..."
                 onChange={handleChange}
               />
             </div>

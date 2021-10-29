@@ -86,7 +86,7 @@ const Art: FC<ArtProps> = ({article, adminAccess, hideAdminModal}) => {
           <div className="art__info-photo">
             Photo <i className="fas fa-camera-retro"></i>:<span>{article.photoBy}</span>
           </div>
-          <div className="art__info-author">Author <i className="fas fa-user-check"></i>: <span>{article.articleAuthorName}</span></div>
+          <div className="art__info-author">Source <i className="fas fa-user-check"></i>: <span>{article.articleAuthorName}</span></div>
         </div>
       </div>
       {
