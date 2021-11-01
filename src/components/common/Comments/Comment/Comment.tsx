@@ -4,6 +4,7 @@ import userPhoto from '../../../../assets/images/comment-user.png';
 import { IComment } from '../../../../types/articles';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import OwnerLabel from '../../OwnerLabel/OwnerLabel';
+import { getArticleTime } from '../../../../helpers/helpers';
 
 interface CommentProps {
   adminAccess?: boolean
@@ -41,7 +42,7 @@ const Comment: FC<CommentProps> = ({adminAccess, comment, deleteComment}) => {
       <div className="comment__info">
         <div className="comment__user">{comment.ownerName || 'User'}</div>
         <div className="comment__date">
-          {comment.createdAt}
+          {getArticleTime(comment.createdAt)}
           <i className="far fa-clock comment__clock"></i>
         </div>
         <div className="comment__text">

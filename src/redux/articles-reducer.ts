@@ -305,8 +305,8 @@ export const updateArticleOnTheServer = (currentArticle:IArticle, updatedArticle
 export const updateArticleTimeOnServer = (article: IArticle) => async (dispatch: Dispatch<ArticlesAction>) => {
   const updatedArticleTime = {
       articleUrl: article.articleUrl,
-      createdAt: new Date().toLocaleString(), // timestam с сервера Firebase 
-      lastUpdated: new Date().toLocaleString(), // timestam с сервера Firebase
+      createdAt: new Date().getTime(),
+      lastUpdated: new Date().getTime(), 
   }
   
   ref

@@ -5,7 +5,7 @@ import "./AdminArticle.scss";
 import tfl from '../../../../assets/images/tfl.jpg';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 import UniversalLoader from '../../../common/UniversalLoader/UniversalLoader';
-import { delay } from '../../../../helpers/helpers';
+import { delay, getArticleTime } from '../../../../helpers/helpers';
 import { useDispatch } from 'react-redux';
 import { setArticleErrorMessage, setArticleErrorModal, updateArticleTimeOnServer } from '../../../../redux/articles-reducer';
 
@@ -75,7 +75,7 @@ const AdminArticle: FC<AdminArticleProps> = ({article, getSelectedAdminArticle, 
           <i className="fas fa-minus"></i>
         </div>
         <div className="admin-time_upd">
-          <span>{article.createdAt}</span>
+          <span>{getArticleTime(article.createdAt)}</span>
           <span 
             className={isLoadingTime ? "time-update time-update_active" : "time-update"} 
             title="Update time"

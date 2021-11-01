@@ -5,7 +5,7 @@ import DisabeldComments from '../../../common/Comments/DisabeldComments/Disabeld
 import { IArticle } from '../../../../types/articles';
 import tfl from '../../../../assets/images/tfl.jpg';
 import AdminModal from '../../AdminPanel/AdminModal/AdminModal';
-import { delay } from '../../../../helpers/helpers';
+import { delay, getArticleTime } from '../../../../helpers/helpers';
 
 
 interface ArtProps {
@@ -75,7 +75,7 @@ const Art: FC<ArtProps> = ({article, adminAccess, hideAdminModal}) => {
         </div>
         {adminAccess ? <div className="art__title">{article.title}</div> : null}
         {!adminAccess ? <i className="fas fa-expand art__expand" onClick={showImgModal}></i> :  null}
-        <div className="art__time">{article.createdAt}</div>
+        <div className="art__time">{getArticleTime(article.createdAt)}</div>
         <div className="art__status">
           <i className={`fab fa-gripfire article__status article__status_${article.status}`} title={`${article.status} status`}></i>
         </div>

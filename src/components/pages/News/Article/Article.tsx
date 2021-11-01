@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IArticle } from '../../../../types/articles';
 import "./Article.scss";
-import { delay } from '../../../../helpers/helpers';
+import { delay, getArticleTime } from '../../../../helpers/helpers';
 import tfl from '../../../../assets/images/tfl.jpg';
 import UniversalLoader from '../../../common/UniversalLoader/UniversalLoader';
 
@@ -37,7 +37,7 @@ const Article: FC<IArticle | null> = ({...article}) => {
             </div> : null
           }
           <img src={article.imgSrc} alt="Article" onError={setImageError} onLoad={onImageLoaded}/>
-          <div className="article__time">{article.createdAt}</div>
+          <div className="article__time">{getArticleTime(article.createdAt)}</div>
         </div>
         <div className="article__info">
           <div className="article__title">

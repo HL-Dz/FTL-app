@@ -43,8 +43,8 @@ const Comments: FC<CommentsProps> = ({comments, adminAccess, articleUrl}) => {
       ownerName,
       photoUrl,
       text,
-      createdAt: new Date().toLocaleString(),
-      lastUpdate: new Date().toLocaleString()
+      createdAt: new Date().getTime(),
+      lastUpdate: new Date().getTime()
     }
     setIsLoadingComment(true);
     await delay(500);

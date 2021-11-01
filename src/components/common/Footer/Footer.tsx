@@ -40,7 +40,7 @@ const Footer: FC<IFooter> = ({isFetchError, isFetching}) => {
               <i className="fab fa-github-square dev-icon"></i>
             </a>
             <a 
-              href="https://www.linkedin.com/in/web-d/" 
+              href="https://www.linkedin.com/in/hl-dz/" 
               className="dev-link" 
               target="_blank" 
               rel="noreferrer"

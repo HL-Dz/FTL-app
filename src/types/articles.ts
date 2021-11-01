@@ -28,8 +28,8 @@ export interface IArticle {
   imgSrc: string
   status: string
   public: boolean
-  createdAt: string
-  lastUpdated: string
+  createdAt: number
+  lastUpdated: number
   comments: Array<IComment>
   displayComments: boolean
   photoBy: string
@@ -42,8 +42,8 @@ export interface IComment {
   ownerName: string | null
   photoUrl: string | null
   text: string
-  createdAt: string
-  lastUpdate: string
+  createdAt: number
+  lastUpdate: number
 }
 
 export interface SetArticlesAction {

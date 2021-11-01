@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { storage } from '../../../../firebase';
 import "./ArticleForm.scss";
 import { articleValidation } from '../../../../helpers/validation';
-import { delay, storageError } from '../../../../helpers/helpers';
+import { delay, getArticleTime, storageError } from '../../../../helpers/helpers';
 import CharacterCounter from '../../../common/CharacterCounter/CharacterCounter';
 import RadioInput from '../../../common/CustomInputs/RadioInput';
 import ErrorModal from '../../../common/ErrorModal/ErrorModal';
@@ -82,8 +82,8 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
       imgSrc: values.photoUrl,
       status: checkedStatus,
       public: true,
-      createdAt: new Date().toLocaleString(), // timestam с сервера Firebase 
-      lastUpdated: new Date().toLocaleString(), // timestam с сервера Firebase 
+      createdAt: new Date().getTime(),
+      lastUpdated: new Date().getTime(),
       comments: [],
       displayComments: displayCheckedComments,
       photoBy: values.photoBy,
@@ -111,8 +111,8 @@ const ArticleForm :FC<ArticleFormProps>= ({editArticleForm, articleData, hideAdm
       imgSrc: values.photoUrl,
       status: checkedStatus,
       public: true,
-      createdAt: articleData?.createdAt, // timestam с сервера Firebase 
-      lastUpdated: new Date().toLocaleString(), // timestam с сервера Firebase 
+      createdAt: articleData?.createdAt,
+      lastUpdated: new Date().getTime(),
       displayComments: displayCheckedComments,
       photoBy: values.photoBy,
     }

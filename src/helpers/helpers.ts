@@ -26,6 +26,13 @@ export const getCurrnetDate = (value: string): string => {
   return `${month} ${currentDay}, ${currentYear}`
 };
 
+// Get article time
+export const getArticleTime = (currentTime:number) => {
+  let date = new Date(currentTime).toLocaleDateString('en-GB').replace(/[-,\\/]/gi, '.');
+  let time = new Date(currentTime).toLocaleTimeString('en-GB').slice(0, -3);
+  return `${date}, ${time}`;
+}
+
 // Storage error message
 export const storageError = (value: string) => {
   switch (value) {
